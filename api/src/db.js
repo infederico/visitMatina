@@ -3,7 +3,6 @@ const { Sequelize, Op } = require('sequelize')
 const fs = require('fs')
 const path = require('path')
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env
-console.log(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
 
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
@@ -40,37 +39,69 @@ sequelize.models = Object.fromEntries(capsEntries)
 // Para relacionarlos hacemos un destructuring
 const { Users, Comments, Product, Media, Shop, Post } = sequelize.models
 // Aca vendrian las relaciones
-Product.belongsToMany(Media, {
-  through: 'product_media',
-}, {timestamps: false});
+Product.belongsToMany(
+  Media,
+  {
+    through: 'product_media',
+  },
+  { timestamps: false }
+)
 
-Media.belongsToMany(Product, {
-  through: 'product_media',
-}, {timestamps: false});
+Media.belongsToMany(
+  Product,
+  {
+    through: 'product_media',
+  },
+  { timestamps: false }
+)
 
-Shop.belongsToMany(Product, {
-  through: 'shop_product',
-}, {timestamps: false});
+Shop.belongsToMany(
+  Product,
+  {
+    through: 'shop_product',
+  },
+  { timestamps: false }
+)
 
-Product.belongsToMany(Shop, {
-  through: 'shop_product',
-}, {timestamps: false});
+Product.belongsToMany(
+  Shop,
+  {
+    through: 'shop_product',
+  },
+  { timestamps: false }
+)
 
-Comments.belongsTo(Shop, {
-  foreignKey: 'shop_id'
-}, {timestamps: false});
+Comments.belongsTo(
+  Shop,
+  {
+    foreignKey: 'shop_id',
+  },
+  { timestamps: false }
+)
 
-Post.belongsTo(Users, {
-  foreignKey: 'user_id'
-}, {timestamps: false});
+Post.belongsTo(
+  Users,
+  {
+    foreignKey: 'user_id',
+  },
+  { timestamps: false }
+)
 
-Comments.belongsTo(Post, {
-  foreignKey: 'post_id'
-}, {timestamps: false});
+Comments.belongsTo(
+  Post,
+  {
+    foreignKey: 'post_id',
+  },
+  { timestamps: false }
+)
 
-Media.hasOne(Users,{
-  foreignKey: 'media_id'
-},{timestamps: false})
+Media.hasOne(
+  Users,
+  {
+    foreignKey: 'media_id',
+  },
+  { timestamps: false }
+)
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
