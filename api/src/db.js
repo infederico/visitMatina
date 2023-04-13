@@ -71,6 +71,38 @@ Product.belongsToMany(
   { timestamps: false }
 )
 
+Comments.belongsTo(
+  Shop,
+  {
+    foreignKey: 'shop_id',
+  },
+  { timestamps: false }
+)
+
+Post.belongsTo(
+  Users,
+  {
+    foreignKey: 'user_id',
+  },
+  { timestamps: false }
+)
+
+Comments.belongsTo(
+  Post,
+  {
+    foreignKey: 'post_id',
+  },
+  { timestamps: false }
+)
+
+Media.hasOne(
+  Users,
+  {
+    foreignKey: 'media_id',
+  },
+  { timestamps: false }
+)
+
 Comments.belongsTo(Shop, {
   foreignKey: 'shop_id',
 })

@@ -10,4 +10,7 @@ router.use('/product', productRouter)
 //Media
 router.use('/media', media)
 
+//Media
+router.use('/media', media)
+
 module.exports = router
