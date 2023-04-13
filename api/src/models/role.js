@@ -2,7 +2,7 @@ const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('shop', {
+  sequelize.define('role', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -12,10 +12,6 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    description:{
-        type: DataTypes.TEXT,
-        allowNull: false,
     },
     active: {
         type: DataTypes.BOOLEAN,
