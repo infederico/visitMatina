@@ -39,7 +39,7 @@ const deleteMedia = async (id) => {
 
     try {
         
-        let media = await Media.findByPk({ id });
+        let media = await Media.findByPk(id);
 
         if(media){
             Media.update(
