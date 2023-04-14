@@ -12,8 +12,6 @@ router.use('/product', productRouter)
 //Media
 router.use('/media', media);
 
-
-//Post
 router.use('/post', post);
 
 module.exports = router;
