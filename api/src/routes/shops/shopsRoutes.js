@@ -3,7 +3,7 @@ const router = express.Router();
 const { deleteShop, getAll, getShopById, createShop, updateShop } = require('../../controllers/shops/shopsControllers.js');
 
 router.delete('/:id', deleteShop); //borrado logico de la tienda
-router.get('/shops', getAll); //muestra todas las tiendas
+router.get('/mostrar', getAll); //muestra todas las tiendas
 router.get('/:id', getShopById);//muestra una tienda por id
 router.post('/ingresar', createShop);//crea una tienda
 router.put('/:id', updateShop); //actualiza una tienda
