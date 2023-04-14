@@ -38,8 +38,8 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     let { id } = req.params
-    let { name, description, price } = req.body
-    await updateProduct(id, name, description, price)
+    let { name, description, price, active } = req.body
+    await updateProduct(id, name, description, price, active)
     res.status(200).json('Product updated successfully')
   } catch (error) {
     res.status(404).json({ error: error.message })
@@ -58,7 +58,8 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     let { id } = req.params
-    await deleteProduct(id)
+    let { active } = req.body
+    await deleteProduct(id, active)
     res.status(200).send('Product Deleted Successfully')
   } catch (error) {
     res.status(404).json({ error: error.message })
