@@ -1,0 +1,11 @@
+.reviewCards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.reviewDescription {
+    outline: none;
+    height: 200px;
+    width: 400px;
+}

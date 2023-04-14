@@ -37,18 +37,24 @@ const getUserById = async (id) => {
     throw new Error(`Error getting user by id: ${error.message}`)
   }
 }
-const updateUser = async (id, name, email, password) => {
+const updateUser = async (id, name, email, password, active) => {
   try {
-    if (name) {
-      await Users.update({ name }, { where: { id } })
+    let findUser = await getUserById(id)
+    if (findUser) {
+      if (name) {
+        await Users.update({ name }, { where: { id } })
+      }
+      if (email) {
+        await Users.update({ email }, { where: { id } })
+      }
+      if (password) {
+        await Users.update({ password }, { where: { id } })
+      }
+      if (active !== undefined) {
+        await Users.update({ active }, { where: { id } })
+      }
+      return true
     }
-    if (email) {
-      await Users.update({ email }, { where: { id } })
-    }
-    if (password) {
-      await Users.update({ password }, { where: { id } })
-    }
-    return true
   } catch (error) {
     throw new Error(`Error trying to update ${error.message}`)
   }
@@ -65,9 +71,15 @@ const createUser = async (name, email, password) => {
     throw new Error(`Error trying to create user ${error.message}`)
   }
 }
-const deleteUser = async (id) => {
+const deleteUser = async (id, active) => {
   try {
-    await Users.destroy({ where: { id } })
+    let findUser = await getUserById(id)
+    if (findUser) {
+      if (active !== undefined) {
+        await Users.update({ active }, { where: { id } })
+      }
+      return true
+    }
     return true
   } catch (error) {
     throw new Error(`Error trying to delete user ${error.message}`)

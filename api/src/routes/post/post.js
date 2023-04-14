@@ -1,9 +1,5 @@
 const { Router } = require("express");
-const getAllPosts = require("../../controllers/post/getAllPosts");
-const getOnePost = require("../../controllers/post/getOnePost");
-const postPost = require("../../controllers/post/postOnePost");
-const putOnePost = require("../../controllers/post/putOnePost");
-const delOnePost = require("../../controllers/post/delOnePost");
+const {getAllPosts, getOnePost, postPost, putOnePost, delOnePost} =require("../../controllers/post/post");
 const router = Router();
 
 // ruta get Obtine todos los posts solo enviando / si se agrega el id por query /?id= devuelve el post correspondiente
@@ -56,7 +52,7 @@ router.put("/", async (req, res) => {
     }
 });
 
-//ruta delete Elimina un post de manera permanete enviando por query /?id=
+//ruta delete Setea en false el atributo active un post enviando por query /?id=
 router.delete("/", async (req, res) => {
     const {id} = req.query;
     try {
