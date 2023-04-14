@@ -14,4 +14,8 @@ router.use('/media', media);
 
 router.use('/post', post);
 
+
+router.use('/',shopsRoutes);
+
+
 module.exports = router;
