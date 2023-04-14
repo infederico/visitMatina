@@ -1,10 +1,11 @@
 const { Router } = require('express');
 
-//Media
-const { media } = require("./media/media")
+const { media } = require("./media/media");
+const { comment } = require("./comments/comments");
 
 const router = Router();
 
 router.use('/media', media);
+router.use('/comments', comment);
 
 module.exports = router;
