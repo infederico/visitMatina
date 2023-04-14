@@ -36,18 +36,24 @@ const getProductById = async (id) => {
     throw new Error(`Error getting user by name: ${error.message}`)
   }
 }
-const updateProduct = async (id, name, description, price) => {
+const updateProduct = async (id, name, description, price, active) => {
   try {
-    if (name) {
-      await Product.update({ name }, { where: { id } })
+    let findProduct = await getProductById(id)
+    if (findProduct) {
+      if (name) {
+        await Product.update({ name }, { where: { id } })
+      }
+      if (description) {
+        await Product.update({ description }, { where: { id } })
+      }
+      if (price) {
+        await Product.update({ price }, { where: { id } })
+      }
+      if (active !== undefined) {
+        await Product.update({ active }, { where: { id } })
+      }
+      return true
     }
-    if (description) {
-      await Product.update({ description }, { where: { id } })
-    }
-    if (price) {
-      await Product.update({ price }, { where: { id } })
-    }
-    return true
   } catch (error) {
     throw new Error(`Error trying to update product ${error.message}`)
   }
@@ -64,9 +70,14 @@ const createProduct = async (name, description, price) => {
     throw new Error(`Error trying to create product ${error.message}`)
   }
 }
-const deleteProduct = async (id) => {
+const deleteProduct = async (id, active) => {
   try {
-    await Product.destroy({ where: { id } })
+    let findProduct = await getProductById(id)
+    if (findProduct) {
+      if (active !== undefined) {
+        await Product.update({ active }, { where: { id } })
+      }
+    }
     return true
   } catch (error) {
     throw new Error(`Error trying to delete product ${error.message}`)

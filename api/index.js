@@ -1,5 +1,7 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const { swaggerDocs } = require('./src/routes/swagger.js');
+
 
 // Syncing all the models at once.
 conn.sync({ force: false}).then( async () => {
@@ -7,5 +9,6 @@ conn.sync({ force: false}).then( async () => {
   console.log('Db connected...');
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
+    swaggerDocs(server, 3001);
   });
 });
