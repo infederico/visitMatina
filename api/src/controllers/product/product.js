@@ -14,7 +14,7 @@ const getProductByName = async (name) => {
 }
 const getAllProducts = async () => {
   try {
-    let products = Product.findAll()
+    let products = await Product.findAll()
     if (products) {
       return products
     } else {
