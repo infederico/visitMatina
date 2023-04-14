@@ -1,6 +1,6 @@
 const { Post } = require("../../db");
 
-const delPost = async (id) => {
+const delOnePost = async (id) => {
     try {
         const delOnePost = await Post.findByPk(id);
         if (delOnePost) {
@@ -15,4 +15,4 @@ const delPost = async (id) => {
     }
 };
 
-module.exports = delPost;
+module.exports = delOnePost;

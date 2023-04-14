@@ -3,7 +3,7 @@ const getAllPosts = require("../../controllers/post/getAllPosts");
 const getOnePost = require("../../controllers/post/getOnePost");
 const postPost = require("../../controllers/post/postOnePost");
 const putOnePost = require("../../controllers/post/putOnePost");
-const delPost = require("../../controllers/post/delOnePost");
+const delOnePost = require("../../controllers/post/delOnePost");
 const router = Router();
 
 // ruta get Obtine todos los posts solo enviando / si se agrega el id por query /?id= devuelve el post correspondiente
@@ -60,7 +60,7 @@ router.put("/", async (req, res) => {
 router.delete("/", async (req, res) => {
     const {id} = req.query;
     try {
-        const postDel = await delPost(id);
+        const postDel = await delOnePost(id);
         if (postDel.error){
             throw new Error(postDel.error)
         }
