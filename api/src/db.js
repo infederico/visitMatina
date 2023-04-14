@@ -71,7 +71,6 @@ Product.belongsToMany(
   { timestamps: false }
 )
 
-
 Comments.belongsTo(
   Shop,
   {
@@ -105,34 +104,33 @@ Media.hasOne(
 )
 
 Comments.belongsTo(Shop, {
-  foreignKey: 'shop_id'
-});
+  foreignKey: 'shop_id',
+})
 
 Post.belongsTo(Users, {
-  foreignKey: 'user_id'
-});
+  foreignKey: 'user_id',
+})
 
 Comments.belongsTo(Post, {
-  foreignKey: 'post_id'
-});
+  foreignKey: 'post_id',
+})
 
-Media.hasOne(Users,{
-  foreignKey: 'media_id'
-});
+Media.hasOne(Users, {
+  foreignKey: 'media_id',
+})
 
 Role.hasOne(Users, {
-  foreignKey: 'role_id'
-});
+  foreignKey: 'role_id',
+})
 /*
 Media.belongsTo(Shop,{
   foreignKey: 'shop_id'
 });
 */
 
-Media.hasMany(Shop,{
-  foreignKey: 'media_id'
-});
-
+Media.hasMany(Shop, {
+  foreignKey: 'media_id',
+})
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
