@@ -16,6 +16,7 @@ const options = {
     'src/routes/comments/comments.js',
     'src/routes/users/usersRouter.js',
     'src/routes/product/productRouter.js',
+    'src/routes/post/post.js'
   ],
 }
 

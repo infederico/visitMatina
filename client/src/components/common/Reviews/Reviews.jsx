@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
+// eslint-disable-next-line
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from 'react-router-dom';
 
 import Review from './Review/Review'; // componente Review (card)
+import ReviewForm from './ReviewForm/ReviewForm'; // componente formulario para postear una nueva review
 
 import styles from './Reviews.module.css';
 
-const Reviews = () => {
+const Reviews = (props) => {
 
     // global states
     // const reviews = useSelector(state => state.reviews); // aca el back tiene que responder filtrado por Miembro y si esta approved
@@ -16,12 +18,7 @@ const Reviews = () => {
     // local states
     const [ overallRatingNumber, setOverallRatingNumber ] = useState(0);
     const [ overallRatingWord, setOverallRatingWord ] = useState('');
-    const [ newReview, setNewReview ] = useState({
-        name: '',
-        email: '',
-        rating: 5, // por defecto esta seteado en la maxima calificacion
-        description: ''
-    });
+    
     const [ filteredReviews, setFilteredReviews ] = useState([]);
     const [ filterSelectedOption, setFilterSelectedOption ] = useState('all'); // por defecto se inicializa el filtro en "mostrar: Todas"
     const [ sortedReviews, setSortedReviews ] = useState([]);
@@ -29,40 +26,17 @@ const Reviews = () => {
     const [ paginatedReviews, setPaginatedReviews ] = useState([]);
     const [ currentPage, setCurrentPage ] = useState(1);
     
-
-    const [ errors, setErrors ] = useState({});
-
-
     // hooks
+    // eslint-disable-next-line
     const dispatch = useDispatch();
-    const location = useLocation();
   
-    // al montarse pide todas las reviews de este miembro en particular - identifica que memberId es usando el pathname
-    const path = location.pathname;
-    const identifyMember = () => {
-        switch (path) {
-            case '/aventurasdelcaribe':
-                return 1;
-            case '/fincamandira':
-                return 2;
-            case '/fincalaparcela':
-                return 3;
-            case '/restaurantsolyluna':
-                return 4;
-            case '/hospedajeclarodeluna':
-                return 5;
-            default:
-                return false;
-        }
-    };
-
+    // al montarse pide todas las reviews de este miembro en particular - identifica que memberId es pasado por props
     useEffect( () => {
-        const memberId = identifyMember();
-        if (memberId) {
-        //dispatch(getReviewsById(memberId))
-        }
+        const memberId = props.memberId;
+        alert(memberId);
+        //dispatch(getReviewsById(memberId)) ////////////// descomentar cuando se configuren las action de redux        
+    // eslint-disable-next-line
     }, []);
-
     
     useEffect( () => { // cuando se cargan la reviews traidas del back seteo los estados locales que dependian de eso
         // primero calculo el rating global con el cociente entre la suma de todos los ratings y el numero de reviews
@@ -92,6 +66,7 @@ const Reviews = () => {
     }
     useEffect( () => {
         setOverallRatingWord(ratingScale[overallRatingNumber]);
+    // eslint-disable-next-line
     }, [overallRatingNumber]);
     
     // LOGICA PARA FILTRAR
@@ -127,6 +102,7 @@ const Reviews = () => {
         let auxSortedReviews = sortSelectedOption ? filteredReviews.slice().sort(sortFunctions[sortSelectedOption]) : filteredReviews;
         setSortedReviews(auxSortedReviews);
         setCurrentPage(1);
+    // eslint-disable-next-line
     }, [filteredReviews, sortSelectedOption]);
     
 
@@ -138,23 +114,6 @@ const Reviews = () => {
     
 
     // handlers
-    const handleChange = (event) => {
-        const { name, type, checked, value } = event.target;
-        if (type === 'range') {
-            setNewReview({
-                ...newReview,
-                [name]: parseFloat(value)
-            });
-        }
-        if (type === 'text') {
-            setNewReview({
-                ...newReview,
-                [name]: value
-            });
-        }
-    };
-
-    // selector de filtrado
     const handleFilterChange = (event) => {
         setFilterSelectedOption(event.target.value);
     };
@@ -171,16 +130,11 @@ const Reviews = () => {
         }
     };
 
-
     const pageDecrement = () => {
         if (1 < currentPage) {
             let prevPage = currentPage - 1;
             setCurrentPage(prevPage);
         }
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
     };
 
     return (
@@ -239,49 +193,7 @@ const Reviews = () => {
                 }
             </div>
             <hr />
-
-            <div>
-                <span>Deja tu reseña...</span>
-                <br />
-                <br />
-                <form onSubmit={handleSubmit}>
-
-                    <label>Nombre: </label>
-                    <input type='text' name='name' onChange={handleChange} value={newReview.name} style={{outline: "none"}} />
-                    {errors.name && <span className={styles.errors} >{errors.name}</span>}
-                    <br />
-                    <br />
-
-                    <label>Email: </label>
-                    <input type='text' name='email' onChange={handleChange} value={newReview.email} style={{outline: "none"}} placeholder='opcional'/>
-                    {errors.email && <span className={styles.errors} >{errors.email}</span>}
-                    <br />
-                    <br />
-
-                    <label>Rating:</label>
-                    <input
-                    name="rating"
-                    type="range"
-                    min="0"
-                    max="5"
-                    value={newReview.rating}
-                    onChange={handleChange}
-                    />
-                    <span>{newReview.rating}</span>
-                    <br />
-                    <br />
-                    
-                    <label>Reseña: </label>
-                    <input type='text' name='description' onChange={handleChange} value={newReview.description} className={styles.reviewDescription} />
-                    {errors.description && <span className={styles.errors} >{errors.description}</span>}
-                    <br />
-                    <br />
-
-                    <br />
-                    <button type='submit'><span>enviar</span></button>
-                    <br />
-                </form>
-            </div>
+            <ReviewForm />
             <hr />
         </>
     );
