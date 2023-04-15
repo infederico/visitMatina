@@ -36,7 +36,7 @@ const getProductById = async (id) => {
     throw new Error(`Error getting user by name: ${error.message}`)
   }
 }
-const updateProduct = async (id, name, description, price, active) => {
+const updateProduct = async (id, name, description, price) => {
   try {
     let findProduct = await getProductById(id)
     if (findProduct) {
@@ -48,9 +48,6 @@ const updateProduct = async (id, name, description, price, active) => {
       }
       if (price) {
         await Product.update({ price }, { where: { id } })
-      }
-      if (active !== undefined) {
-        await Product.update({ active }, { where: { id } })
       }
       return true
     }
