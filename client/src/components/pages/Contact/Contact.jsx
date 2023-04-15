@@ -26,7 +26,7 @@ const Contact = () => {
       <label>Consulta</label>
       <input name='contrasena' type='password' onChange='' />
       <br />
-      <button onClick={() => alert('Consulta enviada')}>Registrarme</button>
+      <button onClick={() => alert('Consulta enviada')}>enviar consulta</button>
     </div>
   )
 }
