@@ -1,6 +1,4 @@
 import Layout from "./components/Layout/Layout";
-//import Reviews from "./components/common/Reviews/Reviews";
-
 import Home from './components/pages/Home/Home';
 import AboutUs from './components/pages/AboutUs/AboutUs';
 import AventurasDelCaribe from './components/pages/AventurasDelCaribe/AventurasDelCaribe';

@@ -19,7 +19,7 @@ const ReviewForm = () => {
 
     // handlers
     const handleInputChange = (event) => {
-        const { name, type, checked, value } = event.target;
+        const { name, type, value } = event.target;
         if (type === 'range') {
             setNewReview({
                 ...newReview,
@@ -31,6 +31,10 @@ const ReviewForm = () => {
                 ...newReview,
                 [name]: value
             });
+        }
+        if (submitted) {
+            let aux = validation(newReview);
+            setErrors(aux); 
         }
     };
 
