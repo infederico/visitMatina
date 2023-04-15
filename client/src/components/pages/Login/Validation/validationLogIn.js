@@ -6,7 +6,7 @@ const ValidationLogIn = (userData) => {
   if (!regexMail.test(userData.email)) {
     errors.email = 'Por favor ingresa un email valido'
   }
-  if (userData.password < 1) {
+  if (!userData.password) {
     errors.password = 'Por favor ingresa una contrasena'
   }
   return errors

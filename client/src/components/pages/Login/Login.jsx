@@ -30,7 +30,15 @@ const LogIn = () => {
   }
 
   return (
-    <div>
+    <div
+      class='card'
+      style={{
+        width: '20rem',
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)',
+      }}
+    >
       <h1>Bienvenido Administrador</h1>
       <div className='mb-3'>
         <label htmlFor='formGroupExampleInput' className='form-label'>
@@ -66,13 +74,20 @@ const LogIn = () => {
         {errors.password ? errors.password : null}
         <br />
       </div>
-      <label>Recordarme</label>
-      <input name='data' type='checkbox' />
+      <label class='form-check-label' for='autoSizingCheck'>
+        <input class='form-check-input' type='checkbox' id='autoSizingCheck' />
+        Recordarme
+      </label>
+      <br />
       <button onClick={handleClick}>Ingresar</button>
+      <br />
 
       <p>aqui voy a entrar con auth google id</p>
+      <br />
       <Link to='/register'>
-        <button onClick={() => alert('login exitoso')}>Registrate</button>
+        <button onClick={() => alert('nos envia a la pagina de registro')}>
+          No tienes cuenta? Registrate
+        </button>
       </Link>
     </div>
   )

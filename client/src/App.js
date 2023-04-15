@@ -13,6 +13,7 @@ import Login from './components/pages/Login/Login'
 import NotFound from './components/pages/NotFound/NotFound'
 
 import { Routes, Route } from 'react-router-dom'
+import Register from './components/pages/Login/Register/Register'
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/blog' element={<Blog />} />
         <Route path='/contacto' element={<Contact />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Layout>
