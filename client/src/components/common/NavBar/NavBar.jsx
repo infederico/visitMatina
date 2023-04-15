@@ -15,15 +15,16 @@ export default function NavBar() {
 
   return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light ">
-        <div className="container-fluid">
+        <div className="container">
             <NavLink className="navbar-brand" to="/">Visit Matina</NavLink>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div className="navbar-nav d-flex">
-                    <NavLink className="nav-link active" aria-current="page" to="/">Inicio</NavLink>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav ms-auto">
+                    <NavLink className="nav-link" aria-current="page" to="/">Inicio</NavLink>
                     <NavLink className="nav-link" to="/aboutUs">Nosotros</NavLink>
+
                     <li className="nav-item dropdown">
                         <NavLink className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Que hacer
@@ -61,7 +62,9 @@ export default function NavBar() {
                     <NavLink className="nav-link" to="/blog">Blog</NavLink>
                     <NavLink className="nav-link" to="/contacto">Contacto</NavLink>
                     <NavLink className="nav-link" to="/login">Ingresar</NavLink>
-                </div>
+                    {/*
+                */}
+                </ul>
             </div>
         </div>
     </nav>
