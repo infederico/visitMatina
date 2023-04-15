@@ -4,6 +4,7 @@ import Layout from "./components/Layout/Layout";
 import Home from './components/pages/Home/Home';
 import AboutUs from './components/pages/AboutUs/AboutUs';
 import AventurasDelCaribe from './components/pages/AventurasDelCaribe/AventurasDelCaribe';
+import ArtesaniasMaryLuna from './components/pages/AventurasDelCaribe/ArtesaniasMarYLuna/ArtesaniasMarYLuna';
 import FincaMandira from './components/pages/FincaMandira/FincaMandira';
 import FincaLaParcela from './components/pages/FincaLaParcela/FincaLaParcela';
 import RestaurantSolYLuna from './components/pages/RestaurantSolYLuna/RestaurantSolYLuna';
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/fincaLaParcela" element={ <FincaLaParcela /> } />
         <Route path="/restaurantSolyLuna" element={ <RestaurantSolYLuna /> } />
         <Route path="/hopedajeClaroDeLuna" element={ <HospedajeClaroDeLuna /> } />
+        <Route path="/artesaniasMaryLuna" element={ <ArtesaniasMaryLuna /> } />
         <Route path="/paquetes" element={ <Paquetes /> } />
         <Route path="/blog" element={ <Blog /> } />
         <Route path="/contacto" element={ <Contact/> } />

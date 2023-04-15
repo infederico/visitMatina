@@ -1,12 +1,12 @@
 import CardProduct from "./CardProduct/CardProduct";
 // import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import style from "./CardProductContainer.module.css"
 
 const CardProductContainer = () => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     
     
     const BD = require('./res_back.json');
@@ -16,37 +16,38 @@ const CardProductContainer = () => {
     
     const memberId = () => {
         switch(location.pathname) {
-            case "/AventurasDelCaribe":
+            case "/artesaniasMarYLuna":
                 return 1;
-            case "/FincalaParcela":
+            case "/fincaLaParcela":
                 return 2;
             default:
-                return 1
+                return 
         }
     }
     useEffect(() => {
        memberId()
    //  dispatch(getProductsByStore(memberId))
-    },[])
+    },[memberId])
 
     const filteredProducts = products.filter(prod => prod.storeid === memberId())
     
     return (
-        <div className={style.cards_container}>
-            
-            {filteredProducts.map(prod =>{ 
-                return(
-                    <div >
-                        <CardProduct 
-                            key= {prod.id}
-                            image= {prod.image}
-                            name= {prod.name}
-                            description= {prod.description}
-                            price= {prod.price}
-                        />
-                    </div>
-                )
-            })}
+        <div>
+            <div className="row row-cols-1 row-cols-md-4 g-6">                
+                {filteredProducts.map(prod =>{ 
+                    return(
+                        <div className="col">
+                            <CardProduct 
+                                key= {prod.id}
+                                image= {prod.image}
+                                name= {prod.name}
+                                description= {prod.description}
+                                price= {prod.price}
+                            />
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }
