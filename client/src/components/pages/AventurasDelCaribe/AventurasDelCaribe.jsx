@@ -9,7 +9,7 @@ export default function AventurasDelCaribe() {
 
             <CardActivities />
 
-            <Reviews />   
+            <Reviews memberId={1} />   
         </>
     );
 };

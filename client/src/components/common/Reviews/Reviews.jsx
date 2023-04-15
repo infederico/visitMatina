@@ -8,7 +8,7 @@ import ReviewForm from './ReviewForm/ReviewForm'; // componente formulario para 
 
 import styles from './Reviews.module.css';
 
-const Reviews = () => {
+const Reviews = (props) => {
 
     // global states
     // const reviews = useSelector(state => state.reviews); // aca el back tiene que responder filtrado por Miembro y si esta approved
@@ -29,35 +29,14 @@ const Reviews = () => {
     // hooks
     // eslint-disable-next-line
     const dispatch = useDispatch();
-    const location = useLocation();
   
-    // al montarse pide todas las reviews de este miembro en particular - identifica que memberId es usando el pathname
-    const path = location.pathname;
-    const identifyMember = () => {
-        switch (path) {
-            case '/aventurasdelcaribe':
-                return 1;
-            case '/fincamandira':
-                return 2;
-            case '/fincalaparcela':
-                return 3;
-            case '/restaurantsolyluna':
-                return 4;
-            case '/hospedajeclarodeluna':
-                return 5;
-            default:
-                return false;
-        }
-    };
-
+    // al montarse pide todas las reviews de este miembro en particular - identifica que memberId es pasado por props
     useEffect( () => {
-        const memberId = identifyMember();
-        if (memberId) {
-        //dispatch(getReviewsById(memberId))
-        }
+        const memberId = props.memberId;
+        alert(memberId);
+        //dispatch(getReviewsById(memberId)) ////////////// descomentar cuando se configuren las action de redux        
     // eslint-disable-next-line
     }, []);
-
     
     useEffect( () => { // cuando se cargan la reviews traidas del back seteo los estados locales que dependian de eso
         // primero calculo el rating global con el cociente entre la suma de todos los ratings y el numero de reviews
