@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+// eslint-disable-next-line
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ const Reviews = () => {
     const [ currentPage, setCurrentPage ] = useState(1);
     
     // hooks
+    // eslint-disable-next-line
     const dispatch = useDispatch();
     const location = useLocation();
   
@@ -53,6 +55,7 @@ const Reviews = () => {
         if (memberId) {
         //dispatch(getReviewsById(memberId))
         }
+    // eslint-disable-next-line
     }, []);
 
     
@@ -84,6 +87,7 @@ const Reviews = () => {
     }
     useEffect( () => {
         setOverallRatingWord(ratingScale[overallRatingNumber]);
+    // eslint-disable-next-line
     }, [overallRatingNumber]);
     
     // LOGICA PARA FILTRAR
@@ -119,6 +123,7 @@ const Reviews = () => {
         let auxSortedReviews = sortSelectedOption ? filteredReviews.slice().sort(sortFunctions[sortSelectedOption]) : filteredReviews;
         setSortedReviews(auxSortedReviews);
         setCurrentPage(1);
+    // eslint-disable-next-line
     }, [filteredReviews, sortSelectedOption]);
     
 
