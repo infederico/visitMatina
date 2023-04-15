@@ -2,7 +2,7 @@ import styles from './Review.module.css';
 
 const Review = (props) => {
 
-    const { id, name, date, rating, description } = props;
+    const { name, date, rating, description } = props;
 
     return (
         <div className={styles.reviewCard}>
