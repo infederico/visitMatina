@@ -3,6 +3,43 @@ const {getAllPosts, getOnePost, postPost, putOnePost, delOnePost} =require("../.
 const router = Router();
 
 // ruta get Obtine todos los posts solo enviando / si se agrega el id por query /?id= devuelve el post correspondiente
+/**
+ * @openapi
+ * /api/post/:
+ *   get:
+ *     tags:
+ *       - Post
+ *     responses:
+ *       200:
+ *         description: Retorna todos los posts
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 result:
+ *                   type: array 
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: int
+ *                         example: 1
+ *                       date:
+ *                         type: date
+ *                         example: 2023-04-13T00:00:00.000Z
+ *                       content:
+ *                         type: text
+ *                         example: Texto de prueba para los post del blog
+ *                       createdAt:
+ *                         type: datetime
+ *                         example: 2023-04-13T18:32:00.321Z
+ *                       updatedAt:
+ *                         type: datetime
+ *                         example: 023-04-13T18:32:00.321Z
+ * 
+ * 
+ */
 router.get("/", async (req, res) => {
   const { id } = req.query;
   try {
@@ -52,7 +89,7 @@ router.put("/", async (req, res) => {
     }
 });
 
-//ruta delete Setea en false el atributo active un post enviando por query /?id=
+//ruta delete Setea en false el atributo active de un post enviando por query /?id=
 router.delete("/", async (req, res) => {
     const {id} = req.query;
     try {
