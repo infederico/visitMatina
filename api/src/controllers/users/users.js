@@ -37,7 +37,7 @@ const getUserById = async (id) => {
     throw new Error(`Error getting user by id: ${error.message}`)
   }
 }
-const updateUser = async (id, name, email, password, active) => {
+const updateUser = async (id, name, email, password) => {
   try {
     let findUser = await getUserById(id)
     if (findUser) {
@@ -49,9 +49,6 @@ const updateUser = async (id, name, email, password, active) => {
       }
       if (password) {
         await Users.update({ password }, { where: { id } })
-      }
-      if (active !== undefined) {
-        await Users.update({ active }, { where: { id } })
       }
       return true
     }
