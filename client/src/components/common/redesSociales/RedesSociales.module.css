@@ -1,0 +1,17 @@
+.cajaredes{
+    
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.imagen{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin: auto;
+}
