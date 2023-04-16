@@ -14,7 +14,13 @@
 }
 .image{
   width: 100%;
+  position: relative;
+  bottom: 250px;
 }
-.divC{
-  height: 100px;
+.divCarousel{
+  height: 360px;
+}
+.textCarousel{
+  color: white;
+  text-shadow: 2px 2px black;
 }
