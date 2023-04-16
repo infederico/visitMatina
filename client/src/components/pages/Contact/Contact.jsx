@@ -65,7 +65,7 @@ const Contact = () => {
               style={{
                 width: 'fit-content',
                 position: 'absolute',
-                top: '10%',
+                top: '0%',
                 left: '50%',
                 transform: 'translateX(-50%)',
                 fontSize: '4rem',

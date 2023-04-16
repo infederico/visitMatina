@@ -78,13 +78,31 @@ const LogIn = () => {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'space-between',
+      }}
+    >
+      <div>
+        <img
+          style={{
+            position: 'absolute',
+            left: '10rem',
+            maxHeight:
+              '80vh' /* Establece la altura máxima de la imagen al 100% de la altura visible del escritorio */,
+            width: '37rem',
+          }}
+          src='https://i.pinimg.com/564x/c3/02/4b/c3024bc95c94ca75a0f71f41ca6815ef.jpg'
+          alt='hojas'
+        />
+      </div>
       <div
         className='card'
         style={{
-          width: '20rem',
+          width: '22rem',
           position: 'absolute',
-          left: '50%',
+          left: '60%',
           transform: 'translateX(-50%)',
         }}
       >

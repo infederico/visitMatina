@@ -36,48 +36,50 @@ const Register = () => {
     }
   }
   return (
-    <div
-      className='card'
-      style={{
-        width: '18rem',
-        position: 'absolute',
-        left: '50%',
-        transform: 'translateX(-50%)',
-      }}
-    >
-      <h1>Registro</h1>
-      <br />
-      <label>Nombre</label>
-      <input
-        name='name'
-        type='text'
-        value={userData.name}
-        onChange={handleInputChange}
-      />
-      {errors.name ? errors.name : null}
-      <br />
-      <br />
-      <label>Email</label>
-      <input
-        name='email'
-        type='text'
-        value={userData.email}
-        onChange={handleInputChange}
-      />
-      {errors.email ? errors.email : null}
-      <br />
-      <br />
-      <label>Contrasena</label>
-      <input
-        name='password'
-        type='password'
-        value={userData.password}
-        onChange={handleInputChange}
-      />
-      {errors.password ? errors.password : null}
-      <br />
-      <br />
-      <button onClick={handleClick}>Registrarme</button>
+    <div>
+      <div
+        className='card'
+        style={{
+          width: '18rem',
+          position: 'absolute',
+          left: '50%',
+          transform: 'translateX(-50%)',
+        }}
+      >
+        <h1>Registro</h1>
+        <br />
+        <label>Nombre</label>
+        <input
+          name='name'
+          type='text'
+          value={userData.name}
+          onChange={handleInputChange}
+        />
+        {errors.name ? errors.name : null}
+        <br />
+        <br />
+        <label>Email</label>
+        <input
+          name='email'
+          type='text'
+          value={userData.email}
+          onChange={handleInputChange}
+        />
+        {errors.email ? errors.email : null}
+        <br />
+        <br />
+        <label>Contrasena</label>
+        <input
+          name='password'
+          type='password'
+          value={userData.password}
+          onChange={handleInputChange}
+        />
+        {errors.password ? errors.password : null}
+        <br />
+        <br />
+        <button onClick={handleClick}>Registrarme</button>
+      </div>
     </div>
   )
 }
