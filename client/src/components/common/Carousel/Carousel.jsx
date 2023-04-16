@@ -1,6 +1,6 @@
 const Carousel = () =>{
     return(
-        <div id="carouselExampleFade" className="carousel slide carousel-fade">
+        <div id="carouselExampleFade" className="carousel slide carousel-fade w-50" >
             <div className="carousel-inner">
                 <div className="carousel-item active">
                     <img src="https://fondosmil.com/fondo/74416.jpg" className="d-block w-100" alt="..."/>
