@@ -69,6 +69,7 @@ const Contact = () => {
                 left: '50%',
                 transform: 'translateX(-50%)',
                 fontSize: '4rem',
+                padding: '0',
               }}
             >
               Contacto
