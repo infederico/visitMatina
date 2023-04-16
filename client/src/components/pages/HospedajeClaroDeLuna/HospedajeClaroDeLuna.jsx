@@ -1,27 +1,30 @@
 
 import Redes from '../../common/redesSociales/redes/Redes';
 import style from './HospedajeClaroDeLuna.module.css';
-import { descriptions } from './descriptions';
+import CardShop from '../../common/shopsDos/cardShop/CardShop';
 
-//importamos el array que simula los datos que llegan del back
+
+//importamos el array que simula los datos que llegan del back-componente redes sociales
 import { arrayRedes } from './arrayRedes';
 
+//importamos elementos que simula los datos que llegan del estado global
+import { descriptions,name,imagen } from './descriptions';
 
 export default function HospedajeClaroDeLuna() {
 
     
     return(
         <div className={style.page}>
-            {/*aca va el componente para renderizar a tarjeta de las tiendas, sigo trabajando en el*/}
+            
             <section className={style.titleSection}>
-                <h1 className={style.title}>Hospedaje Claro de Luna</h1>    
+                <CardShop description={descriptions} name={name} image={imagen}/>    
             </section>
-            <section className={style.imageSection}>
-                <img className={style.image} src="https://hotelcaminorealsangil.com.co/wp-content/uploads/2018/07/hoteles-sangil2.jpg" alt="claro de luna"/>
+            
+            <section className={style.Cajaredes}>
+                 <Redes socialmedia={arrayRedes}/>{/*aca enviamos por props el array que importamos
+                                                    simulando los datos que llegarian del back*/}
             </section>
-            <section className={style.descriptionSection}>
-                <p className={style.description}>{descriptions}</p> 
-            </section>
+            
             <div className={style.contRedes}>
             <section className={style.ubicacionSection}>
                 <h2 className={style.ubicacion}>Nuestra Ubicación</h2>
@@ -38,15 +41,11 @@ export default function HospedajeClaroDeLuna() {
                     <p className={style.contactInfo}>Horario: 8:00 am - 6:00 pm</p>
                 </div>
 
-                {/*el redes ya quedo funcional*/}
-
-                <Redes socialmedia={arrayRedes}/>{/*aca enviamos por props el array que importamos
-                                                    simulando los datos que llegarian del back*/}
             </section>
-            
+           
 
 
-        </div>
+                </div>
        
            </div> 
 
