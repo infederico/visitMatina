@@ -1,0 +1,24 @@
+.foto{
+    width: 80%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.descri{
+    width: 82%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-align: justify;
+}
+.nombre{
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.card{
+    border:none;
+}

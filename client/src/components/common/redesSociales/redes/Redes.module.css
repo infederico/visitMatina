@@ -1,0 +1,14 @@
+.boxSocialMedia{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    width: 20%;
+    height: 20%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
