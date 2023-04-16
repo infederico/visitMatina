@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Layout from "./components/Layout/Layout";
 import Home from './components/pages/Home/Home';
 import AboutUs from './components/pages/AboutUs/AboutUs';
@@ -13,7 +12,6 @@ import Blog from './components/pages/Blog/Blog';
 import Contact from './components/pages/Contact/Contact';
 import Login from './components/pages/Login/Login';
 import NotFound from './components/pages/NotFound/NotFound';
-=======
 import Layout from './components/Layout/Layout'
 import Home from './components/pages/Home/Home'
 import AboutUs from './components/pages/AboutUs/AboutUs'
