@@ -1,5 +1,5 @@
 import style from './CardBlogDetail.module.css';
-import ReviewForm from '../../common/Reviews/ReviewForm/ReviewForm';
+import Reviews from '../../common/Reviews/Reviews';
 
 const CardBlogDetail = (props) => {
     return (
@@ -15,7 +15,7 @@ const CardBlogDetail = (props) => {
           </div>
         </div>
         <div>
-          <ReviewForm></ReviewForm>
+          <Reviews></Reviews>
         </div>
         </div>
     );
