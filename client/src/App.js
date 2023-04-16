@@ -13,6 +13,11 @@ import Contact from './components/pages/Contact/Contact'
 import Login from './components/pages/Login/Login'
 import NotFound from './components/pages/NotFound/NotFound'
 import ArtesaniasMaryLuna from './components/pages/AventurasDelCaribe/ArtesaniasMarYLuna/ArtesaniasMarYLuna'
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 0b6c50d0b7abaeb8e6e7882a0d611274cbdb5825
 import { Routes, Route } from 'react-router-dom'
 import Register from './components/pages/Login/Register/Register'
 

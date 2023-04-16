@@ -109,3 +109,12 @@
     background-color: rgba(250, 246, 246, 0.559);
     
 }
+.menuSection{
+    width:80%;
+    margin: auto;
+    height: 300px;
+    /* border: 1px solid #000; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
