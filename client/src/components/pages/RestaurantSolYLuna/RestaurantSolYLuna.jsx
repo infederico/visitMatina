@@ -13,6 +13,11 @@ import CardProductContainer2 from '../../common/CardProductContainer2/CardProduc
 
 
 export default function RestauranteSolYLuna() {
+    
+    let DB = require("./imagenes.json")
+    DB = DB.response
+    
+    
     return(
         <div className={style.page}>
             
@@ -24,6 +29,13 @@ export default function RestauranteSolYLuna() {
                  <Redes socialmedia={arrayRedes}/>{/*aca enviamos por props el array que importamos
                                                     simulando los datos que llegarian del back*/}
             </section>
+            <div className={style.gallery}>
+                {DB.map(image => {
+                    return(
+                        <img src={image.img} alt="AGREGAR ALT" />
+                    )
+                })}
+            </div>    
             <section className={style.menuSection}>
                 <CardProductContainer2 /> {/* habilitar que reciba x props un array con los datos de esta pag*/}
             </section>
