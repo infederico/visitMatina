@@ -1,3 +1,4 @@
+
 import Carousel from '../../common/Carousel/Carousel';
 
 export default function AboutUs() {
@@ -5,6 +6,7 @@ export default function AboutUs() {
         <>
             <h1>Nosotros</h1>       
             <Carousel />
+
         </>
     )
 }

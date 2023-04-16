@@ -3,8 +3,11 @@ import styles from './Carousel.module.css';
 const Carousel = () =>{
 
     return(
+
         <>
         <div id="carouselExampleFade" className="carousel slide carousel-fade">
+
+
             <div className="carousel-inner">
                 <div className="carousel-item active">
                     <img src="https://fondosmil.com/fondo/74416.jpg" className="d-block w-100" alt="..."/>
