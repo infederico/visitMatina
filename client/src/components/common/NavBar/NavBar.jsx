@@ -6,6 +6,8 @@
 import styles from './NavBar.module.css';
 import { NavLink } from "react-router-dom";
 
+import Logo from '../../../assets/images/matina_logo.png'
+
 
 export default function NavBar() {
 
@@ -16,7 +18,9 @@ export default function NavBar() {
   return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light ">
         <div className="container">
-            <NavLink className="navbar-brand" to="/">Visit Matina</NavLink>
+            <NavLink className="navbar-brand" to="/">
+                <img src={Logo} alt="Visit_Matina_Logo" className={styles.navlogo} />
+            </NavLink>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
