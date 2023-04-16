@@ -8,6 +8,7 @@ import RestaurantSolYLuna from './components/pages/RestaurantSolYLuna/Restaurant
 import HospedajeClaroDeLuna from './components/pages/HospedajeClaroDeLuna/HospedajeClaroDeLuna'
 import Paquetes from './components/pages/Paquetes/Paquetes'
 import Blog from './components/pages/Blog/Blog'
+import DetailBlog from './components/pages/Blog/DetailBlog'
 import Contact from './components/pages/Contact/Contact'
 import Login from './components/pages/Login/Login'
 import NotFound from './components/pages/NotFound/NotFound'
@@ -28,6 +29,7 @@ const App = () => {
         <Route path='/hopedajeClaroDeLuna' element={<HospedajeClaroDeLuna />} />
         <Route path='/paquetes' element={<Paquetes />} />
         <Route path='/blog' element={<Blog />} />
+        <Route path='/detailBlog/:id' element={<DetailBlog />} />
         <Route path='/contacto' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
