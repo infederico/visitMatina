@@ -33,7 +33,6 @@ const Reviews = (props) => {
     // al montarse pide todas las reviews de este miembro en particular - identifica que memberId es pasado por props
     useEffect( () => {
         const memberId = props.memberId;
-        alert(memberId);
         //dispatch(getReviewsById(memberId)) ////////////// descomentar cuando se configuren las action de redux        
     // eslint-disable-next-line
     }, []);
