@@ -11,7 +11,7 @@ export default function Layout({ children }) {
         <div className={ styles.container }>
             <div className={styles.wrapContent}>
 
-                <NavBar />
+                {<NavBar />}
 
                 { children }
 

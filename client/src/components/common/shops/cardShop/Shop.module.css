@@ -1,0 +1,55 @@
+.card{
+    width: 80%;
+    height: 200px;
+    border:1px solid rgba(187, 184, 184, 0.498);
+    margin-top: 50px;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: wrap;
+    border-radius: 25px;
+}
+.image{
+    width:400px;
+    height: 100%;
+    border-radius: 25px 0px 0px 25px;
+}
+.title{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.link{
+    text-decoration: none;
+    color: black;
+
+}
+.title:hover{
+    color: rgb(28, 151, 63);
+    transition: 0.5s;  
+}
+.card:hover{
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+.description{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    text-align: justify;
+    
+    
+}
+.section{
+    /* border:solid 3px rgb(28, 151, 63); */
+    width: 100%;
+    padding: 20px;
+}
