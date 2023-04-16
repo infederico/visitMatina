@@ -29,8 +29,7 @@ export default function RestauranteSolYLuna() {
                  <Redes socialmedia={arrayRedes}/>{/*aca enviamos por props el array que importamos
                                                     simulando los datos que llegarian del back*/}
             </section>
-            <h1>Restaurante Sol y Luna</h1>
-            <div className={styles.gallery}>
+            <div className={style.gallery}>
                 {DB.map(image => {
                     return(
                         <img src={image.img} alt="AGREGAR ALT" />

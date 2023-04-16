@@ -107,8 +107,10 @@
     justify-content: center;
     /* border: 1px solid #000;   */
     background-color: rgba(250, 246, 246, 0.559);
+}
 .gallery{
     display: grid;
+    
     justify-content: center;
     grid-template-columns: repeat(auto-fill,minmax(200px,220px));
     grid-gap: 2px;
@@ -132,8 +134,6 @@
     grid-area: span 1 / span 2;
 }
     
-
-}
 .menuSection{
     width:80%;
     margin: auto;
