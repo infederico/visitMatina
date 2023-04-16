@@ -3,7 +3,7 @@ const Carousel = () =>{
         <div id="carouselExampleFade" className="carousel slide carousel-fade">
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <img src="https://sfo2.digitaloceanspaces.com/elpaiscr/2021/06/Matina-de-Limon..jpeg" className="d-block w-100" alt="..."/>
+                    <img src="https://fondosmil.com/fondo/74416.jpg" className="d-block w-100" alt="..."/>
                 </div>
                 <div className="carousel-item">
                     <img src="https://i.ytimg.com/vi/kcBQlmcNuJQ/maxresdefault.jpg" className="d-block w-100" alt="..."/>

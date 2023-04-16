@@ -1,21 +1,23 @@
-import NavBar from "../common/NavBar/NavBar";
-import styles from "./Layout.module.css";
+import NavBar from '../common/NavBar/NavBar'
+import styles from './Layout.module.css'
 
 //import { useLocation } from 'react-router-dom';
 
 export default function Layout({ children }) {
-
-    //const location = useLocation();
+  //const location = useLocation();
 
     return(
         <div className={ styles.container }>
             <div className={styles.wrapContent}>
 
-                {<NavBar />}
+                <NavBar />
 
-                { children }
+                <div className="container">
+                    { children }
+                </div>
 
             </div>
         </div>
     );
 }
+

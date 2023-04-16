@@ -13,30 +13,30 @@ import Contact from './components/pages/Contact/Contact';
 import Login from './components/pages/Login/Login';
 import NotFound from './components/pages/NotFound/NotFound';
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom'
+import Register from './components/pages/Login/Register/Register'
 
 const App = () => {
   return (
     <Layout>
       <Routes>
-
-        <Route path="/" element={ <Home /> } />
-        <Route path="/aboutUs" element={ <AboutUs/> } />
-        <Route path="/AventurasDelCaribe" element={ <AventurasDelCaribe /> } />
-        <Route path="/fincaMandira" element={ <FincaMandira /> } />
-        <Route path="/fincaLaParcela" element={ <FincaLaParcela /> } />
-        <Route path="/restaurantSolyLuna" element={ <RestaurantSolYLuna /> } />
-        <Route path="/hopedajeClaroDeLuna" element={ <HospedajeClaroDeLuna /> } />
+        <Route path='/' element={<Home />} />
+        <Route path='/aboutUs' element={<AboutUs />} />
+        <Route path='/AventurasDelCaribe' element={<AventurasDelCaribe />} />
+        <Route path='/fincaMandira' element={<FincaMandira />} />
+        <Route path='/fincaLaParcela' element={<FincaLaParcela />} />
+        <Route path='/restaurantSolyLuna' element={<RestaurantSolYLuna />} />
+        <Route path='/hopedajeClaroDeLuna' element={<HospedajeClaroDeLuna />} />
         <Route path="/artesaniasMaryLuna" element={ <ArtesaniasMaryLuna /> } />
-        <Route path="/paquetes" element={ <Paquetes /> } />
-        <Route path="/blog" element={ <Blog /> } />
-        <Route path="/contacto" element={ <Contact/> } />
-        <Route path="/login" element={ <Login/> } />
+        <Route path='/paquetes' element={<Paquetes />} />
+        <Route path='/blog' element={<Blog />} />
+        <Route path='/contacto' element={<Contact />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
         <Route path='*' element={<NotFound />} />
-
       </Routes>
     </Layout>
-  );
-};
+  )
+}
 
-export default App;
+export default App
