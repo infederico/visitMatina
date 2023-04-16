@@ -18,22 +18,22 @@ export default function Blog() {
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src={apiRes.response[0].image} class="d-block w-100" className={styles.image} alt="..."/>
+            <div className={`${styles.divCarousel} carousel-item active`}>
+            <img src={apiRes.response[1].image} className={`${styles.image} "d-block w-100"`} alt="..."/>
             <div class="carousel-caption d-none d-md-block">
-                <h2>"{apiRes.response[0].name}"</h2>
+                <h2 className={styles.textCarousel}>"{apiRes.response[1].name}"</h2>
             </div>
             </div>
-            <div class="carousel-item">
-            <img src={apiRes.response[1].image} class="d-block w-100" className={styles.image} alt="..."/>
+            <div className={`${styles.divCarousel} carousel-item`}>
+            <img src={apiRes.response[2].image} className={`${styles.image} "d-block w-100"`} alt="..."/>
             <div class="carousel-caption d-none d-md-block">
-                <h2>"{apiRes.response[1].name}"</h2>
+                <h2 className={styles.textCarousel}>"{apiRes.response[2].name}"</h2>
             </div>
             </div>
-            <div class="carousel-item">
-            <img src={apiRes.response[2].image} class="d-block w-100" className={styles.image} alt="..."/>
+            <div className={`${styles.divCarousel} carousel-item`}>
+            <img src={apiRes.response[0].image} className={`${styles.image} "d-block w-100"`} alt="..."/>
             <div class="carousel-caption d-none d-md-block">
-                <h2>"{apiRes.response[2].name}"</h2>
+                <h2 className={styles.textCarousel}>"{apiRes.response[0].name}"</h2>
             </div>
             </div>
         </div>
