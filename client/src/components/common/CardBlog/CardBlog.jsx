@@ -12,9 +12,9 @@ const CardBlog = (props) => {
           <div class="card-body">
             <h5 class="card-title">{props.name}</h5>
             <p class="card-text">{props.content}</p>
-            <a href="#" class="btn btn-primary">
+            <Link to ={`/detailBlog/${props.id}`}><a href="" class="btn btn-primary">
               Leer más ...
-            </a>
+            </a></Link>
           </div>
         </div>
       </div>

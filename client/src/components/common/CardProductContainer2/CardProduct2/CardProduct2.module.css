@@ -1,0 +1,28 @@
+.container {
+    /* height: 40%;
+    width: 40%;  */
+    border-radius: 2px;
+    box-shadow: 1px 20px 40px 9px rgba(0, 0, 0, 0.315);
+    transition: 0.3s;
+    padding-right: 0;
+}
+.card {
+    width: 50%;
+}
+.container:hover {
+    transform: translateY(-2px);
+    opacity: .93;
+}
+.image {
+    border-radius: 2px;
+    filter: brightness(70%); 
+}
+.text {
+    color: white;
+    text-shadow: 3px 4px 25px black;
+    text-decoration: underline;
+    text-decoration-color: white;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px; 
+    filter: none
+}
