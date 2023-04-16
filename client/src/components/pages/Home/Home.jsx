@@ -28,11 +28,6 @@ export default function Home() {
                 frameborder="0"
                 title='visit_matina_reel'
             ></iframe>
-            <h1>Home</h1>
-            <div>
-            {/* <Carousel></Carousel> */}
-
-            </div>
         </>
     )
 }
