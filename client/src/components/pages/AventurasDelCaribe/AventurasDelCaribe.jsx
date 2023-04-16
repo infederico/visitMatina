@@ -1,15 +1,19 @@
+
+import CardShop from '../../common/shops/cardShop/Shop';
 import CardActivities from '../../common/CardActivities/CardActivities';
 import Reviews from '../../common/Reviews/Reviews';
-
+import RedesSociales from '../../common/redesSociales/RedesSociales';
 
 export default function AventurasDelCaribe() {
     return (
         <>
-            <h1>Aventuras del Caribe</h1>
+            <CardShop />
 
             <CardActivities />
 
             <Reviews memberId={1} />   
+
+            <RedesSociales />
         </>
     );
 };

@@ -94,16 +94,26 @@ const ReviewForm = () => {
                     <br />
                     <br />
 
-                    <label>Rating:</label>
-                    <input
+                    {/* <input
                     name="rating"
                     type="range"
                     min="0"
                     max="5"
                     value={newReview.rating}
                     onChange={handleInputChange}
-                    />
-                    <span>{newReview.rating}</span>
+                    /> */}
+                    <div className={styles.rate}>
+                        <input type="radio" id="star5" name="rate" value={newReview.rating} onChange={handleInputChange} />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value={newReview.rating} onChange={handleInputChange} />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value={newReview.rating} onChange={handleInputChange} />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value={newReview.rating} onChange={handleInputChange} />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value={newReview.rating} onChange={handleInputChange} />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
                     {errors.rating1 && <span className={styles.errors} >{errors.rating1}</span>}
                     <br />
                     <br />
