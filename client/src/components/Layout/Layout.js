@@ -6,13 +6,18 @@ import styles from './Layout.module.css'
 export default function Layout({ children }) {
   //const location = useLocation();
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.wrapContent}>
-        <NavBar />
-        {children}
-      </div>
-    </div>
-  )
+    return(
+        <div className={ styles.container }>
+            <div className={styles.wrapContent}>
+
+                <NavBar />
+
+                <div className="container">
+                    { children }
+                </div>
+
+            </div>
+        </div>
+    );
 }
 
