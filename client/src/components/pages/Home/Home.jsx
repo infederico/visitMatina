@@ -1,5 +1,7 @@
 import styles from './Home.module.css';
 
+import Carousel from "../../common/Carousel/Carousel"
+
 export default function Home() {
 
     return(
@@ -16,7 +18,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-  
+
             <iframe
                 src="https://player.cloudinary.com/embed/?public_id=10000000_933032457273458_3142346642377468477_n_1_x6xujo&cloud_name=dfnw2l08x&player[muted]=true&player[autoplay]=true&player[loop]=true"
                 width="640"
@@ -26,7 +28,11 @@ export default function Home() {
                 frameborder="0"
                 title='visit_matina_reel'
             ></iframe>
-  
+            <h1>Home</h1>
+            <div>
+            {/* <Carousel></Carousel> */}
+
+            </div>
         </>
     )
 }

@@ -1,0 +1,33 @@
+
+{
+    "response":[
+        {
+            "id": 1,
+            "idModal" :"a",
+            "name": "Tour de un dia",
+            "description": "Este tour de un dia te llevara a conocer •Aventuras del Caribe •Jardín Mandira •FincaIntegralLaParcela. Adentrate en nuestros paisajes para disfrutar de una estadía maravillosa",
+            "image": "https://rs.projects-abroad.co.uk/v1/hero/adventurous-couple-jump-into-lake-product-5e0b3e96170f0.[1600].jpeg"
+        },
+        {
+            "id": 2,
+            "idModal" :"s",
+            "name": "Tour de dos dias y una noche",
+            "description": "Este tour de un dia te llevara a conocer •Aventuras del Caribe •Jardín Mandira •FincaIntegralLaParcela. Adentrate en nuestros paisajes para disfrutar de una estadía maravillosa",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIJD0s9H_r9VWgFMpqe5CfRqIlfIij8EupCw&usqp=CAU"
+        },
+        {
+            "id": 3,
+            "idModal" :"d",
+            "name": "Tour de tres dia y dos noches",
+            "description": "Este tour de un dia te llevara a conocer •Aventuras del Caribe •Jardín Mandira •FincaIntegralLaParcela. Adentrate en nuestros paisajes para disfrutar de una estadía maravillosa",
+            "image": "https://blog.nmviajes.com/wp-content/uploads/2018/10/los-viajes-aventuras.jpg"
+        },
+        {
+            "id": 4,
+            "idModal": "f",
+            "name": "Tour de cuatro dias y tres noches",
+            "description": "Este tour de un dia te llevara a conocer •Aventuras del Caribe •Jardín Mandira •FincaIntegralLaParcela. Adentrate en nuestros paisajes para disfrutar de una estadía maravillosa",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIJD0s9H_r9VWgFMpqe5CfRqIlfIij8EupCw&usqp=CAU"
+        }
+    ]
+}

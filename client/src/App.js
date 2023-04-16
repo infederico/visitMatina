@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+import Layout from "./components/Layout/Layout";
+import Home from './components/pages/Home/Home';
+import AboutUs from './components/pages/AboutUs/AboutUs';
+import AventurasDelCaribe from './components/pages/AventurasDelCaribe/AventurasDelCaribe';
+import ArtesaniasMaryLuna from './components/pages/AventurasDelCaribe/ArtesaniasMarYLuna/ArtesaniasMarYLuna';
+import FincaMandira from './components/pages/FincaMandira/FincaMandira';
+import FincaLaParcela from './components/pages/FincaLaParcela/FincaLaParcela';
+import RestaurantSolYLuna from './components/pages/RestaurantSolYLuna/RestaurantSolYLuna';
+import HospedajeClaroDeLuna from './components/pages/HospedajeClaroDeLuna/HospedajeClaroDeLuna';
+import Paquetes from './components/pages/Paquetes/Paquetes';
+import Blog from './components/pages/Blog/Blog';
+import Contact from './components/pages/Contact/Contact';
+import Login from './components/pages/Login/Login';
+import NotFound from './components/pages/NotFound/NotFound';
+=======
 import Layout from './components/Layout/Layout'
 import Home from './components/pages/Home/Home'
 import AboutUs from './components/pages/AboutUs/AboutUs'
@@ -12,6 +28,7 @@ import DetailBlog from './components/pages/Blog/DetailBlog'
 import Contact from './components/pages/Contact/Contact'
 import Login from './components/pages/Login/Login'
 import NotFound from './components/pages/NotFound/NotFound'
+>>>>>>> da6145e28922662a54c0320e1a14aa924312e74e
 
 import { Routes, Route } from 'react-router-dom'
 import Register from './components/pages/Login/Register/Register'
@@ -27,6 +44,7 @@ const App = () => {
         <Route path='/fincaLaParcela' element={<FincaLaParcela />} />
         <Route path='/restaurantSolyLuna' element={<RestaurantSolYLuna />} />
         <Route path='/hopedajeClaroDeLuna' element={<HospedajeClaroDeLuna />} />
+        <Route path="/artesaniasMaryLuna" element={ <ArtesaniasMaryLuna /> } />
         <Route path='/paquetes' element={<Paquetes />} />
         <Route path='/blog' element={<Blog />} />
         <Route path='/detailBlog/:id' element={<DetailBlog />} />

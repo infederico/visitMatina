@@ -1,0 +1,68 @@
+{
+    "response": [
+        {
+            "storeid": 1,
+            "image": "https://www.cronista.com/files/image/482/482180/63456d735b4ec.jpg",
+            "id": 1,
+            "name": "Dulce de leche Natural",
+            "description": "Dulce de leche casero creado en nuestra cocina",
+            "price": 34
+        },
+        {
+            "storeid": 1,
+            "id": 2,
+            "image": "https://www.recetasderechupete.com/wp-content/uploads/2021/05/Mermelada-de-fresas.jpg",
+            "name": "Mermelada receta tradicional",
+            "description": "Hecha con las mejores frutas de recolección",
+            "price": 4
+        },
+        {
+            "storeid": 1,
+            "id": 3,
+            "image": "https://s1.eestatic.com/2019/05/16/ciencia/nutricion/queso-queso_azul-queso_de_cabra_398972492_123010267_1706x960.jpg",
+            "name": "Queso de cabra",
+            "description": "Estacionado a la perfección",
+            "price": 38
+        },
+        {
+            "storeid": 2,
+            "id": 4,
+            "image": "https://http2.mlstatic.com/D_NQ_NP_880532-MLA26957488975_032018-O.jpg",
+            "name": "Anillo de plata",
+            "description": "la mejor plata de la zona",
+            "price": 16
+        },
+        {
+            "storeid": 2,
+            "id": 5,
+            "image": "https://2.bp.blogspot.com/-siYQnRdFTbc/UcOcGDkDURI/AAAAAAAAHRI/f5DNJT9scck/s1600/green+leaves+fimo+sculpey+oven-baked+clay+necklace+green+leaves.jpg",
+            "name": "Collar de hojas",
+            "description": "Gran calce y liviano",
+            "price": 55
+        },
+        {
+            "storeid": 2,
+            "id": 5,
+            "image": "https://2.bp.blogspot.com/-siYQnRdFTbc/UcOcGDkDURI/AAAAAAAAHRI/f5DNJT9scck/s1600/green+leaves+fimo+sculpey+oven-baked+clay+necklace+green+leaves.jpg",
+            "name": "Collar de hojas",
+            "description": "Gran calce y liviano",
+            "price": 55
+        },
+        {
+            "storeid": 2,
+            "id": 5,
+            "image": "https://2.bp.blogspot.com/-siYQnRdFTbc/UcOcGDkDURI/AAAAAAAAHRI/f5DNJT9scck/s1600/green+leaves+fimo+sculpey+oven-baked+clay+necklace+green+leaves.jpg",
+            "name": "Collar de hojas",
+            "description": "Gran calce y liviano",
+            "price": 55
+        },
+        {
+            "storeid": 1,
+            "id": 6,
+            "image": "https://http2.mlstatic.com/D_NQ_NP_880532-MLA26957488975_032018-O.jpg",
+            "name": "Zapatos",
+            "price": 88,
+            "description": "Comodidad y elegancia"
+        }
+    ]
+}

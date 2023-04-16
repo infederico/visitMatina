@@ -11,6 +11,8 @@ import { arrayRedes } from './arrayRedes';
 import { descriptions,name,imagen } from './descriptions';
 
 
+import CardProductContainer from "../../common/CardProductContainer/CardProductContainer"
+
 export default function FincaLaParcela() {
     return(
         <div className={style.page}>
@@ -23,6 +25,8 @@ export default function FincaLaParcela() {
                  <Redes socialmedia={arrayRedes}/>{/*aca enviamos por props el array que importamos
                                                     simulando los datos que llegarian del back*/}
             </section>
+
+            <CardProductContainer/>
             
             <div className={style.contRedes}>
             <section className={style.ubicacionSection}>
