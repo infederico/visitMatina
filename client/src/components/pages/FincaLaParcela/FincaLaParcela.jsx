@@ -2,6 +2,7 @@
 import Redes from '../../common/redesSociales/redes/Redes';
 import style from './FincaLaParcela.module.css';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
+import Reviews from '../../common/Reviews/Reviews';
 
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
@@ -43,13 +44,12 @@ export default function FincaLaParcela() {
                     <p className={style.contactInfo}>Dirección: Calle 123 # 45 - 67</p>
                     <p className={style.contactInfo}>Horario: 8:00 am - 6:00 pm</p>
                 </div>
-
             </section>
-           
-
-
-                </div>
-       
+            </div>
+            <section>
+                <Reviews />
+            </section>
+            
            </div> 
 
         

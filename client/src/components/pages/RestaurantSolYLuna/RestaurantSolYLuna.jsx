@@ -1,6 +1,7 @@
 import Redes from '../../common/redesSociales/redes/Redes';
 import style from './RestaurantSolYLuna.module.css';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
+import Reviews from '../../common/Reviews/Reviews';
 
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
@@ -57,10 +58,10 @@ export default function RestauranteSolYLuna() {
 
             </section>
            
-
-
+            <section>
+                <Reviews />
+            </section>
                 </div>
-       
            </div> 
 
         

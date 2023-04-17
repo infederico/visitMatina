@@ -69,10 +69,7 @@ export default function AventurasDelCaribe() {
             <section className={style.Cajaredes}>
                 <Redes socialmedia={arrayRedes}/>
             </section>
-            <h2>Ir a Artesanías Mar y Luna</h2>
-            <Link to="/artesaniasMarYLuna">
-                <button type="button" className="btn btn-primary">Vamos!</button>
-            </Link>       
+                  
         </>
     );
 };

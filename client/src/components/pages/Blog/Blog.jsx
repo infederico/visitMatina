@@ -1,5 +1,8 @@
 import styles from "./Blog.module.css";
 import CardBlog from "../../common/CardBlog/CardBlog";
+
+import BlogComments from "./BlogComments";
+
 import { useEffect } from "react";
 
 export default function Blog() {
@@ -61,6 +64,10 @@ export default function Blog() {
             );
           })}
       </div>
+
+      <section>
+        <BlogComments />
+      </section>
     </div>
   );
 }

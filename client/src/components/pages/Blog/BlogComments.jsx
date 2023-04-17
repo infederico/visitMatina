@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, NavLink } from 'react-router-dom';
 
-import Review from './Review/Review'; // componente Review (card)
-import ReviewForm from './ReviewForm/ReviewForm'; // componente formulario para postear una nueva review
+import Review from '../../common/Reviews/Review/Review'; // componente Review (card)
+import CommentForm from './CommentForm'; // componente formulario para postear una nueva comment
 
 import stars0 from '../../../assets/images/review-stars/0stars.png';
 import stars1 from '../../../assets/images/review-stars/1stars.png';
@@ -13,13 +13,13 @@ import stars3 from '../../../assets/images/review-stars/3stars.png';
 import stars4 from '../../../assets/images/review-stars/4stars.png';
 import stars5 from '../../../assets/images/review-stars/5stars.png';
 
-import styles from './Reviews.module.css';
+import styles from './BlogComments.module.css';
 
-const Reviews = (props) => {
+const BlogComments = (props) => {
 
     // global states
-    // const reviews = useSelector(state => state.reviews); // aca el back tiene que responder filtrado por Miembro y si esta approved
-    const apiRes = require('./mock_res_back.json'); //mockeo de la response del back 
+    // const reviews = useSelector(state => state.comments); // aca el back tiene que responder filtrado por Miembro y si esta approved
+    const apiRes = require('../../common/Reviews/mock_res_back.json'); //mockeo de la response del back 
     const reviews = apiRes.response;
 
     // local states
@@ -145,39 +145,11 @@ const Reviews = (props) => {
 
     return (
         <>
-            <hr />
             <div className={styles.title}>
-                <h2>Nuestros clientes</h2>
-                <span>conoce la opinión de nuestros clientes</span>
+                <h2>Comentarios</h2>
             </div>
             <br />
-            <div>
-                <span>calificación general: </span>
-                <span style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</span> 
-                <span style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</span>
-                <span className={styles.starWrapper}>
-                    {
-                        (overallRatingNumber === 0 || overallRatingNumber === 0.5) && <img src={stars0} alt='0stars' />
-                    }
-                    {
-                        (overallRatingNumber === 1 || overallRatingNumber === 1.5) && <img src={stars1} alt='1stars' />
-                    }
-                    {
-                        (overallRatingNumber === 2 || overallRatingNumber === 2.5) && <img src={stars2} alt='2stars' />
-                    }
-                    {
-                        (overallRatingNumber === 3 || overallRatingNumber === 3.5) && <img src={stars3} alt='3stars' />
-                    }
-                    {
-                        (overallRatingNumber === 4 || overallRatingNumber === 4.5) && <img src={stars4} alt='4stars' />
-                    }
-                    {
-                        overallRatingNumber === 5 && <img src={stars5} alt='5stars' />
-                    }
-                </span>
-                {/* <span style={{fontSize:"small", marginLeft:"-40px", zIndex:"1"}}>{`${overallRatingNumber}`}</span> */}
-            </div>
-            <br />
+           
             <section>
                 <label htmlFor="rating-filter">mostrar:  </label>   
                 <select id="rating-filter" value={filterSelectedOption} onChange={handleFilterChange} className="form-select" aria-label="Default select example"> 
@@ -223,10 +195,10 @@ const Reviews = (props) => {
             </section>
 
             <hr />
-            <ReviewForm />
+            <CommentForm />
             <br />
         </>
     );
 };
 
-export default Reviews;
+export default BlogComments;
