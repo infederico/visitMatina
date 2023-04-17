@@ -19,10 +19,14 @@ const LogIn = () => {
     password: '',
   })
   const handleCallbackResponse = (response) => {
-    console.log('Encoded JWT ID token ' + response.credential)
     let userObject = jwt_decode(response.credential)
-    console.log(userObject)
     setGoogleUser(userObject)
+    document.getElementById('signInDiv').hidden = true
+    navigate('/dashboard')
+  }
+  const handleSingOut = () => {
+    setGoogleUser({})
+    document.getElementById('signInDiv').hidden = false
   }
 
   useEffect(() => {
@@ -32,11 +36,12 @@ const LogIn = () => {
         '235430067730-qgst6qpfa35tc79r22dh8lqidm9p1qak.apps.googleusercontent.com',
       callback: handleCallbackResponse,
     })
-
     google.accounts.id.renderButton(document.getElementById('signInDiv'), {
       theme: 'outline',
       size: 'large',
     })
+    google.accounts.id.prompt()
+
     if (remember.email) {
       setUserData((prevState) => ({
         ...prevState,
@@ -73,13 +78,31 @@ const LogIn = () => {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'space-between',
+      }}
+    >
+      <div>
+        <img
+          style={{
+            position: 'absolute',
+            left: '10rem',
+            maxHeight:
+              '80vh' /* Establece la altura máxima de la imagen al 100% de la altura visible del escritorio */,
+            width: '37rem',
+          }}
+          src='https://i.pinimg.com/564x/c3/02/4b/c3024bc95c94ca75a0f71f41ca6815ef.jpg'
+          alt='hojas'
+        />
+      </div>
       <div
         className='card'
         style={{
-          width: '20rem',
+          width: '22rem',
           position: 'absolute',
-          left: '50%',
+          left: '60%',
           transform: 'translateX(-50%)',
         }}
       >
@@ -131,10 +154,27 @@ const LogIn = () => {
           Recordarme
         </label>
         <br />
-        <button onClick={handleClick}>Ingresar</button>
+        <button
+          onClick={handleClick}
+          style={{ position: 'relative', zIndex: 1 }}
+        >
+          Ingresar
+        </button>
         <br />
 
         <div id='signInDiv'></div>
+        {Object.keys(googleUser).length !== 0 && (
+          <button
+            type='button'
+            class='btn btn-outline-secondary'
+            onClick={() => {
+              handleSingOut()
+            }}
+          >
+            Cerrar sesion
+          </button>
+        )}
+
         <br />
         <Link to='/register'>
           <button onClick={() => alert('nos envia a la pagina de registro')}>

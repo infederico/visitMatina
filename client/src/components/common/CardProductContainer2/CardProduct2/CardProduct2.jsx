@@ -3,12 +3,12 @@ import style from "./CardProduct2.module.css"
 const CardProduct2 = ({image, name, description, id, idModal}) => {
     return(
         /* Card */
-        <div className="card h-100 m-2" >
+        <div className={ style.customCard } >
             <div className={`card text-bg-dark card-container ${style.container}`} /* style={{width: "200%"}} */>
                 <img src={image} className={`card-img ${style.image}` } alt={name}/>
-                <div className="card-img-overlay">
+                <div className={ `card-img-overlay ${style.customOverlay}` }>
                     <h4 className={`card-title ${style.text}`}>{name}</h4>
-                    <button className="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target={`#${idModal}`}>Detalles</button> 
+                    <button className="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target={`#${idModal}`}> + Detalles</button> 
                 </div>
             </div>
 

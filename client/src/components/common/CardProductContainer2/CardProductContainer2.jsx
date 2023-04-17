@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import CardProduct2 from "./CardProduct2/CardProduct2"
 
+import styles from "./CardProductContainer2.module.css"
 
 
 const CardProductContainer2 = () => {
@@ -13,7 +14,7 @@ const CardProductContainer2 = () => {
 
     return(
         <div >
-            <div className="col-sm-6 mb-3 mb-sm-0">            
+            <div className={ styles.wrapCards }>            
                 {mockApi.map(paq => {
                     return(
                         <CardProduct2

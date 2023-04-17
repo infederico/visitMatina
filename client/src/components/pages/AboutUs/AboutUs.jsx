@@ -1,11 +1,12 @@
-import Carousel from "../../common/Carousel/Carousel"
+
+import Carousel from '../../common/Carousel/Carousel';
+
 export default function AboutUs() {
     return(
         <>
-            <h1>Nosotros</h1>
-            <div>
-                <img src="" alt="" />
-            </div>       
+            <h1>Nosotros</h1>       
+            <Carousel />
+
         </>
     )
 }

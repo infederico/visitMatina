@@ -25,20 +25,23 @@ export default function RestauranteSolYLuna() {
                 <CardShop description={descriptions} name={name} image={imagen}/>    
             </section>
             
-            <section className={style.Cajaredes}>
-                 <Redes socialmedia={arrayRedes}/>{/*aca enviamos por props el array que importamos
-                                                    simulando los datos que llegarian del back*/}
-            </section>
+            
+            <section className={style.productos}>
+            
             <div className={style.gallery}>
                 {DB.map(image => {
                     return(
                         <img src={image.img} alt="AGREGAR ALT" />
                     )
                 })}
-            </div>    
-            <section className={style.menuSection}>
-                <CardProductContainer2 /> {/* habilitar que reciba x props un array con los datos de esta pag*/}
+
+            </div> 
             </section>
+            <section className={style.Cajaredes}>
+                 <Redes socialmedia={arrayRedes}/>{/*aca enviamos por props el array que importamos
+                                                    simulando los datos que llegarian del back*/}
+            </section>
+            
             <div className={style.contRedes}>
             <section className={style.ubicacionSection}>
                 <h2 className={style.ubicacion}>Nuestra Ubicación</h2>
