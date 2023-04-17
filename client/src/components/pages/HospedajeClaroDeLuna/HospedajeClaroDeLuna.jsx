@@ -1,6 +1,9 @@
-import Redes from '../../common/redesSociales/redes/Redes'
-import style from './HospedajeClaroDeLuna.module.css'
-import CardShop from '../../common/shopsDos/cardShop/CardShop'
+
+import Redes from '../../common/redesSociales/redes/Redes';
+import style from './HospedajeClaroDeLuna.module.css';
+import CardShop from '../../common/shopsDos/cardShop/CardShop';
+import Reviews from '../../common/Reviews/Reviews';
+
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
 import { arrayRedes } from './arrayRedes'
@@ -25,6 +28,11 @@ export default function HospedajeClaroDeLuna() {
           return <img src={image.img} alt='AGREGAR ALT' />
         })}
       </div>
+
+      <section>
+          <Reviews />
+      </section>
+
       <section className={style.Cajaredes}>
         <Redes socialmedia={arrayRedes} />
         {/*aca enviamos por props el array que importamos

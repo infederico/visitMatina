@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import validation from './validation';
+import validation from '../../common/Reviews/ReviewForm/validation';
 
-import styles from './ReviewForm.module.css';
+import styles from './CommentForm.module.css';
 
-const ReviewForm = () => {
+const CommentForm = () => {
 
     // local states
     const [ newReview, setNewReview ] = useState({
@@ -74,8 +74,6 @@ const ReviewForm = () => {
     return (
         <>
             <div>
-                <div className="card-title fw-bold">Deja tu reseña...</div>
-                
                 <form onSubmit={handleSubmit}>
 
                     <div>
@@ -107,7 +105,7 @@ const ReviewForm = () => {
                         {errors.rating1 && <span className={styles.errors} >{errors.rating1}</span>}
 
                         <div className="mb-3">
-                            <textarea type="textarea" name="description" className="form-control" rows="3" placeholder="Cuéntanos acerca de tu experiencia con nosotros..." onChange={handleInputChange}  value={newReview.description}></textarea>
+                            <textarea type="textarea" name="description" className="form-control" rows="3" placeholder="Déjanos tus comentarios..." onChange={handleInputChange}  value={newReview.description}></textarea>
                         </div>
                             {errors.description1 && <span className={styles.errors} >{errors.description1}</span>}
                             {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
@@ -128,4 +126,4 @@ const ReviewForm = () => {
     );
 };
 
-export default ReviewForm;
+export default CommentForm;

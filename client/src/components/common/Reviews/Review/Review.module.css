@@ -1,10 +1,4 @@
-/* .reviewCard {
-    background-color: grey;
-    border-radius: 16px;
-    padding: 8px;
-} */
-
-
 .starWrapper img {
-    scale: 60%;
+    scale: 75%;
+    margin-left: -36px;
 }

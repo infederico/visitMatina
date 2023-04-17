@@ -1,6 +1,9 @@
-import Redes from '../../common/redesSociales/redes/Redes'
-import style from './FincaLaParcela.module.css'
-import CardShop from '../../common/shopsDos/cardShop/CardShop'
+
+import Redes from '../../common/redesSociales/redes/Redes';
+import style from './FincaLaParcela.module.css';
+import CardShop from '../../common/shopsDos/cardShop/CardShop';
+import Reviews from '../../common/Reviews/Reviews';
+
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
 import { arrayRedes } from './arrayRedes'
@@ -22,12 +25,16 @@ export default function FincaLaParcela() {
         <CardProductContainer />
       </section>
 
+      <section>
+        <Reviews />
+      </section>
+
       <section className={style.Cajaredes}>
         <Redes socialmedia={arrayRedes} />
         {/*aca enviamos por props el array que importamos
                                                     simulando los datos que llegarian del back*/}
       </section>
-
+      
       <div className={style.contRedes}>
         <section className={style.ubicacionSection}>
           <h2 className={style.ubicacion}>Nuestra Ubicación</h2>
@@ -37,9 +44,12 @@ export default function FincaLaParcela() {
             alt='mapa'
           />
         </section>
+        
+        
         <section className={style.contactSection}>
           <ShopContact />
         </section>
+
       </div>
     </div>
   )

@@ -43,31 +43,29 @@ export default function AventurasDelCaribe() {
         </div>
       </div>
 
-      <div className='row'>
-        {aventuras?.map((aventura) => {
-          return (
-            <CardActivities
-              key={aventura.idProduct}
-              image={aventura.image}
-              name={aventura.name}
-              description={aventura.description}
-              price={aventura.price}
-            />
-          )
-        })}
-      </div>
+            <div className="row">
+            {
+                aventuras?.map((aventura) => {
+                    return (
+                        <CardActivities
+                            key={aventura.idProduct}
+                            image={aventura.image}
+                            name={aventura.name}
+                            description={aventura.description}
+                            price={aventura.price}
+                        />
+                    )
+                })
+            }
+            </div>
+            
 
-      <Reviews memberId={1} />
-
-      <section className={style.Cajaredes}>
-        <Redes socialmedia={arrayRedes} />
-      </section>
-      <h2>Ir a Artesanías Mar y Luna</h2>
-      <Link to='/artesaniasMarYLuna'>
-        <button type='button' className='btn btn-primary'>
-          Vamos!
-        </button>
-      </Link>
-    </>
-  )
-}
+            <Reviews memberId={1} />   
+            
+            <section className={style.Cajaredes}>
+                <Redes socialmedia={arrayRedes}/>
+            </section>
+                  
+        </>
+    );
+};

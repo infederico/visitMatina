@@ -118,7 +118,104 @@
             "rating": 4,
             "description": "Precios razonables y buena atención",
             "date": "12/04/2023"
+        },
+        {
+            "id": "18",
+            "name": "Samantha Johnson",
+            "rating": 4,
+            "description": "Great service and friendly staff",
+            "date": "01/05/2022"
+        },
+        {
+            "id": "19",
+            "name": "Michael Chen",
+            "rating": 3,
+            "description": "Decent food but slow service",
+            "date": "08/07/2022"
+        },
+        {
+            "id": "20",
+            "name": "Sarah Lee",
+            "rating": 5,
+            "description": "Amazing atmosphere and delicious food",
+            "date": "12/09/2022"
+        },
+        {
+            "id": "21",
+            "name": "Alexandra Nguyen",
+            "rating": 2,
+            "description": "Poor quality food and service",
+            "date": "25/12/2022"
+        },
+        {
+            "id": "22",
+            "name": "David Rodriguez",
+            "rating": 4,
+            "description": "Great value for the price",
+            "date": "03/02/2023"
+        },
+        {
+            "id": "23",
+            "name": "Jasmine Kim",
+            "rating": 5,
+            "description": "Incredible experience, highly recommend",
+            "date": "18/03/2023"
+        },
+        {
+            "id": "24",
+            "name": "Ryan Davis",
+            "rating": 3,
+            "description": "Average food, nothing special",
+            "date": "02/04/2023"
+        },
+        {
+            "id": "25",
+            "name": "Maria Hernandez",
+            "rating": 4,
+            "description": "Good food and attentive service",
+            "date": "14/04/2023"
+        },
+        {
+            "id": "26",
+            "name": "Chris Smith",
+            "rating": 2,
+            "description": "Terrible service and disappointing food",
+            "date": "22/04/2023"
+        },
+        {
+            "id": "27",
+            "name": "Julia Kim",
+            "rating": 5,
+            "description": "The best food I've ever had, absolutely amazing",
+            "date": "30/04/2023"
+        },
+        {
+            "id": "28",
+            "name": "Erica Chen",
+            "rating": 4,
+            "description": "Great atmosphere and tasty food",
+            "date": "05/05/2023"
+        },
+        {
+            "id": "29",
+            "name": "Mohammed Ali",
+            "rating": 3,
+            "description": "Decent food but overpriced",
+            "date": "12/05/2023"
+        },
+        {
+            "id": "30",
+            "name": "Emily Davis",
+            "rating": 5,
+            "description": "Wonderful service and delicious food",
+            "date": "20/05/2023"
+        },
+        {
+            "id": "31",
+            "name": "William Lee",
+            "rating": 2,
+            "description": "Poor quality food and service",
+            "date": "28/05/2023"
         }
-
     ]
 }
