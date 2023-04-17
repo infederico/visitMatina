@@ -190,6 +190,7 @@ const Reviews = (props) => {
             <section>
                 <label htmlFor='sort'>ordenar por:  </label>
                 <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className="form-select" aria-label="Default select example"> 
+                    <option value=''></option>
                     <option value='date-des'>Fecha - Más recientes primero</option>
                     <option value='date-asc'>Fecha - Más antiguas primero</option>
                     <option value='rating-des'>Mejor puntuación - des.</option>
@@ -222,9 +223,8 @@ const Reviews = (props) => {
                 </nav>
             </section>
 
-            <hr />
             <ReviewForm />
-            <br />
+            <hr />
         </>
     );
 };
