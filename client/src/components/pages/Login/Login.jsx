@@ -106,7 +106,7 @@ const LogIn = () => {
           transform: 'translateX(-50%)',
         }}
       >
-        <h1>Bienvenido Administrador</h1>
+        <h1>Bienvenido</h1>
         <div className='mb-3'>
           <label htmlFor='formGroupExampleInput' className='form-label'>
             Email
