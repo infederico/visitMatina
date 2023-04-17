@@ -28,6 +28,11 @@ export default function HospedajeClaroDeLuna() {
           return <img src={image.img} alt='AGREGAR ALT' />
         })}
       </div>
+
+      <section>
+          <Reviews />
+      </section>
+
       <section className={style.Cajaredes}>
         <Redes socialmedia={arrayRedes} />
         {/*aca enviamos por props el array que importamos

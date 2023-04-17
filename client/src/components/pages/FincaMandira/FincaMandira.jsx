@@ -1,7 +1,8 @@
 import CardProductContainer from '../../common/CardProductContainer/CardProductContainer'
 import Redes from '../../common/redesSociales/redes/Redes'
 import style from './FincaMandira.module.css'
-import CardShop from '../../common/shopsDos/cardShop/CardShop'import Reviews from '../../common/Reviews/Reviews';
+import CardShop from '../../common/shopsDos/cardShop/CardShop'
+import Reviews from '../../common/Reviews/Reviews';
 
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
@@ -19,6 +20,11 @@ export default function FincaMandira() {
       </section>
 
       <CardProductContainer />
+
+      <section>
+        <Reviews />
+      </section>
+
       <div className={style.contRedes}>
         <section className={style.Cajaredes}>
           <Redes socialmedia={arrayRedes} />
@@ -37,6 +43,7 @@ export default function FincaMandira() {
         <section className={style.contactSection}>
           <ShopContact />
         </section>
+
       </div>
     </div>
   )
