@@ -17,5 +17,5 @@ Si necesitas trabajar o mantenerte conectado, nuestro Wi-Fi gratuito es rápido 
  relajarte en nuestra zona de descanso al aire libre y disfrutar del ambiente tranquilo y 
  agradable.`;
 
- export const name = "Finca Mandira";
+ export const name = "Finca Santuario Jardín Mandira";
  export const imagen = 'https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/326131398.jpg?k=4e8e302b83d5abe7b5257f18a47b5c56da18b7e8629a1ca446f6fdda9c8d2f5a&o='

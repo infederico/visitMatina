@@ -13,7 +13,7 @@ const CardProductContainer2 = () => {
 
     return(
         <div >
-            <div className="card-group">            
+            <div className="col-sm-6 mb-3 mb-sm-0">            
                 {mockApi.map(paq => {
                     return(
                         <CardProduct2
