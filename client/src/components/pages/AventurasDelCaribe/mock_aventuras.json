@@ -1,0 +1,60 @@
+{
+    "response": [
+        {
+            "idProduct": 1,
+            "active": "true",
+            "name": "Tours de avistamiento de flora y fauna, diurno y nocturno.",
+            "image": "https://scontent.faep8-3.fna.fbcdn.net/v/t31.18172-8/12973560_224759484554324_3066142489869220129_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cdbe9c&_nc_ohc=NmlzoMO1taYAX8DMH4-&_nc_ht=scontent.faep8-3.fna&oh=00_AfC7ZBXUGzOfdMWi_VXt2rT1FgXhzi_YqW6a7OEIONH2jw&oe=6463F8B3",
+            "description": "Salidas: Martes y Jueves 10am. Min 5 personas / Max 15 personas. Incluye refrigerio.",
+            "price": "₡100"
+        },
+        {
+            "idProduct": 2,
+            "active": "true",
+            "name": "Tour de avistamiento de caimanes.",
+            "image": "https://scontent.faep8-1.fna.fbcdn.net/v/t1.18169-9/27545537_571541926542743_4033189947340553138_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=SjaTAGLL-fUAX-pD0x2&_nc_ht=scontent.faep8-1.fna&oh=00_AfCGwDR1uGWWJAOniuQAbE86jxLiAApYV-LHrTox0BNRuA&oe=6463F860",
+            "description": "Salidas: Lunes a Jueves 3pm. Gupos de hasta 5 personas. Incluye refrigerio.",
+            "price": "₡120"
+        },
+        {
+            "idProduct": 3,
+            "active": "true",
+            "name": "Tour de avistamiento de cocodrilos.",
+            "image": "https://scontent.faep8-3.fna.fbcdn.net/v/t1.18169-9/13263877_243919499304989_3503161261419415110_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=lnSvJHfky1YAX_ocwWu&_nc_ht=scontent.faep8-3.fna&oh=00_AfAqR1fFJb1bMa0DushyEAytloVEUEXqEHatTZeqd5rPUg&oe=6463FB48",
+            "description": "Salidas: Lunes a Jueves 1pm. Gupos de hasta 5 personas. Incluye refrigerio.",
+            "price": "₡150"
+        },
+        {
+            "idProduct": 4,
+            "active": "true",
+            "name": "Tour de desove de tortugas marinas en la Reserva Pacuare.",
+            "image": "https://scontent.faep8-3.fna.fbcdn.net/v/t1.6435-9/44271312_739232853106982_4579669631395954688_n.jpg?stp=dst-jpg_s600x600&_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=3zPsxvu68foAX8ZAby0&_nc_ht=scontent.faep8-3.fna&oh=00_AfCm1xVHLY4vq6QYhtZAytlZw2r1xY5zmNSdTd9KkOzO6A&oe=6463F6F2",
+            "description": "Salidas: todos lo días 10am. Incluye traslado a la reserva natural.",
+            "price": "₡245"
+        },
+        {
+            "idProduct": 5,
+            "active": "true",
+            "name": "Taller de cocina caribeña.",
+            "image": "https://scontent.faep8-2.fna.fbcdn.net/v/t1.18169-9/13254588_1072709682784541_7464856837062906262_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=6bkkkNk4Bq4AX-eQqJh&_nc_ht=scontent.faep8-2.fna&oh=00_AfBwxSJRgAci2rWF9gsjSv4gQ2OHLWYUHYh8LjlO8LoADQ&oe=6463E274",
+            "description": "Sábados 10am. Dictado por Rafael Carreras",
+            "price": "₡80"
+        },
+        {
+            "idProduct": 6,
+            "active": "true",
+            "name": "Taller de elaboración de artesanía ecológicas.",
+            "image": "https://scontent.faep8-3.fna.fbcdn.net/v/t31.18172-8/13320639_247493885614217_5835736157848479555_o.jpg?_nc_cat=108&ccb=1-7&_nc_sid=9267fe&_nc_ohc=17itGW7Gn5kAX-1zOsg&_nc_ht=scontent.faep8-3.fna&oh=00_AfCynYpcZDFvxk6mPn3kWcX_hQ5mw5JETsKhg-OtKr0rHQ&oe=6463FBD3",
+            "description": "Sábados 2pm. Dictado por Ramón Vazquez",
+            "price": "₡75"
+        },
+        {
+            "idProduct": 7,
+            "active": "true",
+            "name": "Taller de elaboración de aceite de coco.",
+            "image": "https://scontent.faep8-2.fna.fbcdn.net/v/t1.6435-9/37831933_682572858772982_5788746682346766336_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=LYxgz6q1iUQAX-08gAD&_nc_ht=scontent.faep8-2.fna&oh=00_AfCSJ2e4DejOApt5B_pm42EXtywLqFJUyVH2r3yNNnzFcg&oe=6463FF03",
+            "description": "Domingos 2pm. Dictado por María Contreras",
+            "price": "₡95"
+        }
+    ]
+}

@@ -18,13 +18,15 @@ export default function FincaLaParcela() {
         <CardShop description={descriptions} name={name} image={imagen} />
       </section>
 
+      <section className={style.productSection}>
+        <CardProductContainer />
+      </section>
+
       <section className={style.Cajaredes}>
         <Redes socialmedia={arrayRedes} />
         {/*aca enviamos por props el array que importamos
                                                     simulando los datos que llegarian del back*/}
       </section>
-
-      <CardProductContainer />
 
       <div className={style.contRedes}>
         <section className={style.ubicacionSection}>
@@ -36,7 +38,6 @@ export default function FincaLaParcela() {
           />
         </section>
         <section className={style.contactSection}>
-          {/*este componente lo esta haciendo edu, luego lo reemplazamos*/}
           <ShopContact />
         </section>
       </div>

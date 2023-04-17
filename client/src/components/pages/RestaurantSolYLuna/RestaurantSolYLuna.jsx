@@ -32,7 +32,7 @@ export default function RestauranteSolYLuna() {
         })}
       </div>
       <section className={style.menuSection}>
-        <CardProductContainer2 />{' '}
+        {/* <CardProductContainer2 />{' '} */}
         {/* habilitar que reciba x props un array con los datos de esta pag*/}
       </section>
       <div className={style.contRedes}>
