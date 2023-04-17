@@ -44,3 +44,13 @@ iframe {
     text-align: center;
     color: #fff;
 }
+
+.content h1{
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0%;
+    margin-bottom: .5rem;
+    padding: 0%;
+    color: #fff!important;
+    border-bottom: none;
+}

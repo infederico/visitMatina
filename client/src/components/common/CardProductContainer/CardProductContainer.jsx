@@ -20,6 +20,8 @@ const CardProductContainer = () => {
                 return 1;
             case "/fincaLaParcela":
                 return 2;
+            case "/fincaMandira":
+                return 3;
             default:
                 return 
         }
@@ -33,7 +35,7 @@ const CardProductContainer = () => {
     
     return (
         <div>
-            <div className="row row-cols-1 row-cols-md-4 g-6">                
+            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-6">                
                 {filteredProducts.map(prod =>{ 
                     return(
                         <div className="col">
