@@ -107,7 +107,7 @@ const ReviewForm = () => {
                         {errors.rating1 && <span className={styles.errors} >{errors.rating1}</span>}
 
                         <div className="mb-3">
-                            <textarea type="textarea" name="description" className="form-control" rows="3" placeholder="Cuéntanos acerca de tu experiencia con nosotros..." onChange={handleInputChange}  value={newReview.description}></textarea>
+                            <textarea type="textarea" name="description" className="form-control" rows="4" placeholder="Cuéntanos acerca de tu experiencia con nosotros..." onChange={handleInputChange}  value={newReview.description}></textarea>
                         </div>
                             {errors.description1 && <span className={styles.errors} >{errors.description1}</span>}
                             {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}

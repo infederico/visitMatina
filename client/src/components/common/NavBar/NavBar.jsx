@@ -29,13 +29,22 @@ export default function NavBar() {
                     <NavLink className="nav-link" aria-current="page" to="/">Inicio</NavLink>
                     <NavLink className="nav-link" to="/aboutUs">Nosotros</NavLink>
 
+                    {/* esta ruta aún no existe */}
+                    <NavLink className="nav-link" to="/comollegar">Cómo llegar</NavLink>
+                    {/* esta ruta aún no existe */}
+
                     <li className="nav-item dropdown">
                         <NavLink className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Que hacer
                         </NavLink>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><NavLink className="dropdown-item" to="/AventurasDelCaribe">Aventuras del Caribe</NavLink></li>
-                            <li><NavLink className="dropdown-item" to="/artesaniasMarYLuna">Artesanias Mar y Luna</NavLink></li>
+
+                        {/* falta feedback del PO para ver el detalle de que quiere poner aca y armar estas rutas */}
+                        <li><NavLink className="dropdown-item" to="/dondeir/aves">Avistar aves</NavLink></li> 
+                        <li><NavLink className="dropdown-item" to="/dondeir/pesca">Pescar</NavLink></li>
+                        <li><NavLink className="dropdown-item" to="/dondeir/etc">etc</NavLink></li>
+                        {/* falta feedback del PO para ver el detalle de que quiere poner aca y armar estas rutas */}
+
                         </ul>
                     </li>
                     <li className="nav-item dropdown">
@@ -43,8 +52,10 @@ export default function NavBar() {
                             Donde ir
                         </NavLink>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><NavLink className="dropdown-item" to="/fincaMandira">Finca Santuario</NavLink></li>
-                            <li><NavLink className="dropdown-item" to="/fincaLaParcela">Finca Integral</NavLink></li>
+                            <li><NavLink className="dropdown-item" to="/fincaMandira">Finca Mandira</NavLink></li>
+                            <li><NavLink className="dropdown-item" to="/fincaLaParcela">Finca La Parcela</NavLink></li>
+                            <li><NavLink className="dropdown-item" to="/AventurasDelCaribe">Aventuras del Caribe</NavLink></li>
+                            <li><NavLink className="dropdown-item" to="/artesaniasMarYLuna">Artesanías Mar y Luna</NavLink></li>
                         </ul>
                     </li>
                     <li className="nav-item dropdown">
