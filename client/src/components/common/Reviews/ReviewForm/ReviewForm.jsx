@@ -79,21 +79,6 @@ const ReviewForm = () => {
                 <br />
                 <form onSubmit={handleSubmit}>
 
-                    <label>Nombre: </label>
-                    <input type='text' name='name' onChange={handleInputChange} value={newReview.name} style={{outline: "none"}} />
-                    {errors.name1 && <span className={styles.errors} >{errors.name1}</span>}
-                    {errors.name2 && <span className={styles.errors} >{errors.name2}</span>}
-                    {errors.name3 && <span className={styles.errors} >{errors.name3}</span>}
-                    <br />
-                    <br />
-
-                    <label>Email: </label>
-                    <input type='text' name='email' onChange={handleInputChange} value={newReview.email} style={{outline: "none"}} placeholder='opcional'/>
-                    {errors.email1 && <span className={styles.errors} >{errors.email1}</span>}
-                    {errors.email2 && <span className={styles.errors} >{errors.email2}</span>}
-                    <br />
-                    <br />
-git 
                     {/* <input
                     name="rating"
                     type="range"
@@ -102,6 +87,7 @@ git
                     value={newReview.rating}
                     onChange={handleInputChange}
                     /> */}
+                    
                     <div className={styles.rate}>
                         <input type="radio" id="star5" name="rate" value={newReview.rating} onChange={handleInputChange} />
                         <label for="star5" title="text">5 stars</label>
@@ -117,6 +103,22 @@ git
                     {errors.rating1 && <span className={styles.errors} >{errors.rating1}</span>}
                     <br />
                     <br />
+
+                    <label>Nombre: </label>
+                    <input type='text' name='name' onChange={handleInputChange} value={newReview.name} style={{outline: "none"}} />
+                    {errors.name1 && <span className={styles.errors} >{errors.name1}</span>}
+                    {errors.name2 && <span className={styles.errors} >{errors.name2}</span>}
+                    {errors.name3 && <span className={styles.errors} >{errors.name3}</span>}
+                    <br />
+                    <br />
+
+                    <label>Email: </label>
+                    <input type='text' name='email' onChange={handleInputChange} value={newReview.email} style={{outline: "none"}} placeholder='opcional'/>
+                    {errors.email1 && <span className={styles.errors} >{errors.email1}</span>}
+                    {errors.email2 && <span className={styles.errors} >{errors.email2}</span>}
+                    <br />
+                    <br />
+
                     
                     <label>Reseña: </label>
                     <input type='text' name='description' onChange={handleInputChange} value={newReview.description} className={styles.reviewDescription} />

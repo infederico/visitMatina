@@ -152,11 +152,22 @@ const Reviews = (props) => {
             <hr />
 
             <span>
-                <label htmlFor="rating-filter">mostrar:  </label>
-                <select id="rating-filter" value={filterSelectedOption} onChange={handleFilterChange} className={styles.select} style={{outline: "none"}}> 
+                <label htmlFor="rating-filter">mostrar:  </label>   
+                <select id="rating-filter" value={filterSelectedOption} onChange={handleFilterChange} className="form-select" aria-label="Default select example"> 
                     <option value="all">Todas</option>
                     <option value="positives">Positivas</option>
                     <option value="negatives">Negativas</option>
+                </select>
+
+            </span>
+
+            <span>
+                <label htmlFor='sort'>ordenar por:  </label>
+                <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className="form-select" aria-label="Default select example"> 
+                    <option value='date-des'>Fecha - Más recientes primero</option>
+                    <option value='date-asc'>Fecha - Más antiguas primero</option>
+                    <option value='rating-des'>Mejor puntuación - des.</option>
+                    <option value='rating-asc'>Peor puntuación - asc.</option>
                 </select>
             </span>
                 <div className={styles.pagination}>
@@ -165,19 +176,9 @@ const Reviews = (props) => {
                     <button onClick={pageIncrement}>next</button>
                 </div>
             <span>
-
             </span>
-
-            <span>
-                <label htmlFor='sort'>ordenar por:  </label>
-                <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className={styles.select} style={{outline: "none"}}> 
-                    <option value='date-des'>Fecha - Más recientes primero</option>
-                    <option value='date-asc'>Fecha - Más antiguas primero</option>
-                    <option value='rating-des'>Mejor puntuación - des.</option>
-                    <option value='rating-asc'>Peor puntuación - asc.</option>
-                </select>
-            </span>
-            <div className={styles.reviewCards}>
+            <div className="row">
+           
                 {
                     paginatedReviews?.map((review) => {
                         return <Review
