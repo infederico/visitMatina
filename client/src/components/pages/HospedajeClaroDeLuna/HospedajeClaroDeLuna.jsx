@@ -11,7 +11,8 @@ import { arrayRedes } from './arrayRedes';
 import { descriptions,name,imagen } from './descriptions';
 
 export default function HospedajeClaroDeLuna() {
-
+    let BD = require("./imagenes.json")
+    BD = BD.response
     
     return(
         <div className={style.page}>
@@ -20,11 +21,19 @@ export default function HospedajeClaroDeLuna() {
                 <CardShop description={descriptions} name={name} image={imagen}/>    
             </section>
             
+
+            {/* se mapean las imagenes de la galeria */}
+            <div className={style.gallery}>
+                {BD.map(image => {
+                    return(
+                        <img src={image.img} alt="AGREGAR ALT" />
+                    )
+                })}
+            </div>
             <section className={style.Cajaredes}>
                  <Redes socialmedia={arrayRedes}/>{/*aca enviamos por props el array que importamos
                                                     simulando los datos que llegarian del back*/}
             </section>
-            
             <div className={style.contRedes}>
             <section className={style.ubicacionSection}>
                 <h2 className={style.ubicacion}>Nuestra Ubicación</h2>

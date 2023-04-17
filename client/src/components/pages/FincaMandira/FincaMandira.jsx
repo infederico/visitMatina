@@ -1,4 +1,4 @@
-
+import CardProductContainer from '../../common/CardProductContainer/CardProductContainer';
 import Redes from '../../common/redesSociales/redes/Redes';
 import style from './FincaMandira.module.css';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
@@ -20,17 +20,20 @@ export default function FincaMandira() {
                 <CardShop description={descriptions} name={name} image={imagen}/>    
             </section>
             
+            
+            <CardProductContainer/>
+            <div className={style.contRedes}>
             <section className={style.Cajaredes}>
                  <Redes socialmedia={arrayRedes}/>{/*aca enviamos por props el array que importamos
                                                     simulando los datos que llegarian del back*/}
             </section>
-            
-            <div className={style.contRedes}>
             <section className={style.ubicacionSection}>
                 <h2 className={style.ubicacion}>Nuestra Ubicación</h2>
                 <img className={style.map} src="https://i.blogs.es/ade34e/google-maps-portada-trafico/840_560.jpg" alt="mapa"/>
             </section>
+            
             <section className={style.contactSection}>
+                
 
                 {/*este componente lo esta haciendo edu, luego lo reemplazamos*/}
                 <h2 className={style.contact}>Contáctanos</h2>  

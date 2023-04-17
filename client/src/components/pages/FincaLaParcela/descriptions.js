@@ -17,5 +17,5 @@ Si necesitas trabajar o mantenerte conectado, nuestro Wi-Fi gratuito es rápido 
  relajarte en nuestra zona de descanso al aire libre y disfrutar del ambiente tranquilo y 
  agradable.`;
 
- export const name = "Finca La Parcela";
+ export const name = "Finca Integral La Parcela";
  export const imagen = 'https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_627,q_auto,w_1200/itemimages/31/92/3192963_v1.jpeg'
