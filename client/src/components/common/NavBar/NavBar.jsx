@@ -35,6 +35,7 @@ export default function NavBar() {
                         </NavLink>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><NavLink className="dropdown-item" to="/AventurasDelCaribe">Aventuras del Caribe</NavLink></li>
+                            <li><NavLink className="dropdown-item" to="/artesaniasMarYLuna">Artesanias Mar y Luna</NavLink></li>
                         </ul>
                     </li>
                     <li className="nav-item dropdown">
