@@ -25,8 +25,8 @@ export default function RestauranteSolYLuna() {
 
       
       <div className={style.gallery}>
-        {DB.map((image) => {
-          return <img src={image.img} alt='AGREGAR ALT' />
+        {DB.map((image, index) => {
+          return <img key={index} src={image.img} alt='AGREGAR ALT' />
         })}
       </div>
       <section className={style.menuSection}>
