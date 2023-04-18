@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, NavLink } from 'react-router-dom';
 
+import { getReviewsById, setShowCommentPanel , setSelectedReview } from '../../../redux/reviewsSlice';
+
 import Review from './Review/Review'; // componente Review (card)
 import ReviewForm from './ReviewForm/ReviewForm'; // componente formulario para postear una nueva review
+import ReviewThread from './ReviewThread/ReviewThread';
 
 import stars0 from '../../../assets/images/review-stars/0stars.png';
 import stars1 from '../../../assets/images/review-stars/1stars.png';
@@ -18,9 +21,11 @@ import styles from './Reviews.module.css';
 const Reviews = (props) => {
 
     // global states
-    // const reviews = useSelector(state => state.reviews); // aca el back tiene que responder filtrado por Miembro y si esta approved
-    const apiRes = require('./mock_res_back.json'); //mockeo de la response del back 
-    const reviews = apiRes.response;
+    const showCommentPanel = useSelector(state => state.reviews.showCommentPanel);
+    const selectedReview = useSelector(state => state.reviews.selectedReview);
+    const reviews = useSelector(state => state.reviews.value); // aca el back tiene que responder filtrado por Miembro y si esta approved
+    //const apiRes = require('./mock_res_back.json'); //mockeo de la response del back 
+    //const reviews = apiRes.response;
 
     // local states
     const [ overallRatingNumber, setOverallRatingNumber ] = useState(0);
@@ -40,7 +45,7 @@ const Reviews = (props) => {
     // al montarse pide todas las reviews de este miembro en particular - identifica que memberId es pasado por props
     useEffect( () => {
         const memberId = props.memberId;
-        //dispatch(getReviewsById(memberId)) ////////////// descomentar cuando se configuren las action de redux        
+        dispatch(getReviewsById()) ////////////// descomentar cuando se configuren las action de redux        
     // eslint-disable-next-line
     }, []);
     
@@ -94,6 +99,8 @@ const Reviews = (props) => {
         };
         setFilteredReviews(filteredByRating);
         setCurrentPage(1);
+        dispatch(setShowCommentPanel(false));
+        dispatch(setSelectedReview(undefined));
     }, [reviews, filterSelectedOption]);
 
     // LOGICA PARA ORDENAR
@@ -108,6 +115,8 @@ const Reviews = (props) => {
         let auxSortedReviews = sortSelectedOption ? filteredReviews.slice().sort(sortFunctions[sortSelectedOption]) : filteredReviews;
         setSortedReviews(auxSortedReviews);
         setCurrentPage(1);
+        dispatch(setShowCommentPanel(false));
+        dispatch(setSelectedReview(undefined));
     // eslint-disable-next-line
     }, [filteredReviews, sortSelectedOption]);
     
@@ -116,6 +125,8 @@ const Reviews = (props) => {
     useEffect( () => { 
         let auxPaginatedReviews = sortedReviews.slice(((currentPage * 6) - 6), (currentPage * 6))
         setPaginatedReviews(auxPaginatedReviews);
+        dispatch(setShowCommentPanel(false));
+        dispatch(setSelectedReview(undefined));
     }, [sortedReviews, currentPage]);
     
 
@@ -190,6 +201,7 @@ const Reviews = (props) => {
             <section>
                 <label htmlFor='sort'>ordenar por:  </label>
                 <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className="form-select" aria-label="Default select example"> 
+                    <option value=''></option>
                     <option value='date-des'>Fecha - Más recientes primero</option>
                     <option value='date-asc'>Fecha - Más antiguas primero</option>
                     <option value='rating-des'>Mejor puntuación - des.</option>
@@ -201,8 +213,8 @@ const Reviews = (props) => {
                 {
                     paginatedReviews?.map((review) => {
                         return <Review
-                            key={review.id}
-                            id={review.id}
+                            key={review.reviewId}
+                            reviewId={review.reviewId}
                             name={review.name}
                             date={review.date}
                             rating={review.rating}
@@ -211,10 +223,10 @@ const Reviews = (props) => {
                     })
                 }
             </div>
-
+           
             <section>
                 <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
+                    <ul className="pagination justify-content-center">
                         <li className="page-item" onClick={pageDecrement}><NavLink className="page-link" >Previous</NavLink></li>
                     
                         <li className="page-item" onClick={pageIncrement}><NavLink className="page-link" >Next</NavLink></li>
@@ -222,9 +234,14 @@ const Reviews = (props) => {
                 </nav>
             </section>
 
-            <hr />
+            <div>
+                {
+                    showCommentPanel && <ReviewThread reviewId={selectedReview} />
+                }
+            </div>
+
             <ReviewForm />
-            <br />
+            <hr />
         </>
     );
 };
