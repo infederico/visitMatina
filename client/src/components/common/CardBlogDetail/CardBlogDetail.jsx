@@ -3,7 +3,8 @@ import Reviews from '../../common/Reviews/Reviews';
 
 const CardBlogDetail = (props) => {
     return (
-      <div>
+      <section>
+        <section>
         <div className={`${style.card} card mb-3`}>
             <h5 className={`${style.nombre} card-title`}>{props.name}</h5>
           <div className={`card-body`}>
@@ -14,10 +15,13 @@ const CardBlogDetail = (props) => {
 
           </div>
         </div>
+        </section>
+        <section>
         <div>
           <Reviews></Reviews>
         </div>
-        </div>
+        </section>
+        </section>
     );
   };
   

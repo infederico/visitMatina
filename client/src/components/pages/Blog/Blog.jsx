@@ -13,6 +13,7 @@ export default function Blog() {
   }, []);
 
   return (
+    <section>
     <div className={styles.divMain}>
         <div id="carouselExampleCaptions" className={`carousel slide`} data-bs-ride="carousel">
         <div className={`carousel-indicators`}>
@@ -49,7 +50,7 @@ export default function Blog() {
             <span className={`visually-hidden`}>Next</span>
         </button>
         </div>
-
+        <section>
       <div className={styles.divCardsBlog}>
           {apiRes.response.map((elem) => {
             return (
@@ -64,6 +65,8 @@ export default function Blog() {
             );
           })}
       </div>
+      </section>
     </div>
+    </section>
   );
 }

@@ -11,6 +11,7 @@ const DetailBlog = () => {
   useEffect(() => {}, []);
 
   return (
+    <section>
     <div className={styles.divSection}>
       <CardBlogDetail
         name={post[0].name}
@@ -19,6 +20,7 @@ const DetailBlog = () => {
         date={post[0].date}
       />
     </div>
+    </section>
   );
 };
 export default DetailBlog;

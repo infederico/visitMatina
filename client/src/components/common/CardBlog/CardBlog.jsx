@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const CardBlog = (props) => {
   return (
+    <section>
     <div className={`card mb-3`} style={{ width: "540px" }}>
       <div className={`row g-0`}>
         <div className={`col-md-4`}>
@@ -19,6 +20,7 @@ const CardBlog = (props) => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 
