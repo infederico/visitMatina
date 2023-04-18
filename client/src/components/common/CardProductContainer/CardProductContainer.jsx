@@ -1,17 +1,14 @@
 import CardProduct from "./CardProduct/CardProduct";
-// import { useState, useEffect } from "react";
-// import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import style from "./CardProductContainer.module.css"
+import { getProducts } from "../../../redux/productsActions";
 
 const CardProductContainer = () => {
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
+    const value = useSelector(state => state.products.value)
     
-    
-    const BD = require('./res_back.json');
-    const products = BD.response;
-
     const location = useLocation()
     
     const memberId = () => {
@@ -27,16 +24,17 @@ const CardProductContainer = () => {
         }
     }
     useEffect(() => {
-       memberId()
-   //  dispatch(getProductsByStore(memberId))
+        memberId()
+        dispatch(getProducts())
     },[memberId])
 
-    const filteredProducts = products.filter(prod => prod.storeid === memberId())
+    const filteredProducts = value?.filter(prod => prod.storeid === memberId())
     
     return (
         <div>
+            {console.log(value)}
             <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-6">                
-                {filteredProducts.map(prod =>{ 
+                {filteredProducts?.map(prod =>{ 
                     return(
                         <div className="col">
                             <CardProduct 
