@@ -64,10 +64,6 @@ export default function Blog() {
             );
           })}
       </div>
-
-      <section>
-        <BlogComments />
-      </section>
     </div>
   );
 }
