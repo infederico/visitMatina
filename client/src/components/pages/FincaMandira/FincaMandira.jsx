@@ -15,8 +15,10 @@ import ShopContact from '../Contact/ShopContact'
 export default function FincaMandira() {
   return (
     <div className={style.page}>
-      <section className={style.titleSection}>
-        <CardShop description={descriptions} name={name} image={imagen} />
+      <section className={style.titleSection} style={{ backgroundColor: '#ccc' }}>
+        <div className="container">
+          <CardShop description={descriptions} name={name} image={imagen} />
+        </div>
       </section>
 
       <CardProductContainer />
