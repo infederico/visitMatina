@@ -27,12 +27,18 @@ const router = Router();
  *                       id:
  *                         type: int
  *                         example: 1
- *                       date:
- *                         type: date
- *                         example: 2023-04-13T00:00:00.000Z
+ *                       title:
+ *                         type: string
+ *                         example: Titulo del post
+ *                       summary:
+ *                         type: string
+ *                         example: Resumen del post
  *                       content:
  *                         type: text
  *                         example: Texto de prueba para los post del blog
+ *                       date:
+ *                         type: date
+ *                         example: 2023-04-13T00:00:00.000Z
  *                       active:
  *                         type: boolean
  *                         example: true
@@ -97,12 +103,18 @@ router.get("/", async (req, res) => {
  *                       id:
  *                         type: int
  *                         example: 1
- *                       date:
- *                         type: date
- *                         example: 2023-04-13T00:00:00.000Z
+ *                       title:
+ *                         type: string
+ *                         example: Titulo del post
+ *                       summary:
+ *                         type: string
+ *                         example: Resumen del post
  *                       content:
  *                         type: text
  *                         example: Texto de prueba para los post del blog
+ *                       date:
+ *                         type: date
+ *                         example: 2023-04-13T00:00:00.000Z
  *                       active:
  *                         type: boolean
  *                         example: true
@@ -156,9 +168,12 @@ router.get("/:id", async (req, res) => {
  *          schema:
  *           type: object
  *           properties:
- *             date:
- *               type: date
- *               example: 2023-04-13T18:32:00.321Z
+ *             title:
+ *               type: string
+ *               example: Titulo del post
+ *             summary:
+ *               type: string
+ *               example: Resumen del post
  *             content:
  *               type: text
  *               example: Test
@@ -179,12 +194,18 @@ router.get("/:id", async (req, res) => {
  *                       id:
  *                         type: int
  *                         example: 1
- *                       date:
- *                         type: date
- *                         example: 2023-04-13T00:00:00.000Z
+ *                       title:
+ *                         type: string
+ *                         example: Titulo del post
+ *                       summary:
+ *                         type: string
+ *                         example: Resumen del post
  *                       content:
  *                         type: text
  *                         example: Texto de prueba para los post del blog
+ *                       date:
+ *                         type: date
+ *                         example: 2023-04-13T00:00:00.000Z
  *                       active:
  *                         type: boolean
  *                         example: true
@@ -237,16 +258,22 @@ router.post("/", async (req, res) => {
  *             id:
  *               type: int
  *               example: 1
- *             date:
- *               type: date
- *               example: 2023-04-13T18:32:00.321Z
+ *             title:
+ *               type: string
+ *               example: Titulo del post
+ *             summary:
+ *               type: string
+ *               example: Resumen del post
  *             content:
  *               type: text
- *               example: Test
+ *               example: Texto de prueba para los post del blog
+ *             date:
+ *               type: date
+ *               example: 2023-04-13T00:00:00.000Z
  *             active:
  *               type: boolean
- *               example: false
- *         description: Estructura del body.
+ *               example: true
+ *         description: Estructura del body (opcionales title, summary, content, date, active).
  *     responses:
  *       200:
  *         description: Responde con un mensaje .
