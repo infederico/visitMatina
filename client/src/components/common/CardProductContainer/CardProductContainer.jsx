@@ -8,12 +8,13 @@ import { getProducts } from "../../../redux/productsActions";
 const CardProductContainer = () => {
     const dispatch = useDispatch()
     const value = useSelector(state => state.products.value)
+    // const value = useSelector(state => state.products.shops)
     
     const location = useLocation()
     
     const memberId = () => {
         switch(location.pathname) {
-            case "/artesaniasMarYLuna":
+            case "/artesaniasMarYLuna": //case shops
                 return 1;
             case "/fincaLaParcela":
                 return 2;
@@ -32,7 +33,6 @@ const CardProductContainer = () => {
     
     return (
         <div>
-            {console.log(value)}
             <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-6">                
                 {filteredProducts?.map(prod =>{ 
                     return(
