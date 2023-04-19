@@ -8,7 +8,7 @@
             "email": "jsmoth@gmail.com",
             "rating": 4,
             "description": "Gran servicio y muy buena atención",
-            "approved": true,
+            "approved": false,
             "comments": [{
                 "adminId": 1,
                 "commentId": 1,
