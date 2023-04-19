@@ -5,7 +5,7 @@ import useLocalStorage from '../../localStorage/useLocalStorage'
 import jwt_decode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
 import { getAllUsers } from '../../../redux/userSlice'
-
+import { getUsers } from '../../../redux/userActions'
 const LogIn = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -33,7 +33,7 @@ const LogIn = () => {
   }
 
   useEffect(() => {
-    dispatch(getAllUsers())
+    dispatch(getUsers())
     /* global google */
     google.accounts.id.initialize({
       client_id:
