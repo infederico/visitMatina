@@ -24,7 +24,7 @@ const router = Router();
  *                   items:
  *                     type: object
  *                     properties:
- *                       id:
+ *                       id_post:
  *                         type: int
  *                         example: 1
  *                       title:
@@ -100,7 +100,7 @@ router.get("/", async (req, res) => {
  *                   items:
  *                     type: object
  *                     properties:
- *                       id:
+ *                       id_post:
  *                         type: int
  *                         example: 1
  *                       title:
@@ -191,7 +191,7 @@ router.get("/:id", async (req, res) => {
  *                   items:
  *                     type: object
  *                     properties:
- *                       id:
+ *                       id_post:
  *                         type: int
  *                         example: 1
  *                       title:
@@ -255,7 +255,7 @@ router.post("/", async (req, res) => {
  *          schema:
  *           type: object
  *           properties:
- *             id:
+ *             id_post:
  *               type: int
  *               example: 1
  *             title:

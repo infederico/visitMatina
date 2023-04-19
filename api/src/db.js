@@ -132,6 +132,10 @@ Media.hasMany(Shop, {
   foreignKey: 'media_id',
 })
 
+Media.hasMany(Post,{ 
+  foreignKey: 'media_id',
+})
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   Op,

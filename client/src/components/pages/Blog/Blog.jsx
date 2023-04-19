@@ -11,6 +11,7 @@ export default function Blog() {
 
   const dispatch = useDispatch();
   const {allPosts} = useSelector(state => state.post);
+  const filterActive = allPosts.filter(post => post.active === true);
 
   useEffect(() => {
     dispatch (getPosts());
@@ -56,11 +57,11 @@ export default function Blog() {
         </div>
         <section>
       <div className={styles.divCardsBlog}>
-          {allPosts.map((elem) => {
+          {filterActive.map((elem) => {
             return (
-              <div key={elem.id}>
+              <div key={elem.id_post}>
                 <CardBlog
-                  id={elem.id}
+                  id={elem.id_post}
                   title={elem.title}
                   summary={elem.summary}
                   content={elem.content}

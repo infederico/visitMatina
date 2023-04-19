@@ -12,7 +12,7 @@ const CardBlog = (props) => {
         <div className={`col-md-8`}>
           <div className={`card-body`}>
             <h5 className={`card-title`}>{props.title}</h5>
-            <p className={`card-text`}>{props.content}</p>
+            <p className={`card-text`}>{props.summary}</p>
             <Link to ={`/detailBlog/${props.id}`}><button className={`btn btn-primary`}>
               Leer más ...
             </button></Link>

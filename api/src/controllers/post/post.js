@@ -58,19 +58,19 @@ const putOnePost =  async (post) => {
             throw new Error ("No se encontro el post")
         }
         if (title) {
-            await Post.update({title}, {where: {id: id}})
+            await Post.update({title}, {where: {id_post: id}})
         }
         if (summary) {
-            await Post.update({summary}, {where: {id: id}})
+            await Post.update({summary}, {where: {id_post: id}})
         }
         if (content) {
-            await Post.update({content}, {where: {id: id}})
+            await Post.update({content}, {where: {id_post: id}})
         }
         if (date) {
-            await Post.update({date}, {where: {id: id}})
+            await Post.update({date}, {where: {id_post: id}})
         }
         if (active) {
-            await Post.update({active}, {where: {id: id}})
+            await Post.update({active}, {where: {id_post: id}})
         }
         return "Post actualizado"
     } catch (error) {
@@ -82,7 +82,7 @@ const delOnePost = async (id) => {
     try {
         const delOnePost = await Post.findByPk(id);
         if (delOnePost) {
-            await Post.update({active: false},{ where: { id: id } })
+            await Post.update({active: false},{ where: { id_post: id } })
             return "Post eliminado";
         } else {
             throw new Error("Post no existe");
