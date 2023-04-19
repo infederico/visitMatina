@@ -17,7 +17,7 @@ const transporter = nodeMailer.createTransport({
 const enviarCorreo = (req, res) => {
 
 const { name, correoxres, mensaje } = req.body;
-  const destinatario = 'victorbellasartes@gmail.com'
+  const destinatario = 'visitmatina@gmail.com'
   const asunto = 'Contacto desde la web'
 
     // Configurar el objeto mailOptions con los detalles del correo electrónico
