@@ -3,27 +3,15 @@ const {DataTypes} = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('reviews', {
-    id: {
+    review_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
     },
-    section: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     parent_id: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     rating: {
       type: DataTypes.INTEGER,
