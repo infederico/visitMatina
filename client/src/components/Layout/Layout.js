@@ -12,9 +12,7 @@ export default function Layout({ children }) {
 
                 <NavBar />
 
-                <div className="container">
-                    { children }
-                </div>
+                { children }
 
             </div>
         </div>
