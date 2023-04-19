@@ -26,7 +26,7 @@ const deleteShop = async (req, res) => {
 
 const getAll = async (req, res) => {
   try {
-    const shops = await Shop.findAll();
+    const shops = await Shop.findAll({ where: { active: true }});
     if (!shops || shops.length === 0) {
       return res.status(404).json({ error: 'No se encontraron tiendas' });
     }
@@ -43,7 +43,7 @@ const getAll = async (req, res) => {
 const getShopById = async (req, res) => {
   const { id } = req.params;
   try {
-    const shop = await Shop.findOne({ where: { id: id } });
+    const shop = await Shop.findOne({ where: { id: id, active: true } });
     if (!shop) {
       return res.status(404).json({ error: 'No se encontró la tienda' });
     }
@@ -59,14 +59,13 @@ const getShopById = async (req, res) => {
 
 const createShop = async (req, res) => {
   const { name, description, active } = req.body;
-  if (!name || !description || active === undefined) {
+  if (!name || !description ) {
     return res.status(400).json({ error: 'Faltan datos' });
   }
   try {
     const newShop = await Shop.create({
       name,
       description,
-      active,
     });
     res.status(200).json({ message: 'La tienda se ha creado con éxito', shop: newShop });
   } catch (error) {
