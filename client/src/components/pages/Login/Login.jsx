@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react'
 import ValidationLogIn from './Validation/validationLogIn'
 import useLocalStorage from '../../localStorage/useLocalStorage'
 import jwt_decode from 'jwt-decode'
+import { useDispatch } from 'react-redux'
+import { getAllUsers } from '../../../redux/userSlice'
 
 const LogIn = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [googleUser, setGoogleUser] = useState({}) // esto lo voy a cambiar a reduxtoolkit para enviarlo al back
   const [userData, setUserData] = useState({
@@ -30,6 +33,7 @@ const LogIn = () => {
   }
 
   useEffect(() => {
+    dispatch(getAllUsers())
     /* global google */
     google.accounts.id.initialize({
       client_id:
