@@ -25,13 +25,13 @@ const swaggerSpec = swaggerJSDoc(options)
 
 // SETUP DOCS
 const swaggerDocs = (app, port) => {
-  app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
-  app.get('/api/docs.json', (req, res) => {
+  app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+  app.get('/docs.json', (req, res) => {
     res.setHeader('Content-type', 'application/json')
     res.sed(swaggerSpec)
   })
 
-  console.log('Documentacion disponible en: http://localhost:3001/api/docs')
+  console.log('Documentacion disponible en: http://localhost:3001/')
 }
 
 module.exports = { swaggerDocs }
