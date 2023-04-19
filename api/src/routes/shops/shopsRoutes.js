@@ -4,9 +4,9 @@ const { deleteShop, getAll, getShopById, createShop, updateShop } = require('../
 
 
 router.delete('/:id', deleteShop); //borrado logico de la tienda
-router.get('/mostrar', getAll); //muestra todas las tiendas
+router.get('/', getAll); //muestra todas las tiendas
 router.get('/:id', getShopById);//muestra una tienda por id
-router.post('/ingresar', createShop);//crea una tienda
+router.post('/', createShop);//crea una tienda
 router.put('/:id', updateShop); //actualiza una tienda
 
 module.exports = router;

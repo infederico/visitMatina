@@ -5,7 +5,24 @@ const getAllComments = async () => {
 
     try {
         
-        let allComments = await Comments.findAll();
+        let allComments = await Comments.findAll({ where: { active: true, parent_id: 0 } });
+        allComments.map(async (comment) => {
+            return comment.resp = await getCommentChildren(comment.id);
+        });
+
+        return allComments;
+        
+    } catch (error) {
+        return { error: error.message }
+    }
+
+}
+
+const getCommentChildren = async (id) => {
+
+    try {
+        
+        let allComments = await Comments.findAll({ where: { active: true, parent_id: id } });
         return allComments;
         
     } catch (error) {
@@ -75,19 +92,25 @@ const addComment = async (comment) => {
 
     try {
 
-        const { description, rating, name, phone, email } = comment; 
+        const { section, description, rating, name, phone, email } = comment; 
 
-        if( !description || !name || !email ){
+        console.log(comment);
+        if( !section || !description || !name || !email ){
             throw new Error('Datos incompletos.');
         }
 
         let obj = {
+            section,
             description,
             rating,
             name,
             phone,
             email,
         }
+
+        if(comment.shop_id){ obj.shop_id = comment.shop_id }
+        if(comment.post_id){ obj.post_id = comment.post_id }
+        if(comment.parent_id){ obj.parent_id = comment.parent_id }
 
         let result = await Comments.create(obj);
         return { success: true, result }

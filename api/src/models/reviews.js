@@ -1,13 +1,13 @@
-const { DataTypes } = require('sequelize')
+const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('comments', {
+  sequelize.define('reviews', {
     id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
     },
     section: {
         type: DataTypes.INTEGER,
@@ -17,28 +17,24 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         defaultValue: 0,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1, 150], // la longitud del nombre debe estar entre 1 y 150 caracteres
       },
-    },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    phone: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     approved: {
       type: DataTypes.BOOLEAN,
@@ -50,5 +46,5 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: true,
     },
-  })
+  });
 }
