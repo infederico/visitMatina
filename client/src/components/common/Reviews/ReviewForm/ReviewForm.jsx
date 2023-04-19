@@ -94,20 +94,20 @@ const ReviewForm = () => {
 
                         <div className={styles.rate}>
                             <input type="radio" id="star5" name="rate" value={newReview.rating} onChange={handleInputChange} />
-                            <label for="star5">5 stars</label>
+                            <label htmlFor="star5">5 stars</label>
                             <input type="radio" id="star4" name="rate" value={newReview.rating} onChange={handleInputChange} />
-                            <label for="star4">4 stars</label>
+                            <label htmlFor="star4">4 stars</label>
                             <input type="radio" id="star3" name="rate" value={newReview.rating} onChange={handleInputChange} />
-                            <label for="star3">3 stars</label>
+                            <label htmlFor="star3">3 stars</label>
                             <input type="radio" id="star2" name="rate" value={newReview.rating} onChange={handleInputChange} />
-                            <label for="star2">2 stars</label>
+                            <label htmlFor="star2">2 stars</label>
                             <input type="radio" id="star1" name="rate" value={newReview.rating} onChange={handleInputChange} />
-                            <label for="star1">1 star</label>
+                            <label htmlFor="star1">1 star</label>
                         </div>
                         {errors.rating1 && <span className={styles.errors} >{errors.rating1}</span>}
 
                         <div className="mb-3">
-                            <textarea type="textarea" name="description" className="form-control" rows="3" placeholder="Cuéntanos acerca de tu experiencia con nosotros..." onChange={handleInputChange}  value={newReview.description}></textarea>
+                            <textarea type="textarea" name="description" className="form-control" rows="4" placeholder="Cuéntanos acerca de tu experiencia con nosotros..." onChange={handleInputChange}  value={newReview.description}></textarea>
                         </div>
                             {errors.description1 && <span className={styles.errors} >{errors.description1}</span>}
                             {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
@@ -115,8 +115,8 @@ const ReviewForm = () => {
                     </div>
                     
                     <br />
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-primary" type="submit"><span>Enviar</span></button>
+                    <div className="d-flex justify-content-center">
+                        <button className="btn btn-primary" type="submit"><span>Enviar</span></button>
                     </div>
                     <br />
                     {successMessage && <span className={styles.success} >Tu reseña se ha registrado con éxito</span>}

@@ -63,7 +63,7 @@ export default function AventurasDelCaribe() {
             <Reviews memberId={1} />   
             
             <section className={style.Cajaredes}>
-                <Redes socialmedia={arrayRedes}/>
+                {/* <Redes socialmedia={arrayRedes}/> */}
             </section>
                   
         </>
