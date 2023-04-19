@@ -16,6 +16,9 @@ import style from './AventurasDelCaribe.module.css'
 import ShopContact from '../Contact/ShopContact'
 
 export default function AventurasDelCaribe() {
+
+  const shopId = 4;
+
   const [aventuras, setAventuras] = useState([])
   useEffect(() => {
     setAventuras(require('./mock_aventuras.json').response)
@@ -60,7 +63,7 @@ export default function AventurasDelCaribe() {
             </div>
             
 
-            <Reviews memberId={1} />   
+            <Reviews shopId={shopId} />   
             
             <section className={style.Cajaredes}>
                 {/* <Redes socialmedia={arrayRedes}/> */}
