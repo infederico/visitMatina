@@ -133,7 +133,7 @@ Media.hasMany(Shop, {
 })
 
 Media.hasMany(Post,{ 
-  foreignKey: 'post_id',
+  foreignKey: 'media_id',
 })
 
 module.exports = {

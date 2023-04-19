@@ -59,9 +59,9 @@ export default function Blog() {
       <div className={styles.divCardsBlog}>
           {filterActive.map((elem) => {
             return (
-              <div key={elem.id}>
+              <div key={elem.id_post}>
                 <CardBlog
-                  id={elem.id}
+                  id={elem.id_post}
                   title={elem.title}
                   summary={elem.summary}
                   content={elem.content}
