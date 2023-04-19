@@ -6,11 +6,16 @@ const getAllComments = async () => {
     try {
         
         let allComments = await Comments.findAll({ where: { active: true, parent_id: 0 } });
-        allComments.map(async (comment) => {
-            return comment.resp = await getCommentChildren(comment.id);
-        });
+        let allCommentThread = [];
 
-        return allComments;
+        if(allComments.length){
+           for(let comment of allComments){
+               let children = await getCommentChildren(comment.id);
+               allCommentThread.push({ ...comment.dataValues, respuestas: children });
+           }
+        }
+
+        return allCommentThread;
         
     } catch (error) {
         return { error: error.message }

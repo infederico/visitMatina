@@ -15,6 +15,7 @@ const media = express.Router();
  *   get:
  *     tags:
  *       - Media
+ *     summary: Retorna la url de un archivo en cloudinary.
  *     responses:
  *       200:
  *         description: Retorna todos los archivos multimedia sin filtros
