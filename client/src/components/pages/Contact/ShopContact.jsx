@@ -45,8 +45,8 @@ const ShopContact = () => {
       >
         <div className='card-body'>
           <h1>Contacto</h1>
-          <div class='mb-3'>
-            <label for='exampleFormControlInput1' className='form-label'>
+          <div className='mb-3'>
+            <label htmlFor='exampleFormControlInput1' className='form-label'>
               Nombre
             </label>
             <br />
@@ -61,7 +61,7 @@ const ShopContact = () => {
             <br />
           </div>
           <div className='mb-3'>
-            <label for='exampleFormControlInput1' className='form-label'>
+            <label htmlFor='exampleFormControlInput1' className='form-label'>
               Email
             </label>
             <input
@@ -76,7 +76,7 @@ const ShopContact = () => {
             {errors.email ? errors.email : null}
           </div>
           <div className='mb-3'>
-            <label for='exampleFormControlTextarea1' className='form-label'>
+            <label htmlFor='exampleFormControlTextarea1' className='form-label'>
               Consulta
             </label>
             <textarea
