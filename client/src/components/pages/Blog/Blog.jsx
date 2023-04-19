@@ -1,15 +1,19 @@
 import styles from "./Blog.module.css";
 import CardBlog from "../../common/CardBlog/CardBlog";
-
-import BlogComments from "./BlogComments";
-
 import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getPosts } from "../../../redux/postActions";
+
+import AdminBlog from "../Admin/AdminBlog/AdminBlog";
 
 export default function Blog() {
   const apiRes = require("./mock_posts.json");
 
+  const dispatch = useDispatch();
+  const {allPosts} = useSelector(state => state.post);
+
   useEffect(() => {
-    console.log(apiRes.response);
+    dispatch (getPosts());
   }, []);
 
   return (
@@ -52,14 +56,15 @@ export default function Blog() {
         </div>
         <section>
       <div className={styles.divCardsBlog}>
-          {apiRes.response.map((elem) => {
+          {allPosts.map((elem) => {
             return (
               <div key={elem.id}>
                 <CardBlog
                   id={elem.id}
-                  name={elem.name}
+                  title={elem.title}
+                  summary={elem.summary}
                   content={elem.content}
-                  image={elem.image}
+                  date={elem.date}
                 />
               </div>
             );
@@ -67,6 +72,9 @@ export default function Blog() {
       </div>
       </section>
     </div>
+    <section>
+          <AdminBlog></AdminBlog>
+    </section>
     </section>
   );
 }

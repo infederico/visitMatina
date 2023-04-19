@@ -9,17 +9,26 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    date: {
-      type: DataTypes.DATE,
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    summary: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     content: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    },
     active: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true
-    }
+      defaultValue: true,
+    },
   })
 }
