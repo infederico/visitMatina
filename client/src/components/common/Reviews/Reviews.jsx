@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, NavLink } from 'react-router-dom';
 
-import { getReviewsById, setShowCommentPanel , setSelectedReview } from '../../../redux/reviewsSlice';
+import { getReviews } from '../../../redux/reviewsActions';
+import { setShowCommentPanel , setSelectedReview } from '../../../redux/reviewsSlice';
 
 import Review from './Review/Review'; // componente Review (card)
 import ReviewForm from './ReviewForm/ReviewForm'; // componente formulario para postear una nueva review
-import ReviewThread from './ReviewThread/ReviewThread';
+import ReviewThread from './ReviewThread/ReviewThread'; // componente panel del hilo de la review seleccionada
 
 import stars0 from '../../../assets/images/review-stars/0stars.png';
 import stars1 from '../../../assets/images/review-stars/1stars.png';
@@ -21,16 +22,13 @@ import styles from './Reviews.module.css';
 const Reviews = (props) => {
 
     // global states
+    const reviews = useSelector(state => state.reviews.value);
     const showCommentPanel = useSelector(state => state.reviews.showCommentPanel);
     const selectedReview = useSelector(state => state.reviews.selectedReview);
-    const reviews = useSelector(state => state.reviews.value); // aca el back tiene que responder filtrado por Miembro y si esta approved
-    //const apiRes = require('./mock_res_back.json'); //mockeo de la response del back 
-    //const reviews = apiRes.response;
 
     // local states
     const [ overallRatingNumber, setOverallRatingNumber ] = useState(0);
     const [ overallRatingWord, setOverallRatingWord ] = useState('');
-    
     const [ filteredReviews, setFilteredReviews ] = useState([]);
     const [ filterSelectedOption, setFilterSelectedOption ] = useState('all'); // por defecto se inicializa el filtro en "mostrar: Todas"
     const [ sortedReviews, setSortedReviews ] = useState([]);
@@ -39,23 +37,24 @@ const Reviews = (props) => {
     const [ currentPage, setCurrentPage ] = useState(1);
     
     // hooks
-    // eslint-disable-next-line
     const dispatch = useDispatch();
   
-    // al montarse pide todas las reviews de este miembro en particular - identifica que memberId es pasado por props
-    useEffect( () => {
-        const memberId = props.memberId;
-        dispatch(getReviewsById()) ////////////// descomentar cuando se configuren las action de redux        
+    useEffect( () => { // al montarse pide todas las reviews de este miembro en particular - identifica que adminId es pasado por props
+        const shopId = props.adminId;
+        dispatch(getReviews(shopId));
     // eslint-disable-next-line
     }, []);
     
     useEffect( () => { // cuando se cargan la reviews traidas del back seteo los estados locales que dependian de eso
         // primero calculo el rating global con el cociente entre la suma de todos los ratings y el numero de reviews
         let allRatingsSummation = 0;
-        reviews.forEach( review => allRatingsSummation += review.rating);
+
+        reviews.forEach( (review) => allRatingsSummation += review.rating);
+        
         let quotient = allRatingsSummation / reviews.length;
         // lo redondeo para que vaya de 0.5 en 0.5
         let roundedOverallRating = Math.round(quotient * 2) / 2;
+        
         setOverallRatingNumber(roundedOverallRating);
     }, [reviews, filterSelectedOption]);
 
@@ -65,7 +64,6 @@ const Reviews = (props) => {
         0.5: 'MUY MALO',
         1: 'MALO',
         1.5: 'MALO',
-        //NEUTRALES
         2: 'REGULAR',
         2.5: 'REGULAR',
         // POSITIVAS
@@ -99,8 +97,10 @@ const Reviews = (props) => {
         };
         setFilteredReviews(filteredByRating);
         setCurrentPage(1);
-        dispatch(setShowCommentPanel(false));
-        dispatch(setSelectedReview(undefined));
+        if (showCommentPanel) {
+            dispatch(setShowCommentPanel(false));
+            dispatch(setSelectedReview(undefined));
+        }
     }, [reviews, filterSelectedOption]);
 
     // LOGICA PARA ORDENAR
@@ -113,10 +113,14 @@ const Reviews = (props) => {
     };
     useEffect( () => { 
         let auxSortedReviews = sortSelectedOption ? filteredReviews.slice().sort(sortFunctions[sortSelectedOption]) : filteredReviews;
+        
         setSortedReviews(auxSortedReviews);
+        
         setCurrentPage(1);
-        dispatch(setShowCommentPanel(false));
-        dispatch(setSelectedReview(undefined));
+        if (showCommentPanel) {
+            dispatch(setShowCommentPanel(false));
+            dispatch(setSelectedReview(undefined));
+        }
     // eslint-disable-next-line
     }, [filteredReviews, sortSelectedOption]);
     
@@ -124,9 +128,13 @@ const Reviews = (props) => {
     // LOGICA PARA PAGINAR
     useEffect( () => { 
         let auxPaginatedReviews = sortedReviews.slice(((currentPage * 6) - 6), (currentPage * 6))
+        
         setPaginatedReviews(auxPaginatedReviews);
-        dispatch(setShowCommentPanel(false));
-        dispatch(setSelectedReview(undefined));
+        
+        if (showCommentPanel) {
+            dispatch(setShowCommentPanel(false));
+            dispatch(setSelectedReview(undefined));
+        }
     }, [sortedReviews, currentPage]);
     
 
@@ -156,92 +164,111 @@ const Reviews = (props) => {
 
     return (
         <>
-            <hr />
-            <div className={styles.title}>
-                <h2>Nuestros clientes</h2>
-                <span>conoce la opinión de nuestros clientes</span>
-            </div>
-            <br />
-            <div>
-                <span>calificación general: </span>
-                <span style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</span> 
-                <span style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</span>
-                <span className={styles.starWrapper}>
-                    {
-                        (overallRatingNumber === 0 || overallRatingNumber === 0.5) && <img src={stars0} alt='0stars' />
-                    }
-                    {
-                        (overallRatingNumber === 1 || overallRatingNumber === 1.5) && <img src={stars1} alt='1stars' />
-                    }
-                    {
-                        (overallRatingNumber === 2 || overallRatingNumber === 2.5) && <img src={stars2} alt='2stars' />
-                    }
-                    {
-                        (overallRatingNumber === 3 || overallRatingNumber === 3.5) && <img src={stars3} alt='3stars' />
-                    }
-                    {
-                        (overallRatingNumber === 4 || overallRatingNumber === 4.5) && <img src={stars4} alt='4stars' />
-                    }
-                    {
-                        overallRatingNumber === 5 && <img src={stars5} alt='5stars' />
-                    }
-                </span>
-                {/* <span style={{fontSize:"small", marginLeft:"-40px", zIndex:"1"}}>{`${overallRatingNumber}`}</span> */}
-            </div>
+            <section>
+                <div className='container'>
+                    <div className={styles.title}>
+                        <h3>Nuestros clientes</h3>
+                        <span>conoce la opinión de nuestros clientes</span>
+                    </div>
+                </div>
+            </section>
             <br />
             <section>
-                <label htmlFor="rating-filter">mostrar:  </label>   
-                <select id="rating-filter" value={filterSelectedOption} onChange={handleFilterChange} className="form-select" aria-label="Default select example"> 
-                    <option value="all">Todas</option>
-                    <option value="positives">Positivas</option>
-                    <option value="negatives">Negativas</option>
-                </select>
+                <div className='container'>
+                    <span>calificación general: </span>
+                    <span style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</span> 
+                    <span style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</span>
+                    <span className={styles.starWrapper}>
+                        {
+                            (overallRatingNumber === 0 || overallRatingNumber === 0.5) && <img src={stars0} alt='0stars' />
+                        }
+                        {
+                            (overallRatingNumber === 1 || overallRatingNumber === 1.5) && <img src={stars1} alt='1stars' />
+                        }
+                        {
+                            (overallRatingNumber === 2 || overallRatingNumber === 2.5) && <img src={stars2} alt='2stars' />
+                        }
+                        {
+                            (overallRatingNumber === 3 || overallRatingNumber === 3.5) && <img src={stars3} alt='3stars' />
+                        }
+                        {
+                            (overallRatingNumber === 4 || overallRatingNumber === 4.5) && <img src={stars4} alt='4stars' />
+                        }
+                        {
+                            overallRatingNumber === 5 && <img src={stars5} alt='5stars' />
+                        }
+                    </span>
+                    {/* <span style={{fontSize:"small", marginLeft:"-40px", zIndex:"1"}}>{`${overallRatingNumber}`}</span> */}
+                </div>
+            </section>
+            <br />
+            <section>
+                <div className='container'>
+                    <label htmlFor="rating-filter">mostrar:  </label>   
+                    <select id="rating-filter" value={filterSelectedOption} onChange={handleFilterChange} className="form-select" aria-label="Default select example"> 
+                        <option value="all">Todas</option>
+                        <option value="positives">Positivas</option>
+                        <option value="negatives">Negativas</option>
+                    </select>
+                </div>
             </section>
 
             <section>
-                <label htmlFor='sort'>ordenar por:  </label>
-                <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className="form-select" aria-label="Default select example"> 
-                    <option value=''></option>
-                    <option value='date-des'>Fecha - Más recientes primero</option>
-                    <option value='date-asc'>Fecha - Más antiguas primero</option>
-                    <option value='rating-des'>Mejor puntuación - des.</option>
-                    <option value='rating-asc'>Peor puntuación - asc.</option>
-                </select>
+                <div className='container'>
+                    <label htmlFor='sort'>ordenar por:  </label>
+                    <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className="form-select" aria-label="Default select example"> 
+                        <option value=''></option>
+                        <option value='date-des'>Fecha - Más recientes primero</option>
+                        <option value='date-asc'>Fecha - Más antiguas primero</option>
+                        <option value='rating-des'>Mejor puntuación - des.</option>
+                        <option value='rating-asc'>Peor puntuación - asc.</option>
+                    </select>
+                </div>
             </section>
 
-            <div className="row mt-3">
-                {
-                    paginatedReviews?.map((review) => {
-                        return <Review
-                            key={review.reviewId}
-                            reviewId={review.reviewId}
-                            name={review.name}
-                            date={review.date}
-                            rating={review.rating}
-                            description={review.description}
-                        />
-                    })
-                }
-            </div>
+            <section>
+                <div className='container'>
+                    <div className="row mt-3">
+                        {
+                            paginatedReviews?.map((review) => {
+                                return <Review
+                                    key={review.reviewId}
+                                    reviewId={review.reviewId}
+                                    name={review.name}
+                                    date={review.date}
+                                    rating={review.rating}
+                                    description={review.description}
+                                />
+                            })
+                        }
+                    </div>
+                </div>
+            </section>
            
             <section>
-                <nav aria-label="Page navigation example">
-                    <ul className="pagination justify-content-center">
-                        <li className="page-item" onClick={pageDecrement}><NavLink className="page-link" >Previous</NavLink></li>
-                    
-                        <li className="page-item" onClick={pageIncrement}><NavLink className="page-link" >Next</NavLink></li>
-                    </ul>
-                </nav>
+                <div className='container'>
+                    <nav aria-label="Page navigation example">
+                        <ul className="pagination justify-content-center">
+                            <li className="page-item" onClick={pageDecrement}><NavLink className="page-link" >Previous</NavLink></li>
+                            <li className="page-item" onClick={pageIncrement}><NavLink className="page-link" >Next</NavLink></li>
+                        </ul>
+                    </nav>
+                </div>
             </section>
 
-            <div>
-                {
-                    showCommentPanel && <ReviewThread reviewId={selectedReview} />
-                }
-            </div>
+            <section>
+                <div className='container'>
+                    {
+                        showCommentPanel && <ReviewThread reviewId={selectedReview} />
+                    }
+                </div>
+            </section>
 
-            <ReviewForm />
-            <hr />
+            <section>
+                <div className='container'>
+                    <ReviewForm />
+                </div>
+            </section>
         </>
     );
 };

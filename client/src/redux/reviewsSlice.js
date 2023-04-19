@@ -6,11 +6,11 @@ const reviewsSlice = createSlice({
     value: [],
     showCommentPanel: false,
     selectedReview: undefined,
+    backendError: '',
   },
   reducers: {
-    getReviewsById: (state, action) => {
-      //state.value = action.payload;
-      state.value = require('../components/common/Reviews/mock_res_back.json').response;
+    getAllReviews: (state, action) => {
+      state.value = action.payload;
     },
     setShowCommentPanel: (state, action) => {
       state.showCommentPanel = action.payload;
@@ -18,8 +18,11 @@ const reviewsSlice = createSlice({
     setSelectedReview: (state, action) => {
       state.selectedReview = action.payload;
     },
+    addBackendError: (state, action) => {
+      state.backendError = action.payload;
+    },
   },
 });
 
-export const { getReviewsById, setShowCommentPanel, setSelectedReview } = reviewsSlice.actions;
+export const { getAllReviews, setShowCommentPanel, setSelectedReview, addBackendError } = reviewsSlice.actions;
 export default reviewsSlice.reducer;
