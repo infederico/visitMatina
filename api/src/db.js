@@ -119,9 +119,9 @@ Media.hasOne(Users, {
   foreignKey: 'media_id',
 })
 
-Role.hasOne(Users, {
-  foreignKey: 'role_id',
-})
+// Role.hasOne(Users, {
+//   foreignKey: 'role_id',
+// })
 /*
 Media.belongsTo(Shop,{
   foreignKey: 'shop_id'
