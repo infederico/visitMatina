@@ -5,6 +5,7 @@ import reviewsReducer from './reviewsSlice'
 import userReducer from './userSlice'
 import postReducer from './postSlice'
 import productReducer from './productSlice'
+import contactReducer from './contactSlice'
 
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
 
   post: postReducer,
   product: productReducer,
+  contact: contactReducer,
 })
 
 
