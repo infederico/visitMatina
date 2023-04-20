@@ -5,6 +5,7 @@ const Contact = () => {
   const [userData, setUserData] = useState({
     name: '',
     email: '',
+    confirmEmail: '',
     description: '',
   })
 
@@ -103,6 +104,21 @@ const Contact = () => {
                 onChange={handleInputChange}
               />
               {errors.email ? errors.email : null}
+            </div>
+            <div className='mb-3'>
+              <label htmlFor='exampleFormControlInput1' className='form-label'>
+                Confirma Email
+              </label>
+              <input
+                type='email'
+                className='form-control'
+                id='exampleFormControlInput1'
+                placeholder='name@example.com'
+                name='confirmEmail'
+                value={userData.ConfirmEmail}
+                onChange={handleInputChange}
+              />
+              {errors.confirmEmail ? errors.confirmEmail : null}
             </div>
             <div className='mb-3'>
               <label for='exampleFormControlTextarea1' className='form-label'>
