@@ -9,7 +9,7 @@ const router = Router();
  *   get:
  *     tags:
  *       - Post
- *     summary: Retorna todos los posts.
+ *     summary: Retorna todos los posts filtrados con la propiedad active en true.
  *     description: Ruta para retornar todos los posts.
  *     responses:
  *       200:
