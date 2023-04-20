@@ -348,9 +348,9 @@ router.put("/", async (req, res) => {
  *                   example: Post no existe
  */
 router.delete("/", async (req, res) => {
-    const {id} = req.query;
+    const {id_post} = req.query;
     try {
-        const postDel = await delOnePost(id);
+        const postDel = await delOnePost(id_post);
         if (postDel.error){
             throw new Error(postDel.error)
         }
