@@ -6,6 +6,7 @@ const { media } = require('./media/media')
 const post = require('./post/post')
 const shopsRoutes = require('./shops/shopsRoutes')
 const { comment } = require('./comments/comments')
+const { review } = require('./reviews/reviews')
 const sendMail = require('./SendMail/sendMail')
 
 const router = Router()
@@ -16,6 +17,7 @@ router.use('/product', productRouter)
 //Media
 router.use('/media', media)
 router.use('/comments', comment)
+router.use('/reviews', review)
 
 router.use('/post', post)
 

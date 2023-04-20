@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, NavLink } from 'react-router-dom';
 
-import { getReviews } from '../../../redux/reviewsActions';
+import { getShops } from '../../../redux/shopActions';
+import { getAllApprovedReviewsByShopId } from '../../../redux/reviewsActions';
 import { setShowCommentPanel , setSelectedReview } from '../../../redux/reviewsSlice';
 
 import Review from './Review/Review'; // componente Review (card)
@@ -25,8 +26,10 @@ const Reviews = (props) => {
     const reviews = useSelector(state => state.reviews.value);
     const showCommentPanel = useSelector(state => state.reviews.showCommentPanel);
     const selectedReview = useSelector(state => state.reviews.selectedReview);
+    const shops = useSelector(state => state.shops.shops)
 
     // local states
+    const [shopId, setShopId] = useState(0);
     const [ overallRatingNumber, setOverallRatingNumber ] = useState(0);
     const [ overallRatingWord, setOverallRatingWord ] = useState('');
     const [ filteredReviews, setFilteredReviews ] = useState([]);
@@ -38,12 +41,21 @@ const Reviews = (props) => {
     
     // hooks
     const dispatch = useDispatch();
-  
-    useEffect( () => { // al montarse pide todas las reviews de este miembro en particular - identifica que adminId es pasado por props
-        const shopId = props.adminId;
-        dispatch(getReviews(shopId));
-    // eslint-disable-next-line
-    }, []);
+    const location = useLocation();
+
+    // useEffect( () => {
+    //     dispatch(getShops());
+    // }, []);
+    // useEffect(() => {
+    //     let shopFiltered = shops.filter(shop => shop.path === location.pathname);
+    //     setShopId(shopFiltered[0]['id_shop']);
+    //     console.log(shopId);
+    // },[shops])
+    
+    // useEffect( () => { // al montarse pide todas las reviews de este miembro en particular - identifica que adminId es pasado por props
+    //     dispatch(getAllApprovedReviewsByShopId(shopId));
+    // // eslint-disable-next-line
+    // }, [shopId]);
     
     useEffect( () => { // cuando se cargan la reviews traidas del back seteo los estados locales que dependian de eso
         // primero calculo el rating global con el cociente entre la suma de todos los ratings y el numero de reviews
