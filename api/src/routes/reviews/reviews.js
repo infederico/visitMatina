@@ -2,6 +2,7 @@ const express = require('express');
 const { 
     getAllReviews,
     getApprovedReviews,
+    getShopReviews,
     getReview,
     deleteReview,
     addReview,
@@ -30,6 +31,20 @@ review.get('/approved/', async (req, res) => {
     try{
         console.log('obteniendo todos los reviews aprobados...');
         const result = await getApprovedReviews();
+        res.status(200).json({ result: result });
+
+    }catch(err){
+        res.status(404).json({ error: err.message });
+    }
+
+});
+
+review.get('/shop/:id', async (req, res) => {
+
+    try{
+        console.log('obteniendo review por id de shop ...');
+        const { id } = req.params;
+        const result = await getShopReviews(id); 
         res.status(200).json({ result: result });
 
     }catch(err){
@@ -113,5 +128,5 @@ review.post('/', async (req, res) => {
 });
 
 module.exports = {
-    comment
+    review
 }
