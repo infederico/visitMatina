@@ -6,11 +6,11 @@ const productSlice = createSlice({
     products: [],
   },
   reducers: {
-    getAllProducts: (state, action) => {
+    getAllProductsByShopId: (state, action) => {
       state.users = action.payload
     },
   },
 })
 
-export const { getAllProducts } = productSlice.actions
+export const { getAllProductsByShopId } = productSlice.actions
 export default productSlice.reducer

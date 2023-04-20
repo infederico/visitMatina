@@ -1,3 +1,4 @@
+// se borrara cuando se haga conexion con back
 import axios from "axios";
 import { getAllProducts } from "./productsSlice";
 

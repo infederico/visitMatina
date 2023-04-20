@@ -7,6 +7,7 @@ import productsReducer from './productsSlice'
 import userReducer from './userSlice'
 import postReducer from './postSlice'
 import productReducer from './productSlice'
+import shopReducer from './shopSlice'
 
 
 const rootReducer = combineReducers({
@@ -15,7 +16,9 @@ const rootReducer = combineReducers({
   user: userReducer,
 
   post: postReducer,
-  product: productReducer,
+  product: productReducer, //ruta definitiva
+  products: productsReducer, //ruta pra pruebas
+  shops: shopReducer
 })
 
 

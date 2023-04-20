@@ -4,14 +4,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import style from "./CardProductContainer.module.css"
 import { getProducts } from "../../../redux/productsActions";
+import { getShops } from '../../../redux/shopActions'
 
 const CardProductContainer = () => {
     const dispatch = useDispatch()
-    const value = useSelector(state => state.products.value)
-    // const value = useSelector(state => state.products.shops)
-    
     const location = useLocation()
+
+    const value = useSelector(state => state.products.value)
     
+    // const shops = useSelector(state=> state.shops.shops)
+
+    // const [shopId, setShopId] = useState(0)
+  
+    // useEffect(() => {
+    //   dispatch(getShops())
+    // },[])
+    // useEffect(() => {
+    //   let shopFiltered = shops.filter(shop => shop.path === location.pathname)
+    //   console.log(shopFiltered);
+    //   setShopId(shopFiltered[0]["id_shop"])
+    // },[shops])
+
+
+    // esto se borraria
     const memberId = () => {
         switch(location.pathname) {
             case "/artesaniasMarYLuna": //case shops
