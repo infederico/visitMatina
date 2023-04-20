@@ -37,7 +37,7 @@ sequelize.models = Object.fromEntries(capsEntries)
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Users, Comments, Product, Media, Shop, Post, Role } = sequelize.models
+const { Users, Product, Media, Shop, Post, Reviews } = sequelize.models
 // Aca vendrian las relaciones
 Product.belongsToMany(
   Media,
@@ -71,14 +71,6 @@ Product.belongsToMany(
   { timestamps: false }
 )
 
-Comments.belongsTo(
-  Shop,
-  {
-    foreignKey: 'shop_id',
-  },
-  { timestamps: false }
-)
-
 Post.belongsTo(
   Users,
   {
@@ -87,13 +79,33 @@ Post.belongsTo(
   { timestamps: false }
 )
 
-Comments.belongsTo(
+Reviews.belongsTo(
+  Shop,
+  {
+    foreignKey: 'shop_id',
+  },
+  { timestamps: false }
+)
+
+Reviews.belongsTo(
   Post,
   {
     foreignKey: 'post_id',
   },
   { timestamps: false }
 )
+
+Reviews.belongsTo(Shop, {
+  foreignKey: 'shop_id',
+})
+
+Reviews.belongsTo(Post, {
+  foreignKey: 'post_id',
+})
+
+Reviews.belongsTo(Users, {
+  foreignKey: 'user_id',
+})
 
 Media.hasOne(
   Users,
@@ -103,25 +115,17 @@ Media.hasOne(
   { timestamps: false }
 )
 
-Comments.belongsTo(Shop, {
-  foreignKey: 'shop_id',
-})
-
 Post.belongsTo(Users, {
   foreignKey: 'user_id',
-})
-
-Comments.belongsTo(Post, {
-  foreignKey: 'post_id',
 })
 
 Media.hasOne(Users, {
   foreignKey: 'media_id',
 })
 
-Role.hasOne(Users, {
-  foreignKey: 'role_id',
-})
+// Role.hasOne(Users, {
+//   foreignKey: 'role_id',
+// })
 /*
 Media.belongsTo(Shop,{
   foreignKey: 'shop_id'
@@ -129,6 +133,10 @@ Media.belongsTo(Shop,{
 */
 
 Media.hasMany(Shop, {
+  foreignKey: 'media_id',
+})
+
+Media.hasMany(Post,{ 
   foreignKey: 'media_id',
 })
 

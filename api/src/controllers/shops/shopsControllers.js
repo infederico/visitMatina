@@ -6,7 +6,7 @@ const { Shop } = require('../../db.js');
 const deleteShop = async (req, res) => {
     const { id } = req.params;
     try {
-      const shop = await Shop.findOne({ where: { id: id } });
+      const shop = await Shop.findOne({ where: { id_shop:id} });
       if (!shop) {
         return res.status(404).json({ error: 'No se encontró la tienda' });
       }
@@ -43,7 +43,7 @@ const getAll = async (req, res) => {
 const getShopById = async (req, res) => {
   const { id } = req.params;
   try {
-    const shop = await Shop.findOne({ where: { id: id, active: true } });
+    const shop = await Shop.findOne({ where: { id_shop: id, active: true } });
     if (!shop) {
       return res.status(404).json({ error: 'No se encontró la tienda' });
     }
@@ -58,14 +58,24 @@ const getShopById = async (req, res) => {
 //controller para crear una tienda
 
 const createShop = async (req, res) => {
-  const { name, description, active } = req.body;
-  if (!name || !description ) {
+  const { name, summary,path,email,twitter,facebook,instagram,youtube,whatsapp,location, active } = req.body;
+  console.log(req.body)
+  if (!name ||!whatsapp || !summary || !path || !email || !twitter || !facebook || !instagram || !youtube || !location || !active ) {
     return res.status(400).json({ error: 'Faltan datos' });
   }
   try {
     const newShop = await Shop.create({
       name,
-      description,
+      summary,
+      path,
+      email,
+      twitter,
+      facebook,
+      instagram,
+      youtube,
+      whatsapp,
+      location,
+      active,
     });
     res.status(200).json({ message: 'La tienda se ha creado con éxito', shop: newShop });
   } catch (error) {
@@ -80,16 +90,24 @@ const createShop = async (req, res) => {
 const updateShop = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, description, active } = req.body;
+    const { name, summary, active,path, email, twitter, facebook, instagram, youtube, whatsapp, location } = req.body;
     const shop = await Shop.findOne({
-      where: { id: id },
+      where: { id_shop: id },
     });
     if (!shop) {
       return res.status(404).json({ error: 'No se encontró la tienda' });
     }
     const fieldsToUpdate = {};
     if (name) fieldsToUpdate.name = name;
-    if (description) fieldsToUpdate.description = description;
+    if (summary) fieldsToUpdate.summary = summary;
+    if (path) fieldsToUpdate.path = path;
+    if (email) fieldsToUpdate.email = email;
+    if (twitter) fieldsToUpdate.twitter = twitter;
+    if (facebook) fieldsToUpdate.facebook = facebook;
+    if (instagram) fieldsToUpdate.instagram = instagram;
+    if (youtube) fieldsToUpdate.youtube = youtube;
+    if (whatsapp) fieldsToUpdate.whatsapp = whatsapp;
+    if (location) fieldsToUpdate.location = location;
     if (active !== undefined) fieldsToUpdate.active = active; // siempre debe venir un valor booleano
     await shop.update(fieldsToUpdate);
     res.status(200).json({ message: 'Todos los datos se actualizaron correctamente', shop: shop });

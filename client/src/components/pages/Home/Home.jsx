@@ -20,7 +20,7 @@ export default function Home() {
         height='360'
         allow='autoplay fullscreen encrypted-media picture-in-picture'
         allowfullscreen
-        frameborder='0'
+        // frameborder='0'
         title='visit_matina_reel'
       ></iframe>
     </>
