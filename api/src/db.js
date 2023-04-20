@@ -107,6 +107,10 @@ Reviews.belongsTo(Users, {
   foreignKey: 'user_id',
 })
 
+Users.hasMany(Reviews, {
+  foreignKey: 'user_id',
+})
+
 Media.hasOne(
   Users,
   {
