@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { getAllProducts } from './productSlice'
+import { getAllProductsByShopId } from './productSlice'
 
-export const getProducts = () => {
+export const getProductsByShopId = (shopId) => {
   return async (dispatch) => {
-    const products = await axios('http://localhost:3001/api/product/')
-    dispatch(getAllProducts(products.data))
+    const products = await axios(`http://localhost:3001/api/product/${shopId}`)
+    dispatch(getAllProductsByShopId(products.data))
   }
 }
