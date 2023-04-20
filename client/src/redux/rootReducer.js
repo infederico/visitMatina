@@ -1,11 +1,14 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import languageReducer from './languageSlice'
-import reviewsReducer from './reviewsSlice'
+import languageReducer from './languageSlice';
+import reviewsReducer from './reviewsSlice';
+import productsReducer from './productsSlice'
+//seguir importando reducers/slices
 import userReducer from './userSlice'
 import postReducer from './postSlice'
 import productReducer from './productSlice'
 import contactReducer from './contactSlice'
+import shopReducer from './shopSlice'
 
 
 const rootReducer = combineReducers({
@@ -14,8 +17,10 @@ const rootReducer = combineReducers({
   user: userReducer,
 
   post: postReducer,
-  product: productReducer,
-  contact: contactReducer,
+  product: productReducer, //ruta definitiva
+  products: productsReducer, //ruta pra pruebas
+  shops: shopReducer,
+  contact: contactReducer
 })
 
 
