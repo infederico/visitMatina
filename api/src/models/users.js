@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize')
+const bcryptjs = require('bcryptjs')
 
 module.exports = (sequelize) => {
   // defino el modelo
@@ -26,6 +27,12 @@ module.exports = (sequelize) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: bcryptjs.hashSync('googleUser123', 8),
+    },
+    gUser: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
     verified: {
       type: DataTypes.BOOLEAN,
