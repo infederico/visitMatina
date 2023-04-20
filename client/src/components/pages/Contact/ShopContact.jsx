@@ -12,6 +12,7 @@ const ShopContact = () => {
   const [errors, setErrors] = useState({
     name: '',
     email: '',
+    confirmEmail: '',
     description: '',
   })
 
@@ -31,6 +32,7 @@ const ShopContact = () => {
       setUserData({
         name: '',
         email: '',
+        confirmEmail: '',
         description: '',
       })
     }
