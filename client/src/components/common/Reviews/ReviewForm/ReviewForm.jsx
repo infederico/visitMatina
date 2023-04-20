@@ -6,6 +6,16 @@ import styles from './ReviewForm.module.css';
 
 const ReviewForm = () => {
 
+    // global states
+    //const loggedUser = useSelector(state => state.user); // aca tomo del estado global la data del user que esta loggeado
+    const loggedUser = {
+        id_user: 1,
+        image: '',
+        name: 'Ivan Federico',
+        email: 'inf@gmail.com',
+        password: '·ash55'
+    };
+
     // local states
     const [ newReview, setNewReview ] = useState({
         name: '',

@@ -9,7 +9,7 @@ const reviewsSlice = createSlice({
     backendError: '',
   },
   reducers: {
-    getAllReviews: (state, action) => {
+    getAllApprovedReviews: (state, action) => {
       state.value = action.payload;
     },
     setShowCommentPanel: (state, action) => {
@@ -24,5 +24,5 @@ const reviewsSlice = createSlice({
   },
 });
 
-export const { getAllReviews, setShowCommentPanel, setSelectedReview, addBackendError } = reviewsSlice.actions;
+export const { getAllApprovedReviews, setShowCommentPanel, setSelectedReview, addBackendError } = reviewsSlice.actions;
 export default reviewsSlice.reducer;
