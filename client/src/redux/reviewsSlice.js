@@ -23,7 +23,7 @@ const reviewsSlice = createSlice({
       state.backendError = action.payload;
     },
     postNewReview: (state, action) => {
-      state.successMessage = true;
+      state.successMessage = action.payload;
     },
     cleanSuccessMessage: (state, action) => {
       state.successMessage = false;

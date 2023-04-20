@@ -1,10 +1,20 @@
 import axios from "axios";
-import { getAllShops } from "./shopSlice";
+import { getAllShops, getShopIdByPath } from "./shopSlice";
 
 export const getShops = () => async (dispatch) => {
     try{
         const shops = await axios("http://localhost:3001/api/shops");
           dispatch(getAllShops(shops.data));
+    }catch(error) {
+        console.log(error);
+    }
+};
+
+export const getShopId = (path) => async (dispatch) => {
+    try{
+        const shops = await axios("http://localhost:3001/api/shops");
+        const shopFiltered = shops.data.filter(shop => shop.path === path);
+        dispatch(getShopIdByPath(shopFiltered.at(0)['id_shop']));   
     }catch(error) {
         console.log(error);
     }
