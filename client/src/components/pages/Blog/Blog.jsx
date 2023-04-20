@@ -72,9 +72,6 @@ export default function Blog() {
       </div>
       </section>
     </div>
-    <section>
-          <AdminBlog></AdminBlog>
-    </section>
     </section>
   );
 }
