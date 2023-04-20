@@ -10,6 +10,9 @@ const ValidationContact = (userData) => {
   if (!userData.description) {
     errors.description = 'Por favor ingresa un mensaje'
   }
+  if (userData.email !== userData.confirmEmail) {
+    errors.confirmEmail = 'El email no coincide'
+  }
   return errors
 }
 
