@@ -4,11 +4,14 @@ const ValidationContact = (userData) => {
   if (!userData.name) {
     errors.name = 'Por favor ingresa un nombre'
   }
-  if (!regexMail.test(userData.email)) {
-    errors.email = 'Por favor ingresa un email valido'
+  if (!regexMail.test(userData.correoxres)) {
+    errors.correoxres = 'Por favor ingresa un email valido'
   }
-  if (!userData.description) {
-    errors.description = 'Por favor ingresa un mensaje'
+  if (!userData.mensaje) {
+    errors.mensaje = 'Por favor ingresa un mensaje'
+  }
+  if (userData.correoxres !== userData.confirmEmail) {
+    errors.confirmEmail = 'El email no coincide'
   }
   return errors
 }

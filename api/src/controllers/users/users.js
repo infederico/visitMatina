@@ -1,12 +1,13 @@
 const { Users } = require('../../db')
+const bcryptjs = require('bcryptjs')
 
-const getUserByName = async (name) => {
+const getUserByName = async (email) => {
   try {
-    let user = await Users.findOne({ where: { name } })
-    if (user) {
+    let user = await Users.findOne({ where: { email } })
+    if (email) {
       return user
     } else {
-      throw new Error(`User with name ${name} was not found`)
+      throw new Error(`User with name ${email} was not found`)
     }
   } catch (error) {
     throw new Error(`Error getting user by name: ${error.message}`)
@@ -25,9 +26,9 @@ const getAllUsers = async () => {
     throw new Error(`Error getting all users ${error.message}`)
   }
 }
-const getUserById = async (id) => {
+const getUserById = async (id_user) => {
   try {
-    let user = await Users.findOne({ where: { id } })
+    let user = await Users.findOne({ where: { id_user } })
     if (user) {
       return user
     } else {
@@ -37,18 +38,21 @@ const getUserById = async (id) => {
     throw new Error(`Error getting user by id: ${error.message}`)
   }
 }
-const updateUser = async (id, name, email, password) => {
+const updateUser = async (id_user, name, email, password, admin) => {
   try {
-    let findUser = await getUserById(id)
+    let findUser = await getUserById(id_user)
     if (findUser) {
       if (name) {
-        await Users.update({ name }, { where: { id } })
+        await Users.update({ name }, { where: { id_user } })
       }
       if (email) {
-        await Users.update({ email }, { where: { id } })
+        await Users.update({ email }, { where: { id_user } })
       }
       if (password) {
-        await Users.update({ password }, { where: { id } })
+        await Users.update({ password }, { where: { id_user } })
+      }
+      if (admin !== undefined) {
+        await Users.update({ admin }, { where: { id_user } })
       }
       return true
     }
@@ -58,10 +62,11 @@ const updateUser = async (id, name, email, password) => {
 }
 const createUser = async (name, email, password) => {
   try {
+    let hash = await bcryptjs.hash(password, 8)
     let newUser = await Users.create({
       name,
       email,
-      password,
+      password: hash,
     })
     return newUser
   } catch (error) {
