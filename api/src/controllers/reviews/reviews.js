@@ -14,14 +14,14 @@ const getAllReviews = async () => {
 
         let allReviewsThread = [];
 
-        if(allReviewsThread.length){
+        if(allReviews.length){
            for(let review of allReviews){
                let children = await getReviewChildren(review.review_id);
                allReviewsThread.push({ ...review.dataValues, respuestas: children });
            }
         }
 
-        return allReviews;
+        return allReviewsThread;
         
     } catch (error) {
         return { error: error.message }
@@ -33,7 +33,13 @@ const getReviewChildren = async (id) => {
 
     try {
         
-        let allResponses = await Reviews.findAll({ where: { active: true, parent_id: id } });
+        let allResponses = await Reviews.findAll({ 
+            where: { active: true, parent_id: id },
+            attributes: { exclude: ['parent_id','rating','approved','active','shop_id','post_id', 'user_id']  },
+            include: { model: Users,
+                attributes: { exclude: ['id_user','password','verified','active','admin','media_id']  }
+            } 
+        });
         return allResponses;
         
     } catch (error) {
@@ -71,7 +77,16 @@ const getShopReviews = async (id) => {
             } 
         });
 
-        return allApprovedReviews;
+        let allReviewsThread = [];
+
+        if(allApprovedReviews.length){
+           for(let review of allApprovedReviews){
+               let children = await getReviewChildren(review.review_id);
+               allReviewsThread.push({ ...review.dataValues, respuestas: children });
+           }
+        }
+
+        return allReviewsThread;
         
     } catch (error) {
         return { error: error.message }
@@ -152,6 +167,38 @@ const addReview = async (review) => {
 
 }
 
+
+// Añadir un comment al Review 
+const addCommentReview = async (review) => {
+
+    try {
+
+        const { user_id, parent_id, description, approved } = review; 
+
+        console.log(review);
+        if( !user_id || !description || !parent_id ){
+            throw new Error('Datos incompletos.');
+        }
+
+        if(!approved) approved = false;
+
+        let obj = {
+            user_id,
+            parent_id,
+            description,
+            approved,
+            rating: 0
+        }
+
+        let result = await Reviews.create(obj);
+        return { success: true, result }
+
+    } catch (error) {
+        return { error: error.message }
+    }
+
+}
+
 // Aprovar el review por id
 const approveReview = async (id, value) => {
 
@@ -183,6 +230,7 @@ module.exports = {
     getReview,
     deleteReview,
     addReview,
+    addCommentReview,
     approveReview
 }
 
