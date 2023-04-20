@@ -1,9 +1,9 @@
 import axios from "axios";
-import { getAllReviews, addBackendError } from "./reviewsSlice";
+import { getAllApprovedReviews, addBackendError } from "./reviewsSlice";
 
-export const getReviews = (adminId) => (dispatch) => {
-    axios(`http://localhost:3001/reviews/${adminId}`)
-    .then(response => response.data.filter(review => review.approved))
-    .then(reviews => dispatch(getAllReviews(reviews)))
-    .catch(err => dispatch(addBackendError(err.message)))
+export const getAllApprovedReviewsByShopId = (shopId) => (dispatch) => {
+    axios(`http://localhost:3001/reviews/approved/${shopId}`)
+    .then(response => response.data)
+    .then(approvedReviews => dispatch(getAllApprovedReviews(approvedReviews)))
+    .catch(err => dispatch(addBackendError(err.message)));
 };
