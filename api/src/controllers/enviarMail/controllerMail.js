@@ -2,7 +2,7 @@ require('dotenv').config()
 const { EMAIL_PASSWORD,EMAIL,EMAIL_HOST } = process.env
 
 const nodeMailer = require('nodemailer');
-
+console.log(EMAIL_PASSWORD,EMAIL,EMAIL_HOST)
 /*crea el objeto trasportador usando createTransport 
 y le pasamos un objeto con las opciones de configuracion*/
 const transporter = nodeMailer.createTransport({
