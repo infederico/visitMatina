@@ -3,8 +3,9 @@ const { Post } = require("../../db");
 const getAllPosts = async () => {
     try {
         const allPosts = await Post.findAll();
-        if (allPosts.length > 0) {
-            return allPosts;
+        const filteredPosts = allPosts.filter(post => post.active === true);
+        if (filteredPosts.length > 0) {
+            return filteredPosts;
         } else {
             throw new Error("Aun no hay posts");
         }
@@ -14,9 +15,9 @@ const getAllPosts = async () => {
     }
 };
 
-const getOnePost = async (id) => {
+const getOnePost = async (id_post) => {
     try {
-        const onePost = await Post.findByPk(id);
+        const onePost = await Post.findByPk(id_post);
         if (onePost) {
             return onePost;
         } else {
@@ -52,25 +53,25 @@ const postPost =  async (post) => {
 
 const putOnePost =  async (post) => {
     try {
-        const {id, title, summary, content, date, active} = post;
-        const postId = await Post.findByPk(id);
+        const {id_post, title, summary, content, date, active} = post;
+        const postId = await Post.findByPk(id_post);
         if (!postId){
             throw new Error ("No se encontro el post")
         }
         if (title) {
-            await Post.update({title}, {where: {id_post: id}})
+            await Post.update({title}, {where: {id_post: id_post}})
         }
         if (summary) {
-            await Post.update({summary}, {where: {id_post: id}})
+            await Post.update({summary}, {where: {id_post: id_post}})
         }
         if (content) {
-            await Post.update({content}, {where: {id_post: id}})
+            await Post.update({content}, {where: {id_post: id_post}})
         }
         if (date) {
-            await Post.update({date}, {where: {id_post: id}})
+            await Post.update({date}, {where: {id_post: id_post}})
         }
         if (active) {
-            await Post.update({active}, {where: {id_post: id}})
+            await Post.update({active}, {where: {id_post: id_post}})
         }
         return "Post actualizado"
     } catch (error) {
@@ -78,11 +79,11 @@ const putOnePost =  async (post) => {
     }
 }
 
-const delOnePost = async (id) => {
+const delOnePost = async (id_post) => {
     try {
-        const delOnePost = await Post.findByPk(id);
+        const delOnePost = await Post.findByPk(id_post);
         if (delOnePost) {
-            await Post.update({active: false},{ where: { id_post: id } })
+            await Post.update({active: false},{ where: { id_post: id_post } })
             return "Post eliminado";
         } else {
             throw new Error("Post no existe");
