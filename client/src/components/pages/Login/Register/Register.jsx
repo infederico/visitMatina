@@ -1,17 +1,26 @@
 import { useState } from 'react'
 import ValidationRegister from '../Validation/validationRegister'
+import { addUser } from '../../../../redux/userActions'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [userData, setUserData] = useState({
     name: '',
     email: '',
+    confirmEmail: '',
     password: '',
+    confirmPassword: '',
   })
 
   const [errors, setErrors] = useState({
     name: '',
     email: '',
+    confirmEmail: '',
     password: '',
+    confirmPassword: '',
   })
 
   const handleInputChange = (event) => {
@@ -27,11 +36,15 @@ const Register = () => {
 
   const handleClick = () => {
     if (Object.keys(errors).length === 0) {
+      dispatch(addUser(userData))
       alert('Registro exitoso')
+      navigate('/login')
       setUserData({
         name: '',
         email: '',
+        confirmEmail: '',
         password: '',
+        confirmPassword: '',
       })
     }
   }
@@ -67,6 +80,21 @@ const Register = () => {
         />
         {errors.email ? errors.email : null}
         <br />
+        <div className='mb-3'>
+          <label htmlFor='exampleFormControlInput1' className='form-label'>
+            Confirma Email
+          </label>
+          <input
+            type='email'
+            className='form-control'
+            id='exampleFormControlInput1'
+            placeholder='name@example.com'
+            name='confirmEmail'
+            value={userData.confirmEmail}
+            onChange={handleInputChange}
+          />
+          {errors.confirmEmail ? errors.confirmEmail : null}
+        </div>
         <br />
         <label>Contrasena</label>
         <input
@@ -77,6 +105,14 @@ const Register = () => {
         />
         {errors.password ? errors.password : null}
         <br />
+        <label>Confirma contrasena</label>
+        <input
+          name='confirmPassword'
+          type='password'
+          value={userData.confirmPassword}
+          onChange={handleInputChange}
+        />
+        {errors.confirmPassword ? errors.confirmPassword : null}
         <br />
         <button onClick={handleClick}>Registrarme</button>
       </div>

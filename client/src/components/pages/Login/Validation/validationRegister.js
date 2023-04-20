@@ -13,6 +13,12 @@ const ValidationRegister = (userData) => {
     errors.password =
       'La contrasena debe contener al menos 8 caracteres de longitud, 1 mayuscula 1 minuscula y 1 numero'
   }
+  if (userData.email !== userData.confirmEmail) {
+    errors.confirmEmail = 'El email no coincide'
+  }
+  if (userData.password !== userData.confirmPassword) {
+    errors.confirmPassword = 'La contrasena no coincide'
+  }
   return errors
 }
 
