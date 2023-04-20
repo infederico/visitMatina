@@ -15,6 +15,7 @@ import NotFound from './components/pages/NotFound/NotFound'
 import ArtesaniasMaryLuna from './components/pages/AventurasDelCaribe/ArtesaniasMarYLuna/ArtesaniasMarYLuna'
 import { Routes, Route } from 'react-router-dom'
 import Register from './components/pages/Login/Register/Register'
+import Admin from './components/pages/Admin/Admin'
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path='/contacto' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/admin' element={<Admin />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Layout>
