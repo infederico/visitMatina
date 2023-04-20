@@ -85,9 +85,9 @@ const {
  */
 router.get('/', async (req, res) => {
   try {
-    let { name } = req.query
-    if (name) {
-      let userByName = await getUserByName(name)
+    let { email } = req.query
+    if (email) {
+      let userByName = await getUserByName(email)
       res.status(200).send(userByName)
     } else {
       let gellAllUsers = await getAllUsers()
@@ -225,11 +225,11 @@ router.get('/:id', async (req, res) => {
  *                   description: Mensaje de error descriptivo.
  *                   example: Usuario con ID ${id} no encontrado.
  */
-router.put('/:id', async (req, res) => {
+router.put('/:id_user', async (req, res) => {
   try {
-    let { id } = req.params
-    let { name, email, password } = req.body
-    await updateUser(id, name, email, password)
+    let { id_user } = req.params
+    let { name, email, password, admin } = req.body
+    await updateUser(id_user, name, email, password, admin)
     res.status(200).send('User updated successfully')
   } catch (error) {
     res.status(404).json({ error: error.message })

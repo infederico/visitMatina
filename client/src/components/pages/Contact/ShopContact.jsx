@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import ValidationContact from '../Login/Validation/validationContact'
 import { useDispatch } from 'react-redux'
-import { PostContact} from '../../../redux/contactActions' 
+import { PostContact } from '../../../redux/contactActions'
 
 const ShopContact = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const [userData, setUserData] = useState({
     name: '',
     correoxres: '',
@@ -31,8 +31,8 @@ const ShopContact = () => {
   const handleClick = () => {
     if (Object.keys(errors).length === 0) {
       alert('consulta enviada')
-       dispatch(PostContact(userData)) 
-      console.log({userData})
+      dispatch(PostContact(userData))
+      console.log({ userData })
       setUserData({
         name: '',
         correoxres: '',
