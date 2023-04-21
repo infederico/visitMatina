@@ -21,6 +21,7 @@ const DetailBlog = () => {
         title={postDetail.title}
         summary={postDetail.summary}
         content={postDetail.content}
+        image={postDetail.image}
         date={postDetail.date}
       />
     </div>
