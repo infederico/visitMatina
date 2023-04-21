@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAllPosts, getPostDetail, postPost, upDtPost, delPost} from "./postSlice";
+import { getAllPosts, getPostDetail, postPost, upDtPost, delPost, currPage} from "./postSlice";
 
 export const getPosts = () => async (dispatch) => {
   try {
@@ -45,3 +45,7 @@ export const deletePost = (id) => async (dispatch) => {
     window.alert(error.posts.data)
   }
 };
+
+export const cPage = (value) => {
+  return (currPage(value));
+}

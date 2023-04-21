@@ -1,3 +1,4 @@
+const {uptloadCl}= require("../../helpers/CloudinaryUpload");
 const { Post } = require("../../db");
 
 const getAllPosts = async () => {
@@ -31,7 +32,8 @@ const getOnePost = async (id_post) => {
 
 const postPost =  async (post) => {
     try {
-        const {title, summary, content, date, active} = post;
+        const {title, summary, content, image, date, active} = post;
+        const cloudImg = await uptloadCl(image);
         if (!title || !summary || !content ) {
             throw new Error('Faltan datos');
         }
@@ -39,12 +41,13 @@ const postPost =  async (post) => {
             title: title,
             summary: summary,
             content: content,
+            image: cloudImg,
             date:date,
             active: active
         }
         const postAdd = await Post.create(postObj);
 
-        return postAdd;
+        return "Post creado";
 
     } catch (error) {
         return {error: error.message}

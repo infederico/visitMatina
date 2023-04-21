@@ -4,7 +4,8 @@ const postSlice = createSlice({
   name: "post",
   initialState: {
     allPosts: [],
-    postDetail: {}
+    postDetail: {},
+    current:0
   },
   reducers: {
     getAllPosts: (state, action) => {
@@ -22,8 +23,11 @@ const postSlice = createSlice({
     delPost: (state, action) => {
       return {...state}
     },
+    currPage: (state, action) => {
+      state.current = action.payload;
+    },
   },
 });
 
-export const { getAllPosts, getPostDetail, postPost, upDtPost, delPost } = postSlice.actions;
+export const { getAllPosts, getPostDetail, postPost, upDtPost, delPost, currPage } = postSlice.actions;
 export default postSlice.reducer;
