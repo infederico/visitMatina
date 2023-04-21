@@ -35,7 +35,7 @@ const getReviewChildren = async (id) => {
         
         let allResponses = await Reviews.findAll({ 
             where: { active: true, parent_id: id, approved: true },
-            attributes: { exclude: ['parent_id','rating','approved','active','shop_id','post_id', 'user_id']  },
+            attributes: { exclude: ['parent_id','rating','active','shop_id','post_id', 'user_id']  },
             include: { model: Users,
                 attributes: { exclude: ['id_user','password','verified','active','admin','media_id']  }
             } 
