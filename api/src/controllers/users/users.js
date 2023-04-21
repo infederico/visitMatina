@@ -1,17 +1,40 @@
 const { Users } = require('../../db')
 const bcryptjs = require('bcryptjs')
 
-const getUserByName = async (email) => {
+const getUserByName = async (email, password) => {
+  // try {
   try {
-    let user = await Users.findOne({ where: { email } })
-    if (email) {
-      return user
+    const hash = await Users.findOne({
+      where: { email },
+      attributes: ['password'],
+    })
+    if (hash) {
+      let compare = bcryptjs.compare(password, hash.dataValues.password)
+      if (compare) {
+        console.log('Contraseña válida')
+        let user = await Users.findOne({ where: { email } })
+        if (user) {
+          return user
+        }
+      } else {
+        throw new Error('Contraseña inválida')
+      }
     } else {
-      throw new Error(`User with name ${email} was not found`)
+      throw new Error('Email no registrado')
     }
   } catch (error) {
-    throw new Error(`Error getting user by name: ${error.message}`)
+    throw new Error(error.message)
   }
+  // if (hash) {
+  //   } else {
+
+  //   }
+  //   } else {
+  //     throw new Error(` ${email} was not found`)
+  //   }
+  // } catch (error) {
+  //   throw new Error(`Error getting user by name: ${error.message}`)
+  // }
 }
 
 const getAllUsers = async () => {
@@ -60,15 +83,28 @@ const updateUser = async (id_user, name, email, password, admin) => {
     throw new Error(`Error trying to update ${error.message}`)
   }
 }
-const createUser = async (name, email, password) => {
+const createUser = async (name, email, password, picture) => {
   try {
-    let hash = await bcryptjs.hash(password, 8)
-    let newUser = await Users.create({
-      name,
-      email,
-      password: hash,
-    })
-    return newUser
+    if (password) {
+      let hash = await bcryptjs.hash(password, 8)
+      let newUser = await Users.create({
+        name,
+        email,
+        password: hash,
+      })
+      return newUser
+    } else {
+      let newUser = await Users.findOrCreate({
+        where: { email },
+        defaults: {
+          name,
+          email,
+          image: picture,
+          gUser: true,
+        },
+      })
+      return newUser
+    }
   } catch (error) {
     throw new Error(`Error trying to create user ${error.message}`)
   }

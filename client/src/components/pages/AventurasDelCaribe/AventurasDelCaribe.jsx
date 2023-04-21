@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
 
-import CardShop from '../../common/shopsDos/cardShop/CardShop'
-import CardActivities from '../../common/CardActivities/CardActivities'
-import Reviews from '../../common/Reviews/Reviews'
-import Redes from '../../common/redesSociales/redes/Redes'
+import { getShopId } from '../../../redux/shopActions';
+import { resetShopId } from '../../../redux/shopSlice';
+
+import CardShop from '../../common/shopsDos/cardShop/CardShop';
+import CardActivities from '../../common/CardActivities/CardActivities';
+import Reviews from '../../common/Reviews/Reviews';
+import Redes from '../../common/redesSociales/redes/Redes';
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
 import { arrayRedes } from './arrayRedes'
@@ -17,9 +21,30 @@ import ShopContact from '../Contact/ShopContact'
 
 export default function AventurasDelCaribe() {
 
-  const shopId = 4;
+  // const shops = useSelector(state => state.shops.shops);
+  const shopId = useSelector(state => state.shops.shopId);
+
+  // const [ shopId, setShopId ] = useState(0);
 
   const [aventuras, setAventuras] = useState([])
+
+  // hooks
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect( () => {
+    dispatch(getShopId(location.pathname));
+    return () => {
+      dispatch(resetShopId(0));
+    }
+  }, []);
+
+  // useEffect( () => {
+  //   dispatch(getShops());
+  //   const shopFiltered = shops.filter(shop => shop.path === location.pathname);
+  //   if (shopFiltered.at(0)) setShopId(shopFiltered[0]['id_shop']);
+  // }, []);
+
   useEffect(() => {
     setAventuras(require('./mock_aventuras.json').response)
   }, [])
@@ -61,9 +86,17 @@ export default function AventurasDelCaribe() {
                 })
             }
             </div>
-            
 
-            <Reviews shopId={shopId} />   
+            <section>
+                <div className='container'>
+                    <div className={style.title}>
+                        <h3>Nuestros clientes</h3>
+                        <span>conoce la opinión de nuestros clientes</span>
+                    </div>
+                </div>
+            </section>
+
+            { shopId && <Reviews shopId={shopId}/> }
             
             <section className={style.Cajaredes}>
                 {/* <Redes socialmedia={arrayRedes}/> */}
