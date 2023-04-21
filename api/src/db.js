@@ -140,7 +140,7 @@ Media.hasMany(Shop, {
   foreignKey: 'media_id',
 })
 
-Media.hasMany(Post,{ 
+Media.hasMany(Post, {
   foreignKey: 'media_id',
 })
 
