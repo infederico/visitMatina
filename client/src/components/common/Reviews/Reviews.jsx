@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, NavLink } from 'react-router-dom';
 
-import { getReviews } from '../../../redux/reviewsActions';
+import { getAllApprovedReviewsByShopId } from '../../../redux/reviewsActions';
 import { setShowCommentPanel , setSelectedReview } from '../../../redux/reviewsSlice';
 
 import Review from './Review/Review'; // componente Review (card)
@@ -25,6 +25,7 @@ const Reviews = (props) => {
     const reviews = useSelector(state => state.reviews.value);
     const showCommentPanel = useSelector(state => state.reviews.showCommentPanel);
     const selectedReview = useSelector(state => state.reviews.selectedReview);
+   
 
     // local states
     const [ overallRatingNumber, setOverallRatingNumber ] = useState(0);
@@ -38,10 +39,9 @@ const Reviews = (props) => {
     
     // hooks
     const dispatch = useDispatch();
-  
+
     useEffect( () => { // al montarse pide todas las reviews de este miembro en particular - identifica que adminId es pasado por props
-        const shopId = props.adminId;
-        dispatch(getReviews(shopId));
+        dispatch(getAllApprovedReviewsByShopId(props.shopId));
     // eslint-disable-next-line
     }, []);
     
@@ -104,13 +104,14 @@ const Reviews = (props) => {
     }, [reviews, filterSelectedOption]);
 
     // LOGICA PARA ORDENAR
-    // functions with each sorting option logic - mapped to an object for cleaner code
+    //functions with each sorting option logic - mapped to an object for cleaner code
     const sortFunctions = {
         'rating-asc': (a, b) => a.rating - b.rating,
         'rating-des': (a, b) => b.rating - a.rating,
         'date-asc': (a, b) => new Date(a.date.split('/').reverse().join('-')) - new Date(b.date.split('/').reverse().join('-')),
         'date-des': (a, b) => new Date(b.date.split('/').reverse().join('-')) - new Date(a.date.split('/').reverse().join('-')),
     };
+    
     useEffect( () => { 
         let auxSortedReviews = sortSelectedOption ? filteredReviews.slice().sort(sortFunctions[sortSelectedOption]) : filteredReviews;
         
@@ -162,16 +163,17 @@ const Reviews = (props) => {
         }
     };
 
+    // helpers
+    function formatDate (dateString) {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear().toString().slice(-2);
+        return `${day}/${month}/${year}`;
+    };
+
     return (
         <>
-            <section>
-                <div className='container'>
-                    <div className={styles.title}>
-                        <h3>Nuestros clientes</h3>
-                        <span>conoce la opinión de nuestros clientes</span>
-                    </div>
-                </div>
-            </section>
             <br />
             <section>
                 <div className='container'>
@@ -198,7 +200,6 @@ const Reviews = (props) => {
                             overallRatingNumber === 5 && <img src={stars5} alt='5stars' />
                         }
                     </span>
-                    {/* <span style={{fontSize:"small", marginLeft:"-40px", zIndex:"1"}}>{`${overallRatingNumber}`}</span> */}
                 </div>
             </section>
             <br />
@@ -232,10 +233,10 @@ const Reviews = (props) => {
                         {
                             paginatedReviews?.map((review) => {
                                 return <Review
-                                    key={review.reviewId}
+                                    key={review.review_id}
                                     reviewId={review.reviewId}
-                                    name={review.name}
-                                    date={review.date}
+                                    name={review.user.name}
+                                    date={formatDate(review.createdAt)}
                                     rating={review.rating}
                                     description={review.description}
                                 />
@@ -266,7 +267,7 @@ const Reviews = (props) => {
 
             <section>
                 <div className='container'>
-                    <ReviewForm />
+                    <ReviewForm shopId={props.shopId} />
                 </div>
             </section>
         </>

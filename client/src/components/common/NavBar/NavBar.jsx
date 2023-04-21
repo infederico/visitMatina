@@ -78,6 +78,7 @@ export default function NavBar() {
                     <NavLink className="nav-link" to="/blog">Blog</NavLink>
                     <NavLink className="nav-link" to="/contacto">Contacto</NavLink>
                     <NavLink className="nav-link" to="/login">Ingresar</NavLink>
+                    <NavLink className="nav-link" to="/admin">Admin</NavLink>
                     {/*
                 */}
                 </ul>

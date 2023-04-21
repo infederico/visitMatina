@@ -9,7 +9,7 @@ const router = Router();
  *   get:
  *     tags:
  *       - Post
- *     summary: Retorna todos los posts.
+ *     summary: Retorna todos los posts filtrados con la propiedad active en true.
  *     description: Ruta para retornar todos los posts.
  *     responses:
  *       200:
@@ -348,9 +348,9 @@ router.put("/", async (req, res) => {
  *                   example: Post no existe
  */
 router.delete("/", async (req, res) => {
-    const {id} = req.query;
+    const {id_post} = req.query;
     try {
-        const postDel = await delOnePost(id);
+        const postDel = await delOnePost(id_post);
         if (postDel.error){
             throw new Error(postDel.error)
         }

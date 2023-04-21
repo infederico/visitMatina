@@ -60,7 +60,8 @@ const getShopById = async (req, res) => {
 const createShop = async (req, res) => {
   const { name, summary,path,email,twitter,facebook,instagram,youtube,whatsapp,location, active } = req.body;
   console.log(req.body)
-  if (!name ||!whatsapp || !summary || !path || !email || !twitter || !facebook || !instagram || !youtube || !location || !active ) {
+  //if (!name ||!whatsapp || !summary || !path || !email || !twitter || !facebook || !instagram || !youtube || !location || !active ) {
+  if (!name || !summary || !path ) {
     return res.status(400).json({ error: 'Faltan datos' });
   }
   try {
@@ -69,12 +70,12 @@ const createShop = async (req, res) => {
       summary,
       path,
       email,
-      twitter,
+      /*twitter,
       facebook,
       instagram,
       youtube,
       whatsapp,
-      location,
+      location,*/
       active,
     });
     res.status(200).json({ message: 'La tienda se ha creado con éxito', shop: newShop });
