@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { postReview } from '../../../../redux/reviewsActions';
-import { addBackendError, cleanSuccessMessage } from '../../../../redux/reviewsSlice';
+import { postReview, getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
+import { setBackendError, cleanSuccessMessageReview } from '../../../../redux/reviewsSlice';
 
 import validation from './validation';
 
@@ -16,7 +16,7 @@ const ReviewForm = (props) => {
 
 
     // global states
-    const successMessage = useSelector(state => state.reviews.successMessage);
+    const successMessageReview = useSelector(state => state.reviews.successMessageReview);
     const backendError = useSelector(state => state.reviews.backendError);
     //const loggedUser = useSelector(state => state.user); // aca tomo del estado global la data del user que esta loggeado
     const loggedUser = {
@@ -44,6 +44,7 @@ const ReviewForm = (props) => {
     });
     const [ submitted, setSubmitted ] = useState(false);
     const [ errors, setErrors ] = useState({});
+    const [ incompleteFormAlert, setIncompleteFormAlert ] = useState(false);
 
     // hooks
     const dispatch = useDispatch();
@@ -64,6 +65,15 @@ const ReviewForm = (props) => {
             break;
         }
     }, [newReview]);
+    
+    useEffect( () => {
+        if (newReview.rating !== 0 && errors.rating1 ) {
+            setErrors({
+                ...errors,
+                rating1: false
+            });
+        }
+    }, [newReview.rating]);
 
     // handlers
     const handleInputChange = (event) => {
@@ -71,39 +81,55 @@ const ReviewForm = (props) => {
         if (name === 'rating') {
             setNewReview({
                 ...newReview,
-                [name]: parseFloat(value)
+                rating: parseFloat(value)
             });
         }
         if (name === 'description') {
             setNewReview({
                 ...newReview,
-                [name]: value
+                description: value
             });
         }
         if (submitted) {
-            let aux = validation(newReview);
-            setErrors(aux); 
+            let err = validation({
+                ...newReview,
+                [name]: value
+            });
+            setErrors(err); 
         };
+        if (successMessageReview) {
+            dispatch(cleanSuccessMessageReview());
+        }
+        if (backendError) {
+            dispatch(setBackendError(false));
+        }
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         //set submitted state true to allow errors rendering after first submit attemp
         setSubmitted(true);
-        dispatch(cleanSuccessMessage);
+        dispatch(cleanSuccessMessageReview());
+        dispatch(setBackendError(false));
+        setIncompleteFormAlert(false);
+
         // pass to validation f()  - errors will be logged on errors local state
-        let aux = validation(newReview);
-        setErrors(aux); 
-        if ((Object.keys(aux).length) !== 0) {
-            alert('No se ha podido postear su reseña, por favor siga las instrucciones para corregir los errores');
+        let err = validation(newReview);
+        setErrors(err); 
+
+        if ((Object.keys(err).length) !== 0) {
+            setIncompleteFormAlert(true);
             return;
         }
+
         // if there is no errors on the process of validation
-        if (Object.keys(aux).length === 0) {
+        if (Object.keys(err).length === 0) {
             dispatch(postReview(newReview));
+            // vuelve a pedir todas las reviews para que actaulice y el user vea el review que acaba de postear
+            dispatch(getAllApprovedReviewsByShopId(props.shopId));
             //clean local state after sending all data
             setNewReview({
-                userId: loggedUser.id_user,
+                user_id: loggedUser.id_user,
                 rating: 0,
                 description: '',
                 approved: true, // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
@@ -120,24 +146,10 @@ const ReviewForm = (props) => {
     return (
         <>
             <div>
-                <div className="card-title fw-bold">Deja tu reseña...</div>
-                
+                <div className="card-title fw-bold">Déjanos tu reseña...</div>
+
                 <form onSubmit={handleSubmit}>
-
                     <div>
-                        {/* <div className="mb-3">
-                            <input className="form-control" name='name' type="text" placeholder="Nombre" aria-label="default input example" onChange={handleInputChange} value={newReview.name} />
-                        </div>  
-                            {errors.name1 && <span className={styles.errors} >{errors.name1}</span>}
-                            {errors.name2 && <span className={styles.errors} >{errors.name2}</span>}
-                            {errors.name3 && <span className={styles.errors} >{errors.name3}</span>}
-
-                        <div className="mb-3">  
-                            <input type='text' name='email' className="form-control" placeholder="Email - opcional" onChange={handleInputChange} value={newReview.email} />
-                        </div>
-                            {errors.email1 && <span className={styles.errors} >{errors.email1}</span>}
-                            {errors.email2 && <span className={styles.errors} >{errors.email2}</span>} */}  
-
                         <div className={styles.rate}>
                             <input type="radio" id="star5" name="rating" value='5' onChange={handleInputChange} checked={checkedStars.five} />
                             <label htmlFor="star5"></label>
@@ -150,13 +162,25 @@ const ReviewForm = (props) => {
                             <input type="radio" id="star1" name="rating" value='1' onChange={handleInputChange} checked={checkedStars.one} />
                             <label htmlFor="star1"></label>
                         </div>
+                        <br />
+                        <br />
                         {errors.rating1 && <span className={styles.errors} >{errors.rating1}</span>}
+                        <br />
 
                         <div className="mb-3">
-                            <textarea type="textarea" name="description" className="form-control" rows="4" placeholder="Cuéntanos acerca de tu experiencia con nosotros..." onChange={handleInputChange}  value={newReview.description}></textarea>
+                            <textarea
+                                type="textarea" 
+                                name="description"
+                                className="form-control"
+                                rows="3"
+                                placeholder="Cuéntanos acerca de tu experiencia con nosotros..."
+                                onChange={handleInputChange}
+                                value={newReview.description}>
+                            </textarea>
                         </div>
-                            {errors.description1 && <span className={styles.errors} >{errors.description1}</span>}
-                            {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
+
+                        {errors.description1 && <span className={styles.errors} >{errors.description1}</span>}
+                        {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
 
                     </div>
                     
@@ -165,8 +189,9 @@ const ReviewForm = (props) => {
                         <button className="btn btn-primary" type="submit"><span>Enviar</span></button>
                     </div>
                     <br />
-                    {successMessage && <span className={styles.success} >Tu reseña se ha registrado con éxito</span>}
-                    {backendError && <span className={styles.success} >{`No se ha registrado tu reseña. Server Error ${backendError}`}</span>}
+                    { incompleteFormAlert && <div class="alert alert-warning" role="alert">No se ha podido postear tu reseña, por favor sigue las indicaciones</div> }
+                    { successMessageReview && <div class="alert alert-success" role="alert">Tu reseña se ha registrado con éxito</div> }
+                    { backendError && <div class="alert alert-warning" role="alert">{`No se ha registrado tu reseña. Server Error ${backendError}`}</div> }
                     <br />
                 </form>
             </div>

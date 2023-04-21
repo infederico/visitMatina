@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { setShowCommentPanel, setSelectedReview } from '../../../../redux/reviewsSlice';
-//import {setLanguage} from '../../../../redux/languageSlice';
+import { setShowCommentPanel, setSelectedReview, cleanSuccessMessageComment } from '../../../../redux/reviewsSlice';
 
 import stars0 from '../../../../assets/images/review-stars/0stars.png';
 import stars1 from '../../../../assets/images/review-stars/1stars.png';
@@ -13,7 +12,6 @@ import stars4 from '../../../../assets/images/review-stars/4stars.png';
 import stars5 from '../../../../assets/images/review-stars/5stars.png';
 import iconWriteComment from '../../../../assets/images/comments-icons/write-comment.png';
 import iconReadComments from '../../../../assets/images/comments-icons/read-comments.png';
-
 
 import styles from './Review.module.css';
 
@@ -28,12 +26,12 @@ const Review = (props) => {
     const handleWriteComment = () => {
         dispatch(setShowCommentPanel(true));
         dispatch(setSelectedReview(reviewId));
-        //dispatch(setLanguage('en'));
+        dispatch(cleanSuccessMessageComment());
     };
 
     return (
         <>
-         <div className="col-md-4 mb-4">
+        <div className="col-md-4 mb-4">
             <div className="card" style={{ width: "18rem" }}>
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
