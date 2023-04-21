@@ -1,6 +1,9 @@
 import styles from "./AdminBlog.module.css";
-import { useState } from "react";
+import { getBase64 } from "../../../../assets/helpers/fileTo64";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import validate from "./validate"
+
 import {
   addPost,
   getPostId,
@@ -11,15 +14,15 @@ import {
 const AdminBlog = () => {
   const dispatch = useDispatch();
   const { postDetail } = useSelector((state) => state.post);
-
-  console.log(postDetail);
+  const [errors, setErrors] = useState({});
 
   const [inputs, setInputs] = useState({
     title: "",
     summary: "",
     content: "",
+    image: "",
   });
-
+console.log(inputs);
   const [inputsM, setInputsM] = useState({
     id_post: 0,
     title: "",
@@ -31,8 +34,20 @@ const AdminBlog = () => {
   const [inputsD, setInputsD] = useState({
     id_post: 0,
   });
+  
+  useEffect(() => {
+    if (Object.keys(postDetail).length){
+      setInputsM({
+        ...inputsM,
+        title: postDetail.title,
+        summary: postDetail.summary,
+        content: postDetail.content,
+        active: postDetail.active,
+      });
+    }
+    setErrors(validate(inputs));
 
-  console.log(inputsM);
+  },[postDetail, inputs, ])
 
   const handlerInputs = (event) => {
     setInputs({
@@ -55,7 +70,20 @@ const AdminBlog = () => {
 
   const handlerSubmitCreate = (event) => {
     event.preventDefault();
-    dispatch(addPost(inputs));
+    const numErrors = Object.keys(errors).length;
+    if (numErrors === 0){
+      dispatch(addPost(inputs));
+      window.alert("Post creado con exito");
+      setErrors({});
+      setInputs({
+        title: "",
+        summary: "",
+        content: "",
+        image: "",
+      })
+    } else {
+      window.alert("Completa todos los campos");
+    }
   };
 
   const handlerSubmitModify = (event) => {
@@ -68,18 +96,19 @@ const AdminBlog = () => {
     dispatch(deletePost(inputsD.id_post));
   };
 
-  const handlerSearch = (event) => {
+  const handlerSearch = async (event) => {
     event.preventDefault();
     dispatch(getPostId(inputsM.id_post));
-    console.log(postDetail);
+  };
 
-    setInputsM({
-      ...inputsM,
-      title: postDetail?.title,
-      summary: postDetail?.summary,
-      content: postDetail?.content,
-      active: postDetail?.active,
-    });
+  const handlerFile = async (event) => {
+    if (event.target.files[0]){
+      let res = await getBase64(event.target.files[0]);
+      setInputs({
+        ...inputs,
+        image: res,
+      });
+    }
   };
 
   return (
@@ -137,6 +166,7 @@ const AdminBlog = () => {
                     onChange={handlerInputs}
                     placeholder="Ingresa el titulo del post"
                   />
+                   {errors.title && <p>{errors.title}</p>}
                 </div>
               </div>
               <div className="row mb-3">
@@ -152,6 +182,7 @@ const AdminBlog = () => {
                     onChange={handlerInputs}
                     placeholder="Breve descripción del post"
                   />
+                  {errors.summary && <p>{errors.summary}</p>}
                 </div>
               </div>
               <div className="row mb-3">
@@ -167,7 +198,24 @@ const AdminBlog = () => {
                     onChange={handlerInputs}
                     placeholder="Texto del post"
                   ></textarea>
+                  {errors.content && <p>{errors.content}</p>}
                 </div>
+                
+              </div>
+              <div className="row mb-3">
+                <label for="inputPassword3" className="col-sm-2 col-form-label">
+                  Imagen
+                </label>
+                <div className="col-sm-10">
+                <input
+                    type="file"
+                    className="form-control"
+                    id="inputPassword3"
+                    name="image"
+                    onChange={handlerFile}
+                  />
+                </div>
+                
               </div>
 
               <button type="submit" className="btn btn-primary">
