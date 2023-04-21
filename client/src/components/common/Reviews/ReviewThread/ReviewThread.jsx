@@ -137,7 +137,7 @@ const ReviewThread = () => {
             <br />
             {
                 commentsToRender.map( (comment) => {
-                    //if (comment.approved) {
+                    if (comment.approved) {
                         return <ReviewComment
                             key={comment.review_id}
                             commentId={comment.review_id}
@@ -145,7 +145,7 @@ const ReviewThread = () => {
                             email={comment.user.email}
                             comment={comment.description}
                         />
-                   // }
+                    };
                 })
             }
             <br />

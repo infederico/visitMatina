@@ -7,6 +7,7 @@ import { setBackendError, cleanSuccessMessageReview } from '../../../../redux/re
 import validation from './validation';
 
 import styles from './ReviewForm.module.css';
+import useLocalStorage from '../../../localStorage/useLocalStorage';
 
 const ReviewForm = (props) => {
 
@@ -16,9 +17,8 @@ const ReviewForm = (props) => {
 
 
     // global states
-    const successMessageReview = useSelector(state => state.reviews.successMessageReview);
-    const backendError = useSelector(state => state.reviews.backendError);
     //const loggedUser = useSelector(state => state.user); // aca tomo del estado global la data del user que esta loggeado
+
     const loggedUser = {
         id_user: 1,
         image: '',
@@ -26,7 +26,9 @@ const ReviewForm = (props) => {
         email: 'inf@gmail.com',
         password: 'ash55'
     };
-
+    const successMessageReview = useSelector(state => state.reviews.successMessageReview);
+    const backendError = useSelector(state => state.reviews.backendError);
+    
     // local states
     const [ newReview, setNewReview ] = useState({
         user_id: loggedUser.id_user,
@@ -35,6 +37,12 @@ const ReviewForm = (props) => {
         approved: true, // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
         shop_id: props.shopId
     });
+
+
+    const [ reviewLocalStorage, setReviewLocalStorage ] = useLocalStorage('reviewLocalStorage', '');
+
+
+
     const [ checkedStars, setCheckedStars ] = useState({
         one: false,
         two: false,
@@ -48,6 +56,15 @@ const ReviewForm = (props) => {
 
     // hooks
     const dispatch = useDispatch();
+
+    useEffect( () => {
+            setNewReview((prevState) => ({
+              ...prevState,
+              rating: reviewLocalStorage.rating,
+              description: reviewLocalStorage.description,
+            }))
+            
+    }, []);
 
     useEffect( () => {
         switch (newReview.rating) {
@@ -77,19 +94,37 @@ const ReviewForm = (props) => {
 
     // handlers
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        if (name === 'rating') {
-            setNewReview({
-                ...newReview,
-                rating: parseFloat(value)
-            });
+        let  { name, value } = event.target;
+        if (name === "rating") {
+            value = parseFloat(value)
         }
-        if (name === 'description') {
-            setNewReview({
+
+     setNewReview({
                 ...newReview,
-                description: value
+                [name]: value
             });
-        }
+
+        // if (name === 'rating') {
+        //     setNewReview({
+        //         ...newReview,
+        //         rating: parseFloat(value)
+        //     });
+            
+        //     // setReviewDescription({
+        //     //     ...reviewDescription,
+        //     //     rating: parseFloat(value)
+        //     // });
+        // }
+        // if (name === 'description') {
+        //     setNewReview({
+        //         ...newReview,
+        //         description: value
+        //     });
+        //     setReviewDescription({
+        //         ...reviewDescription,
+        //         description: value
+        //     });
+        // }
         if (submitted) {
             let err = validation({
                 ...newReview,
@@ -102,7 +137,8 @@ const ReviewForm = (props) => {
         }
         if (backendError) {
             dispatch(setBackendError(false));
-        }
+        };
+        
     };
 
     const handleSubmit = (event) => {
@@ -167,7 +203,7 @@ const ReviewForm = (props) => {
                         {errors.rating1 && <span className={styles.errors} >{errors.rating1}</span>}
                         <br />
 
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <textarea
                                 type="textarea" 
                                 name="description"
@@ -177,7 +213,8 @@ const ReviewForm = (props) => {
                                 onChange={handleInputChange}
                                 value={newReview.description}>
                             </textarea>
-                        </div>
+                        </div> */}
+                        <input type="text" name="description" onChange={handleInputChange} value={newReview.description} />
 
                         {errors.description1 && <span className={styles.errors} >{errors.description1}</span>}
                         {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
