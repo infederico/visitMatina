@@ -1,3 +1,10 @@
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+
+import { getShops, getShopId } from '../../../redux/shopActions';
+import { resetShopId } from '../../../redux/shopSlice';
+
 import CardProductContainer from '../../common/CardProductContainer/CardProductContainer'
 import Redes from '../../common/redesSociales/redes/Redes'
 import style from './FincaMandira.module.css'
@@ -13,6 +20,32 @@ import { descriptions, name, imagen } from './descriptions'
 import ShopContact from '../Contact/ShopContact'
 
 export default function FincaMandira() {
+
+  const shopId = useSelector(state => state.shops.shopId);
+
+  // const shops = useSelector(state => state.shops.shops);
+
+  // const [ shopId, setShopId ] = useState(0);
+
+  // hooks
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect( () => {
+    dispatch(getShopId(location.pathname));
+    return () => {
+      dispatch(resetShopId(0));
+    }
+  }, []);
+
+  // useEffect( () => {
+  //   dispatch(getShops(location.pathname));
+  // }, []);
+  // useEffect( () => {
+  //   const shopFiltered = shops.filter(shop => shop.path === location.pathname);
+  //   if (shopFiltered.at(0)) setShopId(shopFiltered[0]['id_shop']);
+  // }, [shops]);
+
   return (
     <div className={style.page}>
       <section className={style.titleSection} style={{ backgroundColor: '#ccc' }}>
@@ -24,7 +57,16 @@ export default function FincaMandira() {
       <CardProductContainer />
 
       <section>
-        <Reviews />
+        <div className='container'>
+          <div className={style.title}>
+            <h3>Nuestros clientes</h3>
+            <span>conoce la opinión de nuestros clientes</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        { shopId &&  <Reviews shopId={shopId}/> }
       </section>
 
       <div className={style.contRedes}>

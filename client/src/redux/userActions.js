@@ -4,7 +4,7 @@ import { getUserById, postUser, gUSer } from './userSlice'
 export const getUser = (user) => {
   return async (dispatch) => {
     const users = await axios(
-      `http://localhost:3001/api/users/?email=${user.email}&password=user.password${user.password}`
+      `/users/?email=${user.email}&password=user.password${user.password}`
     )
     return dispatch(getUserById(users.data))
   }
@@ -12,7 +12,7 @@ export const getUser = (user) => {
 
 export const addUser = (user) => {
   return async (dispatch) => {
-    let post = await axios.post('http://localhost:3001/api/users/', user)
+    let post = await axios.post('/users/', user)
     return dispatch(postUser(post))
   }
 }

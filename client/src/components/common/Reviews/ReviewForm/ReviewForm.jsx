@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { postReview } from '../../../../redux/reviewsActions';
-import { cleanSuccessMessage } from '../../../../redux/reviewsSlice';
+import { addBackendError, cleanSuccessMessage } from '../../../../redux/reviewsSlice';
 
 import validation from './validation';
 
 import styles from './ReviewForm.module.css';
 
-const ReviewForm = () => {
+const ReviewForm = (props) => {
 
     //////////////////////////// DESPEUS BORRAR Y PLANTEAR A EDU AGREGAR ESTADO GLOBAL ACCESS
     const access = true;
@@ -17,6 +17,7 @@ const ReviewForm = () => {
 
     // global states
     const successMessage = useSelector(state => state.reviews.successMessage);
+    const backendError = useSelector(state => state.reviews.backendError);
     //const loggedUser = useSelector(state => state.user); // aca tomo del estado global la data del user que esta loggeado
     const loggedUser = {
         id_user: 1,
@@ -28,10 +29,11 @@ const ReviewForm = () => {
 
     // local states
     const [ newReview, setNewReview ] = useState({
-        userId: loggedUser.id_user,
+        user_id: loggedUser.id_user,
         rating: 0,
         description: '',
-        approved: true // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
+        approved: true, // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
+        shop_id: props.shopId
     });
     const [ checkedStars, setCheckedStars ] = useState({
         one: false,
@@ -104,7 +106,8 @@ const ReviewForm = () => {
                 userId: loggedUser.id_user,
                 rating: 0,
                 description: '',
-                approved: true // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
+                approved: true, // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
+                shop_id: props.shopId
             });
             // clean error log local state
             setErrors({});
@@ -163,6 +166,7 @@ const ReviewForm = () => {
                     </div>
                     <br />
                     {successMessage && <span className={styles.success} >Tu reseña se ha registrado con éxito</span>}
+                    {backendError && <span className={styles.success} >{`No se ha registrado tu reseña. Server Error ${backendError}`}</span>}
                     <br />
                 </form>
             </div>
