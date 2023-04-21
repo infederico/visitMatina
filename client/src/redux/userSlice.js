@@ -3,21 +3,38 @@ import { createSlice } from '@reduxjs/toolkit'
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    user: [],
-    admin: false,
+    user: {},
   },
   reducers: {
     getUserById: (state, action) => {
-      if (action.payload.admin === true) {
-        state.admin = true
+      return {
+        ...state,
+        user: {
+          name: action.payload.name,
+          image: action.payload.image,
+          email: action.payload.email,
+          admin: action.payload.admin,
+          access: true,
+        },
       }
-      state.user = action.payload
     },
     postUser: (state, action) => {
-      return { ...state, admin: action.payload.admin }
+      return { ...state }
+    },
+    gUSer: (state, action) => {
+      return {
+        ...state,
+        user: {
+          name: action.payload.name,
+          image: action.payload.image,
+          email: action.payload.email,
+          admin: action.payload.admin,
+          access: true,
+        },
+      }
     },
   },
 })
 
-export const { getUserById, postUser } = userSlice.actions
+export const { getUserById, postUser, gUSer } = userSlice.actions
 export default userSlice.reducer
