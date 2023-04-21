@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import style from "./CardProductContainer.module.css"
 import { getProducts } from "../../../redux/productsActions";
 import { getShops } from '../../../redux/shopActions'
+import styles from './CardProductContainer.module.css'
 
 const CardProductContainer = () => {
     const dispatch = useDispatch()
@@ -47,8 +48,7 @@ const CardProductContainer = () => {
     const filteredProducts = value?.filter(prod => prod.storeid === memberId())
     
     return (
-        <div>
-            <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-6">                
+            <div className={`row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-6 justify-content-center ${styles.cardsContainer}`}>                
                 {filteredProducts?.map(prod =>{ 
                     return(
                         <div className="col">
@@ -63,7 +63,6 @@ const CardProductContainer = () => {
                     )
                 })}
             </div>
-        </div>
     )
 }
 

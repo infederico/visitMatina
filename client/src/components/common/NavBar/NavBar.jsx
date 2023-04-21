@@ -16,7 +16,7 @@ export default function NavBar() {
 
 
   return(
-    <nav className="navbar navbar-expand-lg navbar-light bg-light ">
+    <nav className={`navbar navbar-expand-lg navbar-light ${styles.navBarCustom}`}>
         <div className="container">
             <NavLink className="navbar-brand" to="/">
                 <img src={Logo} alt="Visit_Matina_Logo" className={styles.navlogo} />
@@ -25,8 +25,8 @@ export default function NavBar() {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav ms-auto">
-                    <NavLink className="nav-link" aria-current="page" to="/">Inicio</NavLink>
+                <ul className={`navbar-nav ms-auto ${styles.text}`}>
+                    <NavLink className={`nav-link `} aria-current="page" to="/">Inicio</NavLink>
                     <NavLink className="nav-link" to="/aboutUs">Nosotros</NavLink>
 
                     {/* esta ruta aún no existe */}

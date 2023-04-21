@@ -16,13 +16,15 @@ export default function FincaMandira() {
   return (
     <div className={style.page}>
       <section className={style.titleSection} style={{ backgroundColor: '#ccc' }}>
-        <div className="container">
+        <div>
           <CardShop description={descriptions} name={name} image={imagen} />
         </div>
       </section>
-
-      <CardProductContainer />
-
+      <div className={style.cardProductContainerContainer}>
+      < div className={`container `}>
+          <CardProductContainer />
+        </div>
+      </div>
       <section>
         <Reviews />
       </section>

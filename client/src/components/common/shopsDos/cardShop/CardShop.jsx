@@ -2,20 +2,17 @@ import style from './CardShop.module.css';
 
 const CardShop = ({ name, description, image}) => {
     return (
-      <div>
-        <div className={`${style.card} card mb-3`}>
-        <img className={`${style.foto} card-img-top`} src={image} alt={name} />
-          <div className="card-body">
-            <h5 className={`${style.nombre} card-title`}>{name}</h5>
-            <p className={`${style.descri} card-text`}>{description}</p>
-            <p className="card-text">
-              <small className="text-body-secondary">
-                Last updated 3 mins ago
-              </small>
-            </p>
+      <div >
+        <img className={`${style.foto} ax animate__fadeInLeft`} src={image} alt={name} />
+        <h5 className={`${style.nombre} `}>{name}</h5>
+        <a className={style.svg} href="#si2"><img src="https://icongr.am/fontawesome/angle-down.svg?size=80&amp;color=fff5cc" alt="flecha"/></a>
+        <div className={`${style.card} card pb-3`}>
+          <div  className="card-body" >
+            <p  id="si2" className={`${style.descri} card-text `} >{description}</p>
           </div>
         </div>
         </div>
+        
     );
   };
   
