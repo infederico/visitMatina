@@ -8,13 +8,13 @@ import { getUser, authGoogle } from '../../../redux/userActions'
 const LogIn = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [googleUser, setGoogleUser] = useState({}) // esto lo voy a cambiar a reduxtoolkit para enviarlo al back
+  const [googleUser, setGoogleUser] = useState({})
   const [userData, setUserData] = useState({
     email: '',
     password: '',
   })
   const [rememberButton, setRememberButton] = useState(false)
-  const [remember, setRemember] = useLocalStorage('remember', '')
+  const [otracosa, setRemember] = useLocalStorage('otracosa', '')
 
   const [errors, setErrors] = useState({
     email: '',
@@ -22,8 +22,6 @@ const LogIn = () => {
   })
   const handleCallbackResponse = async (response) => {
     let userObject = jwt_decode(response.credential)
-    // setGoogleUser(userObject)
-    // setGoogleUser({ ...googleUser, googleUser.?gUser: true })
     dispatch(authGoogle(userObject))
     document.getElementById('signInDiv').hidden = true
     navigate('/')
@@ -46,15 +44,15 @@ const LogIn = () => {
     })
     google.accounts.id.prompt()
 
-    if (remember.email) {
+    if (otracosa.email) {
       setUserData((prevState) => ({
         ...prevState,
-        email: remember.email,
-        password: remember.password,
+        email: otracosa.email,
+        password: otracosa.password,
       }))
       setRememberButton(() => true)
     }
-  }, [remember.email])
+  }, [otracosa.email])
 
   const handleInputChange = (event) => {
     event.preventDefault()
