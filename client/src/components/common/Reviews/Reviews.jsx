@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, NavLink } from 'react-router-dom';
 
-import { getShops } from '../../../redux/shopActions';
 import { getAllApprovedReviewsByShopId } from '../../../redux/reviewsActions';
 import { setShowCommentPanel , setSelectedReview } from '../../../redux/reviewsSlice';
 
@@ -26,10 +25,9 @@ const Reviews = (props) => {
     const reviews = useSelector(state => state.reviews.value);
     const showCommentPanel = useSelector(state => state.reviews.showCommentPanel);
     const selectedReview = useSelector(state => state.reviews.selectedReview);
-    const shops = useSelector(state => state.shops.shops)
+   
 
     // local states
-    const [shopId, setShopId] = useState(0);
     const [ overallRatingNumber, setOverallRatingNumber ] = useState(0);
     const [ overallRatingWord, setOverallRatingWord ] = useState('');
     const [ filteredReviews, setFilteredReviews ] = useState([]);
@@ -41,21 +39,11 @@ const Reviews = (props) => {
     
     // hooks
     const dispatch = useDispatch();
-    const location = useLocation();
 
-    // useEffect( () => {
-    //     dispatch(getShops());
-    // }, []);
-    // useEffect(() => {
-    //     let shopFiltered = shops.filter(shop => shop.path === location.pathname);
-    //     setShopId(shopFiltered[0]['id_shop']);
-    //     console.log(shopId);
-    // },[shops])
-    
-    // useEffect( () => { // al montarse pide todas las reviews de este miembro en particular - identifica que adminId es pasado por props
-    //     dispatch(getAllApprovedReviewsByShopId(shopId));
-    // // eslint-disable-next-line
-    // }, [shopId]);
+    useEffect( () => { // al montarse pide todas las reviews de este miembro en particular - identifica que adminId es pasado por props
+        dispatch(getAllApprovedReviewsByShopId(props.shopId));
+    // eslint-disable-next-line
+    }, []);
     
     useEffect( () => { // cuando se cargan la reviews traidas del back seteo los estados locales que dependian de eso
         // primero calculo el rating global con el cociente entre la suma de todos los ratings y el numero de reviews
@@ -116,13 +104,14 @@ const Reviews = (props) => {
     }, [reviews, filterSelectedOption]);
 
     // LOGICA PARA ORDENAR
-    // functions with each sorting option logic - mapped to an object for cleaner code
+    //functions with each sorting option logic - mapped to an object for cleaner code
     const sortFunctions = {
         'rating-asc': (a, b) => a.rating - b.rating,
         'rating-des': (a, b) => b.rating - a.rating,
         'date-asc': (a, b) => new Date(a.date.split('/').reverse().join('-')) - new Date(b.date.split('/').reverse().join('-')),
         'date-des': (a, b) => new Date(b.date.split('/').reverse().join('-')) - new Date(a.date.split('/').reverse().join('-')),
     };
+    
     useEffect( () => { 
         let auxSortedReviews = sortSelectedOption ? filteredReviews.slice().sort(sortFunctions[sortSelectedOption]) : filteredReviews;
         
@@ -174,16 +163,17 @@ const Reviews = (props) => {
         }
     };
 
+    // helpers
+    function formatDate (dateString) {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear().toString().slice(-2);
+        return `${day}/${month}/${year}`;
+    };
+
     return (
         <>
-            <section>
-                <div className='container'>
-                    <div className={styles.title}>
-                        <h3>Nuestros clientes</h3>
-                        <span>conoce la opinión de nuestros clientes</span>
-                    </div>
-                </div>
-            </section>
             <br />
             <section>
                 <div className='container'>
@@ -210,7 +200,6 @@ const Reviews = (props) => {
                             overallRatingNumber === 5 && <img src={stars5} alt='5stars' />
                         }
                     </span>
-                    {/* <span style={{fontSize:"small", marginLeft:"-40px", zIndex:"1"}}>{`${overallRatingNumber}`}</span> */}
                 </div>
             </section>
             <br />
@@ -244,10 +233,10 @@ const Reviews = (props) => {
                         {
                             paginatedReviews?.map((review) => {
                                 return <Review
-                                    key={review.reviewId}
+                                    key={review.review_id}
                                     reviewId={review.reviewId}
-                                    name={review.name}
-                                    date={review.date}
+                                    name={review.user.name}
+                                    date={formatDate(review.createdAt)}
                                     rating={review.rating}
                                     description={review.description}
                                 />
@@ -278,7 +267,7 @@ const Reviews = (props) => {
 
             <section>
                 <div className='container'>
-                    <ReviewForm />
+                    <ReviewForm shopId={props.shopId} />
                 </div>
             </section>
         </>

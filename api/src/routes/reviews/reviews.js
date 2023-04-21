@@ -6,6 +6,7 @@ const {
     getReview,
     deleteReview,
     addReview,
+    addCommentReview,
     approveReview
 } = require('../../controllers/reviews/reviews');
 
@@ -107,6 +108,26 @@ review.delete('/:id', async (req, res) => {
 });
 
 
+//POST comment review
+review.post('/comment', async (req, res) => {
+    
+    try{
+
+        const data = req.body;
+        let result = await addCommentReview(data); 
+
+        if(result.error){
+            throw new Error(result.error);
+        }
+
+        res.status(200).json({ success: true, result: result });
+
+    }catch(err){
+        res.status(404).json({ error: err.message });
+    }
+
+});
+
 //POST
 review.post('/', async (req, res) => {
     
@@ -126,6 +147,9 @@ review.post('/', async (req, res) => {
     }
 
 });
+
+
+
 
 module.exports = {
     review

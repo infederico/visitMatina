@@ -85,9 +85,9 @@ const {
  */
 router.get('/', async (req, res) => {
   try {
-    let { email } = req.query
+    let { email, password } = req.query
     if (email) {
-      let userByName = await getUserByName(email)
+      let userByName = await getUserByName(email, password)
       res.status(200).send(userByName)
     } else {
       let gellAllUsers = await getAllUsers()
@@ -311,8 +311,8 @@ router.put('/:id_user', async (req, res) => {
  */
 router.post('/', async (req, res) => {
   try {
-    let { name, email, password } = req.body
-    let newUser = await createUser(name, email, password)
+    let { name, email, password, picture } = req.body
+    let newUser = await createUser(name, email, password, picture)
     res.status(200).send(newUser)
   } catch (error) {
     res.status(404).json({ error: error.message })

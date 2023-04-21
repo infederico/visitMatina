@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react'
 import ValidationLogIn from './Validation/validationLogIn'
 import useLocalStorage from '../../localStorage/useLocalStorage'
 import jwt_decode from 'jwt-decode'
-import { useDispatch, useSelector } from 'react-redux'
-import { getUser } from '../../../redux/userActions'
+import { useDispatch } from 'react-redux'
+import { getUser, authGoogle } from '../../../redux/userActions'
 const LogIn = () => {
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.user)
   const navigate = useNavigate()
   const [googleUser, setGoogleUser] = useState({}) // esto lo voy a cambiar a reduxtoolkit para enviarlo al back
   const [userData, setUserData] = useState({
@@ -21,11 +20,13 @@ const LogIn = () => {
     email: '',
     password: '',
   })
-  const handleCallbackResponse = (response) => {
+  const handleCallbackResponse = async (response) => {
     let userObject = jwt_decode(response.credential)
-    setGoogleUser(userObject)
+    // setGoogleUser(userObject)
+    // setGoogleUser({ ...googleUser, googleUser.?gUser: true })
+    dispatch(authGoogle(userObject))
     document.getElementById('signInDiv').hidden = true
-    navigate('/dashboard')
+    navigate('/')
   }
   const handleSingOut = () => {
     setGoogleUser({})
@@ -53,7 +54,7 @@ const LogIn = () => {
       }))
       setRememberButton(() => true)
     }
-  }, [remember.email, user])
+  }, [remember.email])
 
   const handleInputChange = (event) => {
     event.preventDefault()
@@ -73,9 +74,6 @@ const LogIn = () => {
       } else {
         // eliminar la información del almacenamiento local
         setRemember({ email: '', password: '' })
-      }
-      if (user.admin === true) {
-        navigate('/dashboard')
       }
     }
   }
