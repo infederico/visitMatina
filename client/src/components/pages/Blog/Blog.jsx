@@ -13,8 +13,11 @@ export default function Blog() {
   const itemsPage = 2;
   const totalPages =  Math.ceil(allPosts.length / itemsPage);
   const arrayPages = [];
+  const orderPosts= [...allPosts].sort((a, b) => a.id_post - b.id_post);
+  const lastOne = orderPosts.slice(orderPosts.length-3)
 
-  console.log(current)
+
+  console.log(lastOne);
   
   for (let i = 0; i < totalPages; i++) {
     arrayPages.push(i + 1);
@@ -71,12 +74,26 @@ export default function Blog() {
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div className={`carousel-inner`}>
+
+          {/* {lastOne.map(elem => {
+            return(
+              <div className={`${styles.divCarousel} carousel-item active`}>
+            <img src={elem.image} className={`${styles.image} "d-block w-100"`} alt="..."/>
+            <div className={`carousel-caption d-none d-md-block`}>
+                <h2 className={styles.textCarousel}>"{elem.title}"</h2>
+            </div>
+            </div>
+            )
+          })} */}
             <div className={`${styles.divCarousel} carousel-item active`}>
             <img src={apiRes.response[1].image} className={`${styles.image} "d-block w-100"`} alt="..."/>
             <div className={`carousel-caption d-none d-md-block`}>
                 <h2 className={styles.textCarousel}>"{apiRes.response[1].name}"</h2>
             </div>
             </div>
+
+
+            
             <div className={`${styles.divCarousel} carousel-item`}>
             <img src={apiRes.response[2].image} className={`${styles.image} "d-block w-100"`} alt="..."/>
             <div className={`carousel-caption d-none d-md-block`}>

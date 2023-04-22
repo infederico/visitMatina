@@ -34,7 +34,8 @@ const getAllAllPosts = async () => {
 
 const getOnePost = async (id_post) => {
     try {
-        const onePost = await Post.findByPk(id_post);
+        const onePost = await Post.findByPk(id_post, { 
+            include : [{ model: Users, attributes: [ "name","email"]}]});
         if (onePost) {
             return onePost;
         } else {

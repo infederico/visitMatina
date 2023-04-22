@@ -54,6 +54,12 @@ const AdminBlog = () => {
       ...inputs,
       [event.target.name]: event.target.value,
     });
+    setErrors(
+      validate({
+        ...inputs,
+        [event.target.name]: event.target.value,
+      })
+    )
   };
 
   const handlerSubmitCreate = (event) => {

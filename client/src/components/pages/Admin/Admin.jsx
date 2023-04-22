@@ -105,6 +105,7 @@ const Admin = () => {
               </div>
             </nav>
           </div>
+          <div><h1>Panel Administrador</h1></div>
           <section>
             {option.blog === true ? (
               <div>
