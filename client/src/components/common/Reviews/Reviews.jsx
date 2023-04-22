@@ -153,6 +153,11 @@ const Reviews = (props) => {
         }
     };
 
+    //aux para calcular paginado en mstrando 1 a 6 de 10 Reviews
+    const reviewsPerPage = 6;
+    const startIndex = (currentPage - 1) * reviewsPerPage;
+    const endIndex = Math.min(startIndex + reviewsPerPage, reviews.length);
+
     return (
         <>
             <br />
@@ -230,6 +235,7 @@ const Reviews = (props) => {
            
             <section>
                 <div className='container'>
+                    <span>{`Mostrando ${(startIndex + 1)} a ${endIndex} de ${reviews.length} Reseñas`}</span>
                     <nav aria-label="Page navigation example">
                         <ul className="pagination justify-content-center">
                             <li className="page-item" onClick={pageDecrement}><NavLink className="page-link" >Previous</NavLink></li>
