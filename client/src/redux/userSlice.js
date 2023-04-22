@@ -10,6 +10,7 @@ const userSlice = createSlice({
       return {
         ...state,
         user: {
+          id_user: action.payload.id_user,
           name: action.payload.name,
           image: action.payload.image,
           email: action.payload.email,
