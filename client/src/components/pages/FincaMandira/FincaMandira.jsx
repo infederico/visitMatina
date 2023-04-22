@@ -66,7 +66,7 @@ export default function FincaMandira() {
       </section>
 
       <section>
-        { shopId &&  <Reviews shopId={shopId}/> }
+        { shopId && <Reviews shopId={shopId}/> }
       </section>
 
       <div className={style.contRedes}>

@@ -11,21 +11,9 @@ import useLocalStorage from '../../../localStorage/useLocalStorage';
 
 const ReviewForm = (props) => {
 
-    //////////////////////////// DESPEUS BORRAR Y PLANTEAR A EDU AGREGAR ESTADO GLOBAL ACCESS
-    const access = true;
-    /////////////////////////////////////////////////////////////////////////////////////////
-
-
     // global states
-    //const loggedUser = useSelector(state => state.user); // aca tomo del estado global la data del user que esta loggeado
+    const loggedUser = useSelector(state => state.user.user); // aca tomo del estado global la data del user que esta loggeado
 
-    const loggedUser = {
-        id_user: 1,
-        image: '',
-        name: 'Ivan Federico',
-        email: 'inf@gmail.com',
-        password: 'ash55'
-    };
     const successMessageReview = useSelector(state => state.reviews.successMessageReview);
     const backendError = useSelector(state => state.reviews.backendError);
     
@@ -37,12 +25,7 @@ const ReviewForm = (props) => {
         approved: true, // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
         shop_id: props.shopId
     });
-
-
-    const [ reviewLocalStorage, setReviewLocalStorage ] = useLocalStorage('reviewLocalStorage', '');
-
-
-
+    const [ reviewLocalStorage, setReviewLocalStorage ] = useLocalStorage('reviewLocalStorage', ''); // para persistencia de datos mientras estas completando el form si salis y vovles mantiene lo que llevava ingresado
     const [ checkedStars, setCheckedStars ] = useState({
         one: false,
         two: false,
@@ -58,14 +41,14 @@ const ReviewForm = (props) => {
     const dispatch = useDispatch();
 
     useEffect( () => {
-            setNewReview((prevState) => ({
-              ...prevState,
-              rating: reviewLocalStorage.rating,
-              description: reviewLocalStorage.description,
-            }))
-            
+     
+        setNewReview((prevState) => ({
+            ...prevState,
+            rating: reviewLocalStorage.rating,
+            description: reviewLocalStorage.description,
+        }));
     }, []);
-
+       
     useEffect( () => {
         switch (newReview.rating) {
             case 1: setCheckedStars({ one: true, two: false, three: false, four: false, five: false });
@@ -80,7 +63,7 @@ const ReviewForm = (props) => {
             break;
             default: setCheckedStars({ one: false, two: false, three: false, four: false, five: false });
             break;
-        }
+        };
     }, [newReview]);
     
     useEffect( () => {
@@ -89,42 +72,39 @@ const ReviewForm = (props) => {
                 ...errors,
                 rating1: false
             });
-        }
+        };
     }, [newReview.rating]);
 
     // handlers
     const handleInputChange = (event) => {
+        if (!loggedUser.access) {
+            alert('Debes estar registrado e iniciar sesión para poder postear una reseña')
+        };
+
         let  { name, value } = event.target;
         if (name === "rating") {
             value = parseFloat(value)
-        }
+        };
+        setNewReview({
+            ...newReview,
+            [name]: value
+        });
 
-     setNewReview({
-                ...newReview,
-                [name]: value
-            });
+        setReviewLocalStorage({
+            ...reviewLocalStorage,
+            [name]: value
+        });
+        
+        // setTimeout( ()=>{
+        //     setReviewLocalStorage({
+        //         user_id: loggedUser.id_user,
+        //         rating: 0,
+        //         description: '',
+        //         approved: true, // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
+        //         shop_id: props.shopId
+        //     });
+        // }, 5000);
 
-        // if (name === 'rating') {
-        //     setNewReview({
-        //         ...newReview,
-        //         rating: parseFloat(value)
-        //     });
-            
-        //     // setReviewDescription({
-        //     //     ...reviewDescription,
-        //     //     rating: parseFloat(value)
-        //     // });
-        // }
-        // if (name === 'description') {
-        //     setNewReview({
-        //         ...newReview,
-        //         description: value
-        //     });
-        //     setReviewDescription({
-        //         ...reviewDescription,
-        //         description: value
-        //     });
-        // }
         if (submitted) {
             let err = validation({
                 ...newReview,
@@ -137,12 +117,14 @@ const ReviewForm = (props) => {
         }
         if (backendError) {
             dispatch(setBackendError(false));
-        };
-        
+        };   
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (!loggedUser.access) {
+            alert('Debes estar registrado e iniciar sesión para poder postear una reseña')
+        };
         //set submitted state true to allow errors rendering after first submit attemp
         setSubmitted(true);
         dispatch(cleanSuccessMessageReview());
@@ -156,13 +138,11 @@ const ReviewForm = (props) => {
         if ((Object.keys(err).length) !== 0) {
             setIncompleteFormAlert(true);
             return;
-        }
+        };
 
         // if there is no errors on the process of validation
         if (Object.keys(err).length === 0) {
             dispatch(postReview(newReview));
-            // vuelve a pedir todas las reviews para que actaulice y el user vea el review que acaba de postear
-            dispatch(getAllApprovedReviewsByShopId(props.shopId));
             //clean local state after sending all data
             setNewReview({
                 user_id: loggedUser.id_user,
@@ -175,8 +155,17 @@ const ReviewForm = (props) => {
             setErrors({});
             //reset the local state once the new user was created successfully to permit a good user experience and dont show errors until first submit attemp in the next user load
             setSubmitted(false);
+            setReviewLocalStorage({
+                user_id: loggedUser.id_user,
+                rating: 0,
+                description: '',
+                approved: true, 
+                shop_id: props.shopId
+            });
+            // vuelve a pedir todas las reviews para que actaulice y el user vea el review que acaba de postear
+            dispatch(getAllApprovedReviewsByShopId(props.shopId));
             return;
-        }
+        };
     };
 
     return (
@@ -203,7 +192,7 @@ const ReviewForm = (props) => {
                         {errors.rating1 && <span className={styles.errors} >{errors.rating1}</span>}
                         <br />
 
-                        {/* <div className="mb-3">
+                        <div className="mb-3">
                             <textarea
                                 type="textarea" 
                                 name="description"
@@ -213,8 +202,8 @@ const ReviewForm = (props) => {
                                 onChange={handleInputChange}
                                 value={newReview.description}>
                             </textarea>
-                        </div> */}
-                        <input type="text" name="description" onChange={handleInputChange} value={newReview.description} />
+                        </div>
+                        {/* <input type="text" name="description" onChange={handleInputChange} value={newReview.description} /> */}
 
                         {errors.description1 && <span className={styles.errors} >{errors.description1}</span>}
                         {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
