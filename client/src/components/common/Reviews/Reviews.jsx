@@ -96,10 +96,6 @@ const Reviews = (props) => {
         };
         setFilteredReviews(filteredByRating);
         setCurrentPage(1);
-        if (showCommentPanel) {
-            dispatch(setShowCommentPanel(false));
-            dispatch(setSelectedReview(undefined));
-        }
     }, [reviews, filterSelectedOption]);
 
     // LOGICA PARA ORDENAR
@@ -120,14 +116,8 @@ const Reviews = (props) => {
 
     useEffect( () => { 
         let auxSortedReviews = sortSelectedOption ? filteredReviews.slice().sort(sortFunctions[sortSelectedOption]) : filteredReviews;
-        
         setSortedReviews(auxSortedReviews);
-        
         setCurrentPage(1);
-        if (showCommentPanel) {
-            dispatch(setShowCommentPanel(false));
-            dispatch(setSelectedReview(undefined));
-        }
     // eslint-disable-next-line
     }, [filteredReviews, sortSelectedOption]);
     
@@ -135,13 +125,7 @@ const Reviews = (props) => {
     // LOGICA PARA PAGINAR
     useEffect( () => { 
         let auxPaginatedReviews = sortedReviews.slice(((currentPage * 6) - 6), (currentPage * 6))
-        
         setPaginatedReviews(auxPaginatedReviews);
-        
-        if (showCommentPanel) {
-            dispatch(setShowCommentPanel(false));
-            dispatch(setSelectedReview(undefined));
-        }
     }, [sortedReviews, currentPage]);
     
 
