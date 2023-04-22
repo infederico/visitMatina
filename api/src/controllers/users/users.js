@@ -9,7 +9,7 @@ const getUserByName = async (email, password) => {
       attributes: ['password'],
     })
     if (hash) {
-      let compare = bcryptjs.compare(password, hash.dataValues.password)
+      let compare = await bcryptjs.compare(password, hash.dataValues.password)
       if (compare) {
         console.log('Contraseña válida')
         let user = await Users.findOne({ where: { email } })
@@ -25,16 +25,6 @@ const getUserByName = async (email, password) => {
   } catch (error) {
     throw new Error(error.message)
   }
-  // if (hash) {
-  //   } else {
-
-  //   }
-  //   } else {
-  //     throw new Error(` ${email} was not found`)
-  //   }
-  // } catch (error) {
-  //   throw new Error(`Error getting user by name: ${error.message}`)
-  // }
 }
 
 const getAllUsers = async () => {
