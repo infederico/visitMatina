@@ -19,7 +19,7 @@ const getAllPosts = async () => {
 
 const getOnePost = async (id_post) => {
   try {
-    const onePost = await Post.findByPk(id_post)
+    const onePost = await Post.findByPk(id_post, {include: [{ model: Users, attributes: ['name', 'email'] }]})
     if (onePost) {
       return onePost
     } else {
@@ -47,7 +47,7 @@ const getAllAllPosts = async () => {
 
 const postPost = async (post) => {
   try {
-    const { title, summary, content, image, date, active, user_id } = post
+    const { title, summary, content, image, date, active, id_user } = post
     const cloudImg = await uptloadCl(image)
     if (!title || !summary || !content) {
       throw new Error('Faltan datos')
@@ -59,7 +59,7 @@ const postPost = async (post) => {
       image: cloudImg,
       date: date,
       active: active,
-      user_id: user_id,
+      user_id: id_user,
     }
     await Post.create(postObj)
 
