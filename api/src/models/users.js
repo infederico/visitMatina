@@ -26,8 +26,7 @@ module.exports = (sequelize) => {
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: bcryptjs.hashSync('googleUser123', 8),
+      allowNull: true,
     },
     gUser: {
       type: DataTypes.BOOLEAN,

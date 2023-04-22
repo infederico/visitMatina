@@ -4,11 +4,11 @@ import ValidationLogIn from './Validation/validationLogIn'
 import useLocalStorage from '../../localStorage/useLocalStorage'
 import jwt_decode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
-import { getUser, authGoogle } from '../../../redux/userActions'
+import { getUser, authGoogle, logOut } from '../../../redux/userActions'
 const LogIn = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [googleUser, setGoogleUser] = useState({}) // esto lo voy a cambiar a reduxtoolkit para enviarlo al back
+  const [googleUser, setGoogleUser] = useState({})
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -22,8 +22,6 @@ const LogIn = () => {
   })
   const handleCallbackResponse = async (response) => {
     let userObject = jwt_decode(response.credential)
-    // setGoogleUser(userObject)
-    // setGoogleUser({ ...googleUser, googleUser.?gUser: true })
     dispatch(authGoogle(userObject))
     document.getElementById('signInDiv').hidden = true
     navigate('/')
@@ -79,6 +77,10 @@ const LogIn = () => {
   }
   const handleChecked = () => {
     rememberButton ? setRememberButton(false) : setRememberButton(true)
+  }
+
+  const handleLogOut = () => {
+    dispatch(logOut())
   }
 
   return (
@@ -180,6 +182,15 @@ const LogIn = () => {
         )}
 
         <br />
+        <button
+          type='button'
+          class='btn btn-outline-secondary'
+          onClick={() => {
+            handleLogOut()
+          }}
+        >
+          Cerrar sesion
+        </button>
         <Link to='/register'>
           <button onClick={() => alert('nos envia a la pagina de registro')}>
             No tienes cuenta? Registrate

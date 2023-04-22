@@ -7,7 +7,8 @@ const reviewsSlice = createSlice({
     showCommentPanel: false,
     selectedReview: undefined,
     backendError: '',
-    successMessage: false
+    successMessageReview: false,
+    successMessageComment: false
   },
   reducers: {
     getAllApprovedReviews: (state, action) => {
@@ -19,17 +20,23 @@ const reviewsSlice = createSlice({
     setSelectedReview: (state, action) => {
       state.selectedReview = action.payload;
     },
-    addBackendError: (state, action) => {
+    setBackendError: (state, action) => {
       state.backendError = action.payload;
     },
     postNewReview: (state, action) => {
-      state.successMessage = action.payload;
+      state.successMessageReview = action.payload;
     },
-    cleanSuccessMessage: (state, action) => {
-      state.successMessage = false;
+    cleanSuccessMessageReview: (state, action) => {
+      state.successMessageReview = false;
+    },
+    postNewReviewComment: (state, action) => {
+      state.successMessageComment = action.payload;
+    },
+    cleanSuccessMessageComment: (state, action) => {
+      state.successMessageComment = false;
     },
   },
 });
 
-export const { getAllApprovedReviews, setShowCommentPanel, setSelectedReview, addBackendError, postNewReview, cleanSuccessMessage } = reviewsSlice.actions;
+export const { getAllApprovedReviews, setShowCommentPanel, setSelectedReview, setBackendError, postNewReview, cleanSuccessMessageReview, postNewReviewComment, cleanSuccessMessageComment } = reviewsSlice.actions;
 export default reviewsSlice.reducer;

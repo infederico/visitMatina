@@ -2,20 +2,18 @@
 
 const ReviewComment = (props) => {
 
-    const { reviewId, commentId, name, email, comment } = props;
-
+    const { name, email, comment } = props;
 
     return (
         <>
-            <span>{`Comentario nro: ${commentId}`}</span>
-            <br />
-            <span>{`Autor: ${name}`}</span>
-            <br />
-            <span>{`Contacto: ${email}`}</span>
-            <br />
-            <span>{comment}</span>
-            <br />
-            <br />
+            <div className="mb-3">
+                <label className="form-label">{`Autor: ${name}`}</label>
+                <br />
+                <label className="form-label">{`Contacto: ${email}`}</label>
+                <br />
+                <label className="form-label">{comment}</label>
+                <br />
+            </div>
         </>
     );
 };
