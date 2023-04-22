@@ -3,10 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 const postSlice = createSlice({
   name: "post",
   initialState: {
+    allAllPosts: [],
     allPosts: [],
-    postDetail: {}
+    postDetail: {},
+    resUpPost: "",
+    resPostPost: "",
+    resDel: "",
+    current: 0,
   },
   reducers: {
+
+    getAllAllPosts: (state, action) => {
+      state.allAllPosts = action.payload;
+    },
     getAllPosts: (state, action) => {
       state.allPosts = action.payload;
     },
@@ -14,16 +23,40 @@ const postSlice = createSlice({
       state.postDetail = action.payload;
     },
     postPost: (state, action) => {
-      return {...state}
+      state.resPostPost = action.payload;
     },
     upDtPost: (state, action) => {
-      return {...state}
+      state.resUpPost = action.payload;
     },
     delPost: (state, action) => {
-      return {...state}
+      state.resDel = action.payload;
     },
+    currPage: (state, action) => {
+      state.current = action.payload;
+    },
+    cleanUpPost: (state, action) => {
+      if(state.resUpPost.success !== undefined){
+        window.alert(state.resUpPost.success);
+      }
+      
+      state.resUpPost ="";
+    },
+    cleanPostPost: (state, action) => {
+      if(state.resPostPost.success !== undefined){
+        window.alert(state.resPostPost.success);
+      }
+      
+      state.resPostPost ="";
+    },
+    cleanDel: (state, action) => {
+      if(state.resDel.success !== undefined){
+        window.alert(state.resDel.success);
+      }
+      
+      state.resDel ="";
+    }
   },
 });
 
-export const { getAllPosts, getPostDetail, postPost, upDtPost, delPost } = postSlice.actions;
+export const { getAllAllPosts, getAllPosts, getPostDetail, postPost, upDtPost, delPost, currPage, cleanUpPost, cleanPostPost, cleanDel} = postSlice.actions;
 export default postSlice.reducer;

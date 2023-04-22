@@ -1,16 +1,61 @@
 import styles from "./Blog.module.css";
 import CardBlog from "../../common/CardBlog/CardBlog";
-import { useEffect } from "react";
+import { useEffect , useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getPosts } from "../../../redux/postActions";
-
-import AdminBlog from "../Admin/AdminBlog/AdminBlog";
+import { getPosts, cPage } from "../../../redux/postActions";
 
 export default function Blog() {
   const apiRes = require("./mock_posts.json");
-
+  const {current} = useSelector((state) => state.post)
+  const {allPosts} = useSelector(state => state.post);  
   const dispatch = useDispatch();
-  const {allPosts} = useSelector(state => state.post);
+
+  const itemsPage = 2;
+  const totalPages =  Math.ceil(allPosts.length / itemsPage);
+  const arrayPages = [];
+
+  console.log(current)
+  
+  for (let i = 0; i < totalPages; i++) {
+    arrayPages.push(i + 1);
+  }
+
+  const nextHandler = () => {
+    const totalItems = allPosts.length;
+    const nexPage = current + 1;
+    const firstIndex = current * itemsPage;
+
+    if (firstIndex >= totalItems - 2 ) {
+      return;
+    }
+
+    dispatch(cPage(nexPage));
+
+  };
+
+  const prevHandler = () => {
+    const prevPage = current -1;//1
+
+    if (prevPage < 0){
+      return;
+    }
+
+    dispatch(cPage(prevPage))
+
+  };
+
+  const pageHandler = (event) => {
+
+    dispatch(cPage(event.target.name - 1))
+  };
+
+  const firstHandler = () => {
+    dispatch(cPage(0));
+  }
+
+  const lastHandler = () => {
+    dispatch(cPage(Math.ceil(allPosts.length / 2) - 1));
+  }
 
   useEffect(() => {
     dispatch (getPosts());
@@ -56,7 +101,7 @@ export default function Blog() {
         </div>
         <section>
       <div className={styles.divCardsBlog}>
-          {allPosts.map((elem) => {
+          {allPosts.slice(current * 2, (current * 2) + 2).map((elem) => {
             return (
               <div key={elem.id_post}>
                 <CardBlog
@@ -64,6 +109,7 @@ export default function Blog() {
                   title={elem.title}
                   summary={elem.summary}
                   content={elem.content}
+                  image={elem.image}
                   date={elem.date}
                 />
               </div>
@@ -72,6 +118,29 @@ export default function Blog() {
       </div>
       </section>
     </div>
+
+
+
+   
+
+
+    
+    
+
+          <div className={styles.divPag}>
+
+          <button className="page-link" onClick={firstHandler}>First</button>
+            <button className="page-link" onClick={prevHandler}>Prev</button>
+            <div className={styles.divPag}>
+            {arrayPages.slice(current - 2 < 0 ? 0 : current - 2 , current).map(ele => ele < 2 ? <button className="page-link" name={ele} onClick={pageHandler} key = {ele}>{ele}</button>: <button className="page-link" name={ele} onClick={pageHandler} key = {ele}>{ele}</button>)}
+              {arrayPages.slice(current, current + 3).map(ele => ele < 2 ? <button className="page-link" name={ele} onClick={pageHandler} key = {ele}>{ele}</button>: <button className="page-link" name={ele} onClick={pageHandler} key = {ele}>{ele}</button>)}
+            </div>
+            <button className="page-link" onClick={nextHandler}>Next</button>
+            <button className="page-link" onClick={lastHandler}>Last</button>
+          </div>
+
+
+
     </section>
   );
 }

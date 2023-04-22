@@ -1,11 +1,28 @@
-const { Post } = require("../../db");
+const {uptloadCl}= require("../../helpers/CloudinaryUpload");
+const { Post, Users} = require("../../db");
 
 const getAllPosts = async () => {
     try {
-        const allPosts = await Post.findAll();
-        const filteredPosts = allPosts.filter(post => post.active === true);
-        if (filteredPosts.length > 0) {
-            return filteredPosts;
+        const allPosts = await Post.findAll({ 
+            where: { active: true },
+            include : [{ model: Users, attributes: [ "name","email"]}]});
+        if (allPosts.length > 0) {
+            return allPosts;
+        } else {
+            throw new Error("Aun no hay posts");
+        }
+        
+    } catch (error) {
+        return {error: error.message}
+    }
+};
+
+const getAllAllPosts = async () => {
+    try {
+        const allPosts = await Post.findAll({ 
+            include : [{ model: Users, attributes: [ "name","email"]}]});
+        if (allPosts.length > 0) {
+            return allPosts;
         } else {
             throw new Error("Aun no hay posts");
         }
@@ -31,7 +48,8 @@ const getOnePost = async (id_post) => {
 
 const postPost =  async (post) => {
     try {
-        const {title, summary, content, date, active} = post;
+        const {title, summary, content, image, date, active, user_id} = post;
+        const cloudImg = await uptloadCl(image);
         if (!title || !summary || !content ) {
             throw new Error('Faltan datos');
         }
@@ -39,12 +57,14 @@ const postPost =  async (post) => {
             title: title,
             summary: summary,
             content: content,
+            image: cloudImg,
             date:date,
-            active: active
+            active: active,
+            user_id: user_id
         }
-        const postAdd = await Post.create(postObj);
+        await Post.create(postObj);
 
-        return postAdd;
+        return {success: "Creación exitosa del post: " + title};
 
     } catch (error) {
         return {error: error.message}
@@ -53,7 +73,7 @@ const postPost =  async (post) => {
 
 const putOnePost =  async (post) => {
     try {
-        const {id_post, title, summary, content, date, active} = post;
+        const {id_post, title, summary, content, date, active, user_id} = post;
         const postId = await Post.findByPk(id_post);
         if (!postId){
             throw new Error ("No se encontro el post")
@@ -73,7 +93,10 @@ const putOnePost =  async (post) => {
         if (active) {
             await Post.update({active}, {where: {id_post: id_post}})
         }
-        return "Post actualizado"
+        if (user_id) {
+            await Post.update({user_id}, {where: {id_post: id_post}})
+        }
+        return {success: "Modificacion exitosa al post: " + title}
     } catch (error) {
         return {error: error.message}
     }
@@ -84,7 +107,7 @@ const delOnePost = async (id_post) => {
         const delOnePost = await Post.findByPk(id_post);
         if (delOnePost) {
             await Post.update({active: false},{ where: { id_post: id_post } })
-            return "Post eliminado";
+            return {success: "El post fue eliminado"}
         } else {
             throw new Error("Post no existe");
         }
@@ -94,4 +117,4 @@ const delOnePost = async (id_post) => {
     }
 };
 
-module.exports = {getAllPosts, getOnePost, postPost, putOnePost, delOnePost};
+module.exports = {getAllPosts, getAllAllPosts, getOnePost, postPost, putOnePost, delOnePost};

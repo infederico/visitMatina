@@ -33,7 +33,6 @@ const ShopContact = () => {
     if (Object.keys(errors).length === 0) {
       alert('consulta enviada')
       dispatch(PostContact(userData))
-      console.log({ userData })
       setUserData({
         name: '',
         correoxres: '',
@@ -42,7 +41,7 @@ const ShopContact = () => {
       })
     }
   }
-  console.log({ userData })
+
   return (
     <div className={styles.containerContact}>
       <div

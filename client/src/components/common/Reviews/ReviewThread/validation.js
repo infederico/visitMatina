@@ -1,12 +1,7 @@
 const validation = (newReview) => {
     
-    let { rating, description } = newReview;
+    let { description } = newReview;
     let errors = {};
-
-    // RATING
-    if (!rating) {
-        errors.rating1 = 'Por favor califícanos para poder registrar tu reseña';
-    };
 
     // DESCRIPTION
     if (!description) {

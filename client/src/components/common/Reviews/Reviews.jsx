@@ -26,14 +26,13 @@ const Reviews = (props) => {
     const showCommentPanel = useSelector(state => state.reviews.showCommentPanel);
     const selectedReview = useSelector(state => state.reviews.selectedReview);
    
-
     // local states
     const [ overallRatingNumber, setOverallRatingNumber ] = useState(0);
     const [ overallRatingWord, setOverallRatingWord ] = useState('');
     const [ filteredReviews, setFilteredReviews ] = useState([]);
     const [ filterSelectedOption, setFilterSelectedOption ] = useState('all'); // por defecto se inicializa el filtro en "mostrar: Todas"
     const [ sortedReviews, setSortedReviews ] = useState([]);
-    const [ sortSelectedOption, setSortSelectedOption ] = useState(''); // por defecto se inicializa el ordenamiento en "ordenar: " (no sort)
+    const [ sortSelectedOption, setSortSelectedOption ] = useState('date-des'); // por defecto se inicializa el ordenamiento en mas recientes primero
     const [ paginatedReviews, setPaginatedReviews ] = useState([]);
     const [ currentPage, setCurrentPage ] = useState(1);
     
@@ -97,31 +96,28 @@ const Reviews = (props) => {
         };
         setFilteredReviews(filteredByRating);
         setCurrentPage(1);
-        if (showCommentPanel) {
-            dispatch(setShowCommentPanel(false));
-            dispatch(setSelectedReview(undefined));
-        }
     }, [reviews, filterSelectedOption]);
 
     // LOGICA PARA ORDENAR
     //functions with each sorting option logic - mapped to an object for cleaner code
+    function formatDate (dateString) {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear().toString().slice(-2);
+        return `${day}/${month}/${year}`;
+    };
     const sortFunctions = {
         'rating-asc': (a, b) => a.rating - b.rating,
         'rating-des': (a, b) => b.rating - a.rating,
-        'date-asc': (a, b) => new Date(a.date.split('/').reverse().join('-')) - new Date(b.date.split('/').reverse().join('-')),
-        'date-des': (a, b) => new Date(b.date.split('/').reverse().join('-')) - new Date(a.date.split('/').reverse().join('-')),
+        'date-asc': (a, b) => new Date(a.createdAt.split('/').reverse().join('-')) - new Date(b.createdAt.split('/').reverse().join('-')),
+        'date-des': (a, b) => new Date(b.createdAt.split('/').reverse().join('-')) - new Date(a.createdAt.split('/').reverse().join('-')),
     };
-    
+
     useEffect( () => { 
         let auxSortedReviews = sortSelectedOption ? filteredReviews.slice().sort(sortFunctions[sortSelectedOption]) : filteredReviews;
-        
         setSortedReviews(auxSortedReviews);
-        
         setCurrentPage(1);
-        if (showCommentPanel) {
-            dispatch(setShowCommentPanel(false));
-            dispatch(setSelectedReview(undefined));
-        }
     // eslint-disable-next-line
     }, [filteredReviews, sortSelectedOption]);
     
@@ -129,13 +125,7 @@ const Reviews = (props) => {
     // LOGICA PARA PAGINAR
     useEffect( () => { 
         let auxPaginatedReviews = sortedReviews.slice(((currentPage * 6) - 6), (currentPage * 6))
-        
         setPaginatedReviews(auxPaginatedReviews);
-        
-        if (showCommentPanel) {
-            dispatch(setShowCommentPanel(false));
-            dispatch(setSelectedReview(undefined));
-        }
     }, [sortedReviews, currentPage]);
     
 
@@ -161,15 +151,6 @@ const Reviews = (props) => {
             let prevPage = currentPage - 1;
             setCurrentPage(prevPage);
         }
-    };
-
-    // helpers
-    function formatDate (dateString) {
-        const date = new Date(dateString);
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear().toString().slice(-2);
-        return `${day}/${month}/${year}`;
     };
 
     return (
@@ -234,7 +215,8 @@ const Reviews = (props) => {
                             paginatedReviews?.map((review) => {
                                 return <Review
                                     key={review.review_id}
-                                    reviewId={review.reviewId}
+                                    reviewId={review.review_id}
+                                    image={review.user.image}
                                     name={review.user.name}
                                     date={formatDate(review.createdAt)}
                                     rating={review.rating}
@@ -260,7 +242,7 @@ const Reviews = (props) => {
             <section>
                 <div className='container'>
                     {
-                        showCommentPanel && <ReviewThread reviewId={selectedReview} />
+                        showCommentPanel && <ReviewThread reviewId={selectedReview} shopId={props.shopId} />
                     }
                 </div>
             </section>

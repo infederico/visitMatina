@@ -1,4 +1,4 @@
-const { Product } = require('../../db')
+const { Product, Shop } = require('../../db')
 
 const getProductByName = async (name) => {
   try {
@@ -24,9 +24,13 @@ const getAllProducts = async () => {
     throw new Error(`Error getting products ${error.message}`)
   }
 }
-const getProductById = async (id) => {
+const getProductById = async (shopId) => {
   try {
-    let productById = await Product.findOne({ where: { id } })
+    let productById = await Product.findAll({
+      where: {
+        shopId,
+      },
+    })
     if (productById) {
       return productById
     } else {
@@ -55,13 +59,18 @@ const updateProduct = async (id, name, description, price) => {
     throw new Error(`Error trying to update product ${error.message}`)
   }
 }
-const createProduct = async (name, description, price) => {
+const createProduct = async (name, description, price, shop_id) => {
   try {
     let newProduct = await Product.create({
       name,
       description,
       price,
     })
+    let shop = await Shop.findByPk(shop_id)
+    if (!shop) {
+      throw new Error(`Shop with ID ${shop_id} does not exist`)
+    }
+    newProduct.addShops(shop)
     return newProduct
   } catch (error) {
     throw new Error(`Error trying to create product ${error.message}`)

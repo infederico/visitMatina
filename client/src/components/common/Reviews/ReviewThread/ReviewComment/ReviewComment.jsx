@@ -1,21 +1,28 @@
+
 //import styles from './ReviewThread.module.css';
 
 const ReviewComment = (props) => {
 
-    const { reviewId, commentId, name, email, comment } = props;
+    const { name, email, comment, createdAt } = props;
+    const date = formatDate(createdAt);
 
+    function formatDate (dateString) {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear().toString().slice(-2);
+        return `${day}/${month}/${year}`;
+    };
 
     return (
         <>
-            <span>{`Comentario nro: ${commentId}`}</span>
-            <br />
-            <span>{`Autor: ${name}`}</span>
-            <br />
-            <span>{`Contacto: ${email}`}</span>
-            <br />
-            <span>{comment}</span>
-            <br />
-            <br />
+            <div className="mb-3">
+                <label className="form-label">{`${name}  -`}</label>
+                <label className="form-label">{`-  ${date}`}</label>
+                <br />
+                <p className="form-label">{comment}</p>
+                <br />
+            </div>
         </>
     );
 };

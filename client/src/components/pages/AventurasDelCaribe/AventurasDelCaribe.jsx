@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-import { getShopId } from '../../../redux/shopActions';
+import { getShops, getShopId } from '../../../redux/shopActions';
 import { resetShopId } from '../../../redux/shopSlice';
 
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
@@ -22,10 +22,7 @@ import ShopContact from '../Contact/ShopContact'
 
 export default function AventurasDelCaribe() {
 
-  // const shops = useSelector(state => state.shops.shops);
   const shopId = useSelector(state => state.shops.shopId);
-
-  // const [ shopId, setShopId ] = useState(0);
 
   const [aventuras, setAventuras] = useState([])
 
@@ -39,12 +36,6 @@ export default function AventurasDelCaribe() {
       dispatch(resetShopId(0));
     }
   }, []);
-
-  // useEffect( () => {
-  //   dispatch(getShops());
-  //   const shopFiltered = shops.filter(shop => shop.path === location.pathname);
-  //   if (shopFiltered.at(0)) setShopId(shopFiltered[0]['id_shop']);
-  // }, []);
 
   useEffect(() => {
     setAventuras(require('./mock_aventuras.json').response)
@@ -81,8 +72,10 @@ export default function AventurasDelCaribe() {
                         <span>conoce la opinión de nuestros clientes</span>
                     </div>
                 </div>
+
             </section>
 
+  
             { shopId && <Reviews shopId={shopId}/> }
             <section className={style.contactSection}>
               <ShopContact />
