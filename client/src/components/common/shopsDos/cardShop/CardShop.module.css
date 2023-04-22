@@ -4,8 +4,7 @@
     object-fit: cover;
     border-radius: 10px;
     margin: 0 auto;
-    filter: brightness(50%)
-
+    filter: brightness(50%);
 }
 .descri{
     width: 70%;
@@ -28,7 +27,7 @@
     transform: translate(-50%, -50%);
     font-family: 'Marcellus', serif;
     text-shadow: .7px .7px 28px black;
-    color: var(--tertiary-color-100)
+    color: var(--white-color)
 }
 .card{
     border:none;
@@ -39,4 +38,9 @@
     top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: .2s all;
+}
+.svg:hover {
+    transform:translate( -50%, -50%)scale(1.3);
+
 }

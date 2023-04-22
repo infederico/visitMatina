@@ -31,26 +31,7 @@
     width: 80%;
     margin: auto;
 }
-.ubicacionSection{
-    /* border: 1px solid #000; */
-    width: 40%;
-    margin-top: 80px;
-    margin-bottom: 80px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.ubicacion{
-    width: 100%;
-    margin: auto;
-}
-.map{
-    width: 600px;
-    height: 400px;
-    object-fit: cover;
-    margin: auto;
-}
+
 .contRedes{
     /* border: 1px solid #000; */
     width: 100%;
@@ -69,13 +50,14 @@
 }
 .contactSection{
     /* border: 1px solid #000; */
-    width: 40%;
+    width: 100%;
     margin-top: 80px;
-    margin-bottom: 80px;
+    padding-bottom: 80px;
     display: flex;
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
+    background-color: var(--quaternary-color-0);
 }
 .contact{
     width: 100%;
@@ -105,17 +87,14 @@
     text-decoration: none;
 }
 .Cajaredes{
-    width: 80%;
-    margin: auto;
+
     display: flex;
     justify-content: center;
     /* border: 1px solid #000;   */
-    background-color: rgba(250, 246, 246, 0.559);
     
 }
 .cardProductContainerContainer {
-    
+    margin: 20px 0 0 0;
     padding: 2.7rem 0;
     background-image: linear-gradient(to bottom, var(--secondary-color-200), var(--secondary-color-400));
-
 }

@@ -9,6 +9,7 @@ import CardShop from '../../common/shopsDos/cardShop/CardShop';
 import CardActivities from '../../common/CardActivities/CardActivities';
 import Reviews from '../../common/Reviews/Reviews';
 import Redes from '../../common/redesSociales/redes/Redes';
+import Footer from '../../common/Footer/Footer';
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
 import { arrayRedes } from './arrayRedes'
@@ -51,26 +52,12 @@ export default function AventurasDelCaribe() {
 
   return (
     <>
-      <div className={style.page}>
+      <div >
         <section className={style.titleSection}>
           <CardShop description={description} name={name} image={image} />
         </section>
 
-        <div className={style.contRedes}>
-          <section className={style.ubicacionSection}>
-            <h2 className={style.ubicacion}>Nuestra Ubicación</h2>
-            <img
-              className={style.map}
-              src='https://i.blogs.es/ade34e/google-maps-portada-trafico/840_560.jpg'
-              alt='mapa'
-            />
-          </section>
-          <section className={style.contactSection}>
-            <ShopContact />
-          </section>
-        </div>
       </div>
-
             <div className="row">
             {
                 aventuras?.map((aventura) => {
@@ -97,9 +84,11 @@ export default function AventurasDelCaribe() {
             </section>
 
             { shopId && <Reviews shopId={shopId}/> }
-            
-            <section className={style.Cajaredes}>
-                {/* <Redes socialmedia={arrayRedes}/> */}
+            <section className={style.contactSection}>
+              <ShopContact />
+            </section>
+            <section>
+              <Footer socialmedia={arrayRedes}/>
             </section>
                   
         </>

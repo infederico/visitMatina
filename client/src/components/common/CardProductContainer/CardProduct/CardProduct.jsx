@@ -9,7 +9,7 @@ const CardProduct = (props) => {
                 <h5 className={`card-title ${style.product_name}`}>{props.name}</h5>
                 <p className={`card-text ${style.product_descriptionn}`}>{props.description}</p>
                 <p className={`card-text ${style.product_price}`} >${props.price}</p>
-                <a href="#" class={`btn btn-primary ${style.product_button}`}>Consultar</a>
+                <a href="#" className={`btn btn-primary ${style.product_button}`}>Consultar</a>
             </div>
         </div>   
 

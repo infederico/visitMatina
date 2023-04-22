@@ -36,6 +36,8 @@ const CardProductContainer = () => {
                 return 2;
             case "/fincaMandira":
                 return 3;
+            case "/AventurasDelCaribe":
+                return 4;
             default:
                 return 
         }
@@ -48,7 +50,7 @@ const CardProductContainer = () => {
     const filteredProducts = value?.filter(prod => prod.storeid === memberId())
     
     return (
-            <div className={`row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-6 justify-content-center ${styles.cardsContainer}`}>                
+            <div className={`row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 justify-content-center ${styles.cardsContainer}`}>                
                 {filteredProducts?.map(prod =>{ 
                     return(
                         <div className="col">
