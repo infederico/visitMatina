@@ -17,6 +17,19 @@ const getAllPosts = async () => {
   }
 }
 
+const getOnePost = async (id_post) => {
+  try {
+    const onePost = await Post.findByPk(id_post)
+    if (onePost) {
+      return onePost
+    } else {
+      throw new Error('Post no encontrado')
+    }
+  } catch (error) {
+    return { error: error.message }
+  }
+}
+
 const getAllAllPosts = async () => {
   try {
     const allPosts = await Post.findAll({
@@ -26,19 +39,6 @@ const getAllAllPosts = async () => {
       return allPosts
     } else {
       throw new Error('Aun no hay posts')
-    }
-  } catch (error) {
-    return { error: error.message }
-  }
-}
-
-const getOnePost = async (id_post) => {
-  try {
-    const onePost = await Post.findByPk(id_post)
-    if (onePost) {
-      return onePost
-    } else {
-      throw new Error('Post no encontrado')
     }
   } catch (error) {
     return { error: error.message }

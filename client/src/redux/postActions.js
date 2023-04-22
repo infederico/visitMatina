@@ -6,7 +6,7 @@ export const getAllPostsSF = () => async (dispatch) => {
     const posts = await axios("/post/all");
     dispatch(getAllAllPosts(posts.data));
   } catch (error) {
-    window.alert(error.response.data.error)
+    //window.alert(error.response.data.error)
   }
 };
 
@@ -15,7 +15,7 @@ export const getPosts = () => async (dispatch) => {
     const posts = await axios("/post");
     dispatch(getAllPosts(posts.data));
   } catch (error) {
-    window.alert(error.response.data.error)
+    //window.alert(error.response.data.error)
   }
 };
 

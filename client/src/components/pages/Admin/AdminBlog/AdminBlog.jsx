@@ -12,18 +12,20 @@ import {
 } from "../../../../redux/postActions";
 
 import {
-  getUser,
+
 } from "../../../../redux/userActions";
 
 const AdminBlog = () => {
   const dispatch = useDispatch();
   const { allAllPosts } = useSelector((state) => state.post);
   const { resPostPost } = useSelector((state) => state.post);
+  const { resUpPost } = useSelector((state) => state.post);
+  const { resDel } = useSelector((state) => state.post);
 
   const loggedUser = useSelector((state) => state.user.user);
 
-  const [errors, setErrors] = useState({});
 
+  const [errors, setErrors] = useState({});
   const [inputs, setInputs] = useState({
     title: "",
     summary: "",
@@ -31,18 +33,21 @@ const AdminBlog = () => {
     image: "",
     id_user: loggedUser.id_user,
   });
-  console.log(loggedUser)
-  useEffect(() => {
-    dispatch(getUser());
 
-    setErrors(validate(inputs));
-    dispatch(getAllPostsSF());
+  console.log(resUpPost)
+
+  useEffect(() => {
+
+      dispatch(getAllPostsSF());
+
+
+    //dispatch(getAllPostsSF());
 
     if (Object.keys(resPostPost).length){
       dispatch(clnPostPost());
     }
 
-  },[inputs, resPostPost])
+  },[resPostPost, resUpPost, resDel])
 
   const handlerInputs = (event) => {
     setInputs({
@@ -61,7 +66,7 @@ const AdminBlog = () => {
         title: "",
         summary: "",
         content: "",
-        image: null
+        image: null,
       })
     } else {
       window.alert("Completa todos los campos");
