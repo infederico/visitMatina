@@ -1,0 +1,72 @@
+[ {
+    "user_id":2,
+    "rating":5, 
+    "description":"haciendo pruebas json",
+    "approved":"true",
+    "active":"true",
+    "shop_id":4
+     
+},
+   {
+    "user_id":2,
+    "rating":5, 
+    "description":"haciendo pruebas dos json",
+    "approved":"true",
+    "active":"true",
+    "shop_id":4
+   },
+    {
+     "user_id":2,
+     "rating":5, 
+     "description":"haciendo pruebas tres json",
+     "approved":"true",
+     "active":"true",
+     "shop_id":2
+    },
+        {
+        "user_id":2,
+        "rating":5, 
+        "description":"haciendo pruebas cuatro json",
+        "approved":"true",
+        "active":"true",
+        "shop_id":2
+        },
+        {
+        "user_id":2,
+        "rating":5,
+        "description":"haciendo pruebas cinco json",
+        "approved":"true",
+        "active":"true",
+        "shop_id":3
+        },
+        {
+        "user_id":2,
+        "rating":5,
+        "description":"haciendo pruebas seis json",
+        "approved":"true",
+        "active":"true",
+        "shop_id":3
+        },
+        {
+        "user_id":2,
+        "rating":5,
+        "description":"haciendo pruebas siete json",
+        "approved":"true",
+        "active":"true",
+        "shop_id":1
+        },
+
+        {
+        "user_id":2,
+        "rating":5,
+        "description":"haciendo pruebas ocho json",
+        "approved":"true",
+        "active":"true",
+        "shop_id":1
+        }
+        
+
+
+]
+
+     

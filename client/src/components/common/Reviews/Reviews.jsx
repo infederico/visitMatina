@@ -25,7 +25,7 @@ const Reviews = (props) => {
     const reviews = useSelector(state => state.reviews.value);
     const showCommentPanel = useSelector(state => state.reviews.showCommentPanel);
     const selectedReview = useSelector(state => state.reviews.selectedReview);
-   
+    console.log(reviews)
 
     // local states
     const [ overallRatingNumber, setOverallRatingNumber ] = useState(0);
