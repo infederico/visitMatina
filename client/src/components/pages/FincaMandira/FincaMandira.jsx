@@ -58,15 +58,10 @@ export default function FincaMandira() {
 
       <section>
         <div className='container'>
-          <div className={style.title}>
-            <h3>Nuestros clientes</h3>
-            <span>conoce la opinión de nuestros clientes</span>
-          </div>
+          <h4>Nuestros clientes</h4>
+          <span>conoce la opinión de nuestros clientes</span>
         </div>
-      </section>
-
-      <section>
-        { shopId &&  <Reviews shopId={shopId}/> }
+        { shopId && <Reviews shopId={shopId}/> }
       </section>
 
       <div className={style.contRedes}>

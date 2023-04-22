@@ -1,3 +1,9 @@
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+
+import { getShops, getShopId } from '../../../redux/shopActions';
+import { resetShopId } from '../../../redux/shopSlice';
 
 import Redes from '../../common/redesSociales/redes/Redes';
 import style from './HospedajeClaroDeLuna.module.css';
@@ -13,6 +19,19 @@ import { descriptions, name, imagen } from './descriptions'
 import ShopContact from '../Contact/ShopContact'
 
 export default function HospedajeClaroDeLuna() {
+
+  const shopId = useSelector(state => state.shops.shopId);
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect( () => {
+      dispatch(getShopId(location.pathname));
+      return () => {
+          dispatch(resetShopId(0));
+      };
+  }, []);
+
+
   let BD = require('./imagenes.json')
   BD = BD.response
 
@@ -30,7 +49,11 @@ export default function HospedajeClaroDeLuna() {
       </div>
 
       <section>
-          <Reviews />
+        <div className='container'>
+          <h4>Nuestros clientes</h4>
+          <span>conoce la opinión de nuestros clientes</span>
+        </div>
+        { shopId && <Reviews shopId={shopId}/> }
       </section>
 
       <section className={style.Cajaredes}>

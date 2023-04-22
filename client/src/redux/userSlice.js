@@ -10,6 +10,7 @@ const userSlice = createSlice({
       return {
         ...state,
         user: {
+          id_user: action.payload.id_user,
           name: action.payload.name,
           image: action.payload.image,
           email: action.payload.email,
@@ -25,6 +26,7 @@ const userSlice = createSlice({
       return {
         ...state,
         user: {
+          id_user: action.payload.id_user,
           name: action.payload.name,
           image: action.payload.image,
           email: action.payload.email,
@@ -33,8 +35,14 @@ const userSlice = createSlice({
         },
       }
     },
+    logOutUser: (state, action) => {
+      return {
+        ...state,
+        user: {},
+      }
+    },
   },
 })
 
-export const { getUserById, postUser, gUSer } = userSlice.actions
+export const { getUserById, postUser, gUSer, logOutUser } = userSlice.actions
 export default userSlice.reducer
