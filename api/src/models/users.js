@@ -13,7 +13,8 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: '',
+      defaultValue:
+        'https://icon-library.com/images/user-icon-png-transparent/user-icon-png-transparent-17.jpg',
     },
     name: {
       type: DataTypes.STRING,
@@ -31,7 +32,6 @@ module.exports = (sequelize) => {
     gUser: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false,
     },
     verified: {
       type: DataTypes.BOOLEAN,
