@@ -64,25 +64,26 @@ export default function AventurasDelCaribe() {
                 })
             }
             </div>
+            <div className={style.containerReviews}>
+              <section>
+                  <div className='container'>
+                      <div className={style.title}>
+                          <h2 className='text-center'>Nuestros clientes</h2>
+                          {/* <span>conoce la opinión de nuestros clientes</span> */}
+                      </div>
+                  </div>
 
-            <section>
-                <div className='container'>
-                    <div className={style.title}>
-                        <h3>Nuestros clientes</h3>
-                        <span>conoce la opinión de nuestros clientes</span>
-                    </div>
-                </div>
+              </section>
 
-            </section>
-
-  
-            { shopId && <Reviews shopId={shopId}/> }
-            <section className={style.contactSection}>
-              <ShopContact />
-            </section>
-            <section>
-              <Footer socialmedia={arrayRedes}/>
-            </section>
+    
+              { shopId && <Reviews shopId={shopId}/> }
+              <section className={style.contactSection}>
+                <ShopContact />
+              </section>
+              <section>
+                <Footer socialmedia={arrayRedes}/>
+              </section>
+            </div>
                   
         </>
     );

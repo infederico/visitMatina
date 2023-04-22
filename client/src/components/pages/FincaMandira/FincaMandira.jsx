@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { getShops, getShopId } from '../../../redux/shopActions';
 import { resetShopId } from '../../../redux/shopSlice';
+import { getProductsByShopId } from '../../../redux/productActions';
 
 import CardProductContainer from '../../common/CardProductContainer/CardProductContainer'
 import Redes from '../../common/redesSociales/redes/Redes'
@@ -24,6 +25,7 @@ import ShopContact from '../Contact/ShopContact'
 export default function FincaMandira() {
 
   const shopId = useSelector(state => state.shops.shopId);
+  const product = useSelector(state => state.product.product)
 
   // const shops = useSelector(state => state.shops.shops);
 
@@ -39,6 +41,10 @@ export default function FincaMandira() {
       dispatch(resetShopId(0));
     }
   }, []);
+
+  useEffect(() => {
+    dispatch(getProductsByShopId(shopId)) //agregar 
+  },[])
 
   // useEffect( () => {
   //   dispatch(getShops(location.pathname));

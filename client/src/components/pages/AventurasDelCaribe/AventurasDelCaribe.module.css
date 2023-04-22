@@ -112,3 +112,11 @@
     background-color: rgba(250, 246, 246, 0.559);
     
 }
+
+.containerReviews {
+    background-color: var(--secondary-color-0);
+}
+
+h2{
+    font-family: 'Kanit', sans-serif;
+}

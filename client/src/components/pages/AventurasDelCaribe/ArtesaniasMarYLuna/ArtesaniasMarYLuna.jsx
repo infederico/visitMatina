@@ -19,9 +19,8 @@ import { useLocation } from 'react-router-dom';
 import { getShops, getShopId } from '../../../../redux/shopActions';
 import { resetShopId } from '../../../../redux/shopSlice';
 
-import CardProductContainer from '../../../common/CardProductContainer/CardProductContainer'
-import ShopContact from '../../Contact/ShopContact'
-import Reviews from '../../../common/Reviews/Reviews';
+import CardProductContainer from '../../../common/CardProductContainer/CardProductContainer';
+import ShopContact from '../../Contact/ShopContact';
 
 export default function ArtesaniasMarYLuna() {
 
