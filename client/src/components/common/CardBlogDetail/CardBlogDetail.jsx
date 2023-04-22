@@ -17,9 +17,9 @@ const CardBlogDetail = (props) => {
         </div>
         </section>
         <section>
-        <div>
+{/*         <div>
           <Reviews></Reviews>
-        </div>
+        </div> */}
         </section>
         </section>
     );
