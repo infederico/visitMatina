@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const {getAllPosts, getOnePost, postPost, putOnePost, delOnePost} =require("../../controllers/post/post");
+const {getAllPosts, getAllAllPosts, getOnePost, postPost, putOnePost, delOnePost} =require("../../controllers/post/post");
 const router = Router();
 
 // ruta get Obtine todos los posts solo enviando / si se agrega el id por query /?id= devuelve el post correspondiente
@@ -63,6 +63,19 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
       const allPosts = await getAllPosts();
+      if (allPosts.error) {
+        throw new Error(allPosts.error);
+      } else {
+        res.status(200).json(allPosts);
+      }
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+router.get("/all", async (req, res) => {
+  try {
+      const allPosts = await getAllAllPosts();
       if (allPosts.error) {
         throw new Error(allPosts.error);
       } else {
@@ -235,7 +248,7 @@ router.post("/", async (req, res) => {
     }
     res.status(200).json(post);
   } catch (error) {
-    res.status(404).send(error.message);
+    res.status(404).json({error: error.message});
   }
 });
 
@@ -303,9 +316,9 @@ router.put("/", async (req, res) => {
         if (putPost.error) {
             throw new Error(putPost.error);
         }
-        res.status(200).send(putPost);
+        res.status(200).json(putPost);
     } catch (error) {
-        res.status(404).send(error.message);
+        res.status(404).json({error: error.message});
     }
 });
 
