@@ -154,8 +154,8 @@ router.get('/', async (req, res) => {
  */
 router.get('/:id', async (req, res) => {
   try {
-    let { shopId } = req.params
-    let productById = await getProductById(shopId)
+    let { id } = req.params
+    let productById = await getProductById(id)
     res.status(200).send(productById)
   } catch (error) {
     res.status(404).json({ error: error.message })
@@ -216,8 +216,8 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     let { id } = req.params
-    let { name, description, price } = req.body
-    await updateProduct(id, name, description, price)
+    let { name, description, price, image } = req.body
+    await updateProduct(id, name, description, price, image)
     res.status(200).json('Product updated successfully')
   } catch (error) {
     res.status(404).json({ error: error.message })
@@ -291,8 +291,14 @@ router.put('/:id', async (req, res) => {
 router.post('/:shopId', async (req, res) => {
   try {
     let { shopId } = req.params
-    let { name, description, price } = req.body
-    let newProduct = await createProduct(name, description, price, shopId)
+    let { name, description, price, image } = req.body
+    let newProduct = await createProduct(
+      name,
+      description,
+      price,
+      shopId,
+      image
+    )
     res.status(200).send(newProduct)
   } catch (error) {
     res.status(404).json({ error: error.message })
