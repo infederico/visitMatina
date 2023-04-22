@@ -39,21 +39,21 @@ sequelize.models = Object.fromEntries(capsEntries)
 // Para relacionarlos hacemos un destructuring
 const { Users, Product, Media, Shop, Post, Reviews } = sequelize.models
 // Aca vendrian las relaciones
-Product.belongsToMany(
-  Media,
-  {
-    through: 'product_media',
-  },
-  { timestamps: false }
-)
+// Product.belongsToMany(
+//   Media,
+//   {
+//     through: 'product_media',
+//   },
+//   { timestamps: false }
+// )
 
-Media.belongsToMany(
-  Product,
-  {
-    through: 'product_media',
-  },
-  { timestamps: false }
-)
+// Media.belongsToMany(
+//   Product,
+//   {
+//     through: 'product_media',
+//   },
+//   { timestamps: false }
+// )
 
 Shop.belongsToMany(
   Product,
@@ -63,13 +63,10 @@ Shop.belongsToMany(
   { timestamps: false }
 )
 
-Product.belongsToMany(
-  Shop,
-  {
-    through: 'shop_product',
-  },
-  { timestamps: false }
-)
+Product.belongsToMany(Shop, {
+  through: 'shop_product',
+  timestamps: false,
+})
 
 Post.belongsTo(
   Users,
@@ -111,20 +108,19 @@ Users.hasMany(Reviews, {
   foreignKey: 'user_id',
 })
 
-Media.hasOne(
-  Users,
-  {
-    foreignKey: 'media_id',
-  },
-  { timestamps: false }
-)
+// Media.hasOne(
+//   Users,
+//   {
+//     foreignKey: 'media_id',
+//   },
+//   { timestamps: false }
+// )
+// Media.hasOne(Users, {
+//   foreignKey: 'media_id',
+// })
 
 Post.belongsTo(Users, {
   foreignKey: 'user_id',
-})
-
-Media.hasOne(Users, {
-  foreignKey: 'media_id',
 })
 
 // Role.hasOne(Users, {
@@ -136,13 +132,13 @@ Media.belongsTo(Shop,{
 });
 */
 
-Media.hasMany(Shop, {
-  foreignKey: 'media_id',
-})
+// Media.hasMany(Shop, {
+//   foreignKey: 'media_id',
+// })
 
-Media.hasMany(Post, {
-  foreignKey: 'media_id',
-})
+// Media.hasMany(Post, {
+//   foreignKey: 'media_id',
+// })
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
