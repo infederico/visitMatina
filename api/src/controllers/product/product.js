@@ -14,7 +14,11 @@ const getProductByName = async (name) => {
 }
 const getAllProducts = async () => {
   try {
-    let products = await Product.findAll()
+    const products = await Product.findAll({
+      include: {
+        model: Shop,
+      },
+    })
     if (products) {
       return products
     } else {
@@ -24,23 +28,26 @@ const getAllProducts = async () => {
     throw new Error(`Error getting products ${error.message}`)
   }
 }
-const getProductById = async (shopId) => {
+const getProductById = async (shop_id) => {
   try {
-    let productById = await Product.findAll({
-      where: {
-        shopId,
+    const products = await Product.findAll({
+      include: {
+        model: Shop,
+        where: {
+          id_shop: shop_id,
+        },
       },
     })
-    if (productById) {
-      return productById
+    if (products) {
+      return products
     } else {
-      throw new Error(`Error product with id ${id} not found`)
+      throw new Error(`Error product with shop_id ${shop_id} not found`)
     }
   } catch (error) {
-    throw new Error(`Error getting user by name: ${error.message}`)
+    throw new Error(`Error getting product by shop id: ${error.message}`)
   }
 }
-const updateProduct = async (id, name, description, price) => {
+const updateProduct = async (id, name, description, price, image) => {
   try {
     let findProduct = await getProductById(id)
     if (findProduct) {
@@ -53,24 +60,30 @@ const updateProduct = async (id, name, description, price) => {
       if (price) {
         await Product.update({ price }, { where: { id } })
       }
+      if (image) {
+        await Product.update({ image }, { where: { id } })
+      }
       return true
     }
   } catch (error) {
     throw new Error(`Error trying to update product ${error.message}`)
   }
 }
-const createProduct = async (name, description, price, shop_id) => {
+const createProduct = async (name, description, price, shop_id, image) => {
   try {
+    let productDefaultImage =
+      'https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg'
     let newProduct = await Product.create({
       name,
       description,
       price,
+      image: image ? image : productDefaultImage,
     })
     let shop = await Shop.findByPk(shop_id)
     if (!shop) {
       throw new Error(`Shop with ID ${shop_id} does not exist`)
     }
-    newProduct.addShops(shop)
+    newProduct.addShop(shop)
     return newProduct
   } catch (error) {
     throw new Error(`Error trying to create product ${error.message}`)

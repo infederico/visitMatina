@@ -1,34 +1,31 @@
 require('dotenv').config()
-const { EMAIL_PASSWORD,EMAIL,EMAIL_HOST } = process.env
+const { EMAIL_PASSWORD, EMAIL, EMAIL_HOST } = process.env
 
-const nodeMailer = require('nodemailer');
-console.log(EMAIL_PASSWORD,EMAIL,EMAIL_HOST)
+const nodeMailer = require('nodemailer')
 /*crea el objeto trasportador usando createTransport 
 y le pasamos un objeto con las opciones de configuracion*/
 const transporter = nodeMailer.createTransport({
-    host: EMAIL_HOST,
-    port: 465,
-    secure: true,
-    auth: {
-        user: EMAIL,
-        pass: EMAIL_PASSWORD,
-    },
-});
-
+  host: EMAIL_HOST,
+  port: 465,
+  secure: true,
+  auth: {
+    user: EMAIL,
+    pass: EMAIL_PASSWORD,
+  },
+})
 
 // Función para enviar correos electrónicos
 const enviarCorreo = (req, res) => {
-
-const { name, correoxres, mensaje } = req.body; //debe venir el destinatario(correo de tienda)
+  const { name, correoxres, mensaje } = req.body //debe venir el destinatario(correo de tienda)
   const destinatario = 'visitmatina@gmail.com'
   const asunto = 'Contacto desde la web'
 
-    // Configurar el objeto mailOptions: este se envia al dueño de la tienda
-    const mailOptions = {
-      from: 'comercioenlineafree@gmail.com', // Introducir el correo electrónico del remitente
-      to: destinatario,
-      subject: asunto,
-      html: `<!DOCTYPE html>
+  // Configurar el objeto mailOptions: este se envia al dueño de la tienda
+  const mailOptions = {
+    from: 'comercioenlineafree@gmail.com', // Introducir el correo electrónico del remitente
+    to: destinatario,
+    subject: asunto,
+    html: `<!DOCTYPE html>
       <html>
       <head>
         <meta charset="utf-8">
@@ -59,15 +56,15 @@ const { name, correoxres, mensaje } = req.body; //debe venir el destinatario(cor
       </body>
       </html>
       `,
-    }
+  }
 
-    // Configurar el objeto mailOptionsDueno: este se envia al cliente
-    const asuntocliente = 'Equipo Visit Matina en línea';
-    const mailOptionsCli = {
-        from: 'comercioenlineafree@gmail.com', // Introducir el correo electrónico del remitente
-        to: correoxres, //el correo que proporciono el cliente en el formulario
-        subject: asuntocliente,
-        html: `<!DOCTYPE html>
+  // Configurar el objeto mailOptionsDueno: este se envia al cliente
+  const asuntocliente = 'Equipo Visit Matina en línea'
+  const mailOptionsCli = {
+    from: 'comercioenlineafree@gmail.com', // Introducir el correo electrónico del remitente
+    to: correoxres, //el correo que proporciono el cliente en el formulario
+    subject: asuntocliente,
+    html: `<!DOCTYPE html>
         <html>
         <head>
           <meta charset="utf-8">
@@ -98,31 +95,37 @@ const { name, correoxres, mensaje } = req.body; //debe venir el destinatario(cor
         </body>
         </html>
         `,
-      }
-  
+  }
 
-
- // Enviar el correo electrónico utilizando el objeto transporter
- transporter.sendMail(mailOptions, (error, info) => {
+  // Enviar el correo electrónico utilizando el objeto transporter
+  transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.log(error);
-      res.status(500).json({ message: 'Ocurrió un error al enviar el correo electrónico.' });
+      console.log(error)
+      res
+        .status(500)
+        .json({ message: 'Ocurrió un error al enviar el correo electrónico.' })
     } else {
-      console.log('Correo electrónico enviado: ' + info.response);
-      res.status(200).json({ message: 'El correo electrónico se ha enviado correctamente.' });
+      console.log('Correo electrónico enviado: ' + info.response)
+      res
+        .status(200)
+        .json({ message: 'El correo electrónico se ha enviado correctamente.' })
     }
-  });
+  })
 
   //con este se envia el correo al cliente
   transporter.sendMail(mailOptionsCli, (error, info) => {
     if (error) {
-      console.log(error);
-      res.status(500).json({ message: 'Ocurrió un error al enviar el correo electrónico.' });
+      console.log(error)
+      res
+        .status(500)
+        .json({ message: 'Ocurrió un error al enviar el correo electrónico.' })
     } else {
-      console.log('Correo electrónico enviado: ' + info.response);
-      res.status(200).json({ message: 'El correo electrónico se ha enviado correctamente.' });
+      console.log('Correo electrónico enviado: ' + info.response)
+      res
+        .status(200)
+        .json({ message: 'El correo electrónico se ha enviado correctamente.' })
     }
-  });
+  })
 }
 
-module.exports = { enviarCorreo };
+module.exports = { enviarCorreo }
