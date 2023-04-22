@@ -1,3 +1,10 @@
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+
+import { getShops, getShopId } from '../../../redux/shopActions';
+import { resetShopId } from '../../../redux/shopSlice';
+
 import Redes from '../../common/redesSociales/redes/Redes';
 import style from './RestaurantSolYLuna.module.css';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
@@ -14,6 +21,20 @@ import CardProductContainer2 from '../../common/CardProductContainer2/CardProduc
 import ShopContact from '../Contact/ShopContact'
 
 export default function RestauranteSolYLuna() {
+
+  const shopId = useSelector(state => state.shops.shopId);
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect( () => {
+      dispatch(getShopId(location.pathname));
+      return () => {
+          dispatch(resetShopId(0));
+      };
+  }, []);
+
+
+
   let DB = require('./imagenes.json')
   DB = DB.response
 
@@ -35,7 +56,11 @@ export default function RestauranteSolYLuna() {
       </section>
 
       <section>
-        <Reviews />
+        <div className='container'>
+          <h4>Nuestros clientes</h4>
+          <span>conoce la opinión de nuestros clientes</span>
+        </div>
+        { shopId && <Reviews shopId={shopId}/> }
       </section>
 
       <div className={style.contRedes}>
