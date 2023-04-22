@@ -154,8 +154,8 @@ router.get('/', async (req, res) => {
  */
 router.get('/:id', async (req, res) => {
   try {
-    let { id } = req.params
-    let productById = await getProductById(id)
+    let { shopId } = req.params
+    let productById = await getProductById(shopId)
     res.status(200).send(productById)
   } catch (error) {
     res.status(404).json({ error: error.message })
@@ -288,10 +288,11 @@ router.put('/:id', async (req, res) => {
  *                   description: Mensaje de error descriptivo.
  *                   example: El producto no se pudo crear.
  */
-router.post('/', async (req, res) => {
+router.post('/:shopId', async (req, res) => {
   try {
+    let { shopId } = req.params
     let { name, description, price } = req.body
-    let newProduct = await createProduct(name, description, price)
+    let newProduct = await createProduct(name, description, price, shopId)
     res.status(200).send(newProduct)
   } catch (error) {
     res.status(404).json({ error: error.message })
