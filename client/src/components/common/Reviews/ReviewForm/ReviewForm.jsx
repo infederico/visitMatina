@@ -21,15 +21,8 @@ const ReviewForm = (props) => {
   /////////////////////////////////////////////////////////////////////////////////////////
 
   // global states
-  //const loggedUser = useSelector(state => state.user); // aca tomo del estado global la data del user que esta loggeado
+  const loggedUser = useSelector((state) => state.user.user) // aca tomo del estado global la data del user que esta loggeado
 
-  const loggedUser = {
-    id_user: 1,
-    image: '',
-    name: 'Ivan Federico',
-    email: 'inf@gmail.com',
-    password: 'ash55',
-  }
   const successMessageReview = useSelector(
     (state) => state.reviews.successMessageReview
   )
@@ -43,12 +36,10 @@ const ReviewForm = (props) => {
     approved: true, // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
     shop_id: props.shopId,
   })
-
   const [reviewLocalStorage, setReviewLocalStorage] = useLocalStorage(
     'reviewLocalStorage',
     ''
-  )
-
+  ) // para persistencia de datos mientras estas completando el form si salis y vovles mantiene lo que llevava ingresado
   const [checkedStars, setCheckedStars] = useState({
     one: false,
     two: false,
@@ -141,37 +132,36 @@ const ReviewForm = (props) => {
 
   // handlers
   const handleInputChange = (event) => {
+    if (!loggedUser.access) {
+      alert(
+        'Debes estar registrado e iniciar sesión para poder postear una reseña'
+      )
+    }
+
     let { name, value } = event.target
     if (name === 'rating') {
       value = parseFloat(value)
     }
-
     setNewReview({
       ...newReview,
       [name]: value,
     })
-    setReviewLocalStorage({ ...newReview, [name]: value })
-    // if (name === 'rating') {
-    //     setNewReview({
-    //         ...newReview,
-    //         rating: parseFloat(value)
-    //     });
 
-    //     // setReviewDescription({
-    //     //     ...reviewDescription,
-    //     //     rating: parseFloat(value)
-    //     // });
-    // }
-    // if (name === 'description') {
-    //     setNewReview({
-    //         ...newReview,
-    //         description: value
+    setReviewLocalStorage({
+      ...reviewLocalStorage,
+      [name]: value,
+    })
+
+    // setTimeout( ()=>{
+    //     setReviewLocalStorage({
+    //         user_id: loggedUser.id_user,
+    //         rating: 0,
+    //         description: '',
+    //         approved: true, // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
+    //         shop_id: props.shopId
     //     });
-    //     setReviewDescription({
-    //         ...reviewDescription,
-    //         description: value
-    //     });
-    // }
+    // }, 5000);
+
     if (submitted) {
       let err = validation({
         ...newReview,
@@ -189,6 +179,11 @@ const ReviewForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    if (!loggedUser.access) {
+      alert(
+        'Debes estar registrado e iniciar sesión para poder postear una reseña'
+      )
+    }
     //set submitted state true to allow errors rendering after first submit attemp
     setSubmitted(true)
     dispatch(cleanSuccessMessageReview())
@@ -207,8 +202,6 @@ const ReviewForm = (props) => {
     // if there is no errors on the process of validation
     if (Object.keys(err).length === 0) {
       dispatch(postReview(newReview))
-      // vuelve a pedir todas las reviews para que actaulice y el user vea el review que acaba de postear
-      dispatch(getAllApprovedReviewsByShopId(props.shopId))
       //clean local state after sending all data
       setNewReview({
         user_id: loggedUser.id_user,
@@ -221,6 +214,15 @@ const ReviewForm = (props) => {
       setErrors({})
       //reset the local state once the new user was created successfully to permit a good user experience and dont show errors until first submit attemp in the next user load
       setSubmitted(false)
+      setReviewLocalStorage({
+        user_id: loggedUser.id_user,
+        rating: 0,
+        description: '',
+        approved: true,
+        shop_id: props.shopId,
+      })
+      // vuelve a pedir todas las reviews para que actaulice y el user vea el review que acaba de postear
+      dispatch(getAllApprovedReviewsByShopId(props.shopId))
       return
     }
   }
@@ -286,23 +288,18 @@ const ReviewForm = (props) => {
             )}
             <br />
 
-            {/* <div className="mb-3">
-                            <textarea
-                                type="textarea" 
-                                name="description"
-                                className="form-control"
-                                rows="3"
-                                placeholder="Cuéntanos acerca de tu experiencia con nosotros..."
-                                onChange={handleInputChange}
-                                value={newReview.description}>
-                            </textarea>
-                        </div> */}
-            <input
-              type='text'
-              name='description'
-              onChange={handleInputChange}
-              value={newReview.description}
-            />
+            <div className='mb-3'>
+              <textarea
+                type='textarea'
+                name='description'
+                className='form-control'
+                rows='3'
+                placeholder='Cuéntanos acerca de tu experiencia con nosotros...'
+                onChange={handleInputChange}
+                value={newReview.description}
+              ></textarea>
+            </div>
+            {/* <input type="text" name="description" onChange={handleInputChange} value={newReview.description} /> */}
 
             {errors.description1 && (
               <span className={styles.errors}>{errors.description1}</span>
