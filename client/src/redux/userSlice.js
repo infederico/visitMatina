@@ -35,8 +35,14 @@ const userSlice = createSlice({
         },
       }
     },
+    logOutUser: (state, action) => {
+      return {
+        ...state,
+        user: {},
+      }
+    },
   },
 })
 
-export const { getUserById, postUser, gUSer } = userSlice.actions
+export const { getUserById, postUser, gUSer, logOutUser } = userSlice.actions
 export default userSlice.reducer

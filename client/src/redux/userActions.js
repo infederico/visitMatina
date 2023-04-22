@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getUserById, postUser, gUSer } from './userSlice'
+import { getUserById, postUser, gUSer, logOutUser } from './userSlice'
 
 export const getUser = (user) => {
   return async (dispatch) => {
@@ -21,5 +21,11 @@ export const authGoogle = (user) => {
   return async (dispatch) => {
     let googlePost = await axios.post('http://localhost:3001/api/users/', user)
     return dispatch(gUSer(googlePost.data[0]))
+  }
+}
+
+export const logOut = (dispatch) => {
+  return async (dispatch) => {
+    return dispatch(logOutUser())
   }
 }
