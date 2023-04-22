@@ -4,7 +4,7 @@ import ValidationLogIn from './Validation/validationLogIn'
 import useLocalStorage from '../../localStorage/useLocalStorage'
 import jwt_decode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
-import { getUser, authGoogle } from '../../../redux/userActions'
+import { getUser, authGoogle, logOut } from '../../../redux/userActions'
 const LogIn = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -14,7 +14,7 @@ const LogIn = () => {
     password: '',
   })
   const [rememberButton, setRememberButton] = useState(false)
-  const [otracosa, setRemember] = useLocalStorage('otracosa', '')
+  const [remember, setRemember] = useLocalStorage('remember', '')
 
   const [errors, setErrors] = useState({
     email: '',
@@ -44,15 +44,15 @@ const LogIn = () => {
     })
     google.accounts.id.prompt()
 
-    if (otracosa.email) {
+    if (remember.email) {
       setUserData((prevState) => ({
         ...prevState,
-        email: otracosa.email,
-        password: otracosa.password,
+        email: remember.email,
+        password: remember.password,
       }))
       setRememberButton(() => true)
     }
-  }, [otracosa.email])
+  }, [remember.email])
 
   const handleInputChange = (event) => {
     event.preventDefault()
@@ -77,6 +77,10 @@ const LogIn = () => {
   }
   const handleChecked = () => {
     rememberButton ? setRememberButton(false) : setRememberButton(true)
+  }
+
+  const handleLogOut = () => {
+    dispatch(logOut())
   }
 
   return (
@@ -178,6 +182,15 @@ const LogIn = () => {
         )}
 
         <br />
+        <button
+          type='button'
+          class='btn btn-outline-secondary'
+          onClick={() => {
+            handleLogOut()
+          }}
+        >
+          Cerrar sesion
+        </button>
         <Link to='/register'>
           <button onClick={() => alert('nos envia a la pagina de registro')}>
             No tienes cuenta? Registrate
