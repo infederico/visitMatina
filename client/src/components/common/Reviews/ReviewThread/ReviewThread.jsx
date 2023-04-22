@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { setShowCommentPanel, cleanSuccessMessageComment, setBackendError } from '../../../../redux/reviewsSlice';
-import { postReviewComment } from '../../../../redux/reviewsActions';
+import { postReviewComment, getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
 
 import validation from './validation';
 
@@ -10,21 +11,14 @@ import ReviewComment from './ReviewComment/ReviewComment';
 
 import styles from './ReviewThread.module.css';
 
-const ReviewThread = () => {
+const ReviewThread = (props) => {
 
     // global states
     const reviews = useSelector(state => state.reviews.value);
     const selectedReview = useSelector(state => state.reviews.selectedReview);
     const successMessageComment = useSelector(state => state.reviews.successMessageComment);
     const backendError = useSelector(state => state.reviews.backendError);
-    //const loggedUser = useSelector(state => state.user); // aca tomo del estado global la data del user que esta loggeado
-    const loggedUser = {
-        id_user: 2,
-        image: '',
-        name: 'Ivan Federico',
-        email: 'inf@gmail.com',
-        password: 'ash55'
-    };
+    const loggedUser = useSelector(state => state.user.user); // aca tomo del estado global la data del user que esta loggeado
 
     // local states
     const [ newComment, setNewComment ] = useState({
@@ -33,6 +27,7 @@ const ReviewThread = () => {
         description: "",
         approved: true
     });
+
     const [ commentsToRender, setCommentsToRender ] = useState([]);
     const [ submitted, setSubmitted ] = useState(false);
     const [ errors, setErrors ] = useState({});
@@ -40,6 +35,7 @@ const ReviewThread = () => {
 
     // hooks  
     const dispatch =  useDispatch();
+    const navigate = useNavigate();
 
     useEffect( () => {
         let filteredByReviewId = reviews.filter( (review) => review.review_id === selectedReview);
@@ -53,6 +49,12 @@ const ReviewThread = () => {
             parent_id: selectedReview
         });
     }, [selectedReview]);
+
+    useEffect(() => {
+        if (successMessageComment) {
+          dispatch(getAllApprovedReviewsByShopId(props.shopId))
+        }
+    }, [successMessageComment])
  
     // handlers 
     const handleClick = () => {
@@ -60,6 +62,11 @@ const ReviewThread = () => {
     };
 
     const handleInputChange = (event) => {
+        if (!loggedUser.access) {
+            window.alert('Debes estar registrado e iniciar sesión para poder postear una reseña');
+            navigate('/login');
+        };
+        setIncompleteFormAlert(false);
         let { name, value } = event.target;
         setNewComment({
             ...newComment,
@@ -99,11 +106,7 @@ const ReviewThread = () => {
         // if there is no errors on the process of validation
         if (Object.keys(err).length === 0) {
             dispatch(postReviewComment(newComment));
-
-            // agrego al array renderizado el nuevo comment para que el user vea el comnetario que acaba de postear
-            //let updatedComments = [...commentsToRender, newComment ];
-            //setCommentsToRender(updatedComments);
-
+            setIncompleteFormAlert(false);
             //clean local state after sending all data
             setNewComment({
                 user_id: loggedUser.id_user,
@@ -131,7 +134,7 @@ const ReviewThread = () => {
     return (
         <>
             <hr />
-            <button onClick={handleClick}>  x  </button>
+            <button type="button" class="btn-close" aria-label="Close" onClick={handleClick}></button>
             <span>{`     Hilo de la reseña nro: ${selectedReview}`}</span>
             <br />
             <br />
@@ -141,8 +144,10 @@ const ReviewThread = () => {
                         return <ReviewComment
                             key={comment.review_id}
                             commentId={comment.review_id}
+                            parent_id={comment.parent_id}
                             name={comment.user.name}
                             email={comment.user.email}
+                            createdAt={comment.createdAt}
                             comment={comment.description}
                         />
                     };
