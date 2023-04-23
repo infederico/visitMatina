@@ -24,6 +24,7 @@ const AdminBlog = () => {
 
   const loggedUser = useSelector((state) => state.user.user);
 
+  console.log(loggedUser.id_user);
 
   const [errors, setErrors] = useState({});
   const [inputs, setInputs] = useState({
@@ -34,7 +35,6 @@ const AdminBlog = () => {
     id_user: loggedUser.id_user,
   });
 
-  console.log(resUpPost)
 
   useEffect(() => {
 
@@ -54,6 +54,12 @@ const AdminBlog = () => {
       ...inputs,
       [event.target.name]: event.target.value,
     });
+    setErrors(
+      validate({
+        ...inputs,
+        [event.target.name]: event.target.value,
+      })
+    )
   };
 
   const handlerSubmitCreate = (event) => {
@@ -63,6 +69,7 @@ const AdminBlog = () => {
       dispatch(addPost(inputs));
       setErrors({});
       setInputs({
+        ...inputs,
         title: "",
         summary: "",
         content: "",
