@@ -111,7 +111,7 @@ const Review = (props) => {
                     </div>
                     <div className={styles.cardIconContainer} >
                     <img src={iconReadComments} alt='read-comments' onClick={handleWriteComment} className={styles.cardIcon} />
-                    <label onClick={handleWriteComment} className={styles.cardIcon}>Leer comentarios</label>
+                    <label onClick={handleWriteComment} className={styles.cardIcon}>Leer hilo</label>
                     <img src={iconWriteComment} alt='write-comment' onClick={handleWriteComment} className={styles.cardIcon} />  
                     <label onClick={handleWriteComment} className={styles.cardIcon}>Comentar</label> 
                     
