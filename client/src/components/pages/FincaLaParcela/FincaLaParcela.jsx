@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { getShops, getShopId } from '../../../redux/shopActions';
-import { resetShopId } from '../../../redux/shopSlice';
+import { getShops, getShopId, getShopData } from '../../../redux/shopActions';
+import { resetShopId, resetShopData } from '../../../redux/shopSlice';
 
 import Redes from '../../common/redesSociales/redes/Redes';
 import style from './FincaLaParcela.module.css';
@@ -24,14 +24,17 @@ import ShopContact from '../Contact/ShopContact'
 export default function FincaLaParcela() {
 
   const shopId = useSelector(state => state.shops.shopId);
+  const shopData = useSelector(state => state.shops.shopData);
   const dispatch = useDispatch();
   const location = useLocation();
 
   
   useEffect( () => {
     dispatch(getShopId(location.pathname));
+    dispatch(getShopData(location.pathname));
     return () => {
       dispatch(resetShopId(0));
+      dispatch(resetShopData({}));
     };
   }, []);
 
@@ -41,7 +44,7 @@ export default function FincaLaParcela() {
   return (
     <div className={style.page}>
       <section className={style.titleSection}>
-        <CardShop description={descriptions} name={name} image={imagen} />
+        <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
       </section>
       <section>
         <Redes socialmedia={arrayRedes}></Redes>

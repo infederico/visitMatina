@@ -1,11 +1,20 @@
 .starWrapper img {
     scale: 100%;
-    mix-blend-mode: color-burn;
-    
-
-
+/*     mix-blend-mode: color-burn;
+ */    
 }
 .generalCalifImg {
     text-align: center;
     margin-left: 110px;
+}
+.reviewContainer{
+    background-color: var(--quaternary-color-200);
+}
+.reviewThread{
+    max-height: fit-content;
+    background-color: var(--neutral-color-100);
+}
+.reviewThread .form{
+    max-height: fit-content;
+    background-color: var(--neutral-color-100);
 }

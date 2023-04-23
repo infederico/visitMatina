@@ -2,7 +2,7 @@
   /*   scale: 75%;
     margin-left: -36px; */
     scale: 70%;
-    mix-blend-mode: color-burn;;
+    /* mix-blend-mode: color-burn;; */
 }
 
 .cardIconContainer {
@@ -32,11 +32,11 @@ p {
 }
 
 .cardBody {
-    background-color: var(--secondary-color-0);
+    background-color: var(--quaternary-color-0);
     transition: .3s;
 }
 .cardBody:hover {
-    box-shadow: 1px 1px 30px var(--secondary-color-100);    
+    box-shadow: 1px 1px 30px var(--quaternary-color-100);    
 }
 label {
     font-family: 'Kanit', sans-serif;
