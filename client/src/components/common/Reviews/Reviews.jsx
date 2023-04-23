@@ -159,13 +159,13 @@ const Reviews = (props) => {
     const endIndex = Math.min(startIndex + reviewsPerPage, reviews.length);
 
     return (
-        <>
+        <div className={styles.reviewContainer}>
             <br />
             <section>
                 <div className='container'>
                     { reviews.length !== 0 && <p className='text-center'>calificación general: </p> }
                     { reviews.length !== 0 && <p className='text-center mb-0' style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</p> }
-                    { reviews.length !== 0 && <span style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</span> }    
+                    { reviews.length !== 0 && <p className='text-center' style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</p> }    
                     { reviews.length !== 0 && <div style={{textAlign: 'center'}} className={styles.starWrapper}>
                         {
                             (overallRatingNumber === 0 || overallRatingNumber === 0.5) && <img src={stars0} alt='0stars' />
@@ -180,7 +180,7 @@ const Reviews = (props) => {
                             (overallRatingNumber === 3 || overallRatingNumber === 3.5) && <img src={stars3} alt='3stars' />
                         }
                         {
-                            (overallRatingNumber === 4 || overallRatingNumber === 4.5) && <img className={`${styles.generalCalifImg}`} src={stars4} alt='4stars' />
+                            (overallRatingNumber === 4 || overallRatingNumber === 4.5) && <img /* className={`${styles.generalCalifImg}`} */ src={stars4} alt='4stars' />
                         }
                         {
                             overallRatingNumber === 5 && <img src={stars5} alt='5stars' />
@@ -221,8 +221,8 @@ const Reviews = (props) => {
                 </div>
             </section> */}
 
-            <section>
-                <div className='container mt-5 mb-5'> {/* <div className='container'> */}
+            <section >
+                <div className='container mt-5 mb-5 '> {/* <div className='container'> */}
                     <div className="row g-2"> {/* <div className="row mt-3">  */}
                         {
                             paginatedReviews?.map((review) => {
@@ -244,16 +244,16 @@ const Reviews = (props) => {
             <section>
                 <div className='container'>
                 { reviews.length !== 0 && <span>{`Mostrando ${(startIndex + 1)} a ${endIndex} de ${reviews.length} Reseñas`}</span> }
-                    <nav aria-label="Page navigation example">
-                        <ul className="pagination justify-content-center">
-                            <li className="page-item" onClick={pageDecrement}><NavLink className="page-link" >Previous</NavLink></li>
-                            <li className="page-item" onClick={pageIncrement}><NavLink className="page-link" >Next</NavLink></li>
-                        </ul>
-                    </nav>
+
+                        <div className=" d-flex justify-content-center">
+                            <NavLink className="link-dark me-1" >Previous</NavLink>
+                            <NavLink className="link-dark ms-1" >Next</NavLink>
+                        </div>
+
                 </div>  
             </section>
 
-            <section>
+            <section className={styles.reviewThread}>
                 <div className='container'>
                     {
                         showCommentPanel && <ReviewThread reviewId={selectedReview} shopId={props.shopId} />
@@ -267,7 +267,7 @@ const Reviews = (props) => {
                 </div>
             </section>
 
-        </>
+        </div>
     );
 };
 

@@ -2,7 +2,7 @@
 .background {
     position: fixed;
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     background-color: rgba(0, 0, 0, 0.2);
     left: 0;
     /*display: flex;
