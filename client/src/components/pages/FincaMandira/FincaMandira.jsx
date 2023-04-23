@@ -25,7 +25,6 @@ import ShopContact from '../Contact/ShopContact'
 export default function FincaMandira() {
 
   const shopId = useSelector(state => state.shops.shopId);
-  const product = useSelector(state => state.product.product)
 
   // const shops = useSelector(state => state.shops.shops);
 
@@ -42,9 +41,7 @@ export default function FincaMandira() {
     }
   }, []);
 
-  useEffect(() => {
-    dispatch(getProductsByShopId(shopId)) //agregar 
-  },[])
+
 
   // useEffect( () => {
   //   dispatch(getShops(location.pathname));
@@ -67,7 +64,7 @@ export default function FincaMandira() {
                                                     simulando los datos que llegarian del back*/}
       </section>
       <div className={style.cardProductContainerContainer}>
-      < div >
+        < div >
           <CardProductContainer />
         </div>
       </div>

@@ -14,6 +14,7 @@ export const getShopId = (path) => async (dispatch) => {
     try{
         const shops = await axios("/shops");
         const shopFiltered = shops.data.filter(shop => shop.path === path);
+        console.log(shopFiltered);
         dispatch(getShopIdByPath(shopFiltered.at(0)['id_shop']));   
     }catch(error) {
         console.log(error);

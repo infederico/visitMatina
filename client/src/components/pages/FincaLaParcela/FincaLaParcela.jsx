@@ -27,6 +27,7 @@ export default function FincaLaParcela() {
   const dispatch = useDispatch();
   const location = useLocation();
 
+  
   useEffect( () => {
     dispatch(getShopId(location.pathname));
     return () => {
@@ -35,16 +36,22 @@ export default function FincaLaParcela() {
   }, []);
 
 
+
+
   return (
     <div className={style.page}>
       <section className={style.titleSection}>
         <CardShop description={descriptions} name={name} image={imagen} />
       </section>
-
-      <section className={style.productSection}>
-        <CardProductContainer />
+      <section>
+        <Redes socialmedia={arrayRedes}></Redes>
       </section>
 
+      <div className={style.cardProductContainerContainer}>
+        < div >
+          { shopId && <CardProductContainer />}
+        </div>
+      </div>
       <section>
         <div className='container'>
           <h4>Nuestros clientes</h4>
@@ -52,25 +59,13 @@ export default function FincaLaParcela() {
         </div>
         { shopId && <Reviews shopId={shopId}/> }
       </section>
-
-      <section className={style.Cajaredes}>
-        <Redes socialmedia={arrayRedes} />
-        {/*aca enviamos por props el array que importamos
-                                                    simulando los datos que llegarian del back*/}
-      </section>
-      <section className={style.productSection}>
-        <CardProductContainer />
-      </section>
-      {/* <section>
-        <Reviews />
-      </section> */}      
       
-        <section className={style.contactSection}>
-          <ShopContact />
-        </section>
-        <section>
-          <Footer socialmedia={arrayRedes}/>
-        </section>
+      <section className={style.contactSection}>
+        <ShopContact />
+      </section>
+      <section>
+        <Footer socialmedia={arrayRedes}/>
+      </section>
     </div>
   )
 }

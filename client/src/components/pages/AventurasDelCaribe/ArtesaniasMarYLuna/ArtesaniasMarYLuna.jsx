@@ -46,8 +46,9 @@ export default function ArtesaniasMarYLuna() {
         {/*aca enviamos por props el array que importamos
                                                     simulando los datos que llegarian del back*/}
       </section>
-      <section className={style.productSection}>
+      <section className={style.cardProductContainerContainer}>
         <CardProductContainer />
+      </section>
             <section>
                 <div className='container'>
                     <h4>Nuestros clientes</h4>
@@ -55,7 +56,6 @@ export default function ArtesaniasMarYLuna() {
                 </div>
                 { shopId && <Reviews shopId={shopId}/> }
             </section>
-      </section>
       {/* <section>
         <Reviews />
       </section> */}      

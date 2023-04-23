@@ -4,9 +4,8 @@ import { useLocation } from 'react-router-dom';
 
 import { getShops, getShopId } from '../../../redux/shopActions';
 import { resetShopId } from '../../../redux/shopSlice';
-
+import CardProductContainer from '../../common/CardProductContainer/CardProductContainer';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
-import CardActivities from '../../common/CardActivities/CardActivities';
 import Reviews from '../../common/Reviews/Reviews';
 import Redes from '../../common/redesSociales/redes/Redes';
 import Footer from '../../common/Footer/Footer';
@@ -22,9 +21,7 @@ import ShopContact from '../Contact/ShopContact'
 
 export default function AventurasDelCaribe() {
 
-  const shopId = useSelector(state => state.shops.shopId);
-
-  const [aventuras, setAventuras] = useState([])
+ /*  const shopId = useSelector(state => state.shops.shopId);
 
   // hooks
   const dispatch = useDispatch();
@@ -38,53 +35,43 @@ export default function AventurasDelCaribe() {
   }, []);
 
   useEffect(() => {
-    setAventuras(require('./mock_aventuras.json').response)
-  }, [])
+  }, []) */
+    const shopId = useSelector(state => state.shops.shopId);
+  const dispatch = useDispatch();
+  const location = useLocation();
 
-  return (
-    <>
-      <div >
-        <section className={style.titleSection}>
-          <CardShop description={description} name={name} image={image} />
-        </section>
+  useEffect( () => {
+    dispatch(getShopId(location.pathname));
+    return () => {
+      dispatch(resetShopId(0));
+    };
+  }, []);
 
+return (
+    <div className={style.page}>
+      <section className={style.titleSection}>
+        <CardShop description={description} name={name} image={image} />
+      </section>
+
+      <div className={style.cardProductContainerContainer}>
+        < div >
+          <CardProductContainer />
+        </div>
       </div>
-            <div className="row">
-            {
-                aventuras?.map((aventura) => {
-                    return (
-                        <CardActivities
-                            key={aventura.idProduct}
-                            image={aventura.image}
-                            name={aventura.name}
-                            description={aventura.description}
-                            price={aventura.price}
-                        />
-                    )
-                })
-            }
-            </div>
-            <div className={style.containerReviews}>
-              <section>
-                  <div className='container'>
-                      <div className={style.title}>
-                          <h2 className='text-center'>Nuestros clientes</h2>
-                          {/* <span>conoce la opinión de nuestros clientes</span> */}
-                      </div>
-                  </div>
-
-              </section>
-
-    
-              { shopId && <Reviews shopId={shopId}/> }
-              <section className={style.contactSection}>
-                <ShopContact />
-              </section>
-              <section>
-                <Footer socialmedia={arrayRedes}/>
-              </section>
-            </div>
-                  
-        </>
-    );
-};
+      <section>
+        <div className='container'>
+          <h4>Nuestros clientes</h4>
+          <span>conoce la opinión de nuestros clientes</span>
+        </div>
+        { shopId && <Reviews shopId={shopId}/> }
+      </section>
+      
+      <section className={style.contactSection}>
+        <ShopContact />
+      </section>
+      <section>
+        <Footer socialmedia={arrayRedes}/>
+      </section>
+    </div>
+  )
+}
