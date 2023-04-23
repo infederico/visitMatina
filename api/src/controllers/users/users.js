@@ -51,7 +51,7 @@ const getUserById = async (id_user) => {
     throw new Error(`Error getting user by id: ${error.message}`)
   }
 }
-const updateUser = async (id_user, name, email, password, admin) => {
+const updateUser = async (id_user, name, email, password, admin, active) => {
   try {
     let findUser = await getUserById(id_user)
     if (findUser) {
@@ -66,6 +66,9 @@ const updateUser = async (id_user, name, email, password, admin) => {
       }
       if (admin !== undefined) {
         await Users.update({ admin }, { where: { id_user } })
+      }
+      if (active !== undefined) {
+        await Users.update({ active }, { where: { id_user } })
       }
       return true
     }
