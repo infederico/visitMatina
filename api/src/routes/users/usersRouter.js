@@ -6,6 +6,7 @@ const {
   getAllUsers,
   getUserById,
   updateUser,
+  updateBodyUser,
   createUser,
   deleteUser,
 } = require('../../controllers/users/users')
@@ -235,6 +236,22 @@ router.put('/:id_user', async (req, res) => {
     res.status(404).json({ error: error.message })
   }
 })
+
+// update all data body
+
+router.put('/', async (req, res) => {
+  try {
+
+    let { id_user, name, email, password, admin, active } = req.body
+    const putRes = await updateBodyUser(id_user, name, email, password, admin, active)
+    res.status(200).send(putRes)
+  } catch (error) {
+    res.status(404).json({ error: error.message })
+  }
+})
+
+
+
 
 /**
  * @openapi

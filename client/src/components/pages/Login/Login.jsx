@@ -27,8 +27,7 @@ const LogIn = () => {
     let userObject = jwt_decode(response.credential)
     dispatch(authGoogle(userObject))
     document.getElementById('signInDiv').hidden = true
-    console.log('desde loguin google', loggedUser)
-    navigate('/admin')
+    navigate('/')
   }
 
   useEffect(() => {
@@ -80,7 +79,7 @@ const LogIn = () => {
     }
     console.log('desde loguin', loggedUser)
 
-    navigate('/admin')
+    navigate('/')
   }
   const handleChecked = () => {
     rememberButton ? setRememberButton(false) : setRememberButton(true)
@@ -174,7 +173,6 @@ const LogIn = () => {
           <Link to='/register'>
             <button
               style={{ width: '22rem' }}
-              onClick={() => alert('nos envia a la pagina de registro')}
             >
               No tienes cuenta? Registrate
             </button>
