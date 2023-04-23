@@ -56,6 +56,7 @@ const createShop = async (req, res) => {
     summary,
     path,
     email,
+    image,
     twitter,
     facebook,
     instagram,
@@ -64,32 +65,65 @@ const createShop = async (req, res) => {
     location,
     active,
   } = req.body
-  console.log(req.body)
+  
   //if (!name ||!whatsapp || !summary || !path || !email || !twitter || !facebook || !instagram || !youtube || !location || !active ) {
   if (!name || !summary || !path) {
     return res.status(400).json({ error: 'Faltan datos' })
   }
-  try {
-    const newShop = await Shop.create({
-      name,
-      summary,
-      path,
-      email,
-      /*twitter,
-      facebook,
-      instagram,
-      youtube,
-      whatsapp,
-      location,*/
-      active,
-    })
-    res
-      .status(200)
-      .json({ message: 'La tienda se ha creado con éxito', shop: newShop })
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Error al crear la tienda' })
+  if(!image){
+    
+    const image= 'https://salesland.net/sites/default/files/inline-images/shop-in-shop-salesland.png'
+    try {
+   
+      const newShop = await Shop.create({
+        name,
+        summary,
+        path,
+        email,
+        image,
+        /*twitter,
+        facebook,
+        instagram,
+        youtube,
+        whatsapp,
+        location,*/
+        active,
+      })
+      res
+        .status(200)
+        .json({ message: 'La tienda se ha creado con éxito', shop: newShop })
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ error: 'Error al crear la tienda' })
+    }
+  }else{
+    try {
+   
+      const newShop = await Shop.create({
+        name,
+        summary,
+        path,
+        email,
+        image,
+        /*twitter,
+        facebook,
+        instagram,
+        youtube,
+        whatsapp,
+        location,*/
+        active,
+      })
+      res
+        .status(200)
+        .json({ message: 'La tienda se ha creado con éxito', shop: newShop })
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ error: 'Error al crear la tienda' })
+    }
   }
+  
+
+  
 }
 
 //controller para actualizar una tienda
@@ -103,6 +137,7 @@ const updateShop = async (req, res) => {
       active,
       path,
       email,
+      image,
       twitter,
       facebook,
       instagram,
@@ -121,6 +156,7 @@ const updateShop = async (req, res) => {
     if (summary) fieldsToUpdate.summary = summary
     if (path) fieldsToUpdate.path = path
     if (email) fieldsToUpdate.email = email
+    if (image) fieldsToUpdate.image = image
     if (twitter) fieldsToUpdate.twitter = twitter
     if (facebook) fieldsToUpdate.facebook = facebook
     if (instagram) fieldsToUpdate.instagram = instagram
@@ -141,7 +177,7 @@ const updateShop = async (req, res) => {
   }
 }
 
-module.exports = {
+module.exports = { 
   deleteShop,
   getAll,
   getShopById,

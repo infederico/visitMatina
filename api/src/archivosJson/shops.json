@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Tienda mandira json 1",
+        "summary": "Resumen de la Tienda 1",
+        "path": "/fincaMandira",
+        "email": "tienda1@example.com",
+        "active": true
+    },
+    {
+        "name": "Tienda mundial json 2",
+        "summary": "Resumen de la Tienda 2",
+        "path": "/tienda2",
+        "email": "tienda2@example.com",
+        "active": true
+    },
+    {
+        "name": "Tienda mundial json 3",
+        "summary": "Resumen de la Tienda 3",
+        "path": "/tienda3",
+        "email": "tienda3@example.com",
+        "active": true
+    },
+    {
+        "name": "Tienda mundial json 4",
+        "summary": "Resumen de la Tienda 4",
+        "path": "/tienda4",
+        "email": "tienda4@example.com",
+        "active": true
+    }
+]
+
+
