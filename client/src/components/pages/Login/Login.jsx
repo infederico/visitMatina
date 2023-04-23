@@ -37,13 +37,13 @@ const LogIn = () => {
       client_id: clientId,
       callback: handleCallbackResponse,
     })
-    google.accounts.id.prompt()
+    // google.accounts.id.prompt()
     google.accounts.id.renderButton(document.getElementById('signInDiv'), {
       type: 'standard',
       theme: 'filled_black',
       size: 'medium',
       text: 'signin_with',
-      shape: 'circle',
+      shape: 'rectangle',
       logo_alignment: 'center',
       width: '350',
     })
