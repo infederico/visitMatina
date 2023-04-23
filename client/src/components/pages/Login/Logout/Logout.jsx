@@ -6,7 +6,7 @@ const LogOutUser = () => {
   const navigate = useNavigate()
   const handleLogOut = () => {
     dispatch(logOut())
-    navigate('/')
+    navigate('/login')
   }
   return (
     <button

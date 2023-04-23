@@ -114,6 +114,11 @@ export default function Blog() {
         </button>
         </div>
         <section>
+
+
+
+
+          
       <div className={styles.divCardsBlog}>
           {allPosts.slice(current * 2, (current * 2) + 2).map((elem) => {
             return (

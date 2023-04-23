@@ -55,16 +55,16 @@ const { Users, Product, Media, Shop, Post, Reviews } = sequelize.models
 //   { timestamps: false }
 // )
 
-Shop.belongsToMany(
-  Product,
-  {
-    through: 'shop_product',
-  },
-  { timestamps: false }
-)
+// Shop.belongsToMany(
+//   Product,
+//   {
+//     through: 'shop_product',
+//   },
+//   { timestamps: false }
+// )
 
-Product.belongsToMany(Shop, {
-  through: 'shop_product',
+Product.belongsTo(Shop, {
+  foreignKey: 'shop_id',
   timestamps: false,
 })
 
