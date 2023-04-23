@@ -1,9 +1,14 @@
 import axios from 'axios'
 import { getAllProductsByShopId } from './productSlice'
 
-export const getProductsByShopId = (shopId) => {
+export const getProductsByShopId = (shopId) => {//agregar por porps shopId
   return async (dispatch) => {
-    const products = await axios(`/product/${shopId}`)
-    dispatch(getAllProductsByShopId(products.data))
+    try{
+      console.log("entra al try de getproductsbyshopid");
+      const products = await axios(`/product/${shopId}`) //agregar 
+      dispatch(getAllProductsByShopId(products.data))
+    }catch(error){
+      console.log("no entra");
+    }
   }
 }

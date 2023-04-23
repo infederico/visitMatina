@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ValidationContact from '../Login/Validation/validationContact'
 import { useDispatch } from 'react-redux'
 import { PostContact } from '../../../redux/contactActions'
+import styles from './ShopContact.module.css'
 
 const ShopContact = () => {
   const dispatch = useDispatch()
@@ -42,14 +43,16 @@ const ShopContact = () => {
   }
 
   return (
-    <div>
+    <div className={styles.containerContact}>
       <div
-        className='card'
-        style={{
-          width: '20rem',
-        }}
+        className='card border-0 '
+       
       >
-        <div className='card-body'>
+        <div className='card-body '
+        style={{
+          
+          backgroundColor: "var(--quaternary-color-0)"
+        }}>
           <h1>Contacto</h1>
           <div className='mb-3'>
             <label htmlFor='exampleFormControlInput1' className='form-label'>
@@ -57,6 +60,11 @@ const ShopContact = () => {
             </label>
             <br />
             <input
+            style={{
+          
+              backgroundColor: "transparent"
+            }}
+              className='border-0 border-bottom'
               name='name'
               type='text'
               value={userData.name}
@@ -71,8 +79,13 @@ const ShopContact = () => {
               Email
             </label>
             <input
+            style={{
+          
+              backgroundColor: "transparent"
+            }}
+
               type='email'
-              className='form-control'
+              className='form-control border-0 border-bottom'
               id='exampleFormControlInput1'
               placeholder='name@example.com'
               name='correoxres'
@@ -86,8 +99,12 @@ const ShopContact = () => {
               Confirma Email
             </label>
             <input
+            style={{
+          
+              backgroundColor: "transparent"
+            }}
               type='email'
-              className='form-control'
+              className='form-control border-0 border-bottom'
               id='exampleFormControlInput1'
               placeholder='name@example.com'
               name='confirmEmail'
@@ -108,11 +125,11 @@ const ShopContact = () => {
               type='text'
               value={userData.mensaje}
               onChange={handleInputChange}
-              style={{ resize: 'none' }}
+              style={{ resize: 'none', backgroundColor:"transparent" }}
             ></textarea>
             {errors.mensaje ? errors.mensaje : null}
             <br />
-            <button onClick={handleClick}>Enviar consulta</button>
+            <button className={`btn btn-primary ${styles.submitButton}`} onClick={handleClick}>Enviar consulta</button>
           </div>
         </div>
       </div>

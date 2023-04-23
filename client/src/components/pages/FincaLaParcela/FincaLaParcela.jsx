@@ -9,6 +9,7 @@ import Redes from '../../common/redesSociales/redes/Redes';
 import style from './FincaLaParcela.module.css';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
 import Reviews from '../../common/Reviews/Reviews';
+import Footer from '../../common/Footer/Footer';
 
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
@@ -26,6 +27,7 @@ export default function FincaLaParcela() {
   const dispatch = useDispatch();
   const location = useLocation();
 
+  
   useEffect( () => {
     dispatch(getShopId(location.pathname));
     return () => {
@@ -34,16 +36,22 @@ export default function FincaLaParcela() {
   }, []);
 
 
+
+
   return (
     <div className={style.page}>
       <section className={style.titleSection}>
         <CardShop description={descriptions} name={name} image={imagen} />
       </section>
-
-      <section className={style.productSection}>
-        <CardProductContainer />
+      <section>
+        <Redes socialmedia={arrayRedes}></Redes>
       </section>
 
+      <div className={style.cardProductContainerContainer}>
+        < div >
+          { shopId && <CardProductContainer />}
+        </div>
+      </div>
       <section>
         <div className='container'>
           <h4>Nuestros clientes</h4>
@@ -51,29 +59,13 @@ export default function FincaLaParcela() {
         </div>
         { shopId && <Reviews shopId={shopId}/> }
       </section>
-
-      <section className={style.Cajaredes}>
-        <Redes socialmedia={arrayRedes} />
-        {/*aca enviamos por props el array que importamos
-                                                    simulando los datos que llegarian del back*/}
-      </section>
       
-      <div className={style.contRedes}>
-        <section className={style.ubicacionSection}>
-          <h2 className={style.ubicacion}>Nuestra Ubicación</h2>
-          <img
-            className={style.map}
-            src='https://i.blogs.es/ade34e/google-maps-portada-trafico/840_560.jpg'
-            alt='mapa'
-          />
-        </section>
-        
-        
-        <section className={style.contactSection}>
-          <ShopContact />
-        </section>
-
-      </div>
+      <section className={style.contactSection}>
+        <ShopContact />
+      </section>
+      <section>
+        <Footer socialmedia={arrayRedes}/>
+      </section>
     </div>
   )
 }

@@ -4,8 +4,16 @@
     justify-content: space-between;
     align-items: center;
     z-index: 1;
-}
 
+}
+.navBarCustom {
+    background-color: var(--tertiary-color-0);
+    padding: 0px;
+}
+.text{
+    font-family: 'Actor', sans-serif;
+    font-size: .85rem;
+}
 .navlogo{
-    width: 8rem;
+    width: 3.8rem;
 }
