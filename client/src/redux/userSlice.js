@@ -5,6 +5,7 @@ const userSlice = createSlice({
   initialState: {
     user: {},
     users:[],
+    upDtRes:"",
   },
   reducers: {
     getUserById: (state, action) => {
@@ -46,9 +47,17 @@ const userSlice = createSlice({
       state.users = action.payload
       
     },
-
+    updtUser: (state, action) => {
+      if (updtUser !== ""){
+        window.alert(action.payload);
+      }
+      state.upDtRes = action.payload
+    },
+    cleanUpdt: (state, action) => {
+      state.upDtRes = "";
+    }
   },
 })
 
-export const { getUserById, postUser, gUSer, logOutUser, allUsers } = userSlice.actions
+export const { getUserById, postUser, gUSer, logOutUser, allUsers, updtUser, cleanUpdt } = userSlice.actions
 export default userSlice.reducer

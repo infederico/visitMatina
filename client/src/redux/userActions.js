@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getUserById, postUser, gUSer, logOutUser, allUsers } from './userSlice'
+import { getUserById, postUser, gUSer, logOutUser, allUsers, updtUser, cleanUpdt } from './userSlice'
 
 export const getUser = (user) => {
   return async (dispatch) => {
@@ -35,4 +35,16 @@ export const getAllUsers = () => {
     let get = await axios('/users/')
     return dispatch(allUsers(get.data))
   }
+}
+
+export const updateUsers = (inputs) => {
+  return async (dispatch) => {
+    let put = await axios.put(`/users/`, inputs)// crear otra ruta por body
+    console.log(put)
+    return dispatch(updtUser(put.data))
+  }
+}
+
+export const clnUpDt= () => {
+  return (cleanUpdt());
 }

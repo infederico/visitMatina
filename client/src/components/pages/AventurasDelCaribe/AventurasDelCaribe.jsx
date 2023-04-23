@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom';
 
 import { getShops, getShopId, getShopData } from '../../../redux/shopActions';
 import { resetShopId, resetShopData } from '../../../redux/shopSlice';
+import { getShops, getShopId, getShopData } from '../../../redux/shopActions';
+import { resetShopId, resetShopData } from '../../../redux/shopSlice';
 import CardProductContainer from '../../common/CardProductContainer/CardProductContainer';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
 import Reviews from '../../common/Reviews/Reviews';
@@ -14,7 +16,7 @@ import Footer from '../../common/Footer/Footer';
 import { arrayRedes } from './arrayRedes'
 
 //importamos elementos que simula los datos que llegan del estado global
-import { description, name, image } from './descriptions'
+//import { description, name, image } from './descriptions'
 
 import style from './AventurasDelCaribe.module.css'
 import ShopContact from '../Contact/ShopContact'
@@ -53,7 +55,7 @@ export default function AventurasDelCaribe() {
 return (
     <div className={style.page}>
       <section className={style.titleSection}>
-        <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />      
+        <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
       </section>
 
       <div className={style.cardProductContainerContainer}>
@@ -73,7 +75,7 @@ return (
         <ShopContact />
       </section>
       <section>
-        <Footer socialmedia={arrayRedes}/>
+        <Footer socialmedia={arrayRedes} />
       </section>
     </div>
   )

@@ -51,7 +51,7 @@ const getUserById = async (id_user) => {
     throw new Error(`Error getting user by id: ${error.message}`)
   }
 }
-const updateUser = async (id_user, name, email, password, admin) => {
+const updateUser = async (id_user, name, email, password, admin, active) => {
   try {
     let findUser = await getUserById(id_user)
     if (findUser) {
@@ -67,12 +67,43 @@ const updateUser = async (id_user, name, email, password, admin) => {
       if (admin !== undefined) {
         await Users.update({ admin }, { where: { id_user } })
       }
+      if (active !== undefined) {
+        await Users.update({ active }, { where: { id_user } })
+      }
       return true
     }
   } catch (error) {
     throw new Error(`Error trying to update ${error.message}`)
   }
 }
+
+const updateBodyUser = async (id_user, name, email, password, admin, active) => {
+  try {
+    let findUser = await getUserById(id_user)
+    console.log(findUser.name)
+    if (findUser) {
+      if (name) {
+        await Users.update({ name }, { where: { id_user } })
+      }
+      if (email) {
+        await Users.update({ email }, { where: { id_user } })
+      }
+      if (password) {
+        await Users.update({ password }, { where: { id_user } })
+      }
+      if (admin !== undefined) {
+        await Users.update({ admin }, { where: { id_user } })
+      }
+      if (active !== undefined) {
+        await Users.update({ active }, { where: { id_user } })
+      }
+      return (`Èl usuario ${findUser.name} se modifico con exito`)
+    }
+  } catch (error) {
+    throw new Error(`Error trying to update ${error.message}`)
+  }
+}
+
 const createUser = async (name, email, password, picture) => {
   try {
     let userDefaultImage =
@@ -123,6 +154,7 @@ module.exports = {
   getAllUsers,
   getUserById,
   updateUser,
+  updateBodyUser,
   createUser,
   deleteUser,
 }

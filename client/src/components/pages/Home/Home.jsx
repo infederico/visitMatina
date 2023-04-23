@@ -20,8 +20,18 @@ export default function Home() {
         height='360'
         allow='autoplay fullscreen encrypted-media picture-in-picture'
         allowfullscreen
+        controls="false"
         // frameborder='0'
         title='visit_matina_reel'
+        style={{
+          position: 'fixed',
+          width: '100%',
+          height: '98%',
+          bottom: '0',
+          zIndex: '-99999',
+          filter: 'brightness(50%)',
+          pointerEvents:"none"
+        }}
       ></iframe>
     </>
   )
