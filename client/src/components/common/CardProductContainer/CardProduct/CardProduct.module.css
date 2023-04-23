@@ -1,0 +1,59 @@
+/* img {
+   width: 250px; 
+}
+.container_product {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.container_info_product {
+    display: flex;
+    flex-direction: row;
+} */
+
+
+  
+  .container_product {
+  /*   display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    background-color: var(--tertiary-color-200);
+    width: 18rem;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.3s ease-out;
+  }
+  
+  .product_image {
+    width: 200px;
+  }
+  
+  .product_name {
+    font-size: 1.2rem;
+    font-weight:600;
+    font-family: 'Kanit', sans-serif;
+  }
+  
+  .product_descriptionn {
+    font-size: 1rem;
+    font-family: 'kanit', sans-serif  
+  }
+  
+  .product_price {
+    font-size: 1rem;
+    font-weight:400;
+    font-family: 'kanit', sans-serif
+  }
+  .product_button {
+    background-color: var(--tertiary-color-700);
+    border: none;
+  }
+  .product_button:hover {
+    background-color: var(--tertiary-color-800);
+  }
+  
+  .container_product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  

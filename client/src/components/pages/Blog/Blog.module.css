@@ -1,0 +1,33 @@
+.divMain{
+  padding: 80px;
+}
+.divCardsBlog {
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  padding-top: 6%;
+}
+.divPag{
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 1100px) {
+  .divCardsBlog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.image{
+  width: 100%;
+  position:absolute;
+  top: -130px;
+}
+.divCarousel{
+  height: 360px;
+}
+.textCarousel{
+  color: white;
+  text-shadow: 2px 2px black;
+}

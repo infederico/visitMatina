@@ -1,0 +1,19 @@
+.image{
+    height: 100%;
+}
+.divButtons{
+    display: flex;
+    flex-direction: row;
+}
+.txtButtonG{
+    background-color: green;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+}
+.txtButtonR{
+    background-color: red;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+}

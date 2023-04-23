@@ -1,0 +1,62 @@
+.customCard {
+    width: 50%!important;
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+.container {
+    /* height: 40%;
+    width: 40%;  */
+    border-radius: 2px;
+    box-shadow: 1px 20px 40px 9px rgba(0, 0, 0, 0.315);
+    transition: 0.3s;
+    padding-right: 0;
+    border: solid .5rem #f5f5f5;
+    overflow: hidden;
+}
+.container:hover {
+    /*transform: translateY(-2px);*/
+    opacity: .93;
+    transition: all .2s ease-in-out;
+}
+.image {
+    border-radius: 2px;
+    filter: brightness(70%); 
+}
+
+.container:hover .image {
+    border-radius: 2px;
+    filter: brightness(70%); 
+    transform: scale(1.02);
+    transition: all .2s ease-in-out;
+}
+.text {
+    color: white;
+    text-shadow: 3px 4px 25px black;
+    text-decoration: none;
+    text-decoration-color: white;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px; 
+    filter: none
+}
+
+.customOverlay{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.customOverlay h4{
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+}
+
+@media only screen and (max-width: 1200px) {
+    .customCard {
+        width: 100%!important;
+        padding: 2rem;
+        margin-bottom: 1rem;
+    }
+}

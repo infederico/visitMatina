@@ -1,0 +1,60 @@
+[
+    {
+        "name":" Jose Ignacio alvarez",
+        "email":"vitors@gmail.com",
+        "password":"kmj1234",
+        "gUser": true
+        
+    },
+    {
+        "name":"Federico Perez",
+        "email":"ariels@gmail.com",
+        "password":"kmj1234mmm",
+        "gUser": true
+    },  
+    {
+        "name":" Oscar Fernandez",
+        "email":"franciscos@gmail.com",
+        "password":"kmj1234mmm",
+        "gUser": true
+    },
+    {
+        "name":" Daniela Rodriguez",
+        "email":"franci@gmail.com",
+        "password":"kmj1234mmm",
+        "gUser": true
+    },
+    {
+        "name":" Carlos Ferro",
+        "email":"cos@gmail.com",
+        "password":"kmj1234mmm",
+        "gUser": true
+    },
+    {
+        "name":" Daniel Rodriguez",
+        "email":"anci@gmail.com",
+        "password":"kmj1234mmm",
+        "gUser": true
+    },
+    {
+        "name":" Jose alvarez",
+        "email":"viors@gmail.com",
+        "password":"kmj1234",
+        "gUser": true
+        
+    },
+    {
+        "name":"Fabio Perez",
+        "email":"riels@gmail.com",
+        "password":"kmj1234mmm",
+        "gUser": true
+    },
+    {
+        "name": "Henry",
+        "email": "henry@gmail.com",
+        "password": "$2a$08$.xUzodraZXtV63FKY7UGbOM4e7pc48PU63vNjYFm/aNGIuYCbz6HK",
+        "gUser": false,
+        "admin": true
+      }
+
+]

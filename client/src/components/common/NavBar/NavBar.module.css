@@ -1,0 +1,19 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+
+}
+.navBarCustom {
+    background-color: var(--tertiary-color-0);
+    padding: 0px;
+}
+.text{
+    font-family: 'Actor', sans-serif;
+    font-size: .85rem;
+}
+.navlogo{
+    width: 3.8rem;
+}

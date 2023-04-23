@@ -1,0 +1,129 @@
+
+[
+    {
+    "name": "Tours de avistamiento de flora y fauna, diurno y nocturno",
+    "description":"la bebida de los hogares argentinos",
+    "price": 14.99,
+    "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+    "shop_id": 5
+    },
+    {
+        "name": "Tour de avistamiento de caimanes",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 5
+    },
+    {
+        "name": "Tour de avistamiento de cocodrilo",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 5
+    },
+    {
+        "name": "Tour de desove de tortugas marinas en la Reserva Pacuare",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 5
+    },
+    {
+        "name": "Taller de cocina caribeña",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 5
+    },
+    {
+        "name": "Taller de elaboración de artesanía ecológicas",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 5
+    },
+    {
+        "name": "Llavero",
+        "description":"LLavero hecho a mano",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 6
+    },
+    {
+        "name": "llavero",
+        "description":"LLavero hecho a mano",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 6
+    },
+    {
+        "name": "llavero",
+        "description":"LLavero hecho a mano",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 6
+    },
+    {
+        "name": "Visita nuestra finca",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 3
+    },
+    {
+        "name": "Taller de cholocate",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 3
+    },
+    {
+        "name": "Tour del cacao",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 3
+    },
+    {
+        "name": "Taller de construccion en bambu",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 3
+    },
+    {
+        "name": "Queso fresco de leche de vaca",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 4
+    },
+    {
+        "name": "Queso fresco de leche de coco",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 4
+    },
+    {
+        "name": "Tour de 1 dia",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 2
+    },
+    {
+        "name": "Tour de 2 dias y 1 noches",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 2
+    },
+    {
+        "name": "Tour de 3 dias y 2 noches",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "shop_id": 2
+    }
+]

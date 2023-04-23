@@ -1,0 +1,13 @@
+.boxSocialMedia{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+/*     border-radius: 10px; */
+/*     padding: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px; */
+}
+.boxSocialMedia img {
+    height: 30px;
+    object-fit: contain;
+}

@@ -1,0 +1,46 @@
+.starWrapper img {
+  /*   scale: 75%;
+    margin-left: -36px; */
+    scale: 70%;
+    /* mix-blend-mode: color-burn;; */
+}
+
+.cardIconContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+.cardIcon {
+    
+}
+
+.cardIcon:hover {
+    cursor: pointer;
+}
+
+/*  */
+h5 {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700;
+}
+p {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 200;
+}
+
+.cardBody {
+    background-color: var(--quaternary-color-0);
+    transition: .3s;
+}
+.cardBody:hover {
+    box-shadow: 1px 1px 30px var(--quaternary-color-100);    
+}
+label {
+    font-family: 'Kanit', sans-serif;
+
+}
+
+

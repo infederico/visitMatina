@@ -1,0 +1,321 @@
+{
+    "response": [
+        {
+            "adminId": 1,
+            "reviewId": 1, 
+            "date": "21/06/2022",
+            "name": "John Smith",
+            "email": "jsmoth@gmail.com",
+            "rating": 4,
+            "description": "Gran servicio y muy buena atención",
+            "approved": false,
+            "comments": [{
+                "adminId": 1,
+                "commentId": 1,
+                "name": "Mario Bro",
+                "email": "mario@gmail.com",
+                "comment": "Es bueno saberlo antes de ir, gracias!",
+                "approved": true
+            }] 
+        },
+        {
+            "adminId": 1,
+            "reviewId": 2, 
+            "date": "13/02/2023",
+            "name": "Marcelo Dupuy",
+            "email": "mdupuy@gmail.com",
+            "rating": 3,
+            "description": "Buena relación precio calidad",
+            "approved": true,
+            "comments": [{
+                "adminId": 1,
+                "commentId": 1,
+                "name": "Juan Cruz",
+                "email": "juanc@gmail.com",
+                "comment": "También he ido y opino igual.",
+                "approved": true
+            }] 
+        },
+        {
+            "adminId": 1,
+            "reviewId": 3,
+            "date": "01/05/2022",
+            "name": "Emily Davis",
+            "email": "edavis@gmail.com",
+            "rating": 5,
+            "description": "¡Increíble experiencia! La comida y el servicio fueron excepcionales.",
+            "approved": true,
+            "comments": [{
+                "adminId": 1,
+                "commentId": 2,
+                "name": "Eduardo Gomez",
+                "email": "egomez@gmail.com",
+                "comment": "Me encantaría ir allí, gracias por compartir su experiencia",
+                "approved": true
+            }]
+        },
+        {
+            "adminId": 1,
+            "reviewId": 4,
+            "date": "24/03/2022",
+            "name": "Sarah Lee",
+            "email": "slee@gmail.com",
+            "rating": 2,
+            "description": "No me gustó la comida, y el servicio fue un poco lento.",
+            "approved": true,
+            "comments": []
+        },
+        {
+            "adminId": 1,
+            "reviewId": 5,
+            "date": "11/11/2022",
+            "name": "Robert Johnson",
+            "email": "rjohnson@gmail.com",
+            "rating": 4,
+            "description": "Buen ambiente y excelente selección de vinos.",
+            "approved": true,
+            "comments": [{
+                "adminId": 1,
+                "commentId": 3,
+                "name": "Maria Gomez",
+                "email": "mgomez@gmail.com",
+                "comment": "Me alegra saber que tienen una buena selección de vinos. Gracias por compartir.",
+                "approved": true
+            }]
+        },
+        {
+            "adminId": 1,
+            "reviewId": 6,
+            "date": "01/08/2022",
+            "name": "Jenna Chen",
+            "email": "jchen@gmail.com",
+            "rating": 4,
+            "description": "Muy buen servicio y ambiente agradable.",
+            "approved": true,
+            "comments": [{
+                "adminId": 1,
+                "commentId": 2,
+                "name": "Lucas Martinez",
+                "email": "lmartinez@gmail.com",
+                "comment": "Gracias por compartir su experiencia, ¡lo tendré en cuenta!",
+                "approved": true
+            }]
+        },
+        {
+            "adminId": 1,
+            "reviewId": 7,
+            "date": "05/07/2022",
+            "name": "Rachel Kim",
+            "email": "rkim@gmail.com",
+            "rating": 2,
+            "description": "El servicio fue bastante malo, y la comida no estaba fresca.",
+            "approved": true,
+            "comments": []
+        },
+        {
+            "adminId": 1,
+            "reviewId": 8,
+            "date": "29/06/2022",
+            "name": "David Chen",
+            "email": "dchen@gmail.com",
+            "rating": 5,
+            "description": "Increíble experiencia en general. La comida era deliciosa y el servicio era excepcional.",
+            "approved": true,
+            "comments": []
+        },
+        {
+            "adminId": 1,
+            "reviewId": 9,
+            "date": "15/06/2022",
+            "name": "Michelle Lee",
+            "email": "mlee@gmail.com",
+            "rating": 4,
+            "description": "Buen servicio y selección de vinos. La comida era decente pero nada del otro mundo.",
+            "approved": true,
+            "comments": [{
+                "adminId": 1,
+                "commentId": 4,
+                "name": "Gabriel Lopez",
+                "email": "glopez@gmail.com",
+                "comment": "Gracias por compartir su experiencia, realmente aprecio los comentarios honestos.",
+                "approved": true
+            }]
+        },
+        {
+            "adminId": 1,
+            "reviewId": 10,
+            "date": "08/06/2022",
+            "name": "Maria Rodriguez",
+            "email": "mrodriguez@gmail.com",
+            "rating": 3,
+            "description": "La comida no era mala, pero nada excepcional. El servicio fue un poco lento.",
+            "approved": true,
+            "comments": []
+        },
+        {
+            "adminId": 1,
+            "reviewId": 11,
+            "date": "02/06/2022",
+            "name": "Alex Perez",
+            "email": "aperez@gmail.com",
+            "rating": 5,
+            "description": "La comida era deliciosa y el servicio fue excepcional. Definitivamente volveré.",
+            "approved": true,
+            "comments": []
+        },
+        {
+            "adminId": 1,
+            "reviewId": 12,
+            "date": "25/05/2022",
+            "name": "Sophia Wong",
+            "email": "swong@gmail.com",
+            "rating": 4,
+            "description": "Buen ambiente y comida deliciosa. El servicio podría haber sido un poco más rápido.",
+            "approved": true,
+            "comments": [
+                {
+                    "adminId": 1,
+                    "commentId": 5,
+                    "name": "Luis Torres",
+                    "email": "ltorres@gmail.com",
+                    "comment": "Gracias por compartir su opinión, ¡me alegro de que haya disfrutado de la comida!",
+                    "approved": true
+                },
+                {
+                    "adminId": 1,
+                    "commentId": 6,
+                    "name": "Emily Chen",
+                    "email": "echen@gmail.com",
+                    "comment": "Sí, el servicio puede ser un poco lento a veces, pero en general, siempre he tenido una experiencia agradable aquí.",
+                    "approved": true
+                }
+            ]
+        },
+        {
+            "adminId": 1,
+            "reviewId": 13,
+            "date": "17/05/2022",
+            "name": "Andrew Davis",
+            "email": "adavis@gmail.com",
+            "rating": 3,
+            "description": "El servicio fue un poco desorganizado y la comida no estaba tan buena como esperaba.",
+            "approved": true,
+            "comments": [
+                {
+                    "adminId": 1,
+                    "commentId": 7,
+                    "name": "Ana Rodriguez",
+                    "email": "arodriguez@gmail.com",
+                    "comment": "Sí, el servicio puede ser un poco caótico a veces, pero en general, he tenido buenas experiencias aquí.",
+                    "approved": true
+                },
+                {
+                    "adminId": 1,
+                    "commentId": 8,
+                    "name": "Mark Johnson",
+                    "email": "mjohnson@gmail.com",
+                    "comment": "Lo siento por escuchar eso. ¿Hay algo específico que el restaurante podría mejorar para que su experiencia sea mejor en el futuro?",
+                    "approved": true
+                },
+                {
+                    "adminId": 1,
+                    "commentId": 9,
+                    "name": "Amanda Lee",
+                    "email": "alee@gmail.com",
+                    "comment": "Me ha pasado lo mismo, el servicio puede ser lento a veces, pero generalmente disfruto de la comida.",
+                    "approved": true
+                }
+            ]
+        },
+        {
+            "adminId": 1,
+            "reviewId": 14,
+            "date": "10/05/2022",
+            "name": "Karen Kim",
+            "email": "kkim@gmail.com",
+            "rating": 5,
+            "description": "El ambiente es excelente y la comida es de primera calidad. El servicio fue excepcional.",
+            "approved": true,
+            "comments": []
+        },
+        {
+            "adminId": 1,
+            "reviewId": 15,
+            "date": "20/04/2022",
+            "name": "Samantha Brown",
+            "email": "sbrown@gmail.com",
+            "rating": 4,
+            "description": "Buena comida y ambiente agradable. El servicio podría haber sido un poco más rápido.",
+            "approved": true,
+            "comments": [
+                {
+                    "adminId": 1,
+                    "commentId": 10,
+                    "name": "Isaac Gomez",
+                    "email": "igomez@gmail.com",
+                    "comment": "Estoy de acuerdo, el servicio puede ser un poco lento a veces, pero en general, siempre he tenido una experiencia agradable aquí.",
+                    "approved": true
+                }
+            ]
+        },
+        {
+            "adminId": 1,
+            "reviewId": 16,
+            "date": "15/04/2022",
+            "name": "Rachel Lee",
+            "email": "rlee@gmail.com",
+            "rating": 3,
+            "description": "La comida era mediocre y el servicio era lento.",
+            "approved": true,
+            "comments": [
+                {
+                    "adminId": 1,
+                    "commentId": 11,
+                    "name": "John Anderson",
+                    "email": "janderson@gmail.com",
+                    "comment": "Lo siento por escuchar eso. ¿Hay algo específico que el restaurante podría mejorar para que su experiencia sea mejor en el futuro?",
+                    "approved": true
+                }
+            ]
+        },
+        {
+            "adminId": 1,
+            "reviewId": 17,
+            "date": "10/04/2022",
+            "name": "Maggie Smith",
+            "email": "msmith@gmail.com",
+            "rating": 5,
+            "description": "¡La comida es increíble y el servicio es excepcional! Definitivamente volveré.",
+            "approved": true,
+            "comments": []
+        },
+        {
+            "adminId": 1,
+            "reviewId": 18,
+            "date": "05/04/2022",
+            "name": "Alex Lee",
+            "email": "alee@gmail.com",
+            "rating": 4,
+            "description": "La comida era deliciosa, pero el servicio era un poco lento.",
+            "approved": true,
+            "comments": [
+                {
+                    "adminId": 1,
+                    "commentId": 12,
+                    "name": "Emma Davis",
+                    "email": "edavis@gmail.com",
+                    "comment": "Estoy de acuerdo, el servicio puede ser un poco lento a veces, pero en general, siempre he tenido una experiencia agradable aquí.",
+                    "approved": true
+                },
+                {
+                    "adminId": 1,
+                    "commentId": 13,
+                    "name": "Tom Wilson",
+                    "email": "twilson@gmail.com",
+                    "comment": "Sí, el servicio puede ser un poco lento a veces, pero en mi experiencia, la comida siempre ha valido la pena la espera.",
+                    "approved": true
+                }
+            ]
+        }
+    ]
+}
