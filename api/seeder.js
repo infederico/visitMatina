@@ -1,36 +1,6 @@
-const { Shop,sequelize,Reviews,Users,Comments,Post} = require('./src/db.js');
+const { Shop,sequelize,Reviews,Users,Comments,Post,Product} = require('./src/db.js');
 
-const tiendas = [
-    {
-      "name": "Tienda mundial",
-      "summary": "Resumen de la Tienda 1",
-      "path": "/tienda1",
-      "email": "tienda1@example.com",
-      "active": true
-    },
-    {
-      "name": "Tienda mundial 2",
-      "summary": "Resumen de la Tienda 2",
-      "path": "/tienda2",
-      "email": "tienda2@example.com",
-      "active": true
-    },
-    {
-      "name": "Tienda mundial 3",
-      "summary": "Resumen de la Tienda 3",
-      "path": "/tienda3",
-      "email": "tienda3@example.com",
-      "active": true
-    },
-    { 
-        "name": "Tienda mundial 4",
-        "summary": "Resumen de la Tienda 4",
-        "path": "/tienda4",
-        "email": "tienda4@example.com",
-        "active": true
-    },
-  ];
-  
+
   const seeder = async () => {
     /* try {
       // Comprobar si la bandera de seeder ya está establecida
@@ -81,7 +51,7 @@ for (let table of tables) {
     const data = fs.readFileSync(table.fileName, 'utf-8');
     const jsonData = JSON.parse(data);
     await table.model.bulkCreate(jsonData);
-    console.log(`Datos cargados exitosamente en la tabla ${table.model.name}`);
+    console.log(`Datos cargados exitosamente en la tabla ${table.model.name} ✅`);
   } catch (error) {
     console.error(`Error al cargar datos en la tabla ${table.model.name}: ${error}`);
   }
@@ -101,13 +71,24 @@ for (let table of tables) {
       
   };
 
-  const dos = async () => {
+  const seederReviews = async () => {
     const fs = require('fs');
     try {
       const data = fs.readFileSync('./src/archivosJson/reviews.json', 'utf-8');
       const usuarios = JSON.parse(data);
       await Reviews.bulkCreate(usuarios);
-      console.log('Carga de datos exitosa reviews');
+      console.log('Datos cargados exitosamente en la tabla reviews ✅'); //emoji  
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const seederProducts = async () => {
+    const fs = require('fs');
+    try {
+      const data = fs.readFileSync('./src/archivosJson/products.json', 'utf-8');
+      const usuarios = JSON.parse(data);
+      await Product.bulkCreate(usuarios);
+      console.log('Datos cargados exitosamente en la tabla Product ✅'); //emoji  
     } catch (error) {
       console.error(error);
     }
@@ -115,5 +96,5 @@ for (let table of tables) {
 
   
   
-  module.exports ={ seeder, dos};
+  module.exports ={ seeder, seederReviews,seederProducts};
 

@@ -1,18 +1,45 @@
 [
     {
-        "name":" json",
-        "email":"victor@gmail.com",
+        "name":" Jose Ignacio alvarez",
+        "email":"vitors@gmail.com",
         "password":"kmj1234"
         
     },
     {
-        "name":" numero 2 json",
-        "email":"ariel@gmail.com",
+        "name":"Federico Perez",
+        "email":"ariels@gmail.com",
+        "password":"kmj1234mmm"
+    },  
+    {
+        "name":" Oscar Fernandez",
+        "email":"franciscos@gmail.com",
         "password":"kmj1234mmm"
     },
     {
-        "name":" numero 2 json",
-        "email":"francisco@gmail.com",
+        "name":" Daniela Rodriguez",
+        "email":"franci@gmail.com",
         "password":"kmj1234mmm"
-    }
+    },
+    {
+        "name":" Carlos Ferro",
+        "email":"cos@gmail.com",
+        "password":"kmj1234mmm"
+    },
+    {
+        "name":" Daniel Rodriguez",
+        "email":"anci@gmail.com",
+        "password":"kmj1234mmm"
+    },
+    {
+        "name":" Jose alvarez",
+        "email":"viors@gmail.com",
+        "password":"kmj1234"
+        
+    },
+    {
+        "name":"Fabio Perez",
+        "email":"riels@gmail.com",
+        "password":"kmj1234mmm"
+    }  
+
 ]

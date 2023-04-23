@@ -1,46 +1,46 @@
 [ {
-    "user_id":2,
+    "user_id":1,
     "rating":5, 
-    "description":"haciendo pruebas json",
+    "description":"las mejores artesanias de la zona, muy bonitas, excelente atencion",
     "approved":"true",
     "active":"true",
-    "shop_id":4
+    "shop_id":6
      
 },
    {
     "user_id":2,
     "rating":5, 
-    "description":"haciendo pruebas dos json",
+    "description":"artesanias mar y luna es una tienda de artesanias muy bonita, con una gran variedad de productos, la atención de los dueños es muy buena, la tienda es muy bonita, la recomiendo ampliamente.",
     "approved":"true",
     "active":"true",
-    "shop_id":4
+    "shop_id":6
    },
     {
-     "user_id":2,
+     "user_id":3,
      "rating":5, 
-     "description":"haciendo pruebas tres json",
+     "description":"la tienda es espectacular, las artesanias mas lindas que hemos visto",
      "approved":"true",
      "active":"true",
-     "shop_id":2
+     "shop_id":6
     },
         {
-        "user_id":2,
+        "user_id":4,
         "rating":5, 
-        "description":"haciendo pruebas cuatro json",
+        "description":"la finca es acogedora , rodeado de naturaleza, la atención de los dueños es muy buena, la comida es muy rica, la habitación muy cómoda y limpia, la recomiendo ampliamente.",
         "approved":"true",
         "active":"true",
-        "shop_id":2
+        "shop_id":4
         },
         {
-        "user_id":2,
+        "user_id":5,
         "rating":5,
-        "description":"haciendo pruebas cinco json",
+        "description":"muy felices de visitar esta hermosa finca, la atención de los dueños fue muy buena, la comida muy rica, la habitación muy cómoda y limpia, la recomiendo ampliamente.",
         "approved":"true",
         "active":"true",
-        "shop_id":3
+        "shop_id":4
         },
         {
-        "user_id":2,
+        "user_id":6,
         "rating":5,
         "description":"haciendo pruebas seis json",
         "approved":"true",
@@ -48,22 +48,103 @@
         "shop_id":3
         },
         {
-        "user_id":2,
-        "rating":5,
-        "description":"haciendo pruebas siete json",
+        "user_id":7,
+        "rating":3,
+        "description":"gracias por la atencion, muy bonito el lugar, la comida muy rica, la habitación muy cómoda y limpia, la recomiendo ampliamente.",
         "approved":"true",
         "active":"true",
-        "shop_id":1
+        "shop_id":3
         },
 
         {
-        "user_id":2,
+        "user_id":8,
         "rating":5,
-        "description":"haciendo pruebas ocho json",
+        "description":"disfrutamos mucho la atencion de los dueños, la comida, la habitación, la vista, todo muy bien, lo recomiendo ampliamente, esperamos volver pronto.",
         "approved":"true",
         "active":"true",
-        "shop_id":1
+        "shop_id":3
+        },
+        {
+            "user_id":1,
+            "rating":5,
+            "description":"El hospedaje claro de luna, resulto ser un lugar muy agradable, con una vista espectacular, la atención de los dueños fue muy buena, la habitación muy cómoda y limpia, la comida muy rica, el lugar muy tranquilo y seguro, lo recomiendo ampliamente.",
+            "approved":"true",
+            "active":"true",
+            "shop_id":8
+        },
+        {
+            "user_id":2,
+            "rating":5,
+            "description":"a nuestra familia nos encanto el lugar, la atención de los dueños, la comida, la habitación, la vista, todo muy bien, lo recomiendo ampliamente, esperamos volver pronto.",
+            "approved":"true",
+            "active":"true",
+            "shop_id":3
+        },
+        {
+            "user_id":3,
+            "rating":5,
+            "description":"simplemente increíble, el lugar, la atención, la comida, la habitación, la vista, todo muy bien, lo recomiendo ampliamente, esperamos volver pronto.",
+            "approved":"true",
+            "active":"true",
+            "shop_id":8
+        },
+        {
+            "user_id":4,
+            "rating":5,
+            "description":"todo nos gusto mucho,fue una experiencia muy agradable, la atención de los dueños fue muy buena, la comida muy rica, la habitación muy cómoda y limpia, la vista muy bonita, lo recomiendo ampliamente.",
+            "approved":"true",
+            "active":"true",
+            "shop_id":3
+        },
+        {
+            "user_id":5,
+            "rating":5,
+            "description":"simplemente increíble, el lugar, la atención, la comida, la habitación, la vista, todo muy bien, lo recomiendo ampliamente, esperamos volver pronto.",
+            "approved":"true",
+            "active":"true",
+            "shop_id":7
+        },
+        {
+            "user_id":6,
+            "rating":3,
+            "description":"todo nos gusto mucho,fue una experiencia muy agradable, la atención de los dueños fue muy buena, la comida muy rica, la habitación muy cómoda y limpia, la vista muy bonita, lo recomiendo ampliamente.",
+            "approved":"true",
+            "active":"true",
+            "shop_id":7
+        },
+        {
+            "user_id":7,
+            "rating":5,
+            "description":"simplemente increíble, el lugar, la atención, la comida, la habitación, la vista, todo muy bien, lo recomiendo ampliamente, esperamos volver pronto.",
+            "approved":"true",
+            "active":"true",
+            "shop_id":4
+        },
+        {
+            "user_id":8,
+            "rating":4,
+            "description":"todo nos gusto mucho,fue una experiencia muy agradable, la atención de los dueños fue muy buena, la comida muy rica, la habitación muy cómoda y limpia, la vista muy bonita, lo recomiendo ampliamente.",
+            "approved":"true",
+            "active":"true",
+            "shop_id":4
+        },
+        {
+            "user_id":1,
+            "rating":5,
+            "description":"simplemente increíble, el lugar, la atención, la comida, la habitación, la vista, todo muy bien, lo recomiendo ampliamente, esperamos volver pronto.",
+            "approved":"true",
+            "active":"true",
+            "shop_id":5
+        },
+        {
+            "user_id":3,
+            "rating":4,
+            "description":"todo nos gusto mucho,fue una experiencia muy agradable, la atención de los dueños fue muy buena, la comida muy rica, la habitación muy cómoda y limpia, la vista muy bonita, lo recomiendo ampliamente.",
+            "approved":"true",
+            "active":"true",
+            "shop_id":5
         }
+        
         
 
 
