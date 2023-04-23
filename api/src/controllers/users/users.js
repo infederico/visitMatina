@@ -33,7 +33,7 @@ const getAllUsers = async () => {
     if (users) {
       return users
     } else {
-      throw new Error(`Users not founded`)
+      throw new Error(error.message)
     }
   } catch (error) {
     throw new Error(`Error getting all users ${error.message}`)
@@ -83,7 +83,9 @@ const createUser = async (name, email, password, picture) => {
         name,
         email,
         password: hash,
+        gUser: false,
       })
+
       return newUser
     } else {
       let newUser = await Users.findOrCreate({
