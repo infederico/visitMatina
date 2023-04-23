@@ -117,7 +117,7 @@ const LogIn = () => {
           }}
         >
           <h1>Bienvenido</h1>
-          <div id='signInDiv'></div>
+          <div className={style.botonGoogle} id='signInDiv'></div>
           <hr />
           <div className='mb-3'>
             <label htmlFor='formGroupExampleInput' className='form-label'>
