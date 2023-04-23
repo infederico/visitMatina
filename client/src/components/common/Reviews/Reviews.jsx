@@ -163,9 +163,10 @@ const Reviews = (props) => {
             <br />
             <section>
                 <div className='container'>
-                    {/* <p className='text-center'>calificación general: </p> */}
-                    <p className='text-center mb-0' style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</p> 
-                    <div style={{textAlign: 'center'}} className={styles.starWrapper}>
+                    { reviews.length !== 0 && <p className='text-center'>calificación general: </p> }
+                    { reviews.length !== 0 && <p className='text-center mb-0' style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</p> }
+                    { reviews.length !== 0 && <span style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</span> }    
+                    { reviews.length !== 0 && <div style={{textAlign: 'center'}} className={styles.starWrapper}>
                         {
                             (overallRatingNumber === 0 || overallRatingNumber === 0.5) && <img src={stars0} alt='0stars' />
                         }
@@ -184,9 +185,7 @@ const Reviews = (props) => {
                         {
                             overallRatingNumber === 5 && <img src={stars5} alt='5stars' />
                         }
-                    </div>
-                    <p className='text-center mt-1' style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</p>
-
+                    </div> }
                 </div>
             </section>
             <br />
@@ -244,14 +243,14 @@ const Reviews = (props) => {
            
             <section>
                 <div className='container'>
-                    <span>{`Mostrando ${(startIndex + 1)} a ${endIndex} de ${reviews.length} Reseñas`}</span>
+                { reviews.length !== 0 && <span>{`Mostrando ${(startIndex + 1)} a ${endIndex} de ${reviews.length} Reseñas`}</span> }
                     <nav aria-label="Page navigation example">
                         <ul className="pagination justify-content-center">
                             <li className="page-item" onClick={pageDecrement}><NavLink className="page-link" >Previous</NavLink></li>
                             <li className="page-item" onClick={pageIncrement}><NavLink className="page-link" >Next</NavLink></li>
                         </ul>
                     </nav>
-                </div>
+                </div>  
             </section>
 
             <section>
@@ -267,6 +266,7 @@ const Reviews = (props) => {
                     <ReviewForm shopId={props.shopId} />
                 </div>
             </section>
+
         </>
     );
 };
