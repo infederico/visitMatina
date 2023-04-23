@@ -1,4 +1,11 @@
 .starWrapper img {
-    scale: 75%;
-    margin-left: -20px;
+    scale: 100%;
+    mix-blend-mode: color-burn;
+    
+
+
+}
+.generalCalifImg {
+    text-align: center;
+    margin-left: 110px;
 }

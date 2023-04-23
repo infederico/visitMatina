@@ -14,6 +14,8 @@ const DetailBlog = () => {
     dispatch(getPostId(id));
   }, []);
 
+  console.log(postDetail);
+
   return (
     <section>
     <div className={styles.divSection}>
@@ -22,6 +24,8 @@ const DetailBlog = () => {
         summary={postDetail.summary}
         content={postDetail.content}
         image={postDetail.image}
+        user={postDetail.user?.name}
+        email={postDetail.user?.email}
         date={postDetail.date}
       />
     </div>

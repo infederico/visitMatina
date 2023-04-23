@@ -158,16 +158,19 @@ const Reviews = (props) => {
     const startIndex = (currentPage - 1) * reviewsPerPage;
     const endIndex = Math.min(startIndex + reviewsPerPage, reviews.length);
 
+    //aux para calcular paginado en mstrando 1 a 6 de 10 Reviews
+    const reviewsPerPage = 6;
+    const startIndex = (currentPage - 1) * reviewsPerPage;
+    const endIndex = Math.min(startIndex + reviewsPerPage, reviews.length);
+
     return (
         <>
             <br />
             <section>
                 <div className='container'>
-                    
-                    { reviews.length !== 0 && <span>calificación general: </span> }        
-                    { reviews.length !== 0 && <span style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</span> } 
-                    { reviews.length !== 0 && <span style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</span> }
-                    { reviews.length !== 0 && <span className={styles.starWrapper}>
+                    {/* <p className='text-center'>calificación general: </p> */}
+                    <p className='text-center mb-0' style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</p> 
+                    <div style={{textAlign: 'center'}} className={styles.starWrapper}>
                         {
                             (overallRatingNumber === 0 || overallRatingNumber === 0.5) && <img src={stars0} alt='0stars' />
                         }
@@ -181,31 +184,27 @@ const Reviews = (props) => {
                             (overallRatingNumber === 3 || overallRatingNumber === 3.5) && <img src={stars3} alt='3stars' />
                         }
                         {
-                            (overallRatingNumber === 4 || overallRatingNumber === 4.5) && <img src={stars4} alt='4stars' />
+                            (overallRatingNumber === 4 || overallRatingNumber === 4.5) && <img className={`${styles.generalCalifImg}`} src={stars4} alt='4stars' />
                         }
                         {
                             overallRatingNumber === 5 && <img src={stars5} alt='5stars' />
                         }
-                    </span>
-                    }
+                    </div>
+                    <p className='text-center mt-1' style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</p>
+
                 </div>
             </section>
             <br />
             <section>
                 <div className='container'>
                     <label htmlFor="rating-filter">mostrar:  </label>   
-                    <select id="rating-filter" value={filterSelectedOption} onChange={handleFilterChange} className="form-select" aria-label="Default select example"> 
+                    <select id="rating-filter" value={filterSelectedOption} onChange={handleFilterChange} className="selectpicker " aria-label="Default select example"> 
                         <option value="all">Todas</option>
                         <option value="positives">Positivas</option>
                         <option value="negatives">Negativas</option>
                     </select>
-                </div>
-            </section>
-
-            <section>
-                <div className='container'>
-                    <label htmlFor='sort'>ordenar por:  </label>
-                    <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className="form-select" aria-label="Default select example"> 
+                    <label htmlFor='sort ml-5'>ordenar por:  </label>
+                    <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className="selectpicker" aria-label="Default select example"> 
                         <option value=''></option>
                         <option value='date-des'>Fecha - Más recientes primero</option>
                         <option value='date-asc'>Fecha - Más antiguas primero</option>
@@ -215,9 +214,22 @@ const Reviews = (props) => {
                 </div>
             </section>
 
-            <section>
+           {/*  <section>
                 <div className='container'>
-                    <div className="row mt-3">
+                    <label htmlFor='sort'>ordenar por:  </label>
+                    <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className="selectpicker" aria-label="Default select example"> 
+                        <option value=''></option>
+                        <option value='date-des'>Fecha - Más recientes primero</option>
+                        <option value='date-asc'>Fecha - Más antiguas primero</option>
+                        <option value='rating-des'>Mejor puntuación - des.</option>
+                        <option value='rating-asc'>Peor puntuación - asc.</option>
+                    </select>
+                </div>
+            </section> */}
+
+            <section>
+                <div className='container mt-5 mb-5'> {/* <div className='container'> */}
+                    <div className="row g-2"> {/* <div className="row mt-3">  */}
                         {
                             paginatedReviews?.map((review) => {
                                 return <Review
@@ -237,7 +249,7 @@ const Reviews = (props) => {
            
             <section>
                 <div className='container'>
-                    { reviews.length !== 0 && <span>{`Mostrando ${(startIndex + 1)} a ${endIndex} de ${reviews.length} Reseñas`}</span> }
+                    <span>{`Mostrando ${(startIndex + 1)} a ${endIndex} de ${reviews.length} Reseñas`}</span>
                     <nav aria-label="Page navigation example">
                         <ul className="pagination justify-content-center">
                             <li className="page-item" onClick={pageDecrement}><NavLink className="page-link" >Previous</NavLink></li>

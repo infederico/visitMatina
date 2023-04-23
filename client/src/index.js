@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import store from './redux/store'
 import { BrowserRouter } from 'react-router-dom'
+import './index.css';
 
 const persistor = persistStore(store)
 
@@ -14,7 +15,7 @@ root.render(
   <PersistGate persistor={persistor}>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <App className= "index"/>
       </BrowserRouter>
     </Provider>
   </PersistGate>

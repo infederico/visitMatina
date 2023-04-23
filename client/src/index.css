@@ -1,0 +1,82 @@
+/* COLOR PALETTE */
+:root {
+    /* --light-text-color: #406020;
+    --light-back-color: #bfdf9f;
+    --dark-text-color: #f2f9ec;
+    --dark-back-color: #263913; */
+    --white-color: #ffffff;
+    --black-color: #000000;
+
+    --primary-color-0:   #ffe6e6;
+    --primary-color-100: #ffcccc;
+    --primary-color-200: #ff9999;
+    --primary-color-300: #ff6666;
+    --primary-color-400: #ff3333;
+    --primary-color-500: #ff0000;
+    --primary-color-600: #cc0000;
+    --primary-color-700: #990000;
+    --primary-color-800: #660000;
+    --primary-color-900: #330000;
+    --primary-color-1000: #190000;
+
+    --secondary-color-0:   #e6edf7;
+    --secondary-color-100: #ccdbef;
+    --secondary-color-200: #80a5d6 ;
+    --secondary-color-300: #4d80c6;
+    --secondary-color-400: #336ebd;
+    --secondary-color-500: #004aad ;
+    --secondary-color-600: #003b8a;
+    --secondary-color-700: #002c68 ;
+    --secondary-color-800: #001e45 ;
+    --secondary-color-900: #000f23;
+    --secondary-color-1000: #000711;
+
+    --tertiary-color-0:   #fffae6;
+    --tertiary-color-100: #fff5cc;
+    --tertiary-color-200: #ffec99 ;
+    --tertiary-color-300: #fee267;
+    --tertiary-color-400: #fed934;
+    --tertiary-color-500: #fecf01 ;
+    --tertiary-color-600: #cba601;
+    --tertiary-color-700: #987c01 ;
+    --tertiary-color-800: #665300 ;
+    --tertiary-color-900: #332900;
+    --tertiary-color-1000: #191500;
+    
+    --quaternary-color-0:   #e6f2ea;
+    --quaternary-color-100: #cce5d4;
+    --quaternary-color-200: #99cba9 ;
+    --quaternary-color-300: #66b17e;
+    --quaternary-color-400: #339753;
+    --quaternary-color-500: #007d28 ;
+    --quaternary-color-600: #006420;
+    --quaternary-color-700: #004b18 ;
+    --quaternary-color-800: #003210 ;
+    --quaternary-color-900: #001908;
+    --quaternary-color-1000: #000c04;
+
+    --neutral-color-100: #e6e6e6;
+    --neutral-color-300: #b3b3b3;
+    --neutral-color-500: #808080;
+    --neutral-color-700: #4d4d4d;
+    --neutral-color-900: #1a1a1a;
+}
+
+
+    
+/* FONTS */
+/* @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,700&family=Lora&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap'); */
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap'); /* font-family: 'Marcellus', serif; */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap'); /* font-family: 'Kanit', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap'); /* font-family: 'Actor', sans-serif;
+*/
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Antic&display=swap');/* font-family: 'Antic', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); /* font-family: 'Roboto', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap'); /* font-family: 'Didact Gothic', sans-serif; */

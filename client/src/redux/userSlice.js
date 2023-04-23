@@ -4,6 +4,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     user: {},
+    users:[],
   },
   reducers: {
     getUserById: (state, action) => {
@@ -41,8 +42,13 @@ const userSlice = createSlice({
         user: {},
       }
     },
+    allUsers: (state, action) => {
+      state.users = action.payload
+      
+    },
+
   },
 })
 
-export const { getUserById, postUser, gUSer, logOutUser } = userSlice.actions
+export const { getUserById, postUser, gUSer, logOutUser, allUsers } = userSlice.actions
 export default userSlice.reducer
