@@ -60,21 +60,22 @@ export default function Blog() {
     dispatch(getPosts())
   }, [])
 
-  for (let i = 0; i < lastOne.length; i++) {
-    let active = true
-    return (
-      <div className={`${styles.divCarousel} carousel-item {active}`}>
-        <img
-          src={elem.image}
-          className={`${styles.image} "d-block w-100"`}
-          alt='...'
-        />
-        <div className={`carousel-caption d-none d-md-block`}>
-          <h2 className={styles.textCarousel}>"{elem.title}"</h2>
-        </div>
-      </div>
-    )
-  }
+  // for (let i = 0; i < lastOne.length; i++) {
+  //   if(i===0){let active = true}
+  //   var resultado =  (
+  //     <div className={`${styles.divCarousel} carousel-item ${active}`}>
+  //       <img
+  //         src={elem.image}
+  //         className={`${styles.image} "d-block w-100"`}
+  //         alt='...'
+  //       />
+  //       <div className={`carousel-caption d-none d-md-block`}>
+  //         <h2 className={styles.textCarousel}>"{elem.title}"</h2>
+  //       </div>
+  //     </div>
+  //   )
+  //   return resultado
+  // }
 
   return (
     <section>
