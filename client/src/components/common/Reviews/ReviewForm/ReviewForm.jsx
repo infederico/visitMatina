@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import {
   postReview,
@@ -16,12 +17,9 @@ import styles from './ReviewForm.module.css'
 import useLocalStorage from '../../../localStorage/useLocalStorage'
 
 const ReviewForm = (props) => {
-  //////////////////////////// DESPEUS BORRAR Y PLANTEAR A EDU AGREGAR ESTADO GLOBAL ACCESS
-  const access = true
-  /////////////////////////////////////////////////////////////////////////////////////////
-
+  
   // global states
-  const loggedUser = useSelector((state) => state.user.user) // aca tomo del estado global la data del user que esta loggeado
+  const loggedUser = useSelector((state) => state.user.user); // aca tomo del estado global la data del user que esta loggeado
 
   const successMessageReview = useSelector(
     (state) => state.reviews.successMessageReview
@@ -52,7 +50,14 @@ const ReviewForm = (props) => {
   const [incompleteFormAlert, setIncompleteFormAlert] = useState(false)
 
   // hooks
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (successMessageReview) {
+      dispatch(getAllApprovedReviewsByShopId(props.shopId))
+    }
+  }, [successMessageReview])
 
   useEffect(() => {
     setNewReview((prevState) => ({
@@ -133,10 +138,9 @@ const ReviewForm = (props) => {
   // handlers
   const handleInputChange = (event) => {
     if (!loggedUser.access) {
-      alert(
-        'Debes estar registrado e iniciar sesión para poder postear una reseña'
-      )
-    }
+      window.alert('Debes estar registrado e iniciar sesión para poder postear una reseña');
+      navigate('/login');
+    };
 
     let { name, value } = event.target
     if (name === 'rating') {
@@ -180,10 +184,9 @@ const ReviewForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     if (!loggedUser.access) {
-      alert(
-        'Debes estar registrado e iniciar sesión para poder postear una reseña'
-      )
-    }
+      window.alert('Debes estar registrado e iniciar sesión para poder postear una reseña');
+      navigate('/login');
+    };
     //set submitted state true to allow errors rendering after first submit attemp
     setSubmitted(true)
     dispatch(cleanSuccessMessageReview())
@@ -221,9 +224,8 @@ const ReviewForm = (props) => {
         approved: true,
         shop_id: props.shopId,
       })
-      // vuelve a pedir todas las reviews para que actaulice y el user vea el review que acaba de postear
-      dispatch(getAllApprovedReviewsByShopId(props.shopId))
-      return
+      
+      return;
     }
   }
 

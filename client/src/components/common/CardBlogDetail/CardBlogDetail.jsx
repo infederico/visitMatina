@@ -10,16 +10,17 @@ const CardBlogDetail = (props) => {
           <div className={`card-body`}>
             <img className={`${style.foto} card-img-top`} src={props.image} alt="..." />
             <p className={`${style.descri} card-text`}>{props.content}</p>
-  
-              <p className={`${style.descri} card-text`}>Fecha de creación: {props.date}</p>
+            <p className={`${style.descri} card-text`}>Creado por: {props.user}</p>
+            <p className={`${style.descri} card-text`}>Email: {props.email}</p>
+            <p className={`${style.descri} card-text`}>Fecha de creación: {props.date}</p>
 
           </div>
         </div>
         </section>
         <section>
-        <div>
+{/*         <div>
           <Reviews></Reviews>
-        </div>
+        </div> */}
         </section>
         </section>
     );

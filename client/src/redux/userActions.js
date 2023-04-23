@@ -1,10 +1,10 @@
 import axios from 'axios'
-import { getUserById, postUser, gUSer, logOutUser } from './userSlice'
+import { getUserById, postUser, gUSer, logOutUser, allUsers } from './userSlice'
 
 export const getUser = (user) => {
   return async (dispatch) => {
     const users = await axios(
-      `/users/?email=${user.email}&password=user.password${user.password}`
+      `/users/?email=${user.email}&password=${user.password}`
     )
     return dispatch(getUserById(users.data))
   }
@@ -19,13 +19,20 @@ export const addUser = (user) => {
 
 export const authGoogle = (user) => {
   return async (dispatch) => {
-    let googlePost = await axios.post('http://localhost:3001/api/users/', user)
+    let googlePost = await axios.post('/users/', user)
     return dispatch(gUSer(googlePost.data[0]))
   }
 }
 
-export const logOut = (dispatch) => {
+export const logOut = () => {
   return async (dispatch) => {
     return dispatch(logOutUser())
+  }
+}
+
+export const getAllUsers = () => {
+  return async (dispatch) => {
+    let get = await axios('/users/')
+    return dispatch(allUsers(get.data))
   }
 }
