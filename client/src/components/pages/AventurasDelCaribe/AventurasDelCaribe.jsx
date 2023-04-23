@@ -77,17 +77,6 @@ export default function AventurasDelCaribe() {
                 })
             }
             </div>
-
-            <section>
-                <div className='container'>
-                    <div className={style.title}>
-                        <h3>Nuestros clientes</h3>
-                        <span>conoce la opinión de nuestros clientes</span>
-                    </div>
-                </div>
-
-            </section>
-
           <section>
             <div className='container'>
               <h4>Nuestros clientes</h4>
@@ -99,7 +88,7 @@ export default function AventurasDelCaribe() {
             <section className={style.Cajaredes}>
                 {/* <Redes socialmedia={arrayRedes}/> */}
             </section>
-                  
+ 
         </>
     );
 };

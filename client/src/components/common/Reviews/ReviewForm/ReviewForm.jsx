@@ -11,10 +11,10 @@ import {
   cleanSuccessMessageReview,
 } from '../../../../redux/reviewsSlice'
 
+import useLocalStorage from '../../../localStorage/useLocalStorage'
 import validation from './validation'
 
 import styles from './ReviewForm.module.css'
-import useLocalStorage from '../../../localStorage/useLocalStorage'
 
 const ReviewForm = (props) => {
   
@@ -37,7 +37,7 @@ const ReviewForm = (props) => {
   const [reviewLocalStorage, setReviewLocalStorage] = useLocalStorage(
     'reviewLocalStorage',
     ''
-  ) // para persistencia de datos mientras estas completando el form si salis y vovles mantiene lo que llevava ingresado
+  ); // para persistencia de datos mientras estas completando el form si salis y vovles mantiene lo que llevava ingresado
   const [checkedStars, setCheckedStars] = useState({
     one: false,
     two: false,
@@ -77,7 +77,7 @@ const ReviewForm = (props) => {
           four: false,
           five: false,
         })
-        break
+        break;
       case 2:
         setCheckedStars({
           one: false,
@@ -86,7 +86,7 @@ const ReviewForm = (props) => {
           four: false,
           five: false,
         })
-        break
+        break;
       case 3:
         setCheckedStars({
           one: false,
@@ -95,7 +95,7 @@ const ReviewForm = (props) => {
           four: false,
           five: false,
         })
-        break
+        break;
       case 4:
         setCheckedStars({
           one: false,
@@ -104,7 +104,7 @@ const ReviewForm = (props) => {
           four: true,
           five: false,
         })
-        break
+        break;
       case 5:
         setCheckedStars({
           one: false,
@@ -113,7 +113,7 @@ const ReviewForm = (props) => {
           four: false,
           five: true,
         })
-        break
+        break;
       default:
         setCheckedStars({
           one: false,
@@ -122,9 +122,9 @@ const ReviewForm = (props) => {
           four: false,
           five: false,
         })
-        break
+        break;
     }
-  }, [newReview])
+  }, [newReview]);
 
   useEffect(() => {
     if (newReview.rating !== 0 && errors.rating1) {

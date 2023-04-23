@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { setShowCommentPanel, cleanSuccessMessageComment, setBackendError } from '../../../../redux/reviewsSlice';
 import { postReviewComment, getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
 
+import useLocalStorage from '../../../localStorage/useLocalStorage'
 import validation from './validation';
 
 import ReviewComment from './ReviewComment/ReviewComment';
@@ -27,7 +28,10 @@ const ReviewThread = (props) => {
         description: "",
         approved: true
     });
-
+    const [commentLocalStorage, setCommentLocalStorage] = useLocalStorage(
+        'commentLocalStorage',
+        ''
+    );
     const [ commentsToRender, setCommentsToRender ] = useState([]);
     const [ submitted, setSubmitted ] = useState(false);
     const [ errors, setErrors ] = useState({});
@@ -55,6 +59,13 @@ const ReviewThread = (props) => {
           dispatch(getAllApprovedReviewsByShopId(props.shopId))
         }
     }, [successMessageComment])
+
+    useEffect(() => {
+        setNewComment((prevState) => ({
+          ...prevState,
+          description: commentLocalStorage.description,
+        }))
+      }, [])
  
     // handlers 
     const handleClick = () => {
@@ -67,11 +78,18 @@ const ReviewThread = (props) => {
             navigate('/login');
         };
         setIncompleteFormAlert(false);
+
         let { name, value } = event.target;
+
         setNewComment({
             ...newComment,
             [name]: value
         });
+        setCommentLocalStorage({
+            ...commentLocalStorage,
+            [name]: value,
+        })
+
         if (submitted) {
             let err = validation({
                 ...newComment,
@@ -118,6 +136,12 @@ const ReviewThread = (props) => {
             setErrors({});
             //reset the local state once the new user was created successfully to permit a good user experience and dont show errors until first submit attemp in the next user load
             setSubmitted(false);
+            setCommentLocalStorage({
+                user_id: loggedUser.id_user,
+                parent_id: selectedReview,
+                description: "",
+                approved: true
+            });
             return;
         }
 
@@ -131,11 +155,13 @@ const ReviewThread = (props) => {
         });
     };
 
+    // helpers
+    let author = reviews.filter(review => review.review_id === selectedReview).at(0).user.name;
+    
     return (
         <>
             <hr />
             <button type="button" class="btn-close" aria-label="Close" onClick={handleClick}></button>
-            <span>{`     Hilo de la reseña nro: ${selectedReview}`}</span>
             <br />
             <br />
             {
@@ -157,12 +183,12 @@ const ReviewThread = (props) => {
             <form onSubmit={handleSubmit}>
 
                 <div className="mb-3">
-                    <label for="exampleFormControlTextarea1" className="form-label">Déjanos tu comentario...</label>
+                    <label for="exampleFormControlTextarea1" className="form-label">{`Comenta la reseña de ${author}`}</label>
                     <textarea
                         name="description"
                         className="form-control"
                         rows="3"
-                        placeholder="Aquí nos puedes escribir tu comentario sobre la reseña seleccionada"
+                        placeholder="Tu comentario..."
                         onChange={handleInputChange}
                         value={newComment.description}
                     ></textarea>
@@ -178,6 +204,7 @@ const ReviewThread = (props) => {
                 { backendError && <div class="alert alert-warning" role="alert">{`No se ha registrado tu comentario. Server Error ${backendError}`}</div> }
             </form>
             <hr />
+            
         </>
     );
 };

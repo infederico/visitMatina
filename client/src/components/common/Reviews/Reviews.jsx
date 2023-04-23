@@ -163,10 +163,11 @@ const Reviews = (props) => {
             <br />
             <section>
                 <div className='container'>
-                    <span>calificación general: </span>
-                    <span style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</span> 
-                    <span style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</span>
-                    <span className={styles.starWrapper}>
+                    
+                    { reviews.length !== 0 && <span>calificación general: </span> }        
+                    { reviews.length !== 0 && <span style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</span> } 
+                    { reviews.length !== 0 && <span style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</span> }
+                    { reviews.length !== 0 && <span className={styles.starWrapper}>
                         {
                             (overallRatingNumber === 0 || overallRatingNumber === 0.5) && <img src={stars0} alt='0stars' />
                         }
@@ -186,6 +187,7 @@ const Reviews = (props) => {
                             overallRatingNumber === 5 && <img src={stars5} alt='5stars' />
                         }
                     </span>
+                    }
                 </div>
             </section>
             <br />
@@ -235,14 +237,14 @@ const Reviews = (props) => {
            
             <section>
                 <div className='container'>
-                    <span>{`Mostrando ${(startIndex + 1)} a ${endIndex} de ${reviews.length} Reseñas`}</span>
+                    { reviews.length !== 0 && <span>{`Mostrando ${(startIndex + 1)} a ${endIndex} de ${reviews.length} Reseñas`}</span> }
                     <nav aria-label="Page navigation example">
                         <ul className="pagination justify-content-center">
                             <li className="page-item" onClick={pageDecrement}><NavLink className="page-link" >Previous</NavLink></li>
                             <li className="page-item" onClick={pageIncrement}><NavLink className="page-link" >Next</NavLink></li>
                         </ul>
                     </nav>
-                </div>
+                </div>  
             </section>
 
             <section>
@@ -258,6 +260,7 @@ const Reviews = (props) => {
                     <ReviewForm shopId={props.shopId} />
                 </div>
             </section>
+
         </>
     );
 };
