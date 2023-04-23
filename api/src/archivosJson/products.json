@@ -1,0 +1,24 @@
+
+[
+    {
+    "name": "coca cola zero",
+    "description":"la bebida de los hogares argentinos",
+    "price": 14.99,
+    "image": "nombre.jpg",
+    "shop_id": 3
+},
+    {
+        "name": "coca cola",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "nombre.jpg",
+        "shop_id": 3
+    },
+    {
+        "name": "coca cola light",
+        "description":"la bebida de los hogares argentinos",
+        "price": 14.99,
+        "image": "nombre.jpg",
+        "shop_id": 3
+    }
+]
