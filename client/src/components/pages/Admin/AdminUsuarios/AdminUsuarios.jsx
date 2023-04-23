@@ -1,11 +1,13 @@
-import { getAllUsers } from "../../../../redux/userActions";
+import { getAllUsers, updateUsers } from "../../../../redux/userActions";
 import { useSelector , useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const AdminUsuarios = () => {
     
     const dispatch = useDispatch();
     const {users}= useSelector(state => state.user)
+
+    const[inputs, setInputs] = useState();
 
     useEffect (() => {
         dispatch(getAllUsers());
