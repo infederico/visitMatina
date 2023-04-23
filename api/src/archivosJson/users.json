@@ -48,6 +48,13 @@
         "email":"riels@gmail.com",
         "password":"kmj1234mmm",
         "gUser": true
-    }  
+    },
+    {
+        "name": "Henry",
+        "email": "henry@gmail.com",
+        "password": "$2a$08$.xUzodraZXtV63FKY7UGbOM4e7pc48PU63vNjYFm/aNGIuYCbz6HK",
+        "gUser": false,
+        "admin": true
+      }
 
 ]
