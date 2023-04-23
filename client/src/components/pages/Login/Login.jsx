@@ -4,7 +4,7 @@ import ValidationLogIn from './Validation/validationLogIn'
 import useLocalStorage from '../../localStorage/useLocalStorage'
 import jwt_decode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
-import { getUser, authGoogle, logOut } from '../../../redux/userActions'
+import { getUser, authGoogle } from '../../../redux/userActions'
 const LogIn = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -24,11 +24,7 @@ const LogIn = () => {
     let userObject = jwt_decode(response.credential)
     dispatch(authGoogle(userObject))
     document.getElementById('signInDiv').hidden = true
-    navigate('/')
-  }
-  const handleSingOut = () => {
-    setGoogleUser({})
-    document.getElementById('signInDiv').hidden = false
+    navigate('/admin')
   }
 
   useEffect(() => {
@@ -74,13 +70,10 @@ const LogIn = () => {
         setRemember({ email: '', password: '' })
       }
     }
+    navigate('/admin')
   }
   const handleChecked = () => {
     rememberButton ? setRememberButton(false) : setRememberButton(true)
-  }
-
-  const handleLogOut = () => {
-    dispatch(logOut())
   }
 
   return (
@@ -169,28 +162,9 @@ const LogIn = () => {
         <br />
 
         <div id='signInDiv'></div>
-        {Object.keys(googleUser).length !== 0 && (
-          <button
-            type='button'
-            class='btn btn-outline-secondary'
-            onClick={() => {
-              handleSingOut()
-            }}
-          >
-            Cerrar sesion
-          </button>
-        )}
 
         <br />
-        <button
-          type='button'
-          class='btn btn-outline-secondary'
-          onClick={() => {
-            handleLogOut()
-          }}
-        >
-          Cerrar sesion
-        </button>
+
         <Link to='/register'>
           <button onClick={() => alert('nos envia a la pagina de registro')}>
             No tienes cuenta? Registrate
