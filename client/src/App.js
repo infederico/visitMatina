@@ -18,7 +18,9 @@ import Register from './components/pages/Login/Register/Register'
 import Admin from './components/pages/Admin/Admin'
 
 import axios from 'axios'
+
 axios.defaults.baseURL = 'http://localhost:3001/api'
+
 
 const App = () => {
   return (
