@@ -26,7 +26,7 @@ export default function Home() {
         style={{
           position: 'fixed',
           width: '100%',
-          height: '98%',
+          height: '120%',
           bottom: '0',
           zIndex: '-99999',
           filter: 'brightness(50%)',

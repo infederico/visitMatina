@@ -163,7 +163,7 @@ const ReviewThread = (props) => {
             <hr />
             <button type="button" class="btn-close" aria-label="Close" onClick={handleClick}></button>
             <br />
-            <br />
+
             {
                 commentsToRender.map( (comment) => {
                     if (comment.approved) {
@@ -194,10 +194,8 @@ const ReviewThread = (props) => {
                     ></textarea>
                     {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
                 </div>
-                <br />
-                <br />
                 <div className="d-flex justify-content-center">
-                    <button className="btn btn-primary" type="submit"><span>Enviar</span></button>
+                    <button className="btn btn-light btn-sm border" type="submit"><span>Enviar</span></button>
                 </div>
                 { incompleteFormAlert && <div class="alert alert-warning" role="alert">Por favor escribe un comentario</div> }
                 { successMessageComment && <div class="alert alert-success" role="alert">Tu comentario se ha registrado con éxito</div> }

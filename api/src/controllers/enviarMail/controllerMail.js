@@ -35,7 +35,7 @@ const enviarCorreo = (req, res) => {
       <body style="font-family: Arial, sans-serif; background-color: #f2f2f2;">
         <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: white; border-radius: 10px;">
           <header style="text-align: center; margin-bottom: 30px;">
-            <img src="https://i.ibb.co/7bQQYkX/Logo.png" alt="Logo de la tienda" width="100" height="100">
+            <img src="https://res.cloudinary.com/dfnw2l08x/image/upload/v1682286222/matina_logo_nnzq1n.png" alt="Logo de la tienda" width="100" height="100">
             <h1 style="font-size: 24px; margin-top: 0;">¡Tienes un nuevo contacto!</h1>
           </header>
           <section style="margin-bottom: 30px;">
@@ -74,7 +74,7 @@ const enviarCorreo = (req, res) => {
         <body style="font-family: Arial, sans-serif; background-color: #f2f2f2;">
           <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: white; border-radius: 10px;">
             <header style="text-align: center; margin-bottom: 30px;">
-              <img src="https://i.ibb.co/7bQQYkX/Logo.png" alt="Logo de la tienda" width="100" height="100">
+              <img src="https://res.cloudinary.com/dfnw2l08x/image/upload/v1682286222/matina_logo_nnzq1n.png" alt="Logo de la tienda" width="100" height="100">
               <h1 style="font-size: 24px; margin-top: 0;">¡Gracias por contactarnos!</h1>
             </header>
             <section style="margin-bottom: 30px;">
@@ -89,7 +89,7 @@ const enviarCorreo = (req, res) => {
             </section>
             <footer style="text-align: center;">
               <p style="font-size: 14px;">Atentamente,</p>
-              <p style="font-size: 16px; margin-top: 10px;">Equipo we de Visit Matina</p>
+              <p style="font-size: 16px; margin-top: 10px;">Equipo web de Visit Matina</p>
             </footer>
           </div>
         </body>
