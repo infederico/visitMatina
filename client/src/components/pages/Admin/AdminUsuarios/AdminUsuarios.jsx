@@ -107,7 +107,7 @@ const AdminUsuarios = () => {
     {filterUser.map(user => {
         return(  
         <div>
-            <table class="table">
+            <table className="table">
   <thead>
     <tr>
       <th scope="col">Id</th>
@@ -131,12 +131,12 @@ const AdminUsuarios = () => {
       <td>{user.email}</td>
       <td>{user.admin === true ? "Si" : "No"}</td>
       <td>{user.active === true ? "Activo" : "Inactivo"}</td>
-      <td><input class="form-check-input" type="checkbox"  name="admin" value="true" onChange={handlerCheckAdmin} id="flexCheckDefault"></input></td>
-      <td><input class="form-check-input" type="checkbox"  name="admin" value="false" onChange={handlerCheckAdmin} id="flexCheckDefault"></input></td>
-      <td><input class="form-check-input" type="checkbox"  name="active" value="true" onChange={handlerCheckActive} id="flexCheckDefault"></input></td>
-      <td><input class="form-check-input" type="checkbox"  name="active" value="false" onChange={handlerCheckActive} id="flexCheckDefault"></input></td>
+      <td><input className="form-check-input" type="checkbox"  name="admin" value="true" onChange={handlerCheckAdmin} id="flexCheckDefault"></input></td>
+      <td><input className="form-check-input" type="checkbox"  name="admin" value="false" onChange={handlerCheckAdmin} id="flexCheckDefault"></input></td>
+      <td><input className="form-check-input" type="checkbox"  name="active" value="true" onChange={handlerCheckActive} id="flexCheckDefault"></input></td>
+      <td><input className="form-check-input" type="checkbox"  name="active" value="false" onChange={handlerCheckActive} id="flexCheckDefault"></input></td>
       <td>
-        <button type="button" class="btn btn-primary" name="id_user" value={user.id_user} onClick={handlerUpdate}>Modificar Usuario</button>
+        <button type="button" className="btn btn-primary" name="id_user" value={user.id_user} onClick={handlerUpdate}>Modificar Usuario</button>
       </td>
       
     </tr>
@@ -156,7 +156,7 @@ const AdminUsuarios = () => {
 
 
             <div>
-            <table class="table">
+            <table className="table">
   <thead>
     <tr>
       <th scope="col"></th>
@@ -172,7 +172,7 @@ const AdminUsuarios = () => {
     {users.map(user => {
         return(
             <tr>
-      <input class="form-check-input" type="checkbox"  name="id_user" value={user.id_user} onChange={handlerCheck} id="flexCheckDefault" checked={check.hand}></input>
+      <input className="form-check-input" type="checkbox"  name="id_user" value={user.id_user} onChange={handlerCheck} id="flexCheckDefault" checked={check.hand}></input>
       <th scope="row">{user.id_user}</th>
       <td>{user.name}</td>
       <td>{user.email}</td>
