@@ -19,7 +19,7 @@ import Admin from './components/pages/Admin/Admin'
 
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://visitmatina-8zsq.onrender.com'
+axios.defaults.baseURL = 'https://visitmatina.onrender.com/api'
 
 
 const App = () => {
