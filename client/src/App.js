@@ -21,6 +21,9 @@ import axios from 'axios'
 axios.defaults.baseURL = 'http://localhost:3001/api'
 // axios.defaults.baseURL = 'visitmatina-production.up.railway.app'
 
+axios.defaults.baseURL = 'http://localhost:3001/api'
+
+
 const App = () => {
   return (
     <Layout>
