@@ -19,7 +19,7 @@ import Admin from './components/pages/Admin/Admin'
 
 import axios from 'axios'
 // axios.defaults.baseURL = 'http://localhost:3001/api'
-axios.defaults.baseURL = 'https://visitmatina-production.up.railway.app'
+axios.defaults.baseURL = 'https://visitmatina.onrender.com/api'
 
 const App = () => {
   return (
