@@ -1,5 +1,6 @@
 import styles from "./Blog.module.css";
 import CardBlog from "../../common/CardBlog/CardBlog";
+import { Link } from "react-router-dom";
 import { useEffect , useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts, cPage } from "../../../redux/postActions";
@@ -75,17 +76,28 @@ export default function Blog() {
         </div>
         <div className={`carousel-inner`}>
 
-          {/* {lastOne.map(elem => {
+          {lastOne.slice (2,3).map(elem => {
             return(
               <div className={`${styles.divCarousel} carousel-item active`}>
-            <img src={elem.image} className={`${styles.image} "d-block w-100"`} alt="..."/>
+            <Link to ={`/detailBlog/${elem.id_post}`}><img src={elem.image} className={`${styles.image} "d-block w-100"`} alt={elem.title}/></Link>
             <div className={`carousel-caption d-none d-md-block`}>
                 <h2 className={styles.textCarousel}>"{elem.title}"</h2>
             </div>
             </div>
             )
-          })} */}
-            <div className={`${styles.divCarousel} carousel-item active`}>
+          })}
+          {lastOne.slice (0,2).map(elem => {
+            return(
+              <div className={`${styles.divCarousel} carousel-item`}>
+            <Link to ={`/detailBlog/${elem.id_post}`}><img src={elem.image} className={`${styles.image} "d-block w-100"`} alt={elem.title}/></Link>
+            <div className={`carousel-caption d-none d-md-block`}>
+                <h2 className={styles.textCarousel}>"{elem.title}"</h2>
+            </div>
+            </div>
+            )
+          })}
+
+            {/* <div className={`${styles.divCarousel} carousel-item active`}>
             <img src={apiRes.response[1].image} className={`${styles.image} "d-block w-100"`} alt="..."/>
             <div className={`carousel-caption d-none d-md-block`}>
                 <h2 className={styles.textCarousel}>"{apiRes.response[1].name}"</h2>
@@ -102,7 +114,7 @@ export default function Blog() {
             <div className={`carousel-caption d-none d-md-block`}>
                 <h2 className={styles.textCarousel}>"{apiRes.response[0].name}"</h2>
             </div>
-            </div>
+            </div> */}
         </div>
         <button className={`carousel-control-prev`} type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
             <span className={`carousel-control-prev-icon`} aria-hidden="true"></span>

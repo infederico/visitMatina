@@ -48,10 +48,11 @@ const userSlice = createSlice({
       
     },
     updtUser: (state, action) => {
-      if (updtUser !== ""){
+      state.upDtRes = action.payload
+      if (state.upDtRes !== ""){
         window.alert(action.payload);
       }
-      state.upDtRes = action.payload
+      
     },
     cleanUpdt: (state, action) => {
       state.upDtRes = "";
