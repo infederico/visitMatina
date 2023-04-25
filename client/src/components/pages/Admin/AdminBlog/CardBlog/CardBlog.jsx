@@ -23,6 +23,11 @@ const CardBlog = (props) => {
     active: null,
   });
 
+  const [inputsAct, setInputsAct] = useState({
+    id_post: null,
+    active: null,
+  })
+
   console.log(inputsM);
   console.log(resDel);
 
@@ -64,7 +69,7 @@ const CardBlog = (props) => {
   const handlerButtonMod = (event) => {
     setInputsM({
       ...inputsM,
-        id_post: event.target.value,
+        id_post: props.id_post,
         title: props.title,
         summary: props.summary,
         content: props.content,
@@ -73,6 +78,9 @@ const CardBlog = (props) => {
   };
 
   const handlerDelete = (event) => {
+    dispatch(deletePost(event.target.value));
+  }
+  const handlerActive = (event) => {
     dispatch(deletePost(event.target.value));
   }
 
@@ -91,9 +99,14 @@ const CardBlog = (props) => {
             <button className={`btn btn-primary`} name="id_post" value={props.id_post} onClick={handlerButtonMod}>
               Cargar Datos
             </button>
-            <button className={`btn btn-primary`} value={props.id_post} onClick={handlerDelete}>
+            {props.active === false && <button className={`btn btn-primary`} name={props.title} value={props.id_post} onClick={handlerDelete}>
+              Activar
+            </button>}
+            
+            
+            {props.active === true && <button className={`btn btn-primary`} name={props.title} value={props.id_post} onClick={handlerDelete}>
               Eliminar
-            </button>
+            </button>}
             {props.active === true ? <p className={`${styles.txtButtonG} `}>Active</p> : <p className={`${styles.txtButtonR} `}>Inactive</p>}
             </div>
           </div>
@@ -109,21 +122,6 @@ const CardBlog = (props) => {
             <form onSubmit={handlerSubmitModify}>
               <div>
                 
-              </div>
-              <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
-                  Id Post
-                </label>
-                <div className="col-sm-10">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="inputEmail3"
-                    name="id_post"
-                    value={inputsM.id_post}
-                    onChange={handlerInputsM}
-                  />
-                </div>
               </div>
               <div className="row mb-3">
                 <label for="inputEmail3" className="col-sm-2 col-form-label">
@@ -170,23 +168,6 @@ const CardBlog = (props) => {
                   ></textarea>
                 </div>
               </div>
-              <div className="row mb-3">
-                <label for="inputPassword3" className="col-sm-2 col-form-label">
-                  Active
-                </label>
-                <div className="col-sm-10">
-
-                  <textarea
-                    className="form-control"
-                    id="exampleFormControlTextarea1"
-                    rows="3"
-                    name="active"
-                    value={inputsM.active}
-                    onChange={handlerInputsM}
-                  ></textarea>
-                </div>
-              </div>
-
               <button type="submit" className="btn btn-primary">
                 Modificar
               </button>

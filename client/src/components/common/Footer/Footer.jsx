@@ -1,6 +1,6 @@
-import Logo from '../../../assets/images/matina_logo.png'
-import Redes from '../../common/redesSociales/redes/Redes'
-import styles from './Footer.module.css'
+import Logo from '../../../assets/images/matina_logo.png';
+import Redes from '../../common/redesSociales/redes/Redes';
+import styles from './Footer.module.css';
 
 const Footer = ({socialmedia}) => {
     return(
@@ -39,7 +39,10 @@ const Footer = ({socialmedia}) => {
                 </div>
             </section>
         </div>
-    )
-}
 
-export default Footer
+        
+    
+  );
+};
+
+export default Footer;
