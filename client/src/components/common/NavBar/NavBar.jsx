@@ -1,22 +1,24 @@
 //import { useState } from 'react';
 //import { useDispatch } from 'react-redux';
 //import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 // eslint-disable-next-line
-import styles from './NavBar.module.css'
-import { NavLink } from 'react-router-dom'
+import styles from './NavBar.module.css';
+import { NavLink } from 'react-router-dom';
 
-import Logo from '../../../assets/images/matina_logo.png'
-import LogOutUser from '../../pages/Login/Logout/Logout'
+import Logo from '../../../assets/images/matina_logo.png';
+import LogOutUser from '../../pages/Login/Logout/Logout';
 
 export default function NavBar() {
   //const dispatch = useDispatch();
   //const location = useLocation();
-  const loggedUser = useSelector((state) => state.user.user)
+  const loggedUser = useSelector((state) => state.user.user);
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light ${styles.navBarCustom}`}>
+    <nav
+      className={`navbar navbar-expand-lg navbar-light ${styles.navBarCustom}`}
+    >
       <div className='container'>
         <NavLink className='navbar-brand' to='/'>
           <img src={Logo} alt='Visit_Matina_Logo' className={styles.navlogo} />
@@ -181,5 +183,5 @@ export default function NavBar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

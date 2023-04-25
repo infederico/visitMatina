@@ -5,30 +5,28 @@ import { useLocation } from 'react-router-dom';
 import { getShops, getShopId, getShopData } from '../../../redux/shopActions';
 import { resetShopId, resetShopData } from '../../../redux/shopSlice';
 
-
 import Redes from '../../common/redesSociales/redes/Redes';
 import style from './RestaurantSolYLuna.module.css';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
 import Reviews from '../../common/Reviews/Reviews';
 import Footer from '../../common/Footer/Footer';
 
-
 //importamos el array que simula los datos que llegan del back-componente redes sociales
-import { arrayRedes } from './arrayRedes'
+import { arrayRedes } from './arrayRedes';
 
 //importamos elementos que simula los datos que llegan del estado global
-import { descriptions, name, imagen } from './descriptions'
-import CardProductContainer from '../../common/CardProductContainer/CardProductContainer'
-import CardProductContainer2 from '../../common/CardProductContainer2/CardProductContainer2'
-import ShopContact from '../Contact/ShopContact'
+import { descriptions, name, imagen } from './descriptions';
+import CardProductContainer from '../../common/CardProductContainer/CardProductContainer';
+import CardProductContainer2 from '../../common/CardProductContainer2/CardProductContainer2';
+import ShopContact from '../Contact/ShopContact';
 
 export default function RestauranteSolYLuna() {
-  const shopId = useSelector(state => state.shops.shopId);
-  const shopData = useSelector(state => state.shops.shopData);
+  const shopId = useSelector((state) => state.shops.shopId);
+  const shopData = useSelector((state) => state.shops.shopData);
   const dispatch = useDispatch();
   const location = useLocation();
 
-  useEffect( () => {
+  useEffect(() => {
     dispatch(getShopId(location.pathname));
     dispatch(getShopData(location.pathname));
     return () => {
@@ -36,20 +34,23 @@ export default function RestauranteSolYLuna() {
       dispatch(resetShopData({}));
     };
   }, []);
-  
-  let DB = require('./imagenes.json')
-  DB = DB.response
+
+  let DB = require('./imagenes.json');
+  DB = DB.response;
 
   return (
     <div className={style.page}>
       <section className={style.titleSection}>
-        <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
+        <CardShop
+          description={shopData.summary}
+          name={shopData.name}
+          image={shopData.image}
+        />
       </section>
 
-      
       <div className={style.gallery}>
         {DB.map((image, index) => {
-          return <img key={index} src={image.img} alt='AGREGAR ALT' />
+          return <img key={index} src={image.img} alt='AGREGAR ALT' />;
         })}
       </div>
       <section className={style.menuSection}>
@@ -62,16 +63,15 @@ export default function RestauranteSolYLuna() {
           <h4>Nuestros clientes</h4>
           <span>conoce la opinión de nuestros clientes</span>
         </div>
-        { shopId && <Reviews shopId={shopId}/> }
+        {shopId && <Reviews shopId={shopId} />}
       </section>
 
-      
       <section className={style.contactSection}>
         <ShopContact />
       </section>
       <section>
-        <Footer socialmedia={arrayRedes}/>
+        <Footer socialmedia={arrayRedes} />
       </section>
     </div>
-  )
+  );
 }
