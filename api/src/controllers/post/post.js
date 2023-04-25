@@ -103,9 +103,16 @@ const putOnePost = async (post) => {
 const delOnePost = async (id_post) => {
   try {
     const delOnePost = await Post.findByPk(id_post)
+    console.log(delOnePost.active);
     if (delOnePost) {
-      await Post.update({ active: false }, { where: { id_post: id_post } })
-      return { success: 'El post fue eliminado' }
+      if (delOnePost.active === true){
+        await Post.update({ active: false }, { where: { id_post: id_post } })
+      return { success: `El post ${delOnePost.title} fue eliminado` }
+      }
+      if (delOnePost.active === false){
+        await Post.update({ active: true }, { where: { id_post: id_post } })
+      return { success: `El post ${delOnePost.title} fue activado` }
+      }
     } else {
       throw new Error('Post no existe')
     }
