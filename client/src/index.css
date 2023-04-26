@@ -1,4 +1,4 @@
-/* COLOR PALETTE */
+    /* COLOR PALETTE */
 :root {
     /* --light-text-color: #406020;
     --light-back-color: #bfdf9f;
@@ -65,12 +65,10 @@
 
     
 /* FONTS */
-/* @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,700&family=Lora&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap'); */
 
-/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap'); /* font-family: 'Marcellus', serif; */
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital@1&display=swap'); /* font-family: 'Vollkorn', serif; */
+
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap'); /* font-family: 'Kanit', sans-serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Actor&display=swap'); /* font-family: 'Actor', sans-serif;
 */
@@ -80,3 +78,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Antic&display=swap');/* font-family: 'Antic', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); /* font-family: 'Roboto', sans-serif;*/
 @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap'); /* font-family: 'Didact Gothic', sans-serif; */
+
+
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,700&family=Lora&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital@1&display=swap');

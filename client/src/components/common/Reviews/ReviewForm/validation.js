@@ -5,7 +5,7 @@ const validation = (newReview) => {
 
     // RATING
     if (!rating) {
-        errors.rating1 = 'Por favor califícanos para poder registrar tu reseña';
+        errors.rating1 = 'Por favor califícanos';
     };
 
     // DESCRIPTION

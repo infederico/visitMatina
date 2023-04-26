@@ -1,0 +1,7 @@
+.comment {
+    font-size: medium;
+}
+.comment p{
+    font-weight: bold;
+    overflow: auto;
+}
