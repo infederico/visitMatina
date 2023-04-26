@@ -16,6 +16,7 @@ import ArtesaniasMaryLuna from './components/pages/AventurasDelCaribe/Artesanias
 import { Routes, Route } from 'react-router-dom'
 import Register from './components/pages/Login/Register/Register'
 import Admin from './components/pages/Admin/Admin'
+import SuccessPay from './components/pages/SuccessPay'
 
 import axios from 'axios'
 axios.defaults.baseURL = 'http://localhost:3001/api'
@@ -39,6 +40,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/admin' element={<Admin />} />
+        <Route path='/successPay' element={<SuccessPay />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Layout>

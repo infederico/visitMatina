@@ -1,6 +1,41 @@
+import axios from "axios";
 import style from "./CardProduct2.module.css"
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../../../redux/cartSlice";
 
-const CardProduct2 = ({image, name, description, id, idModal}) => {
+const CardProduct2 = ({image, name, description, id, price, idModal}) => {
+
+    const product = [{
+                id: id,
+                title: name,
+                currency_id: 'MXN',
+                picture_url: image,
+                description: description,
+                category: 'art',
+                quantity: 1,
+                unit_price: price,
+                price: price,
+                amount: {
+                    value: price
+                }
+            }]
+    
+    const dispatch = useDispatch();
+
+    const handleAddToCart = () => {
+        dispatch(addProduct(product[0]));
+    }
+
+    const handlePayment = () => {
+        axios.post("http://localhost:3001/api/payments", product)
+        .then(resp => {
+            // console.log(resp.data.resp.body.sandbox_init_point)
+                let payUrl = resp.data.resp.body.sandbox_init_point;
+                window.location.href =  payUrl     
+            } 
+        )
+    }
+
     return(
         /* Card */
         <div className={ style.customCard } >
@@ -13,7 +48,7 @@ const CardProduct2 = ({image, name, description, id, idModal}) => {
             </div>
 
         { /* modal */ }
-        <div className="modal fade" id={`${idModal}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={`${idModal}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                 <div className="modal-header">
@@ -24,6 +59,8 @@ const CardProduct2 = ({image, name, description, id, idModal}) => {
                     {description}
                 </div>
                 <div className="modal-footer">
+                    <button type="button" className="btn btn-success" onClick={ handleAddToCart }> A&ntilde;adir al carrito</button>
+                    <button type="button" className="btn btn-success" onClick={ handlePayment }>Comprar</button>
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
                 </div>
