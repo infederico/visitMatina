@@ -1,13 +1,15 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import AdminAventuras from './AdminAventuras/AdminAventuras';
-import AdminBlog from './AdminBlog/AdminBlog';
-import AdminHospedaje from './AdminHospedaje/AdminHospedaje';
-import AdminHospedajeMandira from './AdminMandira/AdminHospedajeMandira';
-import AdminParcela from './AdminParcela/AdminParcela';
-import AdminRestaurant from './AdminRestaurant/AdminRestaurant';
-import AdminUsuarios from './AdminUsuarios/AdminUsuarios';
-import { useSelector } from 'react-redux';
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import AdminAventuras from './AdminAventuras/AdminAventuras'
+import AdminBlog from './AdminBlog/AdminBlog'
+import AdminHospedaje from './AdminHospedaje/AdminHospedaje'
+import AdminHospedajeMandira from './AdminMandira/AdminHospedajeMandira'
+import AdminParcela from './AdminParcela/AdminParcela'
+import AdminRestaurant from './AdminRestaurant/AdminRestaurant'
+import AdminShop from './AdminShop/AdminShop'
+import AdminUsuarios from './AdminUsuarios/AdminUsuarios'
+import { useSelector } from 'react-redux'
+
 const Admin = () => {
   const loggedUser = useSelector((state) => state.user.user);
   const [option, setOption] = useState({
@@ -17,6 +19,7 @@ const Admin = () => {
     hospedajeMandira: false,
     parcela: false,
     restaurant: false,
+    shops: false,
     usuarios: false,
   });
 
@@ -55,6 +58,13 @@ const Admin = () => {
                       onClick={handlerButton}
                     >
                       Usuarios
+                    </NavLink>
+                    <NavLink
+                      className='nav-link'
+                      name='shops'
+                      onClick={handlerButton}
+                    >
+                      Shops
                     </NavLink>
                     <NavLink
                       className='nav-link'
@@ -119,6 +129,15 @@ const Admin = () => {
             {option.usuarios === true ? (
               <div>
                 <AdminUsuarios></AdminUsuarios>
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </section>
+          <section>
+            {option.shops === true ? (
+              <div>
+                <AdminShop></AdminShop>
               </div>
             ) : (
               <div></div>

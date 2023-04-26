@@ -1,3 +1,4 @@
+const { uptloadCl } = require('../../helpers/CloudinaryUpload')
 const { Shop } = require('../../db.js')
 
 //controller para borrado logico de una tienda
@@ -51,6 +52,8 @@ const getShopById = async (req, res) => {
 //controller para crear una tienda
 
 const createShop = async (req, res) => {
+
+
   const {
     name,
     summary,
@@ -66,10 +69,12 @@ const createShop = async (req, res) => {
     active,
   } = req.body
   
+  
   //if (!name ||!whatsapp || !summary || !path || !email || !twitter || !facebook || !instagram || !youtube || !location || !active ) {
   if (!name || !summary || !path) {
     return res.status(400).json({ error: 'Faltan datos' })
   }
+  
   if(!image){
     
     const image= 'https://salesland.net/sites/default/files/inline-images/shop-in-shop-salesland.png'
@@ -81,13 +86,13 @@ const createShop = async (req, res) => {
         path,
         email,
         image,
-        /*twitter,
+        twitter,
         facebook,
         instagram,
         youtube,
         whatsapp,
-        location,*/
-        active,
+        location,
+
       })
       res
         .status(200)
@@ -98,20 +103,20 @@ const createShop = async (req, res) => {
     }
   }else{
     try {
-   
+    const cldImage = await uptloadCl(image)
       const newShop = await Shop.create({
         name,
         summary,
         path,
         email,
-        image,
-        /*twitter,
+        image: cldImage,
+        twitter,
         facebook,
         instagram,
         youtube,
         whatsapp,
-        location,*/
-        active,
+        location,
+
       })
       res
         .status(200)

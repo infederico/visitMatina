@@ -1,4 +1,5 @@
 import styles from './CardBlog.module.css';
+import { getBase64 } from '../../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -20,11 +21,7 @@ const CardBlog = (props) => {
     summary: '',
     content: '',
     active: null,
-  });
-
-  const [inputsAct, setInputsAct] = useState({
-    id_post: null,
-    active: null,
+    image: null,
   });
 
   console.log(inputsM);
@@ -72,10 +69,17 @@ const CardBlog = (props) => {
     });
   };
 
-  const handlerDelete = (event) => {
-    dispatch(deletePost(event.target.value));
+  const handlerFile = async (event) => {
+    if (event.target.files[0]) {
+      let res = await getBase64(event.target.files[0]);
+      setInputsM({
+        ...inputsM,
+        image: res,
+      });
+    }
   };
-  const handlerActive = (event) => {
+
+  const handlerDelete = (event) => {
     dispatch(deletePost(event.target.value));
   };
 
@@ -183,11 +187,59 @@ const CardBlog = (props) => {
               ></textarea>
             </div>
           </div>
+          <div className='row mb-3'>
+            <label for='inputPassword3' className='col-sm-2 col-form-label'>
+              Imagen
+            </label>
+            <div className='col-sm-10'>
+              <input
+                type='file'
+                className='form-control'
+                id='inputPassword3'
+                name='image'
+                onChange={handlerFile}
+              />
+            </div>
+          </div>
+
           <button type='submit' className='btn btn-primary'>
             Modificar
           </button>
         </form>
       </div>
+      <div className='row mb-3'>
+        <label for='inputPassword3' className='col-sm-2 col-form-label'>
+          Resumen
+        </label>
+        <div className='col-sm-10'>
+          <input
+            type='text'
+            className='form-control'
+            id='inputPassword3'
+            name='summary'
+            value={inputsM.summary}
+            onChange={handlerInputsM}
+          />
+        </div>
+      </div>
+      <div className='row mb-3'>
+        <label for='inputPassword3' className='col-sm-2 col-form-label'>
+          Texto
+        </label>
+        <div className='col-sm-10'>
+          <textarea
+            className='form-control'
+            id='exampleFormControlTextarea1'
+            rows='3'
+            name='content'
+            value={inputsM.content}
+            onChange={handlerInputsM}
+          ></textarea>
+        </div>
+      </div>
+      <button type='submit' className='btn btn-primary'>
+        Modificar
+      </button>
     </section>
   );
 };
