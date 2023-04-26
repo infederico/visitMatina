@@ -1,4 +1,5 @@
 import styles from "./CardBlog.module.css";
+import { getBase64 } from '../../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -21,6 +22,7 @@ const CardBlog = (props) => {
     summary: "",
     content: "",
     active: null,
+    image: null,
   });
 
   console.log(inputsM);
@@ -64,12 +66,22 @@ const CardBlog = (props) => {
   const handlerButtonMod = (event) => {
     setInputsM({
       ...inputsM,
-        id_post: event.target.value,
+        id_post: props.id_post,
         title: props.title,
         summary: props.summary,
         content: props.content,
         active: props.active,
     });
+  };
+
+  const handlerFile = async (event) => {
+    if (event.target.files[0]) {
+      let res = await getBase64(event.target.files[0]);
+      setInputsM({
+        ...inputsM,
+        image: res,
+      });
+    }
   };
 
   const handlerDelete = (event) => {
@@ -91,9 +103,14 @@ const CardBlog = (props) => {
             <button className={`btn btn-primary`} name="id_post" value={props.id_post} onClick={handlerButtonMod}>
               Cargar Datos
             </button>
-            <button className={`btn btn-primary`} value={props.id_post} onClick={handlerDelete}>
+            {props.active === false && <button className={`btn btn-primary`} name={props.title} value={props.id_post} onClick={handlerDelete}>
+              Activar
+            </button>}
+            
+            
+            {props.active === true && <button className={`btn btn-primary`} name={props.title} value={props.id_post} onClick={handlerDelete}>
               Eliminar
-            </button>
+            </button>}
             {props.active === true ? <p className={`${styles.txtButtonG} `}>Active</p> : <p className={`${styles.txtButtonR} `}>Inactive</p>}
             </div>
           </div>
@@ -109,21 +126,6 @@ const CardBlog = (props) => {
             <form onSubmit={handlerSubmitModify}>
               <div>
                 
-              </div>
-              <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
-                  Id Post
-                </label>
-                <div className="col-sm-10">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="inputEmail3"
-                    name="id_post"
-                    value={inputsM.id_post}
-                    onChange={handlerInputsM}
-                  />
-                </div>
               </div>
               <div className="row mb-3">
                 <label for="inputEmail3" className="col-sm-2 col-form-label">
@@ -170,20 +172,18 @@ const CardBlog = (props) => {
                   ></textarea>
                 </div>
               </div>
-              <div className="row mb-3">
-                <label for="inputPassword3" className="col-sm-2 col-form-label">
-                  Active
+              <div className='row mb-3'>
+                <label for='inputPassword3' className='col-sm-2 col-form-label'>
+                  Imagen
                 </label>
-                <div className="col-sm-10">
-
-                  <textarea
-                    className="form-control"
-                    id="exampleFormControlTextarea1"
-                    rows="3"
-                    name="active"
-                    value={inputsM.active}
-                    onChange={handlerInputsM}
-                  ></textarea>
+                <div className='col-sm-10'>
+                  <input
+                    type='file'
+                    className='form-control'
+                    id='inputPassword3'
+                    name='image'
+                    onChange={handlerFile}
+                  />
                 </div>
               </div>
 
