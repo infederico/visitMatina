@@ -10,7 +10,6 @@ import style from './login.module.css';
 const LogIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const loggedUser = useSelector((state) => state.user.user);
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -77,7 +76,6 @@ const LogIn = () => {
         setRemember({ email: '', password: '' });
       }
     }
-    console.log('desde loguin', loggedUser);
 
     navigate('/');
   };
@@ -86,96 +84,83 @@ const LogIn = () => {
   };
 
   return (
-    <div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'space-between',
-        }}
-      >
-        <div>
-          <img
-            style={{
-              position: 'absolute',
-              left: '10rem',
-              maxHeight:
-                '80vh' /* Establece la altura máxima de la imagen al 100% de la altura visible del escritorio */,
-              width: '37rem',
-            }}
-            src='https://i.pinimg.com/564x/c3/02/4b/c3024bc95c94ca75a0f71f41ca6815ef.jpg'
-            alt='hojas'
-          />
-        </div>
-        <div
-          className='card'
-          style={{
-            width: '22rem',
-            position: 'absolute',
-            left: '60%',
-            transform: 'translateX(-50%)',
-          }}
-        >
-          <h1>Bienvenido</h1>
-          <div className={style.botonGoogle} id='signInDiv'></div>
-          <hr />
-          <div className='mb-3'>
-            <label htmlFor='formGroupExampleInput' className='form-label'>
-              Email
-            </label>
-            <input
-              autoComplete='off'
-              type='text'
-              className='form-control'
-              id='formGroupExampleInput'
-              placeholder='ingrese su email'
-              name='email'
-              value={userData.email}
-              onChange={handleInputChange}
-            />
-            <br />
-            {errors.email ? errors.email : null}
-            <br />
-          </div>
-          <div>
-            <label htmlFor='formGroupExampleInput2' className='form-label'>
-              Contrasena
-            </label>
-            <input
-              autoComplete='off'
-              type='password'
-              className='form-control'
-              id='formGroupExampleInput2'
-              placeholder='ingrese su contrasena'
-              name='password'
-              value={userData.password}
-              onChange={handleInputChange}
-            />
-            <br />
-            {errors.password ? errors.password : null}
-            <br />
-          </div>
-          <label className='form-check-label' htmlFor='autoSizingCheck'>
-            <input
-              className='form-check-input'
-              type='checkbox'
-              checked={rememberButton}
-              id='autoSizingCheck'
-              onChange={handleChecked}
-            />
-            Recordarme
+    <div className={style.containerContact}>
+      <img
+        src='https://i.pinimg.com/564x/c3/02/4b/c3024bc95c94ca75a0f71f41ca6815ef.jpg'
+        alt='Imagen'
+        className={style.responsiveImage}
+      />
+      <div className={style.formColumn}>
+        <h1 className='text-center'>Bienvenido</h1>
+        <div id='signInDiv'></div>
+        <hr />
+        <div className='mb-3'>
+          <label htmlFor='formGroupExampleInput' className='form-label'>
+            Email
           </label>
+          <input
+            autoComplete='off'
+            type='text'
+            className='form-control border-0 border-bottom'
+            id='formGroupExampleInput'
+            placeholder='ingrese su email'
+            name='email'
+            value={userData.email}
+            onChange={handleInputChange}
+          />
           <br />
-          <button onClick={handleClick}>Ingresar</button>
+          {errors.email ? errors.email : null}
           <br />
-
-          <br />
-
-          <Link to='/register'>
-            <button style={{ width: '22rem' }}>
-              No tienes cuenta? Registrate
-            </button>
-          </Link>
         </div>
+        <div>
+          <label htmlFor='formGroupExampleInput2' className='form-label'>
+            Contrasena
+          </label>
+          <input
+            autoComplete='off'
+            type='password'
+            className='form-control border-0 border-bottom'
+            id='formGroupExampleInput2'
+            placeholder='ingrese su contrasena'
+            name='password'
+            value={userData.password}
+            onChange={handleInputChange}
+          />
+          <br />
+          {errors.password ? errors.password : null}
+          <br />
+        </div>
+        <label className='form-check-label' htmlFor='autoSizingCheck'>
+          <input
+            className='form-check-input form-control border-10 border-bottom'
+            type='checkbox'
+            checked={rememberButton}
+            id='autoSizingCheck'
+            onChange={handleChecked}
+          />
+          Recordarme
+        </label>
+        <br />
+        <br />
+        <button
+          className={`btn btn-dark ${style.submitButton}`}
+          style={{ width: '22rem' }}
+          onClick={handleClick}
+        >
+          Ingresar
+        </button>
+        <br />
+
+        <br />
+
+        <Link to='/register'>
+          <button
+            className={`btn btn-dark ${style.submitButton}`}
+            style={{ width: '22rem' }}
+          >
+            No tienes cuenta? Registrate
+          </button>
+        </Link>
       </div>
     </div>
   );
