@@ -26,8 +26,6 @@ const Admin = () => {
     });
   };
 
-  console.log(option);
-
   return (
     <div>
       {loggedUser.admin ? (
@@ -106,7 +104,7 @@ const Admin = () => {
             </nav>
           </div>
           <div>
-            <h1 className='display-4 text-center my-4'>Panel Administrador</h1>
+            <h1 className='display-6 text-center my-4'>Panel Administrador</h1>
           </div>
           <section>
             {option.blog === true ? (

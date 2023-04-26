@@ -2,16 +2,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from 'react';
 import styles from './parcela.module.css';
+import { getProductsByShopId } from '../../../../redux/productActions';
+import { getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
 
 const AdminParcela = () => {
   const productos = useSelector((state) => state.product.product);
   const reviews = useSelector((state) => state.reviews.value);
+  const dispatch = useDispatch();
   const [input, setInput] = useState();
   const [errors, setErrors] = useState();
 
   const handleSubmit = () => {};
   const handleInput = () => {};
   const handleFile = () => {};
+  useEffect(() => {
+    dispatch(getProductsByShopId(4));
+    dispatch(getAllApprovedReviewsByShopId(4));
+  }, []);
 
   return (
     <section>
@@ -41,7 +48,7 @@ const AdminParcela = () => {
         </p>
         <h5>Productos </h5>
         {productos.map((item) => {
-          if (item.shop_id === 3) {
+          if (item.shop_id === 4) {
             return (
               <div>
                 <p key={item.name}>{item.name}</p>
@@ -52,10 +59,10 @@ const AdminParcela = () => {
         })}
         <h5>Reviews</h5>
         {reviews.map((item) => {
-          if (item.shop_id === 3) {
+          if (item.shop_id === 4) {
             return (
               <div>
-                <p>{item.description}</p>
+                <p key={item.description}>{item.description}</p>
               </div>
             );
           }
@@ -70,7 +77,7 @@ const AdminParcela = () => {
             <div className='card card-body'>
               <form onSubmit={handleSubmit}>
                 <div>
-                  <h3>Crear Post</h3>
+                  <h3>Crear Producto</h3>
                 </div>
                 <div className='row mb-3'>
                   <label for='inputEmail3' className='col-sm-2 col-form-label'>
@@ -156,7 +163,7 @@ const AdminParcela = () => {
 
           <div className='collapse' id='collapseExample2'>
             <div className='card card-body'>
-              <h3>Modificar Post</h3>
+              <h3>Modificar Producto</h3>
             </div>
             <div className={styles.divCardsBlog}>
               {/* {allAllPosts.map((ele) => {

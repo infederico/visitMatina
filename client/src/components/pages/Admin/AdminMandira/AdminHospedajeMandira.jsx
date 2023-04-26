@@ -2,16 +2,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from 'react';
 import styles from './mandira.module.css';
+import { getProductsByShopId } from '../../../../redux/productActions';
+import { getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
+import CardBlog from '../AdminBlog/CardBlog/CardBlog';
 
 const AdminHospedajeMandira = () => {
-  const productos = useSelector((state) => state.product.product);
+  const products = useSelector((state) => state.product.product);
   const reviews = useSelector((state) => state.reviews.value);
+  const dispatch = useDispatch();
   const [input, setInput] = useState();
   const [errors, setErrors] = useState();
 
   const handleSubmit = () => {};
   const handleInput = () => {};
   const handleFile = () => {};
+
+  useEffect(() => {
+    dispatch(getProductsByShopId(3));
+    dispatch(getAllApprovedReviewsByShopId(3));
+  }, []);
   return (
     <section>
       <div>
@@ -38,23 +47,13 @@ const AdminHospedajeMandira = () => {
             Modificar Producto
           </button>
         </p>
-        <h5>Productos </h5>
-        {productos.map((item) => {
-          if (item.shop_id === 3) {
-            return (
-              <div>
-                <p key={item.name}>{item.name}</p>
-              </div>
-            );
-          }
-          return null;
-        })}
+
         <h5>Reviews</h5>
         {reviews.map((item) => {
           if (item.shop_id === 3) {
             return (
               <div>
-                <p>{item.description}</p>
+                <p key={item.description}>{item.description}</p>
               </div>
             );
           }
@@ -69,11 +68,11 @@ const AdminHospedajeMandira = () => {
             <div className='card card-body'>
               <form onSubmit={handleSubmit}>
                 <div>
-                  <h3>Crear Post</h3>
+                  <h3>Crear Producto</h3>
                 </div>
                 <div className='row mb-3'>
                   <label for='inputEmail3' className='col-sm-2 col-form-label'>
-                    Titulo
+                    Nombre
                   </label>
                   <div className='col-sm-10'>
                     <input
@@ -93,7 +92,7 @@ const AdminHospedajeMandira = () => {
                     for='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
-                    Resumen
+                    Precio
                   </label>
                   <div className='col-sm-10'>
                     <input
@@ -113,7 +112,7 @@ const AdminHospedajeMandira = () => {
                     for='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
-                    Texto
+                    Descripcion
                   </label>
                   <div className='col-sm-10'>
                     <textarea
@@ -155,22 +154,22 @@ const AdminHospedajeMandira = () => {
 
           <div className='collapse' id='collapseExample2'>
             <div className='card card-body'>
-              <h3>Modificar Post</h3>
+              <h3>Modificar Producto</h3>
             </div>
             <div className={styles.divCardsBlog}>
-              {/* {allAllPosts.map((ele) => {
+              {products.map((item) => {
                 return (
                   <CardBlog
-                    id_post={ele.id_post}
-                    title={ele.title}
-                    summary={ele.summary}
-                    content={ele.content}
-                    image={ele.image}
-                    date={ele.date}
-                    active={ele.active}
+                    id_post={item.id_product}
+                    title={item.name}
+                    description={item.description}
+                    price={item.price}
+                    image={item.image}
+                    date={item.date}
+                    active={item.active}
                   ></CardBlog>
                 );
-              })} */}
+              })}
             </div>
           </div>
         </div>
