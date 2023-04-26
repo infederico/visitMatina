@@ -1,4 +1,5 @@
 import styles from "./CardBlog.module.css";
+import { getBase64 } from '../../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -21,12 +22,8 @@ const CardBlog = (props) => {
     summary: "",
     content: "",
     active: null,
+    image: null,
   });
-
-  const [inputsAct, setInputsAct] = useState({
-    id_post: null,
-    active: null,
-  })
 
   console.log(inputsM);
   console.log(resDel);
@@ -77,10 +74,17 @@ const CardBlog = (props) => {
     });
   };
 
+  const handlerFile = async (event) => {
+    if (event.target.files[0]) {
+      let res = await getBase64(event.target.files[0]);
+      setInputsM({
+        ...inputsM,
+        image: res,
+      });
+    }
+  };
+
   const handlerDelete = (event) => {
-    dispatch(deletePost(event.target.value));
-  }
-  const handlerActive = (event) => {
     dispatch(deletePost(event.target.value));
   }
 
@@ -168,6 +172,21 @@ const CardBlog = (props) => {
                   ></textarea>
                 </div>
               </div>
+              <div className='row mb-3'>
+                <label for='inputPassword3' className='col-sm-2 col-form-label'>
+                  Imagen
+                </label>
+                <div className='col-sm-10'>
+                  <input
+                    type='file'
+                    className='form-control'
+                    id='inputPassword3'
+                    name='image'
+                    onChange={handlerFile}
+                  />
+                </div>
+              </div>
+
               <button type="submit" className="btn btn-primary">
                 Modificar
               </button>

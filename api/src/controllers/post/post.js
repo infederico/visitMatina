@@ -71,8 +71,10 @@ const postPost = async (post) => {
 
 const putOnePost = async (post) => {
   try {
-    const { id_post, title, summary, content, date, active, user_id } = post
+    let { id_post, title, summary, content, date, active, image, user_id } = post
     const postId = await Post.findByPk(id_post)
+    image = await uptloadCl(image);
+    
     if (!postId) {
       throw new Error('No se encontro el post')
     }
@@ -90,6 +92,10 @@ const putOnePost = async (post) => {
     }
     if (active) {
       await Post.update({ active }, { where: { id_post: id_post } })
+    }
+    if (image) {
+      
+      await Post.update({ image }, { where: { id_post: id_post } })
     }
     if (user_id) {
       await Post.update({ user_id }, { where: { id_post: id_post } })
