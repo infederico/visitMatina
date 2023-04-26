@@ -107,11 +107,12 @@ const ReviewThread = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        //set submitted state true to allow errors rendering after first submit attemp
-        setSubmitted(true);
-        dispatch(cleanSuccessMessageComment);
+        dispatch(cleanSuccessMessageComment());
         dispatch(setBackendError(false));
         setIncompleteFormAlert(false);
+        //set submitted state true to allow errors rendering after first submit attemp
+        setSubmitted(true);
+        
 
         // pass to validation f()  - errors will be logged on errors local state
         let err = validation(newComment);
@@ -144,9 +145,6 @@ const ReviewThread = (props) => {
             });
             return;
         }
-
-       
-
         setNewComment({
             user_id: loggedUser.id_user,
             parent_id: selectedReview,
@@ -159,51 +157,55 @@ const ReviewThread = (props) => {
     let author = reviews.filter(review => review.review_id === selectedReview).at(0).user.name;
     
     return (
-        <>
-            <hr />
-            <button type="button" class="btn-close" aria-label="Close" onClick={handleClick}></button>
-            <br />
+        <div className={styles.threadContainer}>
+            <div className={styles.commentForm}>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                        <label for="exampleFormControlTextarea1" className="form-label">{`Comenta la reseña de ${author}`}</label>
+                        <textarea
+                            name="description"
+                            className="form-control"
+                            rows="3"
+                            placeholder="Tu comentario..."
+                            onChange={handleInputChange}
+                            value={newComment.description}
+                        ></textarea>
+                        {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
+                        { incompleteFormAlert && <div class="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>Por favor escribe un comentario</div> }
+                        { successMessageComment && <div class="alert alert-success d-flex align-items-center" role="alert" style={{ height: "12px" }}>Tu comentario se ha registrado con éxito</div> }
+                        { backendError && <div class="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>{`No se ha registrado tu comentario. Server Error ${backendError}`}</div> }
+                    </div>
+                    <div>
+                        <button  className={styles.submitButton} type="submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
 
-            {
-                commentsToRender.map( (comment) => {
-                    if (comment.approved) {
-                        return <ReviewComment
-                            key={comment.review_id}
-                            commentId={comment.review_id}
-                            parent_id={comment.parent_id}
-                            name={comment.user.name}
-                            email={comment.user.email}
-                            createdAt={comment.createdAt}
-                            comment={comment.description}
-                        />
-                    };
-                })
-            }
-            <br />
-            <form onSubmit={handleSubmit}>
+            <div className={styles.commentPanel}>
+                {
+                    commentsToRender.length > 0 ?
+                    commentsToRender.map( (comment) => {
+                        if (comment.approved) {
+                            return <ReviewComment
+                                key={comment.review_id}
+                                commentId={comment.review_id}
+                                parent_id={comment.parent_id}
+                                name={comment.user.name}
+                                email={comment.user.email}
+                                createdAt={comment.createdAt}
+                                comment={comment.description}
+                            />
+                        };
+                    })
+                    :
+                    <p>Sé el primero en comentar esta reseña...</p>
+                }
+            </div>
 
-                <div className="mb-3">
-                    <label for="exampleFormControlTextarea1" className="form-label">{`Comenta la reseña de ${author}`}</label>
-                    <textarea
-                        name="description"
-                        className="form-control"
-                        rows="3"
-                        placeholder="Tu comentario..."
-                        onChange={handleInputChange}
-                        value={newComment.description}
-                    ></textarea>
-                    {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
-                </div>
-                <div className="d-flex justify-content-center">
-                    <button className="btn btn-light btn-sm border" type="submit"><span>Enviar</span></button>
-                </div>
-                { incompleteFormAlert && <div class="alert alert-warning" role="alert">Por favor escribe un comentario</div> }
-                { successMessageComment && <div class="alert alert-success" role="alert">Tu comentario se ha registrado con éxito</div> }
-                { backendError && <div class="alert alert-warning" role="alert">{`No se ha registrado tu comentario. Server Error ${backendError}`}</div> }
-            </form>
-            <hr />
-            
-        </>
+            <div className={styles.closeButton}>
+                <button type="button" class="btn-close" aria-label="Close" onClick={handleClick}></button>
+            </div>
+        </div>
     );
 };
 
