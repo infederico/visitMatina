@@ -6,6 +6,7 @@ const shopSlice = createSlice({
     shops: [],
     shopId: 0,
     shopData: {},
+    resCrateShop: "",
   },
   reducers: {
     getAllShops: (state, action) => {
@@ -23,8 +24,11 @@ const shopSlice = createSlice({
     resetShopData: (state, action) => {
       state.shopData = action.payload
     },
+    resPostShop: (state, action) =>{
+      window.alert(action.payload)
+    },
   },
 })
 
-export const { getAllShops, getShopIdByPath, resetShopId, getShopDataByPath, resetShopData } = shopSlice.actions
+export const { getAllShops, getShopIdByPath, resetShopId, getShopDataByPath, resetShopData, resPostShop } = shopSlice.actions
 export default shopSlice.reducer
