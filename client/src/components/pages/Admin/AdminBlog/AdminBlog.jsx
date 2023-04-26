@@ -49,6 +49,10 @@ const AdminBlog = () => {
 
   },[resPostPost, resUpPost, resDel])
 
+  useEffect(() => {
+    setErrors(validate(inputs));
+  }, [inputs]);
+
   const handlerInputs = (event) => {
     setInputs({
       ...inputs,

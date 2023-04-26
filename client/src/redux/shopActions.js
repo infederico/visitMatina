@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAllShops, getShopIdByPath, getShopDataByPath } from "./shopSlice";
+import { getAllShops, getShopIdByPath, getShopDataByPath, resPostShop } from "./shopSlice";
 
 export const getShops = () => async (dispatch) => {
     try{
@@ -28,5 +28,14 @@ export const getShopData = (path) => async (dispatch) => {
         dispatch(getShopDataByPath(shopFiltered.at(0)));   
     }catch(error) {
         console.log(error);
+    }
+};
+
+export const postShop = (obj) => async (dispatch) => {
+    try {
+        const shops = await axios.post("/shops" , obj);
+        dispatch(resPostShop(shops.data.message));
+    } catch (error) {
+        window.alert(error.response.data.error);
     }
 };
