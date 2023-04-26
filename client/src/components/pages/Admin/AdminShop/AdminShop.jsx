@@ -4,15 +4,24 @@ import { getBase64 } from "../../../../assets/helpers/fileTo64";
 import { useSelector, useDispatch } from "react-redux";
 import validate from "./validate";
 import validateM from "./validateM";
-import { getShops, postShop } from "../../../../redux/shopActions";
+import { getFullShops, postShop, deleteShop, clnDel, updateShop, clnUpdt } from "../../../../redux/shopActions";
 
 const AdminShop = () => {
   const dispatch = useDispatch();
   const { shops } = useSelector((state) => state.shops);
+  const { resDelShop } = useSelector((state => state.shops));
+  const { resUpdateShop } = useSelector((state) => state.shops)
 
   useEffect(() => {
-    dispatch(getShops());
-  }, []);
+    dispatch(getFullShops());
+
+    if (resDelShop !== ""){
+      dispatch(clnDel());
+    }
+    if (resUpdateShop !== ""){
+      dispatch(clnUpdt());
+    }
+  }, [resDelShop, resUpdateShop]);
 
 
 
@@ -138,6 +147,39 @@ const AdminShop = () => {
     }
   };
 
+
+  const handlerSubmitUpdate = (event) => {
+    event.preventDefault();
+    const numErrors = Object.keys(errors).length;
+    if (numErrors === 0) {
+      dispatch(updateShop(inputsM));
+      setErrors({});
+      setInputs({
+        ...inputs,
+        id_shop: 0,
+        name: "",
+        summary: "",
+        path: "",
+        email: "",
+        image: "",
+        twitter: "",
+        instagram: "",
+        facebook: "",
+        whatsapp: "",
+        youtube: "",
+        location: "",
+      });
+      setCheck({
+        id_shop: null,
+        hand: false
+      })
+    } else {
+      window.alert("Completa todos los campos");
+    }
+  };
+
+
+
   const handlerFile = async (event) => {
     if (event.target.files[0]) {
       let res = await getBase64(event.target.files[0]);
@@ -157,6 +199,10 @@ const AdminShop = () => {
       });
     }
   };
+
+  const handlerDelete = (event) => {
+    dispatch(deleteShop(event.target.value));
+  }
 
   useEffect(() => {
     setErrors(validate(inputs));
@@ -397,7 +443,7 @@ const AdminShop = () => {
 
           { check.id_shop > 0 ?
           <div className="card card-body">
-            <form onSubmit={handlerSubmitCreate}>
+            <form onSubmit={handlerSubmitUpdate}>
               <div className="row mb-3">
                 <label for="inputEmail3" className="col-sm-2 col-form-label">
                   Nombre
@@ -638,6 +684,13 @@ const AdminShop = () => {
                           {shop.active === true ? "Activo" : "Inactivo"}
                         </p>
                       </td>
+                      <td>{shop.active === false && <button className={`btn btn-primary`} name={shop.name} value={shop.id_shop} onClick={handlerDelete}>
+              Activar
+            </button>}
+            {shop.active === true && <button className={`btn btn-primary`} name={shop.name} value={shop.id_shop} onClick={handlerDelete}>
+              Eliminar
+            </button>}
+            </td>
                     </tr>
                   </tbody>
                 );
