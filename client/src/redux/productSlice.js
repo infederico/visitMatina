@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const productSlice = createSlice({
   name: 'product',
@@ -7,10 +7,13 @@ const productSlice = createSlice({
   },
   reducers: {
     getAllProductsByShopId: (state, action) => {
-      state.product = action.payload
+      state.product = action.payload;
+    },
+    post: (state, action) => {
+      return { ...state };
     },
   },
-})
+});
 
-export const { getAllProductsByShopId } = productSlice.actions
-export default productSlice.reducer
+export const { getAllProductsByShopId, post } = productSlice.actions;
+export default productSlice.reducer;

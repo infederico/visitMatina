@@ -2,10 +2,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from 'react';
 import styles from './parcela.module.css';
+import { getProductsByShopId } from '../../../../redux/productActions';
+import { getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
+import CardParcela from './CardParcela';
 
 const AdminParcela = () => {
-  const productos = useSelector((state) => state.product.product);
+  const products = useSelector((state) => state.product.product);
   const reviews = useSelector((state) => state.reviews.value);
+  const dispatch = useDispatch();
   const [input, setInput] = useState();
   const [errors, setErrors] = useState();
 
@@ -13,10 +17,14 @@ const AdminParcela = () => {
   const handleInput = () => {};
   const handleFile = () => {};
 
+  useEffect(() => {
+    dispatch(getProductsByShopId(4));
+    dispatch(getAllApprovedReviewsByShopId(4));
+  }, []);
   return (
     <section>
       <div>
-        <h1 className='display-6 text-left my-2'>Hospedaje Parcela(id:4)</h1>
+        <h1 className='display-6 text-left my-2'>Finca Parcela(id:4)</h1>
         <p>
           <button
             className='btn btn-primary'
@@ -38,29 +46,17 @@ const AdminParcela = () => {
           >
             Modificar Producto
           </button>
+          <button
+            className='btn btn-primary'
+            type='button'
+            data-bs-toggle='collapse'
+            data-bs-target='#collapseExample3'
+            aria-expanded='false'
+            aria-controls='collapseExample2'
+          >
+            Control de reviews
+          </button>
         </p>
-        <h5>Productos </h5>
-        {productos.map((item) => {
-          if (item.shop_id === 3) {
-            return (
-              <div>
-                <p key={item.name}>{item.name}</p>
-              </div>
-            );
-          }
-          return null;
-        })}
-        <h5>Reviews</h5>
-        {reviews.map((item) => {
-          if (item.shop_id === 3) {
-            return (
-              <div>
-                <p>{item.description}</p>
-              </div>
-            );
-          }
-          return null;
-        })}
       </div>
 
       {/*  */}
@@ -70,11 +66,11 @@ const AdminParcela = () => {
             <div className='card card-body'>
               <form onSubmit={handleSubmit}>
                 <div>
-                  <h3>Crear Post</h3>
+                  <h3>Crear Producto</h3>
                 </div>
                 <div className='row mb-3'>
                   <label for='inputEmail3' className='col-sm-2 col-form-label'>
-                    Titulo
+                    Nombre
                   </label>
                   <div className='col-sm-10'>
                     <input
@@ -84,7 +80,7 @@ const AdminParcela = () => {
                       name='title'
                       value={input}
                       onChange={handleInput}
-                      placeholder='Ingresa el titulo del post'
+                      placeholder='Ingresa el nombre del producto'
                     />
                     {errors && <p>{errors}</p>}
                   </div>
@@ -94,7 +90,7 @@ const AdminParcela = () => {
                     for='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
-                    Resumen
+                    Precio
                   </label>
                   <div className='col-sm-10'>
                     <input
@@ -104,7 +100,7 @@ const AdminParcela = () => {
                       name='summary'
                       value={input}
                       onChange={handleInput}
-                      placeholder='Breve descripción del post'
+                      placeholder='Precio del producto'
                     />
                     {errors && <p>{errors}</p>}
                   </div>
@@ -114,7 +110,7 @@ const AdminParcela = () => {
                     for='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
-                    Texto
+                    Descripcion
                   </label>
                   <div className='col-sm-10'>
                     <textarea
@@ -124,7 +120,7 @@ const AdminParcela = () => {
                       name='content'
                       value={input}
                       onChange={handleInput}
-                      placeholder='Texto del post'
+                      placeholder='Descripcion del producto'
                     ></textarea>
                     {errors && <p>{errors}</p>}
                   </div>
@@ -155,23 +151,47 @@ const AdminParcela = () => {
           </div>
 
           <div className='collapse' id='collapseExample2'>
+            <form>
+              <div className='card card-body'>
+                <h3>Modificar Producto</h3>
+              </div>
+              <div className={styles.divCardsBlog}>
+                {products.map((item) => {
+                  return (
+                    <CardParcela
+                      key={item.id_product}
+                      id_product={item.id_product}
+                      name={item.name ? item.name : null}
+                      description={item.description ? item.description : null}
+                      price={item.price ? item.price : null}
+                      image={item.image ? item.image : null}
+                      shop_id={item.shop_id ? item.shop_id : null}
+                      active={item.active ? item.active : null}
+                    />
+                  );
+                })}
+              </div>
+            </form>
+          </div>
+          <div className='collapse' id='collapseExample3'>
             <div className='card card-body'>
-              <h3>Modificar Post</h3>
+              <h3>Control de Reviews</h3>
             </div>
             <div className={styles.divCardsBlog}>
-              {/* {allAllPosts.map((ele) => {
+              {reviews.map((item) => {
                 return (
-                  <CardBlog
-                    id_post={ele.id_post}
-                    title={ele.title}
-                    summary={ele.summary}
-                    content={ele.content}
-                    image={ele.image}
-                    date={ele.date}
-                    active={ele.active}
-                  ></CardBlog>
+                  <CardParcela
+                    key={item.description}
+                    name={item.user.name ? item.user.name : null}
+                    description={item.description ? item.description : null}
+                    image={item.user.image ? item.user.image : null}
+                    shop_id={item.shop_id ? item.shop_id : null}
+                    rating={item.rating ? item.rating : null}
+                    active={item.active ? item.active : null}
+                    approved={item.active ? item.active : null}
+                  />
                 );
-              })} */}
+              })}
             </div>
           </div>
         </div>

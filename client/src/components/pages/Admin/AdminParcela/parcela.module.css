@@ -1,0 +1,33 @@
+.divCardsBlog {
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  padding-top: 6%;
+}
+@media (min-width: 1100px) {
+  .divCardsBlog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.image {
+  height: 100%;
+}
+.divButtons {
+  display: flex;
+  flex-direction: row;
+}
+.txtButtonG {
+  background-color: green;
+  padding: 5px;
+  color: white;
+  border-radius: 5px;
+}
+.txtButtonR {
+  background-color: red;
+  padding: 5px;
+  color: white;
+  border-radius: 5px;
+}
