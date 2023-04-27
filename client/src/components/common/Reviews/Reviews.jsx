@@ -83,10 +83,9 @@ const Reviews = (props) => {
 
     useEffect( () => {
         if (successMessageComment) return;
-        if (successMessageReview) {
-            setFilterSelectedOption('all');
-            setSortSelectedOption('date-des');
-        }
+        setFilterSelectedOption('all');
+        setSortSelectedOption('date-des');
+        setCurrentPage(1);
     }, [reviews]);
     
     // LOGICA PARA FILTRAR
