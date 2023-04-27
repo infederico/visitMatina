@@ -125,5 +125,75 @@
         "price": 14.99,
         "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
         "shop_id": 2
+    },
+    {
+        "name": "imagen para galeria",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285079/Restaurant6_qz4ovd.jpg",
+        "shop_id": 7
+    },
+    {
+        "name": "imagen para galeria",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285079/Restaurant4_d1pdm4.jpg",
+        "shop_id": 7
+    },
+    {
+        "name": "imagen para galeria",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285079/Restaurant1_h80ud8.jpg",
+        "shop_id": 7
+    },
+    {
+        "name": "imagen para galeria",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285079/Restaurant2_uf2vxx.jpg",
+        "shop_id": 7
+    },
+    {
+        "name": "imagen para galeria",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285079/Restaurant5_egapk2.jpg",
+        "shop_id": 7
+    },
+    {
+        "name": "imagen para galeria hospedaje",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285560/HopedajeClaroDeLuna1_mxkzlx.jpg",
+        "shop_id": 8
+    },
+    {
+        "name": "imagen para galeria hospedaje",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285573/HopedajeClaroDeLuna3_r2mc6h.jpg",
+        "shop_id": 8
+    },
+    {
+        "name": "imagen para galeria hospedaje",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285560/HopedajeClaroDeLuna4_hoifr9.jpg",
+        "shop_id": 8
+    },
+    {
+        "name": "imagen para galeria hospedaje",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285560/HopedajeClaroDeLuna2_ronoyy.jpg",
+        "shop_id": 8
+    },
+    {
+        "name": "imagen para galeria hospedaje",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285560/HopedajeClaroDeLuna5_sskcwg.jpg",
+        "shop_id": 8
     }
 ]

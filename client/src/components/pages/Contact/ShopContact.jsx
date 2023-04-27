@@ -52,7 +52,7 @@ const ShopContact = () => {
           }}
         >
           <h1>Contacto</h1>
-          <div className={` ${styles.nombredeform}`} >
+          <div className={`mb-3`} >
             <label htmlFor='exampleFormControlInput1' className='form-label'>
               Nombre
             </label>
