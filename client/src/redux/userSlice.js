@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
   name: 'user',
   initialState: {
     user: {},
-    users:[],
-    upDtRes:"",
+    users: [],
+    upDtRes: '',
   },
   reducers: {
     getUserById: (state, action) => {
@@ -19,10 +19,10 @@ const userSlice = createSlice({
           admin: action.payload.admin,
           access: true,
         },
-      }
+      };
     },
     postUser: (state, action) => {
-      return { ...state }
+      return { ...state };
     },
     gUSer: (state, action) => {
       return {
@@ -35,30 +35,36 @@ const userSlice = createSlice({
           admin: action.payload.admin,
           access: true,
         },
-      }
+      };
     },
     logOutUser: (state, action) => {
       return {
         ...state,
         user: {},
-      }
+      };
     },
     allUsers: (state, action) => {
-      state.users = action.payload
-      
+      state.users = action.payload;
     },
     updtUser: (state, action) => {
-      state.upDtRes = action.payload
-      if (state.upDtRes !== ""){
+      state.upDtRes = action.payload;
+      if (state.upDtRes !== '') {
         window.alert(action.payload);
       }
-      
     },
     cleanUpdt: (state, action) => {
-      state.upDtRes = "";
-    }
+      state.upDtRes = '';
+    },
   },
-})
+});
 
-export const { getUserById, postUser, gUSer, logOutUser, allUsers, updtUser, cleanUpdt } = userSlice.actions
-export default userSlice.reducer
+export const {
+  getUserById,
+  postUser,
+  gUSer,
+  logOutUser,
+  allUsers,
+  updtUser,
+  cleanUpdt,
+} = userSlice.actions;
+export default userSlice.reducer;

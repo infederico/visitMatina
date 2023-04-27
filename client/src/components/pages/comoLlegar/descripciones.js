@@ -33,9 +33,9 @@ horarios limitados y pueden tener un costo más elevado que otras opciones
 de transporte. Sin embargo, si desea ahorrar tiempo y disfrutar de una vista
 aérea impresionante de Costa Rica, tomar un vuelo puede ser una buena
 opción para llegar a Matina desde San José
-`
+`;
 
-export const puertoviejomatina=`  
+export const puertoviejomatina = `  
 Para llegar desde Puerto Viejo de Limón a Matina, hay dos opciones de transporte
 disponibles:
 -En automóvil o taxi: Si prefiere conducir, puede tomar la carretera 36 hacia el
@@ -53,4 +53,4 @@ Terminal del Caribe tomar autobús Limón – Siquirres y
 3.El viaje dura aproximadamente 3 horas y hay varios horarios disponibles
 durante el día.
 
-`
+`;
