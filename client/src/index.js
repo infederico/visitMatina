@@ -8,6 +8,7 @@ import store from './redux/store'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css';
 
+
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 const persistor = persistStore(store)
