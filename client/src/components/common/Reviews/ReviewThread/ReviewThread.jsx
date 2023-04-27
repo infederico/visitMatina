@@ -68,7 +68,7 @@ const ReviewThread = (props) => {
       }, [])
  
     // handlers 
-    const handleClick = () => {
+    const handleClose = () => {
         dispatch(setShowCommentPanel(false));
     };
 
@@ -203,7 +203,7 @@ const ReviewThread = (props) => {
             </div>
 
             <div className={styles.closeButton}>
-                <button type="button" class="btn-close" aria-label="Close" onClick={handleClick}></button>
+                <button type="button" class="btn-close" aria-label="Close" onClick={handleClose}></button>
             </div>
         </div>
     );

@@ -1,10 +1,203 @@
-const AdminRestaurant = () => {
-    return(
-        <section>
-            <div>
-                <h1>AdminRestaurant</h1>
-            </div>
-        </section>
-    );
-}
+import styles from './AdminRestaurant.module.css';
+import { getBase64 } from '../../../../assets/helpers/fileTo64';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import CardBlog from '../AdminBlog/CardBlog/CardBlog';
+import validate from './validate';
+
+
+import {
+  getProductsByShopId,
+} from '../../../../redux/productActions';
+
+
+const AdminRestaurant = ({shopId}) => {
+    const dispatch = useDispatch();
+//  const { allAllPosts } = useSelector((state) => state.post);
+//  const { resPostPost } = useSelector((state) => state.post);
+//  const { resUpPost } = useSelector((state) => state.post);
+//  const { resDel } = useSelector((state) => state.post);
+
+    //const loggedUser = useSelector((state) => state.user.user);
+
+    const [newImage, setNewImage] = useState({
+        name: 'imagen de galería',
+        description: '',
+        price: 0.00,
+        image: '',
+        id_shop: shopId,
+    });
+    const [submitted, setSubmitted] = useState(false)
+    const [errors, setErrors] = useState({})
+
+  useEffect(() => {
+    dispatch(getProductsByShopId(shopId));
+
+    // if (Object.keys(resPostPost).length) {
+    //   dispatch(clnPostPost());
+    // }
+  }, []);
+
+    // useEffect(() => {
+    // if (submitted) {
+    //     setErrors(validate(newImage));
+    // }
+    // }, [newImage]);
+
+    const handlerInputs = (event) => {
+        setNewImage({
+            ...newImage,
+            [event.target.name]: event.target.value,
+        });
+        if (submitted) {
+            setErrors(
+            validate({
+                ...newImage,
+                [event.target.name]: event.target.value,
+            })
+            );
+        }
+    };
+
+    const handlerSubmitCreate = (event) => {
+        event.preventDefault()
+        
+        let err = validate(newImage)
+        setErrors(err)
+
+        setSubmitted(true)
+        const numErrors = Object.keys(err).length
+
+        if (numErrors === 0) {
+        //dispatch(AGREGARIMAGEN(newImage));
+            setSubmitted(false)
+            setErrors({});
+            setNewImage({
+                name: 'imagen de galería',
+                description: '',
+                price: 0.00,
+                image: '',
+                id_shop: shopId,
+            });
+            window.alert('Imagen agregada exitosamente');
+        } else {
+            window.alert('Completa todos los campos');
+        }
+    };
+
+  const handlerFile = async (event) => {
+    if (event.target.files[0]) {
+      let res = await getBase64(event.target.files[0]);
+      setNewImage({
+        ...newImage,
+        image: res,
+      });
+    }
+  };
+
+  return (
+    <section>
+      <div>
+        <h1>Admin Restaurant Sol y Luna</h1>
+        <p><span>Galería de imágenes</span>
+          <button
+            className='btn btn-primary'
+            type='button'
+            data-bs-toggle='collapse'
+            data-bs-target='#agregarImagen'
+            aria-expanded='false'
+            aria-controls='collapseExample'
+          >
+           Nueva imagen
+          </button>
+          <button
+            className='btn btn-primary'
+            type='button'
+            data-bs-toggle='collapse'
+            data-bs-target='#modificarImagen'
+            aria-expanded='false'
+            aria-controls='collapseExample2'
+          >
+            Modificar imagen
+          </button>
+        </p>
+
+
+        <div className='collapse' id='agregarImagen'>
+          <div className='card card-body'>
+            <form onSubmit={handlerSubmitCreate}>
+
+              <div>
+                <h3>Agregar una nueva imagen a tu galería</h3>
+              </div>
+
+              <div className='row mb-3'>
+                <label for='description' className='col-sm-2 col-form-label'>
+                  Título
+                </label>
+                <div className='col-sm-10'>
+                  <input
+                    type='text'
+                    className='form-control'
+                    id='description'
+                    name='description'
+                    value={newImage.description}
+                    onChange={handlerInputs}
+                    placeholder='título o breve descripción de la imagen'
+                  />
+                  {errors.description1 && <p>{errors.description1}</p>}
+                  {errors.description2 && <p>{errors.description2}</p>}
+                </div>
+              </div>
+
+              <div className='row mb-3'>
+                <label for='imagen' className='col-sm-2 col-form-label'>
+                  Imagen
+                </label>
+                <div className='col-sm-10'>
+                  <input
+                    type='file'
+                    className='form-control'
+                    id='imagen'
+                    name='image'
+                    onChange={handlerFile}
+                  />
+                  {errors.image1 && <p>{errors.image1}</p>}
+                </div>
+              </div>
+
+              <button type='submit' className='btn btn-primary'>
+                Agregar
+              </button>
+
+            </form>
+          </div>
+        </div>
+
+        <div className='collapse' id='modificarImagen'>
+          <div className='card card-body'>
+            <h3>Modificar Imagen</h3>
+          </div>
+          <div className={styles.divCardsBlog}>
+            {/* {allAllPosts.map((ele) => {
+              return (
+                <CardBlog
+                  id_post={ele.id_post}
+                  title={ele.title}
+                  summary={ele.summary}
+                  content={ele.content}
+                  image={ele.image}
+                  date={ele.date}
+                  active={ele.active}
+                ></CardBlog>
+              );
+            })} */}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default AdminRestaurant;

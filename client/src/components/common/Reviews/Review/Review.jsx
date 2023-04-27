@@ -20,6 +20,7 @@ const Review = (props) => {
     const { reviewId, name, date, rating, description, image } = props
 
     const selectedReview = useSelector(state => state.reviews.selectedReview)
+    const showCommentPanel = useSelector(state => state.reviews.showCommentPanel)
 
     // hooks 
     const dispatch = useDispatch()
@@ -71,7 +72,7 @@ const Review = (props) => {
                     <p className={styles.description}>{description}</p>
                 </div>
         
-                { !(selectedReview === reviewId) &&
+                { !(selectedReview === reviewId) &&    
                     <div className={styles.cardFooter} >
                         <img src={iconReadComments} alt='read-comments' onClick={handleWriteComment} className={styles.cardIcon} />
                         <label onClick={handleWriteComment} className={styles.cardIcon}>Leer hilo</label>
