@@ -88,7 +88,7 @@ export default function Cart() {
                                 <div className="d-grid gap-2">
                                 </div>
                                 <div className={ styles.resume }>
-                                    Total: $ { totalToPay } 
+                                    <p>Total: <span>${ totalToPay }</span></p>  
                                     { /* <PayPalBtn products={products} /> */}
                                     <PayPalBtn />
                                     {/*        
