@@ -10,7 +10,7 @@ const Carousel = () =>{
 
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <img src="https://fondosmil.com/fondo/74416.jpg" className="d-block w-100" alt="..."/>
+                    <img src="https://fondosmil.com/fondo/74416.jpg" className="d-block w-100 vh-100" alt="..."/>
                     <div className={`d-none d-lg-block  carousel-caption ${styles.customCaption}`}>
                         <h4>Hola mundo</h4>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia pharetra cursus. Cras nec est quam. Sed at orci nec dolor egestas faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget tempor sapien. Donec eget nibh in tortor fermentum scelerisque. Aenean sodales aliquet ante, vel hendrerit nisi vestibulum eget. Nullam lacinia mauris a est sodales semper. Nam et lobortis velit. Duis nisi nisi, mattis nec libero eget, tincidunt iaculis felis. Phasellus auctor, turpis in tempus porta, elit justo facilisis nulla, et fringilla nisl elit sed arcu.
