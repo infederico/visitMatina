@@ -54,7 +54,7 @@ const ShopContact = () => {
           backgroundColor: "var(--quaternary-color-0)"
         }}>
           <h1>Contacto</h1>
-          <div className='mb-3'>
+          <div className={` ${styles.nombredeform}`} >
             <label htmlFor='exampleFormControlInput1' className='form-label'>
               Nombre
             </label>
@@ -62,7 +62,8 @@ const ShopContact = () => {
             <input
             style={{
           
-              backgroundColor: "transparent"
+              backgroundColor: "transparent",
+              
             }}
               className='border-0 border-bottom'
               name='name'
@@ -94,7 +95,7 @@ const ShopContact = () => {
             />
             {errors.email ? errors.email : null}
           </div>
-          <div className='mb-3'>
+          <div className=''>
             <label htmlFor='exampleFormControlInput1' className='form-label'>
               Confirma Email
             </label>

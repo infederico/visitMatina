@@ -1,19 +1,24 @@
 import { useState } from 'react'
 import ValidationContact from '../Login/Validation/validationContact'
+import { useDispatch } from 'react-redux'
+import { PostContact } from '../../../redux/contactActions'
+import styles from './ShopContact.module.css'
 
 const Contact = () => {
+
+  const dispatch = useDispatch();
+
   const [userData, setUserData] = useState({
     name: '',
-    email: '',
+    correoxres: '',
     confirmEmail: '',
-    description: '',
+    mensaje: '',
   })
 
   const [errors, setErrors] = useState({
     name: '',
-    email: '',
-    confirmEmail: '',
-    description: '',
+    correoxres: '',
+    mensaje: '',
   })
 
   const handleInputChange = (event) => {
@@ -29,11 +34,12 @@ const Contact = () => {
   const handleClick = () => {
     if (Object.keys(errors).length === 0) {
       alert('consulta enviada')
+      dispatch(PostContact(userData))
       setUserData({
         name: '',
-        email: '',
+        correoxres: '',
         confirmEmail: '',
-        description: '',
+        mensaje: '',
       })
     }
   }
@@ -83,13 +89,16 @@ const Contact = () => {
               </label>
               <br />
               <input
+                className='form-control'
                 name='name'
                 type='text'
                 value={userData.name}
                 onChange={handleInputChange}
               />
               <br />
+              <div className={styles.mensajeerror}>
               {errors.name ? errors.name : null}
+              </div>
               <br />
             </div>
             <div className='mb-3'>
@@ -101,7 +110,7 @@ const Contact = () => {
                 className='form-control'
                 id='exampleFormControlInput1'
                 placeholder='name@example.com'
-                name='email'
+                name='correoxres'
                 value={userData.email}
                 onChange={handleInputChange}
               />
@@ -117,10 +126,12 @@ const Contact = () => {
                 id='exampleFormControlInput1'
                 placeholder='name@example.com'
                 name='confirmEmail'
-                value={userData.ConfirmEmail}
+                value={userData.confirmEmail}
                 onChange={handleInputChange}
               />
+              <div className={styles.mensajeerror}>
               {errors.confirmEmail ? errors.confirmEmail : null}
+              </div>
             </div>
             <div className='mb-3'>
               <label for='exampleFormControlTextarea1' className='form-label'>
@@ -130,15 +141,17 @@ const Contact = () => {
                 className='form-control'
                 id='exampleFormControlTextarea1'
                 rows='3'
-                name='description'
+                name='mensaje'
                 type='text'
-                value={userData.description}
+                value={userData.mensaje}
                 onChange={handleInputChange}
                 style={{ resize: 'none' }}
               ></textarea>
-              {errors.description ? errors.description : null}
+              <div className={styles.mensajeerror}>
+              {errors.mensaje ? errors.mensaje : null}
+              </div>
               <br />
-              <button onClick={handleClick}>Enviar consulta</button>
+              <button class="btn btn-outline-success" onClick={handleClick}>Enviar consulta</button>
             </div>
           </div>
         </div>

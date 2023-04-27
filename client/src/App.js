@@ -16,6 +16,7 @@ import ArtesaniasMaryLuna from './components/pages/AventurasDelCaribe/Artesanias
 import { Routes, Route } from 'react-router-dom';
 import Register from './components/pages/Login/Register/Register';
 import Admin from './components/pages/Admin/Admin';
+import Comollegar from './components/pages/comoLlegar/Comollegar';
 
 import axios from 'axios';
 
@@ -41,6 +42,7 @@ const App = () => {
         <Route path='/register' element={<Register />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='*' element={<NotFound />} />
+        <Route path='/comoLlegar' element={<Comollegar />} />
       </Routes>
     </Layout>
   );
