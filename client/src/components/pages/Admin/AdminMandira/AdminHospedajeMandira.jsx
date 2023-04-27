@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import styles from './mandira.module.css';
 import { getProductsByShopId } from '../../../../redux/productActions';
 import { getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
-import CardBlog from '../AdminBlog/CardBlog/CardBlog';
+import CardMandira from './CardMandira';
 
 const AdminHospedajeMandira = () => {
   const products = useSelector((state) => state.product.product);
@@ -20,11 +20,12 @@ const AdminHospedajeMandira = () => {
   useEffect(() => {
     dispatch(getProductsByShopId(3));
     dispatch(getAllApprovedReviewsByShopId(3));
+    console.log(reviews);
   }, []);
   return (
     <section>
       <div>
-        <h1 className='display-6 text-left my-2'>Hospedaje Mandira(id:3)</h1>
+        <h1 className='display-6 text-left my-2'>Finca Mandira(id:3)</h1>
         <p>
           <button
             className='btn btn-primary'
@@ -46,19 +47,17 @@ const AdminHospedajeMandira = () => {
           >
             Modificar Producto
           </button>
+          <button
+            className='btn btn-primary'
+            type='button'
+            data-bs-toggle='collapse'
+            data-bs-target='#collapseExample3'
+            aria-expanded='false'
+            aria-controls='collapseExample2'
+          >
+            Control de reviews
+          </button>
         </p>
-
-        <h5>Reviews</h5>
-        {reviews.map((item) => {
-          if (item.shop_id === 3) {
-            return (
-              <div>
-                <p key={item.description}>{item.description}</p>
-              </div>
-            );
-          }
-          return null;
-        })}
       </div>
 
       {/*  */}
@@ -153,21 +152,45 @@ const AdminHospedajeMandira = () => {
           </div>
 
           <div className='collapse' id='collapseExample2'>
+            <form>
+              <div className='card card-body'>
+                <h3>Modificar Producto</h3>
+              </div>
+              <div className={styles.divCardsBlog}>
+                {products.map((item) => {
+                  return (
+                    <CardMandira
+                      key={item.id_product}
+                      id_product={item.id_product}
+                      name={item.name ? item.name : null}
+                      description={item.description ? item.description : null}
+                      price={item.price ? item.price : null}
+                      image={item.image ? item.image : null}
+                      shop_id={item.shop_id ? item.shop_id : null}
+                      active={item.active ? item.active : null}
+                    />
+                  );
+                })}
+              </div>
+            </form>
+          </div>
+          <div className='collapse' id='collapseExample3'>
             <div className='card card-body'>
-              <h3>Modificar Producto</h3>
+              <h3>Control de Reviews</h3>
             </div>
             <div className={styles.divCardsBlog}>
-              {products.map((item) => {
+              {reviews.map((item) => {
                 return (
-                  <CardBlog
-                    id_post={item.id_product}
-                    title={item.name}
-                    description={item.description}
-                    price={item.price}
-                    image={item.image}
-                    date={item.date}
-                    active={item.active}
-                  ></CardBlog>
+                  <CardMandira
+                    key={item.description}
+                    name={item.user.name ? item.user.name : null}
+                    description={item.description ? item.description : null}
+                    image={item.user.image ? item.user.image : null}
+                    shop_id={item.shop_id ? item.shop_id : null}
+                    rating={item.rating ? item.rating : null}
+                    active={item.active ? item.active : null}
+                    approved={item.active ? item.active : null}
+                  />
                 );
               })}
             </div>

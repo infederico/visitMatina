@@ -1,5 +1,5 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
 const {
   getProductByName,
@@ -8,7 +8,7 @@ const {
   updateProduct,
   createProduct,
   deleteProduct,
-} = require('../../controllers/product/product')
+} = require('../../controllers/product/product');
 
 /**
  * @openapi
@@ -80,18 +80,18 @@ const {
  */
 router.get('/', async (req, res) => {
   try {
-    let { name } = req.query
+    let { name } = req.query;
     if (name) {
-      let productByName = await getProductByName(name)
-      res.status(200).send(productByName)
+      let productByName = await getProductByName(name);
+      res.status(200).send(productByName);
     } else {
-      let getAll = await getAllProducts()
-      res.status(200).send(getAll)
+      let getAll = await getAllProducts();
+      res.status(200).send(getAll);
     }
   } catch (error) {
-    res.status(404).json({ error: error.message })
+    res.status(404).json({ error: error.message });
   }
-})
+});
 
 /**
  * @openapi
@@ -154,13 +154,14 @@ router.get('/', async (req, res) => {
  */
 router.get('/:id', async (req, res) => {
   try {
-    let { id } = req.params
-    let productById = await getProductById(id)
-    res.status(200).send(productById)
+    let { id } = req.params;
+    console.log(id);
+    let productById = await getProductById(id);
+    res.status(200).send(productById);
   } catch (error) {
-    res.status(404).json({ error: error.message })
+    res.status(404).json({ error: error.message });
   }
-})
+});
 
 /**
  * @openapi
@@ -215,14 +216,14 @@ router.get('/:id', async (req, res) => {
  */
 router.put('/:id', async (req, res) => {
   try {
-    let { id } = req.params
-    let { name, description, price, image } = req.body
-    await updateProduct(id, name, description, price, image)
-    res.status(200).json('Product updated successfully')
+    let { id } = req.params;
+    let { name, description, price, image } = req.body;
+    await updateProduct(id, name, description, price, image);
+    res.status(200).json('Product updated successfully');
   } catch (error) {
-    res.status(404).json({ error: error.message })
+    res.status(404).json({ error: error.message });
   }
-})
+});
 
 /**
  * @openapi
@@ -290,20 +291,20 @@ router.put('/:id', async (req, res) => {
  */
 router.post('/:shopId', async (req, res) => {
   try {
-    let { shopId } = req.params
-    let { name, description, price, image } = req.body
+    let { shopId } = req.params;
+    let { name, description, price, image } = req.body;
     let newProduct = await createProduct(
       name,
       description,
       price,
       shopId,
       image
-    )
-    res.status(200).send(newProduct)
+    );
+    res.status(200).send(newProduct);
   } catch (error) {
-    res.status(404).json({ error: error.message })
+    res.status(404).json({ error: error.message });
   }
-})
+});
 
 /**
  * @openapi
@@ -354,13 +355,13 @@ router.post('/:shopId', async (req, res) => {
  */
 router.delete('/:id', async (req, res) => {
   try {
-    let { id } = req.params
-    let { active } = req.body
-    await deleteProduct(id, active)
-    res.status(200).send('Product Deleted Successfully')
+    let { id } = req.params;
+    let { active } = req.body;
+    await deleteProduct(id, active);
+    res.status(200).send('Product Deleted Successfully');
   } catch (error) {
-    res.status(404).json({ error: error.message })
+    res.status(404).json({ error: error.message });
   }
-})
+});
 
-module.exports = router
+module.exports = router;

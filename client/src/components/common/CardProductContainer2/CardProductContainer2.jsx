@@ -19,7 +19,9 @@ const CardProductContainer2 = () => {
                     return(
                         <CardProduct2
                         key={paq.id}
+                        id={paq.id}
                         name= {paq.name}
+                        price= {paq.price}
                         image= {paq.image}
                         description= {paq.description}
                         idModal= {paq.idModal}                    

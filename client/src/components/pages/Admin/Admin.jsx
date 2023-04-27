@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import AdminAventuras from './AdminAventuras/AdminAventuras'
-import AdminBlog from './AdminBlog/AdminBlog'
-import AdminHospedaje from './AdminHospedaje/AdminHospedaje'
-import AdminHospedajeMandira from './AdminMandira/AdminHospedajeMandira'
-import AdminParcela from './AdminParcela/AdminParcela'
-import AdminRestaurant from './AdminRestaurant/AdminRestaurant'
-import AdminShop from './AdminShop/AdminShop'
-import AdminUsuarios from './AdminUsuarios/AdminUsuarios'
-import { useSelector } from 'react-redux'
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import AdminAventuras from './AdminAventuras/AdminAventuras';
+import AdminBlog from './AdminBlog/AdminBlog';
+import AdminHospedaje from './AdminHospedaje/AdminHospedaje';
+import AdminHospedajeMandira from './AdminMandira/AdminHospedajeMandira';
+import AdminParcela from './AdminParcela/AdminParcela';
+import AdminRestaurant from './AdminRestaurant/AdminRestaurant';
+import AdminShop from './AdminShop/AdminShop';
+import AdminUsuarios from './AdminUsuarios/AdminUsuarios';
+import { useSelector } from 'react-redux';
 
 const Admin = () => {
   const loggedUser = useSelector((state) => state.user.user);
