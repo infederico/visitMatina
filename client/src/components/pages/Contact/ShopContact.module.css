@@ -1,6 +1,7 @@
 .containerContact{
     width: 70%;
     font-family: 'Kanit', sans-serif;
+   
 }
 
 
@@ -11,4 +12,17 @@
 .submitButton:hover {
     background-color: var(--quaternary-color-400);
   }
+
+.mensajeerror{
+  color: red;
+  display:flex;
+  justify-content: end;
+  font-size: 12px;
+  margin-top: 2px;
+}
+.nombredeform{
+  height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+}
 
