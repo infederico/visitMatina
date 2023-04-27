@@ -1,4 +1,5 @@
 const { Product, Shop } = require('../../db');
+const { uptloadCl } = require('../../helpers/CloudinaryUpload');
 
 const getProductByName = async (name) => {
   try {
@@ -74,11 +75,12 @@ const createProduct = async (name, description, price, shop_id, image) => {
   try {
     let productDefaultImage =
       'https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg';
+    const cloudImg = await uptloadCl(image);
     let newProduct = await Product.create({
       name,
       description,
       price,
-      image: image ? image : productDefaultImage,
+      image: image ? cloudImg : productDefaultImage,
     });
     let shop = await Shop.findByPk(shop_id);
     if (!shop) {
