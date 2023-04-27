@@ -84,12 +84,13 @@ const createProduct = async (name, description, price, shop_id, image) => {
     if (!shop) {
       throw new Error(`Shop with ID ${shop_id} does not exist`);
     }
-    newProduct.addShop(shop);
+    newProduct.setShop(shop);
     return newProduct;
   } catch (error) {
     throw new Error(`Error trying to create product ${error.message}`);
   }
 };
+
 const deleteProduct = async (id, active) => {
   try {
     let findProduct = await getProductById(id);

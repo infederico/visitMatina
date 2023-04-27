@@ -289,15 +289,15 @@ router.put('/:id', async (req, res) => {
  *                   description: Mensaje de error descriptivo.
  *                   example: El producto no se pudo crear.
  */
-router.post('/:shopId', async (req, res) => {
+router.post('/:shop_id', async (req, res) => {
   try {
-    let { shopId } = req.params;
+    let { shop_id } = req.params;
     let { name, description, price, image } = req.body;
     let newProduct = await createProduct(
       name,
       description,
       price,
-      shopId,
+      shop_id,
       image
     );
     res.status(200).send(newProduct);

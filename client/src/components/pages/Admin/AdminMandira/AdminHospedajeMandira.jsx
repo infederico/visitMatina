@@ -2,7 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from 'react';
 import styles from './mandira.module.css';
-import { getProductsByShopId } from '../../../../redux/productActions';
+import {
+  getProductsByShopId,
+  postProduct,
+} from '../../../../redux/productActions';
 import { getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
 import CardMandira from './CardMandira';
 
@@ -10,18 +13,58 @@ const AdminHospedajeMandira = () => {
   const products = useSelector((state) => state.product.product);
   const reviews = useSelector((state) => state.reviews.value);
   const dispatch = useDispatch();
-  const [input, setInput] = useState();
+  const [input, setInput] = useState({
+    name: '',
+    description: '',
+    price: '',
+    image: '',
+    id_product: '',
+    shop_id: 3,
+    user_id: '',
+    rating: '',
+    approved: '',
+  });
   const [errors, setErrors] = useState();
-
-  const handleSubmit = () => {};
-  const handleInput = () => {};
-  const handleFile = () => {};
-
   useEffect(() => {
     dispatch(getProductsByShopId(3));
     dispatch(getAllApprovedReviewsByShopId(3));
     console.log(reviews);
   }, []);
+
+  const handleInput = (event) => {
+    setInput({ ...input, [event.target.name]: event.target.value });
+  };
+  const handleFile = async (event) => {
+    if (event.target.files[0]) {
+      let res = await getBase64(event.target.files[0]);
+      setInput({
+        ...input,
+        image: res,
+      });
+    }
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // const numErrors = Object.keys(errors).length;
+    // if (numErrors === 0) {
+    dispatch(postProduct(input));
+    // setErrors({});
+    setInput({
+      name: '',
+      description: '',
+      price: '',
+      image: '',
+      id_product: '',
+      shop_id: '',
+      user_id: '',
+      rating: '',
+      approved: '',
+    });
+    // } else {
+    // window.alert('Completa todos los campos');
+  };
+  // };
+
   return (
     <section>
       <div>
@@ -78,10 +121,10 @@ const AdminHospedajeMandira = () => {
                       type='text'
                       className='form-control'
                       id='inputEmail3'
-                      name='title'
-                      value={input}
+                      name='name'
+                      value={input.name}
                       onChange={handleInput}
-                      placeholder='Ingresa el titulo del post'
+                      placeholder='Ingresa el nombre del producto'
                     />
                     {errors && <p>{errors}</p>}
                   </div>
@@ -98,10 +141,10 @@ const AdminHospedajeMandira = () => {
                       type='text'
                       className='form-control'
                       id='inputPassword3'
-                      name='summary'
-                      value={input}
+                      name='price'
+                      value={input.price}
                       onChange={handleInput}
-                      placeholder='Breve descripción del post'
+                      placeholder='Precio'
                     />
                     {errors && <p>{errors}</p>}
                   </div>
@@ -118,10 +161,10 @@ const AdminHospedajeMandira = () => {
                       className='form-control'
                       id='exampleFormControlTextarea1'
                       rows='5'
-                      name='content'
-                      value={input}
+                      name='description'
+                      value={input.description}
                       onChange={handleInput}
-                      placeholder='Texto del post'
+                      placeholder='Descripcion del producto'
                     ></textarea>
                     {errors && <p>{errors}</p>}
                   </div>
