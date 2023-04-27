@@ -7,7 +7,8 @@ export const PostContact = (data) => {
     return async function (dispatch) {
       try {
         const response = await axios.post(`/sendMail`, data);
-        return dispatch(setContacto(response.data));
+        dispatch(setContacto(response.data));
+        return response.data.message;
       } catch (error) {
         if (error.response) {
           // Si hay una respuesta del servidor, se obtiene el mensaje de error
