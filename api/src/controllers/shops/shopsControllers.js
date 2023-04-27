@@ -1,3 +1,4 @@
+const { uptloadCl } = require('../../helpers/CloudinaryUpload')
 const { Shop } = require('../../db.js')
 
 //controller para borrado logico de una tienda
@@ -5,12 +6,21 @@ const { Shop } = require('../../db.js')
 const deleteShop = async (req, res) => {
   const { id } = req.params
   try {
-    const shop = await Shop.findOne({ where: { id_shop: id } })
+    const shop = await Shop.findByPk(id)
+    console.log(shop.active);
+    
     if (!shop) {
       return res.status(404).json({ error: 'No se encontró la tienda' })
     }
-    await shop.update({ active: false })
-    res.status(200).json({ message: 'La tienda se desactivó correctamente' })
+    if (shop.active === true){
+      await shop.update({ active: false }, { where: { id_post: id } })
+      return res.status(200).json({ message: 'La tienda se desactivó correctamente' })
+    }
+    if (shop.active === false){
+      await shop.update({ active: true }, { where: { id_post: id } })
+      return res.status(200).json({ message: 'La tienda se activo correctamente' })
+    }
+    
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Error al desactivar la tienda' })
@@ -22,6 +32,19 @@ const deleteShop = async (req, res) => {
 const getAll = async (req, res) => {
   try {
     const shops = await Shop.findAll({ where: { active: true } })
+    if (!shops || shops.length === 0) {
+      return res.status(404).json({ error: 'No se encontraron tiendas' })
+    }
+    res.status(200).json(shops)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Error al obtener todas las tiendas' })
+  }
+}
+
+const getAllAll = async (req, res) => {
+  try {
+    const shops = await Shop.findAll()
     if (!shops || shops.length === 0) {
       return res.status(404).json({ error: 'No se encontraron tiendas' })
     }
@@ -51,6 +74,8 @@ const getShopById = async (req, res) => {
 //controller para crear una tienda
 
 const createShop = async (req, res) => {
+
+
   const {
     name,
     summary,
@@ -66,10 +91,12 @@ const createShop = async (req, res) => {
     active,
   } = req.body
   
+  
   //if (!name ||!whatsapp || !summary || !path || !email || !twitter || !facebook || !instagram || !youtube || !location || !active ) {
   if (!name || !summary || !path) {
     return res.status(400).json({ error: 'Faltan datos' })
   }
+  
   if(!image){
     
     const image= 'https://salesland.net/sites/default/files/inline-images/shop-in-shop-salesland.png'
@@ -81,13 +108,13 @@ const createShop = async (req, res) => {
         path,
         email,
         image,
-        /*twitter,
+        twitter,
         facebook,
         instagram,
         youtube,
         whatsapp,
-        location,*/
-        active,
+        location,
+
       })
       res
         .status(200)
@@ -98,20 +125,20 @@ const createShop = async (req, res) => {
     }
   }else{
     try {
-   
+    const cldImage = await uptloadCl(image)
       const newShop = await Shop.create({
         name,
         summary,
         path,
         email,
-        image,
-        /*twitter,
+        image: cldImage,
+        twitter,
         facebook,
         instagram,
         youtube,
         whatsapp,
-        location,*/
-        active,
+        location,
+
       })
       res
         .status(200)
@@ -130,8 +157,8 @@ const createShop = async (req, res) => {
 
 const updateShop = async (req, res) => {
   try {
-    const { id } = req.params
     const {
+      id_shop,
       name,
       summary,
       active,
@@ -145,25 +172,24 @@ const updateShop = async (req, res) => {
       whatsapp,
       location,
     } = req.body
-    const shop = await Shop.findOne({
-      where: { id_shop: id },
-    })
+    const shop = await Shop.findByPk(id_shop)
     if (!shop) {
       return res.status(404).json({ error: 'No se encontró la tienda' })
     }
     const fieldsToUpdate = {}
+    const cldImage = await uptloadCl(image)
     if (name) fieldsToUpdate.name = name
     if (summary) fieldsToUpdate.summary = summary
     if (path) fieldsToUpdate.path = path
     if (email) fieldsToUpdate.email = email
-    if (image) fieldsToUpdate.image = image
+    if (image) fieldsToUpdate.image = cldImage
     if (twitter) fieldsToUpdate.twitter = twitter
     if (facebook) fieldsToUpdate.facebook = facebook
     if (instagram) fieldsToUpdate.instagram = instagram
     if (youtube) fieldsToUpdate.youtube = youtube
     if (whatsapp) fieldsToUpdate.whatsapp = whatsapp
     if (location) fieldsToUpdate.location = location
-    if (active !== undefined) fieldsToUpdate.active = active // siempre debe venir un valor booleano
+    //if (active !== undefined) fieldsToUpdate.active = active // siempre debe venir un valor booleano
     await shop.update(fieldsToUpdate)
     res
       .status(200)
@@ -180,6 +206,7 @@ const updateShop = async (req, res) => {
 module.exports = { 
   deleteShop,
   getAll,
+  getAllAll,
   getShopById,
   createShop,
   updateShop,

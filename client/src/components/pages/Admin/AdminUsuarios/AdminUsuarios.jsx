@@ -1,3 +1,4 @@
+import styles from "./AdminUsuarios.module.css"
 import { getAllUsers, updateUsers, clnUpDt } from "../../../../redux/userActions";
 import { useSelector , useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -130,7 +131,7 @@ const AdminUsuarios = () => {
       <td>{user.name}</td>
       <td>{user.email}</td>
       <td>{user.admin === true ? "Si" : "No"}</td>
-      <td>{user.active === true ? "Activo" : "Inactivo"}</td>
+      <td><p className={user.active === true ? styles.txtActive: styles.txtInactive}>{user.active === true ? "Activo" : "Inactivo"}</p></td>
       <td><input className="form-check-input" type="checkbox"  name="admin" value="true" onChange={handlerCheckAdmin} id="flexCheckDefault"></input></td>
       <td><input className="form-check-input" type="checkbox"  name="admin" value="false" onChange={handlerCheckAdmin} id="flexCheckDefault"></input></td>
       <td><input className="form-check-input" type="checkbox"  name="active" value="true" onChange={handlerCheckActive} id="flexCheckDefault"></input></td>
@@ -177,7 +178,7 @@ const AdminUsuarios = () => {
       <td>{user.name}</td>
       <td>{user.email}</td>
       <td>{user.admin === true ? "Si" : "No"}</td>
-      <td>{user.active === true ? "Activo" : "Inactivo"}</td>
+      <td><p className={user.active === true ? styles.txtActive: styles.txtInactive}>{user.active === true ? "Activo" : "Inactivo"}</p></td>
       
     </tr>
         )
