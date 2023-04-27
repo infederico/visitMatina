@@ -60,7 +60,7 @@ const CardProduct2 = ({image, name, description, id, price, idModal}) => {
                 </div>
                 <div className="modal-footer">
                     <button type="button" className="btn btn-success" onClick={ handleAddToCart }> A&ntilde;adir al carrito</button>
-                    <button type="button" className="btn btn-success" onClick={ handlePayment }>Comprar</button>
+                    { /* <button type="button" className="btn btn-success" onClick={ handlePayment }>Comprar</button> */ }
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
                 </div>
