@@ -18,6 +18,7 @@
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
+    "scroll-provider": "^0.0.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
