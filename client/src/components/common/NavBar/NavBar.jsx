@@ -48,37 +48,11 @@ export default function NavBar() {
             </NavLink>
             {/* esta ruta aún no existe */}
             <li className='nav-item dropdown'>
-              <NavLink
-                className='nav-link dropdown-toggle'
-                id='navbarDropdownMenuLink'
-                role='button'
-                data-bs-toggle='dropdown'
-                aria-expanded='false'
+              <NavLink className='nav-link' to='/comollegar'
               >
                 Que hacer
               </NavLink>
-              <ul
-                className='dropdown-menu'
-                aria-labelledby='navbarDropdownMenuLink'
-              >
-                {/* falta feedback del PO para ver el detalle de que quiere poner aca y armar estas rutas */}
-                <li>
-                  <NavLink className='dropdown-item' to='/dondeir/aves'>
-                    Avistar aves
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className='dropdown-item' to='/dondeir/pesca'>
-                    Pescar
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className='dropdown-item' to='/dondeir/etc'>
-                    etc
-                  </NavLink>
-                </li>
-                {/* falta feedback del PO para ver el detalle de que quiere poner aca y armar estas rutas */}
-              </ul>
+              
             </li>
             <li className='nav-item dropdown'>
               <NavLink
