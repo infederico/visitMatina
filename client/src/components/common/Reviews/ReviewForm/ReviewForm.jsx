@@ -230,116 +230,97 @@ const ReviewForm = (props) => {
   }
 
   return (
-    <>
-      <div>
-        <div className='card-title fw-bold'>Déjanos tu reseña...</div>
-
-        <form onSubmit={handleSubmit}>
-          <div>
-            <div className={styles.rate}>
-              <input
-                type='radio'
-                id='star5'
-                name='rating'
-                value='5'
-                onChange={handleInputChange}
-                checked={checkedStars.five}
-              />
-              <label htmlFor='star5'></label>
-              <input
-                type='radio'
-                id='star4'
-                name='rating'
-                value='4'
-                onChange={handleInputChange}
-                checked={checkedStars.four}
-              />
-              <label htmlFor='star4'></label>
-              <input
-                type='radio'
-                id='star3'
-                name='rating'
-                value='3'
-                onChange={handleInputChange}
-                checked={checkedStars.three}
-              />
-              <label htmlFor='star3'></label>
-              <input
-                type='radio'
-                id='star2'
-                name='rating'
-                value='2'
-                onChange={handleInputChange}
-                checked={checkedStars.two}
-              />
-              <label htmlFor='star2'></label>
-              <input
-                type='radio'
-                id='star1'
-                name='rating'
-                value='1'
-                onChange={handleInputChange}
-                checked={checkedStars.one}
-              />
-              <label htmlFor='star1'></label>
-            </div>
-            <br />
-            <br />
-            {errors.rating1 && (
-              <span className={styles.errors}>{errors.rating1}</span>
-            )}
-            <br />
-
-            <div className='mb-3'>
-              <textarea
-                type='textarea'
-                name='description'
-                className='form-control'
-                rows='3'
-                placeholder='Cuéntanos acerca de tu experiencia con nosotros...'
-                onChange={handleInputChange}
-                value={newReview.description}
-              ></textarea>
-            </div>
-            {/* <input type="text" name="description" onChange={handleInputChange} value={newReview.description} /> */}
-
-            {errors.description1 && (
-              <span className={styles.errors}>{errors.description1}</span>
-            )}
-            {errors.description2 && (
-              <span className={styles.errors}>{errors.description2}</span>
-            )}
+    <form onSubmit={handleSubmit} /*className={styles.form}*/>
+      <div className={styles.formContainer}>
+        <div className={styles.rate}>
+          <input
+            type='radio'
+            id='star5'
+            name='rating'
+            value='5'
+            onChange={handleInputChange}
+            checked={checkedStars.five}
+          />
+          <label htmlFor='star5'></label>
+          <input
+            type='radio'
+            id='star4'
+            name='rating'
+            value='4'
+            onChange={handleInputChange}
+            checked={checkedStars.four}
+          />
+          <label htmlFor='star4'></label>
+          <input
+            type='radio'
+            id='star3'
+            name='rating'
+            value='3'
+            onChange={handleInputChange}
+            checked={checkedStars.three}
+          />
+          <label htmlFor='star3'></label>
+          <input
+            type='radio'
+            id='star2'
+            name='rating'
+            value='2'
+            onChange={handleInputChange}
+            checked={checkedStars.two}
+          />
+          <label htmlFor='star2'></label>
+          <input
+            type='radio'
+            id='star1'
+            name='rating'
+            value='1'
+            onChange={handleInputChange}
+            checked={checkedStars.one}
+          />
+          <label htmlFor='star1'></label>
+       <div> { errors.rating1 && ( <span className={styles.errors}>{errors.rating1}</span> ) } </div>
+        </div>
+        
+        <div className={styles.reviewBox}>
+          <textarea
+            type='textarea'
+            name='description'
+            className='form-control'
+            rows='2'
+            placeholder='Cuéntanos tu experiencia con nosotros...'
+            onChange={handleInputChange}
+            value={newReview.description}
+          ></textarea>
+          { errors.description1 && ( <span className={styles.errors}>{errors.description1}</span> ) }
+          { errors.description2 && ( <span className={styles.errors}>{errors.description2}</span> ) }
+          <br />
+          
+        </div>
+          <div className={styles.submitSection}>
+            <button className={styles.submitButton} type='submit'>Enviar</button>
           </div>
+      </div> 
 
-          <br />
-          <div className='d-flex justify-content-center'>
-            <button className='btn btn-primary' type='submit'>
-              <span>Enviar</span>
-            </button>
-          </div>
-          <br />
-          {incompleteFormAlert && (
-            <div class='alert alert-warning' role='alert'>
-              No se ha podido postear tu reseña, por favor sigue las
-              indicaciones
-            </div>
-          )}
-          {successMessageReview && (
-            <div class='alert alert-success' role='alert'>
-              Tu reseña se ha registrado con éxito
-            </div>
-          )}
-          {backendError && (
-            <div
-              class='alert alert-warning'
-              role='alert'
-            >{`No se ha registrado tu reseña. Server Error ${backendError}`}</div>
-          )}
-          <br />
-        </form>
-      </div>
-    </>
-  )
-}
+      <span className={styles.alertSection}>
+        {incompleteFormAlert && (
+          <span class="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>
+            No se ha podido postear tu reseña, por favor sigue las
+            indicaciones
+          </span>
+        )}
+        {successMessageReview && (
+          <span class="alert alert-success d-flex align-items-center" role="alert" style={{ height: "12px" }}>
+            Tu reseña se ha registrado con éxito
+          </span>
+        )}
+        {backendError && (
+          <span
+          class="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}
+          >{`No se ha registrado tu reseña. Server Error ${backendError}`}</span>
+        )}
+      </span>  
+    </form>
+  );
+};
 
-export default ReviewForm
+export default ReviewForm;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAllAllPosts, getAllPosts, getPostDetail, postPost, upDtPost, delPost, currPage, cleanUpPost, cleanPostPost, cleanDel} from "./postSlice";
+import { getAllAllPosts, getAllPosts, getPostDetail, clnPostDetail, postPost, upDtPost, delPost, currPage, cleanUpPost, cleanPostPost, cleanDel} from "./postSlice";
 
 export const getAllPostsSF = () => async (dispatch) => {
   try {
@@ -27,6 +27,10 @@ export const getPostId = (id) => async (dispatch) => {
     window.alert(error.response.data.error)
   }
 };
+
+export const clnDetail = () => {
+  return (clnPostDetail());
+}
 
 export const addPost = (post) => async (dispatch) => {
   try {
