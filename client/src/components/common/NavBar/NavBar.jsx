@@ -48,7 +48,7 @@ export default function NavBar() {
             </NavLink>
             {/* esta ruta aún no existe */}
             <li className='nav-item dropdown'>
-              <NavLink className='nav-link' to='/comollegar'
+              <NavLink className='nav-link' to='/queHacer'
               >
                 Que hacer
               </NavLink>
