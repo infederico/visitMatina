@@ -3,6 +3,7 @@ import ValidationContact from '../Login/Validation/validationContact'
 import { useDispatch } from 'react-redux'
 import { PostContact } from '../../../redux/contactActions'
 import styles from './ShopContact.module.css'
+import axios from 'axios'
 
 const Contact = () => {
 
@@ -31,10 +32,11 @@ const Contact = () => {
       })
     )
   }
-  const handleClick = () => {
+  
+  const handleClick = async () => {
     if (Object.keys(errors).length === 0) {
-      alert('consulta enviada')
-      dispatch(PostContact(userData))
+     const respuesta= await dispatch(PostContact(userData))
+     alert(respuesta)
       setUserData({
         name: '',
         correoxres: '',
@@ -111,10 +113,10 @@ const Contact = () => {
                 id='exampleFormControlInput1'
                 placeholder='name@example.com'
                 name='correoxres'
-                value={userData.email}
+                value={userData.correoxres}
                 onChange={handleInputChange}
               />
-              {errors.email ? errors.email : null}
+              {errors.correoxres ? errors.correoxres : null}
             </div>
             <div className='mb-3'>
               <label htmlFor='exampleFormControlInput1' className='form-label'>
