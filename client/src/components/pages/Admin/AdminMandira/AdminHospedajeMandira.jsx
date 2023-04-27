@@ -2,20 +2,73 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from 'react';
 import styles from './mandira.module.css';
+import {
+  getProductsByShopId,
+  postProduct,
+} from '../../../../redux/productActions';
+import { getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
+import CardMandira from './CardMandira';
 
 const AdminHospedajeMandira = () => {
-  const productos = useSelector((state) => state.product.product);
+  const products = useSelector((state) => state.product.product);
   const reviews = useSelector((state) => state.reviews.value);
-  const [input, setInput] = useState();
+  const dispatch = useDispatch();
+  const [input, setInput] = useState({
+    name: '',
+    description: '',
+    price: '',
+    image: '',
+    id_product: '',
+    shop_id: 3,
+    user_id: '',
+    rating: '',
+    approved: '',
+  });
   const [errors, setErrors] = useState();
+  useEffect(() => {
+    dispatch(getProductsByShopId(3));
+    dispatch(getAllApprovedReviewsByShopId(3));
+    console.log(reviews);
+  }, []);
 
-  const handleSubmit = () => {};
-  const handleInput = () => {};
-  const handleFile = () => {};
+  const handleInput = (event) => {
+    setInput({ ...input, [event.target.name]: event.target.value });
+  };
+  const handleFile = async (event) => {
+    if (event.target.files[0]) {
+      let res = await getBase64(event.target.files[0]);
+      setInput({
+        ...input,
+        image: res,
+      });
+    }
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // const numErrors = Object.keys(errors).length;
+    // if (numErrors === 0) {
+    dispatch(postProduct(input));
+    // setErrors({});
+    setInput({
+      name: '',
+      description: '',
+      price: '',
+      image: '',
+      id_product: '',
+      shop_id: '',
+      user_id: '',
+      rating: '',
+      approved: '',
+    });
+    // } else {
+    // window.alert('Completa todos los campos');
+  };
+  // };
+
   return (
     <section>
       <div>
-        <h1 className='display-6 text-left my-2'>Hospedaje Mandira(id:3)</h1>
+        <h1 className='display-6 text-left my-2'>Finca Mandira(id:3)</h1>
         <p>
           <button
             className='btn btn-primary'
@@ -37,29 +90,17 @@ const AdminHospedajeMandira = () => {
           >
             Modificar Producto
           </button>
+          <button
+            className='btn btn-primary'
+            type='button'
+            data-bs-toggle='collapse'
+            data-bs-target='#collapseExample3'
+            aria-expanded='false'
+            aria-controls='collapseExample2'
+          >
+            Control de reviews
+          </button>
         </p>
-        <h5>Productos </h5>
-        {productos.map((item) => {
-          if (item.shop_id === 3) {
-            return (
-              <div>
-                <p key={item.name}>{item.name}</p>
-              </div>
-            );
-          }
-          return null;
-        })}
-        <h5>Reviews</h5>
-        {reviews.map((item) => {
-          if (item.shop_id === 3) {
-            return (
-              <div>
-                <p>{item.description}</p>
-              </div>
-            );
-          }
-          return null;
-        })}
       </div>
 
       {/*  */}
@@ -69,21 +110,21 @@ const AdminHospedajeMandira = () => {
             <div className='card card-body'>
               <form onSubmit={handleSubmit}>
                 <div>
-                  <h3>Crear Post</h3>
+                  <h3>Crear Producto</h3>
                 </div>
                 <div className='row mb-3'>
                   <label for='inputEmail3' className='col-sm-2 col-form-label'>
-                    Titulo
+                    Nombre
                   </label>
                   <div className='col-sm-10'>
                     <input
                       type='text'
                       className='form-control'
                       id='inputEmail3'
-                      name='title'
-                      value={input}
+                      name='name'
+                      value={input.name}
                       onChange={handleInput}
-                      placeholder='Ingresa el titulo del post'
+                      placeholder='Ingresa el nombre del producto'
                     />
                     {errors && <p>{errors}</p>}
                   </div>
@@ -93,17 +134,17 @@ const AdminHospedajeMandira = () => {
                     for='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
-                    Resumen
+                    Precio
                   </label>
                   <div className='col-sm-10'>
                     <input
                       type='text'
                       className='form-control'
                       id='inputPassword3'
-                      name='summary'
-                      value={input}
+                      name='price'
+                      value={input.price}
                       onChange={handleInput}
-                      placeholder='Breve descripción del post'
+                      placeholder='Precio'
                     />
                     {errors && <p>{errors}</p>}
                   </div>
@@ -113,17 +154,17 @@ const AdminHospedajeMandira = () => {
                     for='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
-                    Texto
+                    Descripcion
                   </label>
                   <div className='col-sm-10'>
                     <textarea
                       className='form-control'
                       id='exampleFormControlTextarea1'
                       rows='5'
-                      name='content'
-                      value={input}
+                      name='description'
+                      value={input.description}
                       onChange={handleInput}
-                      placeholder='Texto del post'
+                      placeholder='Descripcion del producto'
                     ></textarea>
                     {errors && <p>{errors}</p>}
                   </div>
@@ -154,23 +195,47 @@ const AdminHospedajeMandira = () => {
           </div>
 
           <div className='collapse' id='collapseExample2'>
+            <form>
+              <div className='card card-body'>
+                <h3>Modificar Producto</h3>
+              </div>
+              <div className={styles.divCardsBlog}>
+                {products.map((item) => {
+                  return (
+                    <CardMandira
+                      key={item.id_product}
+                      id_product={item.id_product}
+                      name={item.name ? item.name : null}
+                      description={item.description ? item.description : null}
+                      price={item.price ? item.price : null}
+                      image={item.image ? item.image : null}
+                      shop_id={item.shop_id ? item.shop_id : null}
+                      active={item.active ? item.active : null}
+                    />
+                  );
+                })}
+              </div>
+            </form>
+          </div>
+          <div className='collapse' id='collapseExample3'>
             <div className='card card-body'>
-              <h3>Modificar Post</h3>
+              <h3>Control de Reviews</h3>
             </div>
             <div className={styles.divCardsBlog}>
-              {/* {allAllPosts.map((ele) => {
+              {reviews.map((item) => {
                 return (
-                  <CardBlog
-                    id_post={ele.id_post}
-                    title={ele.title}
-                    summary={ele.summary}
-                    content={ele.content}
-                    image={ele.image}
-                    date={ele.date}
-                    active={ele.active}
-                  ></CardBlog>
+                  <CardMandira
+                    key={item.description}
+                    name={item.user.name ? item.user.name : null}
+                    description={item.description ? item.description : null}
+                    image={item.user.image ? item.user.image : null}
+                    shop_id={item.shop_id ? item.shop_id : null}
+                    rating={item.rating ? item.rating : null}
+                    active={item.active ? item.active : null}
+                    approved={item.active ? item.active : null}
+                  />
                 );
-              })} */}
+              })}
             </div>
           </div>
         </div>
