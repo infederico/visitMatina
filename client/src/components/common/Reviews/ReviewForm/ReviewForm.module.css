@@ -87,8 +87,13 @@
 
 
 .alertSection {
-    position: fixed;
+    height: 10%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    /* position: fixed;
     bottom: 40px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); */
   }
