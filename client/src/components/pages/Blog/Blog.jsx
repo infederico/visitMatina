@@ -68,18 +68,18 @@ export default function Blog() {
   return (
     <section>
     <div className={styles.divMain}>
-        <div id="carouselExampleCaptions" className={`carousel slide`} data-bs-ride="carousel">
+        <div id="carouselExampleCaptions" className={`carousel slide `} data-bs-ride="carousel">
         <div className={`carousel-indicators`}>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className={`active`} aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-        <div className={`carousel-inner`}>
+        <div className={`carousel-inner w-100 h-100`}>
 
           {lastOne.slice (2,3).map(elem => {
             return(
               <div className={`${styles.divCarousel} carousel-item active`}>
-            <Link to ={`/detailBlog/${elem.id_post}`}><img src={elem.image} className={`${styles.image} "d-block w-100"`} alt={elem.title}/></Link>
+            <Link to ={`/detailBlog/${elem.id_post}`}><img src={elem.image} className={`${styles.image} "d-block"`} alt={elem.title}/></Link>
             <div className={`carousel-caption d-none d-md-block`}>
                 <h2 className={styles.textCarousel}>"{elem.title}"</h2>
             </div>
