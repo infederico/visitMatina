@@ -62,9 +62,10 @@ export default function RestauranteSolYLuna() {
       <section>
         <Footer  />
       </section>
+      {shopData?.whatsapp && 
       <div>
         <WhatsApp/>
-      </div>
+      </div>}
     </div>
   );
 }
