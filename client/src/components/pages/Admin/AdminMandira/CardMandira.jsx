@@ -3,10 +3,12 @@ import styles from './mandira.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteProduct, updateProduct } from '../../../../redux/productActions';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
+import { deleteReview } from '../../../../redux/reviewsActions';
 
 const CardMandira = (props) => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
+    review_id: '',
     name: '',
     description: '',
     price: '',
@@ -29,6 +31,7 @@ const CardMandira = (props) => {
   const handleButton = (event) => {
     event.preventDefault();
     setInput({
+      review_id: props.review_id ? props.review_id : null,
       name: props.name ? props.name : null,
       description: props.description ? props.description : null,
       price: props.price ? props.price : null,
@@ -44,7 +47,11 @@ const CardMandira = (props) => {
 
   const handleDelete = (event) => {
     event.preventDefault();
-    dispatch(deleteProduct(input.id_product));
+    if (input.id_product) {
+      dispatch(deleteProduct(input.id_product));
+    } else {
+      dispatch(deleteReview(input));
+    }
   };
 
   const handleFile = async (event) => {
@@ -72,6 +79,7 @@ const CardMandira = (props) => {
       approved: '',
     });
   };
+
   return (
     <section>
       <div className={`card mb-3`} style={{ width: '540px' }}>

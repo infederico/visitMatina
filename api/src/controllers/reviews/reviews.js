@@ -120,16 +120,21 @@ const getReview = async (id) => {
 };
 
 // Borrado logico de un review por id
-const deleteReview = async (id) => {
+const deleteReview = async (review_id) => {
   try {
-    let review = await Reviews.findByPk({ id });
-
+    let review = await Reviews.findByPk(review_id);
     if (review) {
-      Reviews.update({ actve: false }, { where: { id } });
-      return true;
+      if (review.active === true) {
+        await Reviews.update({ active: false }, { where: { review_id } });
+        return { success: `El review ${review.review_id} fue eliminado` };
+      }
+      if (review.active === false) {
+        await Reviews.update({ active: true }, { where: { review_id } });
+        return { success: `El review ${review.review_id} fue activado` };
+      }
+    } else {
+      throw new Error('El elemento no existe.');
     }
-
-    throw new Error('El elemento no existe.');
   } catch (error) {
     return { error: error.message };
   }
