@@ -1,15 +1,10 @@
 import { useEffect, useState } from 'react';
 import styles from './mandira.module.css';
 import { useDispatch } from 'react-redux';
+import { deleteProduct, updateProduct } from '../../../../redux/productActions';
 
 const CardMandira = (props) => {
   const dispatch = useDispatch();
-  const handleFile = (event) => {
-    event.preventDefault();
-  };
-  const handleDelete = (event) => {
-    event.preventDefault();
-  };
   const [input, setInput] = useState({
     name: '',
     description: '',
@@ -20,6 +15,7 @@ const CardMandira = (props) => {
     user_id: '',
     rating: '',
     approved: '',
+    active: '',
   });
 
   const handleInput = (event) => {
@@ -28,25 +24,7 @@ const CardMandira = (props) => {
       [event.target.name]: event.target.value,
     });
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (input.product_id) {
-      // dispatch(updateProduct(input));
-    } else {
-      // dispatch(updateReview(input));
-    }
-    setInput({
-      name: '',
-      description: '',
-      price: '',
-      image: '',
-      id_product: '',
-      shop_id: '',
-      user_id: '',
-      rating: '',
-      approved: '',
-    });
-  };
+
   const handleButton = (event) => {
     event.preventDefault();
     setInput({
@@ -59,6 +37,32 @@ const CardMandira = (props) => {
       user_id: props.user_id ? props.user_id : null,
       rating: props.ratind ? props.rating : null,
       approved: props.approved ? props.approved : null,
+      active: props.active ? props.active : null,
+    });
+  };
+
+  const handleDelete = (event) => {
+    event.preventDefault();
+    dispatch(deleteProduct(input.id_product));
+  };
+
+  const handleFile = (event) => {
+    event.preventDefault();
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(updateProduct(input));
+    setInput({
+      name: '',
+      description: '',
+      price: '',
+      image: '',
+      id_product: '',
+      shop_id: '',
+      user_id: '',
+      rating: '',
+      approved: '',
     });
   };
   return (
@@ -85,18 +89,8 @@ const CardMandira = (props) => {
                 >
                   Cargar Datos
                 </button>
-                {props.active === false && (
-                  <button
-                    className={`btn btn-primary`}
-                    name={props.name}
-                    value={props.id_post}
-                    onClick={handleDelete}
-                  >
-                    Activar
-                  </button>
-                )}
 
-                {props.active === true && (
+                {props.active === true ? (
                   <button
                     className={`btn btn-primary`}
                     name={props.name}
@@ -104,6 +98,15 @@ const CardMandira = (props) => {
                     onClick={handleDelete}
                   >
                     Eliminar
+                  </button>
+                ) : (
+                  <button
+                    className={`btn btn-primary`}
+                    name={props.name}
+                    value={props.id_post}
+                    onClick={handleDelete}
+                  >
+                    Activar
                   </button>
                 )}
                 {props.active === true ? (
@@ -117,9 +120,8 @@ const CardMandira = (props) => {
         </div>
       </div>
 
-      <div className='card card-body'>
-        <form onSubmit={handleSubmit}>
-          <div></div>
+      <form onSubmit={handleSubmit}>
+        <div className='card card-body'>
           <div>{props.rating}</div>
           <div className='row mb-3'>
             <label for='inputEmail3' className='col-sm-2 col-form-label'>
@@ -130,7 +132,7 @@ const CardMandira = (props) => {
                 type='text'
                 className='form-control'
                 id='inputEmail3'
-                name='title'
+                name='name'
                 value={input.name}
                 onChange={handleInput}
               />
@@ -146,7 +148,7 @@ const CardMandira = (props) => {
                   type='text'
                   className='form-control'
                   id='inputPassword3'
-                  name='summary'
+                  name='price'
                   value={input.price}
                   onChange={handleInput}
                 />
@@ -162,7 +164,7 @@ const CardMandira = (props) => {
                 className='form-control'
                 id='exampleFormControlTextarea1'
                 rows='3'
-                name='content'
+                name='description'
                 value={input.description}
                 onChange={handleInput}
               ></textarea>
@@ -189,8 +191,8 @@ const CardMandira = (props) => {
               Modificar
             </button>
           ) : null}
-        </form>
-      </div>
+        </div>
+      </form>
     </section>
   );
 };

@@ -8,11 +8,13 @@ import {
 } from '../../../../redux/productActions';
 import { getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
 import CardMandira from './CardMandira';
+import validate from './validate';
 
 const AdminHospedajeMandira = () => {
   const products = useSelector((state) => state.product.product);
   const reviews = useSelector((state) => state.reviews.value);
   const dispatch = useDispatch();
+  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     name: '',
     description: '',
@@ -24,15 +26,19 @@ const AdminHospedajeMandira = () => {
     rating: '',
     approved: '',
   });
-  const [errors, setErrors] = useState();
   useEffect(() => {
     dispatch(getProductsByShopId(3));
     dispatch(getAllApprovedReviewsByShopId(3));
-    console.log(reviews);
   }, []);
 
   const handleInput = (event) => {
     setInput({ ...input, [event.target.name]: event.target.value });
+    setErrors(
+      validate({
+        ...input,
+        [event.target.name]: event.target.value,
+      })
+    );
   };
   const handleFile = async (event) => {
     if (event.target.files[0]) {
@@ -43,27 +49,28 @@ const AdminHospedajeMandira = () => {
       });
     }
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const numErrors = Object.keys(errors).length;
-    // if (numErrors === 0) {
-    dispatch(postProduct(input));
-    // setErrors({});
-    setInput({
-      name: '',
-      description: '',
-      price: '',
-      image: '',
-      id_product: '',
-      shop_id: '',
-      user_id: '',
-      rating: '',
-      approved: '',
-    });
-    // } else {
-    // window.alert('Completa todos los campos');
+    console.log(errors);
+    if (Object.keys(errors).length < 1) {
+      dispatch(postProduct(input));
+      setErrors({});
+      setInput({
+        name: '',
+        description: '',
+        price: '',
+        image: '',
+        id_product: '',
+        shop_id: '',
+        user_id: '',
+        rating: '',
+        approved: '',
+      });
+    } else {
+      window.alert('Completa todos los campos');
+    }
   };
-  // };
 
   return (
     <section>
@@ -126,7 +133,7 @@ const AdminHospedajeMandira = () => {
                       onChange={handleInput}
                       placeholder='Ingresa el nombre del producto'
                     />
-                    {errors && <p>{errors}</p>}
+                    {errors.name && <p>{errors.name}</p>}
                   </div>
                 </div>
                 <div className='row mb-3'>
@@ -146,7 +153,7 @@ const AdminHospedajeMandira = () => {
                       onChange={handleInput}
                       placeholder='Precio'
                     />
-                    {errors && <p>{errors}</p>}
+                    {errors.price && <p>{errors.price}</p>}
                   </div>
                 </div>
                 <div className='row mb-3'>
@@ -166,7 +173,7 @@ const AdminHospedajeMandira = () => {
                       onChange={handleInput}
                       placeholder='Descripcion del producto'
                     ></textarea>
-                    {errors && <p>{errors}</p>}
+                    {errors.price && <p>{errors.price}</p>}
                   </div>
                 </div>
                 <div className='row mb-3'>
@@ -195,27 +202,25 @@ const AdminHospedajeMandira = () => {
           </div>
 
           <div className='collapse' id='collapseExample2'>
-            <form>
-              <div className='card card-body'>
-                <h3>Modificar Producto</h3>
-              </div>
-              <div className={styles.divCardsBlog}>
-                {products.map((item) => {
-                  return (
-                    <CardMandira
-                      key={item.id_product}
-                      id_product={item.id_product}
-                      name={item.name ? item.name : null}
-                      description={item.description ? item.description : null}
-                      price={item.price ? item.price : null}
-                      image={item.image ? item.image : null}
-                      shop_id={item.shop_id ? item.shop_id : null}
-                      active={item.active ? item.active : null}
-                    />
-                  );
-                })}
-              </div>
-            </form>
+            <div className='card card-body'>
+              <h3>Modificar Producto</h3>
+            </div>
+            <div className={styles.divCardsBlog}>
+              {products.map((item) => {
+                return (
+                  <CardMandira
+                    key={item.id_product}
+                    id_product={item.id_product}
+                    name={item.name ? item.name : null}
+                    description={item.description ? item.description : null}
+                    price={item.price ? item.price : null}
+                    image={item.image ? item.image : null}
+                    shop_id={item.shop_id ? item.shop_id : null}
+                    active={item.active ? item.active : null}
+                  />
+                );
+              })}
+            </div>
           </div>
           <div className='collapse' id='collapseExample3'>
             <div className='card card-body'>
