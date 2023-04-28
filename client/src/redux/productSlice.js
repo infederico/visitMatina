@@ -5,12 +5,17 @@ const productSlice = createSlice({
   initialState: {
     product: [],
     resPostProduct: '',
+    resDel: '',
+    resUpdt: '',
     resUpdProduct: '',
-    resDelProduct: '',
+    resDelProduct: '', //
   },
   reducers: {
     getAllProductsByShopId: (state, action) => {
       state.product = action.payload;
+    },
+    updateLeo: (state, action) => {
+      state.resUpdt = action.payload;
     },
     post: (state, action) => {
       state.resPostProduct = action.payload.statusText;
@@ -30,9 +35,29 @@ const productSlice = createSlice({
     cleanResDel: (state, action) => {
       state.resDelProduct = '';
     },
+    clnDelProduct: (state, action) => {
+      if (state.resDel !== ""){
+        window.alert(state.resDel);
+      }
+      state.resDel = "";
+    },
+    clnUpdtProduct: (state, action) => {
+      if (state.resUpdt !== ""){
+        window.alert(state.resUpdt);
+      }
+      state.resUpdt = "";
+    },
+    clnPstProduct: (state, action) => {
+      if (state.resPostProduct !== ""){
+        window.alert(state.resPostProduct);
+      }
+      state.resPostProduct = "";
+    },
+
+
   },
 });
 
-export const { getAllProductsByShopId, post, delProduct, update, cleanResPost, cleanResUpd, cleanResDel } =
+export const { getAllProductsByShopId, post, delProduct, update, cleanResPost, cleanResUpd, cleanResDel, clnDelProduct, clnUpdtProduct, clnPstProduct, updateLeo } =
   productSlice.actions;
 export default productSlice.reducer;
