@@ -5,6 +5,7 @@ import {
   postNewReview,
   postNewReviewComment,
   deleteR,
+  cleanUpdateReview,
 } from './reviewsSlice';
 
 export const getAllApprovedReviewsByShopId = (shopId) => (dispatch) => {
@@ -31,10 +32,14 @@ export const postReviewComment = (newComment) => (dispatch) => {
 export const deleteReview = (input) => {
   return async (dispatch) => {
     try {
-      const product = await axios.delete(`/reviews/${input.review_id}`);
-      dispatch(deleteR(product.data));
+      const product = await axios.delete(`/reviews/${input}`);
+      dispatch(deleteR(product.data.success));
     } catch (error) {
       window.alert(error.response.data.error);
     }
   };
+};
+
+export const clnResUpdtReview = () => {
+  return(cleanUpdateReview());
 };
