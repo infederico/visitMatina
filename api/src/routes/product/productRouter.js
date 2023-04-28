@@ -214,11 +214,10 @@ router.get('/:id', async (req, res) => {
  *                   description: Mensaje de error descriptivo.
  *                   example: Product with id ${id} was not found.
  */
-router.put('/:id', async (req, res) => {
+router.put('/', async (req, res) => {
   try {
-    let { id } = req.params;
-    let { name, description, price, image } = req.body;
-    await updateProduct(id, name, description, price, image);
+    let { id_product, name, description, price, image } = req.body;
+    await updateProduct(id_product, name, description, price, image);
     res.status(200).json('Product updated successfully');
   } catch (error) {
     res.status(404).json({ error: error.message });
@@ -356,9 +355,8 @@ router.post('/:shop_id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     let { id } = req.params;
-    let { active } = req.body;
-    await deleteProduct(id, active);
-    res.status(200).send('Product Deleted Successfully');
+    let response = await deleteProduct(id);
+    res.status(200).json(response);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
