@@ -36,10 +36,6 @@ export default function HospedajeClaroDeLuna() {
     };
   }, []);
 
-
-  let BD = require('./imagenes.json')
-  BD = BD.response
-
   return (
     <div className={style.page}>
       <section className={style.titleSection}>
@@ -48,12 +44,6 @@ export default function HospedajeClaroDeLuna() {
       <section>
         <CardGalleryContainer/>
       </section>
-      {/* se mapean las imagenes de la galeria */}
-{/*       <div className={style.gallery}>
-        {BD.map((image) => {
-          return <img src={image.img} alt='AGREGAR ALT' />
-        })}
-      </div> */}
 
       <section>
         <div className='container'>
