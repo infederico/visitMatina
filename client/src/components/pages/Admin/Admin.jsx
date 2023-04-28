@@ -164,7 +164,7 @@ const Admin = () => {
           <section>
             {option.restaurant === true ? (
               <div>
-                <AdminRestaurant></AdminRestaurant>
+                <AdminRestaurant shopId={7}></AdminRestaurant>
               </div>
             ) : (
               <div></div>

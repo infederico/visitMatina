@@ -1,34 +1,9 @@
-
-/*
-.generalCalifImg {
-    text-align: center;
-    margin-left: 110px;
-}
-.reviewContainer{
-    background-color: var(--quaternary-color-200);
-}
-.reviewThread{
-    max-height: fit-content;
-    background-color: var(--neutral-color-100);
-}
-.reviewThread .form{
-    max-height: fit-content;
-    background-color: var(--neutral-color-100);
-} */
-
-/* font-family: 'Lora', serif; */
-
-/* font-family: 'Marcellus', serif; */
-/* font-family: 'Vollkorn', serif; */
-/* font-family: 'Kanit', sans-serif; */
-
 .reviewsContainer {
     /* height: 640px; */
     height: 100vh;
     width: 100%;
-    /* background-color: var(--quaternary-color-0); */
+    background-color: var(--quaternary-color-0);
     /* background-image: url('../../../assets/images/fondo\ reviews\ prueba-01.jpg'); */
-    background-image: url('../../../assets/images/pexels-chedi-tanabene-1751127.jpg');
     background-size: cover;
     font-family: 'Kanit', sans-serif;
     padding-top: 2%;
@@ -40,9 +15,8 @@
     /* height: 640px; */
     height: fit-content;
     width: 100%;
-    /* background-color: var(--quaternary-color-0); */
+    background-color: var(--quaternary-color-0);
     /* background-image: url('../../../assets/images/fondo\ reviews\ prueba-01.jpg'); */
-    background-image: url('../../../assets/images/pexels-chedi-tanabene-1751127.jpg');
     background-size: cover;
     font-family: 'Kanit', sans-serif;
     padding-top: 2%;

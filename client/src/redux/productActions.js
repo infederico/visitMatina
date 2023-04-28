@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getAllProductsByShopId, post } from './productSlice';
+import { getAllProductsByShopId, postNewProduct } from './productSlice';
 
 export const getProductsByShopId = (shopId) => {
   //agregar por porps shopId
@@ -18,7 +18,8 @@ export const postProduct = (product) => {
   return async (dispatch) => {
     try {
       const posted = await axios.post(`/product/${product.shop_id}`, product);
-      dispatch(post(posted));
+      console.log(posted);
+      dispatch(postNewProduct(posted));
     } catch (error) {
       console.log(error);
     }

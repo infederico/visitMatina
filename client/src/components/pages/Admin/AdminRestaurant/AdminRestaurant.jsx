@@ -3,30 +3,27 @@ import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import CardBlog from '../AdminBlog/CardBlog/CardBlog';
+import CardImageAdmin from './CardImageAdmin/CardImageAdmin';
 import validate from './validate';
 
 
 import {
   getProductsByShopId,
+  postProduct,
 } from '../../../../redux/productActions';
 
 
 const AdminRestaurant = ({shopId}) => {
     const dispatch = useDispatch();
-//  const { allAllPosts } = useSelector((state) => state.post);
-//  const { resPostPost } = useSelector((state) => state.post);
-//  const { resUpPost } = useSelector((state) => state.post);
-//  const { resDel } = useSelector((state) => state.post);
-
-    //const loggedUser = useSelector((state) => state.user.user);
+    const products = useSelector((state) => state.product.product);
+    const resPostProduct = useSelector((state) => state.product.resPostProduct);
 
     const [newImage, setNewImage] = useState({
         name: 'imagen de galería',
         description: '',
         price: 0.00,
         image: '',
-        id_shop: shopId,
+        shop_id: shopId,
     });
     const [submitted, setSubmitted] = useState(false)
     const [errors, setErrors] = useState({})
@@ -37,13 +34,7 @@ const AdminRestaurant = ({shopId}) => {
     // if (Object.keys(resPostPost).length) {
     //   dispatch(clnPostPost());
     // }
-  }, []);
-
-    // useEffect(() => {
-    // if (submitted) {
-    //     setErrors(validate(newImage));
-    // }
-    // }, [newImage]);
+  }, [resPostProduct]);
 
     const handlerInputs = (event) => {
         setNewImage({
@@ -70,7 +61,7 @@ const AdminRestaurant = ({shopId}) => {
         const numErrors = Object.keys(err).length
 
         if (numErrors === 0) {
-        //dispatch(AGREGARIMAGEN(newImage));
+            dispatch(postProduct(newImage));
             setSubmitted(false)
             setErrors({});
             setNewImage({
@@ -180,19 +171,16 @@ const AdminRestaurant = ({shopId}) => {
             <h3>Modificar Imagen</h3>
           </div>
           <div className={styles.divCardsBlog}>
-            {/* {allAllPosts.map((ele) => {
+            {products.map((imagen) => {
               return (
-                <CardBlog
-                  id_post={ele.id_post}
-                  title={ele.title}
-                  summary={ele.summary}
-                  content={ele.content}
-                  image={ele.image}
-                  date={ele.date}
-                  active={ele.active}
-                ></CardBlog>
+                <CardImageAdmin
+                  key={imagen.id_product}
+                  image={imagen.image}
+                  description={imagen.description}
+                  active={imagen.active}
+                ></CardImageAdmin>
               );
-            })} */}
+            })}
           </div>
         </div>
       </div>

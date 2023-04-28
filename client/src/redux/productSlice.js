@@ -4,16 +4,17 @@ const productSlice = createSlice({
   name: 'product',
   initialState: {
     product: [],
+    resPostProduct: {},
   },
   reducers: {
     getAllProductsByShopId: (state, action) => {
       state.product = action.payload;
     },
-    post: (state, action) => {
-      return { ...state };
+    postNewProduct: (state, action) => {
+      state.resPostProduct = action.payload.data;
     },
   },
 });
 
-export const { getAllProductsByShopId, post } = productSlice.actions;
+export const { getAllProductsByShopId, postNewProduct } = productSlice.actions;
 export default productSlice.reducer;
