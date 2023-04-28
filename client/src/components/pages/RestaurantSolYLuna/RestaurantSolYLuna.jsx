@@ -19,6 +19,7 @@ import { descriptions, name, imagen } from './descriptions';
 import CardProductContainer from '../../common/CardProductContainer/CardProductContainer';
 import CardProductContainer2 from '../../common/CardProductContainer2/CardProductContainer2';
 import ShopContact from '../Contact/ShopContact';
+import CardGalleryContainer from '../../common/CardGalleryContainer/CardGalleryContainer';
 
 export default function RestauranteSolYLuna() {
   const shopId = useSelector((state) => state.shops.shopId);
@@ -47,12 +48,9 @@ export default function RestauranteSolYLuna() {
           image={shopData.image}
         />
       </section>
-
-      <div className={style.gallery}>
-        {DB.map((image, index) => {
-          return <img key={index} src={image.img} alt='AGREGAR ALT' />;
-        })}
-      </div>
+      <section>
+        <CardGalleryContainer/>
+      </section>
       <section className={style.menuSection}>
         {/* <CardProductContainer2 />{' '} */}
         {/* habilitar que reciba x props un array con los datos de esta pag*/}
