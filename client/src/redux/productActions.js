@@ -25,3 +25,8 @@ export const postProduct = (product) => {
     }
   };
 };
+
+export const deleteProduct = (product) => {
+}
+export const updateProduct = (product) => {
+}

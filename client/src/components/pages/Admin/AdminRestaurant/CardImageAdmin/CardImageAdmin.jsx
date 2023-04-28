@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  updatePost,
-  clnUpPost,
-  deletePost,
-  clnDel,
-} from '../../../../../redux/postActions';
+    updateProduct,
+    //clean update falta
+    deleteProduct,
+    //cleandelete falta 
+} from '../../../../../redux/productActions';
 
 const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
 
@@ -28,11 +28,11 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
 
     useEffect(() => {
         if (Object.keys(resUpPost).length) {
-        dispatch(clnUpPost());
+        //dispatch(clnUpPost());
         }
 
         if (Object.keys(resDel).length) {
-        dispatch(clnDel());
+        //dispatch(clnDel());
         }
     }, [resUpPost, resDel]);
 
@@ -46,7 +46,7 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
     const handlerSubmitModify = (event) => {
         event.preventDefault();
 
-        dispatch(updatePost(inputsM));
+        dispatch(updateProduct(inputsM));
 
         setInputsM({
             name: 'imagen de galería',
@@ -55,7 +55,7 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
             image: '',
             shop_id: shop_id,
             active: active,
-        });
+        })
     };
 
     const handlerButtonMod = (event) => {
@@ -66,12 +66,12 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
             image: image,
             shop_id: shop_id,
             active: active,
-        });
+        })
     };
 
     const handlerFile = async (event) => {
         if (event.target.files[0]) {
-        let res = await getBase64(event.target.files[0]);
+        let res = await getBase64(event.target.files[0])
         setInputsM({
             ...inputsM,
             image: res,
@@ -80,7 +80,7 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
     };
 
     const handlerDelete = (event) => {
-        dispatch(deleteProduct(event.target.value));
+        dispatch(deleteProduct(event.target.value))
     };
 
     return (
