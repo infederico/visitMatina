@@ -3,7 +3,8 @@ import ValidationContact from '../Login/Validation/validationContact'
 import { useDispatch } from 'react-redux'
 import { PostContact } from '../../../redux/contactActions'
 import styles from './ShopContact.module.css'
-import axios from 'axios'
+import AlertContact from './AlertContact'
+
 
 const Contact = () => {
 
@@ -32,11 +33,18 @@ const Contact = () => {
       })
     )
   }
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
   
   const handleClick = async () => {
     if (Object.keys(errors).length === 0) {
      const respuesta= await dispatch(PostContact(userData))
-     alert(respuesta)
+     setAlertMessage(respuesta);
+      setShowAlert(true);
       setUserData({
         name: '',
         correoxres: '',
@@ -154,6 +162,13 @@ const Contact = () => {
               </div>
               <br />
               <button class="btn btn-outline-success" onClick={handleClick}>Enviar consulta</button>
+              {showAlert && (
+              <AlertContact
+                            show={showAlert}
+                            onClose={handleCloseAlert}
+                            message={alertMessage}
+              />
+      )}
             </div>
           </div>
         </div>

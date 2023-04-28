@@ -103,12 +103,12 @@ const enviarCorreo = (req, res) => {
       console.log(error)
       res
         .status(500)
-        .json({ message: 'Ocurrió un error al enviar el correo electrónico.' })
+        .json({ message: 'Ocurrió un error al enviar tu mensaje.' })
     } else {
       console.log('Correo electrónico enviado: ' + info.response)
       res
         .status(200)
-        .json({ message: 'El correo electrónico se ha enviado correctamente.' })
+        .json({ message: 'Tu mensaje se ha enviado correctamente. 😊' })
     }
   })
 
@@ -118,12 +118,12 @@ const enviarCorreo = (req, res) => {
       console.log(error)
       res
         .status(500)
-        .json({ message: 'Ocurrió un error al enviar el correo electrónico.' })
+        .json({ message: 'Ocurrió un error al enviar tu mensaje.' })
     } else {
       console.log('Correo electrónico enviado: ' + info.response)
       res
         .status(200)
-        .json({ message: 'El correo electrónico se ha enviado correctamente.' })
+        .json({ message: 'Tu mensaje se ha enviado correctamente.😊' })
     }
   })
 }

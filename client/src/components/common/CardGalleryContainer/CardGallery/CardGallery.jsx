@@ -1,7 +1,7 @@
 const CardGallery = (props) => {
     return(
-        <img src={props.image} alt={`Fotos de ${props.shop}`}/>
+        <img src={props.image} alt={`Fotos de ${props.name}`}/>
     )
 }
 
-export default CardGallery
+export default CardGallery;
