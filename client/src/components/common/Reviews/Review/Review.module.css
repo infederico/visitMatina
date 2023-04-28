@@ -1,5 +1,5 @@
 .reviewCards {
-    width: 25%;
+    width: 28%;
     height: 250px;
     background-color: var(--tertiary-color-0);
     display: flex;
@@ -63,6 +63,18 @@
     flex-grow: 1;
     overflow: auto;
 
+}
+.cardBody::-webkit-scrollbar {
+    width: 5px;
+}
+
+.cardBody::-webkit-scrollbar-track {
+    background-color: #f2f2f2;
+}
+
+.cardBody::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    border-radius: 5px;
 }
 .description {
     font-size: medium;

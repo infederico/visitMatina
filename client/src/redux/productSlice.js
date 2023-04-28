@@ -4,25 +4,35 @@ const productSlice = createSlice({
   name: 'product',
   initialState: {
     product: [],
-    resPostProduct: {},
-    resDel: '',
+    resPostProduct: '',
+    resUpdProduct: '',
+    resDelProduct: '',
   },
   reducers: {
     getAllProductsByShopId: (state, action) => {
       state.product = action.payload;
     },
-    update: (state, action) => {
-      return { ...state };
-    },
     post: (state, action) => {
-      state.resPostProduct = action.payload;
+      state.resPostProduct = action.payload.statusText;
+    },
+    cleanResPost: (state, action) => {
+      state.resPostProduct = '';
+    },
+    update: (state, action) => {
+      state.resUpdProduct = action.payload;
+    },
+    cleanResUpd: (state, action) => {
+      state.resUpdProduct = '';
     },
     delProduct: (state, action) => {
-      state.resDel = action.payload;
+      state.resDelProduct = action.payload.success;
+    },
+    cleanResDel: (state, action) => {
+      state.resDelProduct = '';
     },
   },
 });
 
-export const { getAllProductsByShopId, post, delProduct, update } =
+export const { getAllProductsByShopId, post, delProduct, update, cleanResPost, cleanResUpd, cleanResDel } =
   productSlice.actions;
 export default productSlice.reducer;
