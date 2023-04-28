@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import styles from './parcela.module.css';
 import { useDispatch } from 'react-redux';
+import { deleteProduct, updateProduct } from '../../../../redux/productActions';
+import { getBase64 } from '../../../../assets/helpers/fileTo64';
+import { deleteReview } from '../../../../redux/reviewsActions';
 
 const CardParcela = (props) => {
   const dispatch = useDispatch();
-  const handleFile = () => {};
-  const handleDelete = () => {};
   const [input, setInput] = useState({
+    review_id: '',
     name: '',
     description: '',
     price: '',
@@ -24,13 +26,45 @@ const CardParcela = (props) => {
       [event.target.name]: event.target.value,
     });
   };
+
+  const handleButton = (event) => {
+    event.preventDefault();
+    setInput({
+      review_id: props.review_id ? props.review_id : null,
+      name: props.name ? props.name : null,
+      description: props.description ? props.description : null,
+      price: props.price ? props.price : null,
+      image: props.image ? props.image : null,
+      id_product: props.id_product ? props.id_product : null,
+      shop_id: props.shop_id ? props.shop_id : null,
+      user_id: props.user_id ? props.user_id : null,
+      rating: props.ratind ? props.rating : null,
+      approved: props.approved ? props.approved : null,
+    });
+  };
+
+  const handleDelete = (event) => {
+    event.preventDefault();
+    if (input.id_product) {
+      dispatch(deleteProduct(input.id_product));
+    } else {
+      dispatch(deleteReview(input));
+    }
+  };
+
+  const handleFile = async (event) => {
+    if (event.target.files[0]) {
+      let res = await getBase64(event.target.files[0]);
+      setInput({
+        ...input,
+        image: res,
+      });
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (input.product_id) {
-      // dispatch(updateProduct(input));
-    } else {
-      // dispatch(updateReview(input));
-    }
+    dispatch(updateProduct(input));
     setInput({
       name: '',
       description: '',
@@ -43,20 +77,7 @@ const CardParcela = (props) => {
       approved: '',
     });
   };
-  const handleButton = (event) => {
-    event.preventDefault();
-    setInput({
-      name: props.name ? props.name : null,
-      description: props.description ? props.description : null,
-      price: props.price ? props.price : null,
-      image: props.image ? props.image : null,
-      id_product: props.id_product ? props.id_product : null,
-      shop_id: props.shop_id ? props.shop_id : null,
-      user_id: props.user_id ? props.user_id : null,
-      rating: props.ratind ? props.rating : null,
-      approved: props.approved ? props.approved : null,
-    });
-  };
+
   return (
     <section>
       <div className={`card mb-3`} style={{ width: '540px' }}>
@@ -81,18 +102,8 @@ const CardParcela = (props) => {
                 >
                   Cargar Datos
                 </button>
-                {props.active === false && (
-                  <button
-                    className={`btn btn-primary`}
-                    name={props.title}
-                    value={props.id_post}
-                    onClick={handleDelete}
-                  >
-                    Activar
-                  </button>
-                )}
 
-                {props.active === true && (
+                {props.active === true ? (
                   <button
                     className={`btn btn-primary`}
                     name={props.title}
@@ -100,6 +111,15 @@ const CardParcela = (props) => {
                     onClick={handleDelete}
                   >
                     Eliminar
+                  </button>
+                ) : (
+                  <button
+                    className={`btn btn-primary`}
+                    name={props.title}
+                    value={props.id_post}
+                    onClick={handleDelete}
+                  >
+                    Activar
                   </button>
                 )}
                 {props.active === true ? (
@@ -126,7 +146,7 @@ const CardParcela = (props) => {
                 type='text'
                 className='form-control'
                 id='inputEmail3'
-                name='title'
+                name='name'
                 value={input.name}
                 onChange={handleInput}
               />
@@ -142,7 +162,7 @@ const CardParcela = (props) => {
                   type='text'
                   className='form-control'
                   id='inputPassword3'
-                  name='summary'
+                  name='price'
                   value={input.price}
                   onChange={handleInput}
                 />
@@ -159,7 +179,7 @@ const CardParcela = (props) => {
                 className='form-control'
                 id='exampleFormControlTextarea1'
                 rows='3'
-                name='content'
+                name='description'
                 value={input.description}
                 onChange={handleInput}
               ></textarea>
