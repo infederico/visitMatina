@@ -2,25 +2,76 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from 'react';
 import styles from './parcela.module.css';
-import { getProductsByShopId } from '../../../../redux/productActions';
+import {
+  getProductsByShopId,
+  postProduct,
+} from '../../../../redux/productActions';
 import { getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
 import CardParcela from './CardParcela';
+import validate from './validate';
 
 const AdminParcela = () => {
   const products = useSelector((state) => state.product.product);
   const reviews = useSelector((state) => state.reviews.value);
   const dispatch = useDispatch();
-  const [input, setInput] = useState();
-  const [errors, setErrors] = useState();
-
-  const handleSubmit = () => {};
-  const handleInput = () => {};
-  const handleFile = () => {};
+  const [input, setInput] = useState({
+    name: '',
+    description: '',
+    price: '',
+    image: '',
+    id_product: '',
+    shop_id: 4,
+    user_id: '',
+    rating: '',
+    approved: '',
+  });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     dispatch(getProductsByShopId(4));
     dispatch(getAllApprovedReviewsByShopId(4));
   }, []);
+
+  const handleInput = (event) => {
+    setInput({ ...input, [event.target.name]: event.target.value });
+    setErrors(
+      validate({
+        ...input,
+        [event.target.name]: event.target.value,
+      })
+    );
+  };
+  const handleFile = async (event) => {
+    if (event.target.files[0]) {
+      let res = await getBase64(event.target.files[0]);
+      setInput({
+        ...input,
+        image: res,
+      });
+    }
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(errors);
+    if (Object.keys(errors).length < 1) {
+      dispatch(postProduct(input));
+      setErrors({});
+      setInput({
+        name: '',
+        description: '',
+        price: '',
+        image: '',
+        id_product: '',
+        shop_id: 4,
+        user_id: '',
+        rating: '',
+        approved: '',
+      });
+    } else {
+      window.alert('Completa todos los campos');
+    }
+  };
+
   return (
     <section>
       <div>
@@ -77,12 +128,12 @@ const AdminParcela = () => {
                       type='text'
                       className='form-control'
                       id='inputEmail3'
-                      name='title'
-                      value={input}
+                      name='name'
+                      value={input.name}
                       onChange={handleInput}
                       placeholder='Ingresa el nombre del producto'
                     />
-                    {errors && <p>{errors}</p>}
+                    {errors.name && <p>{errors.name}</p>}
                   </div>
                 </div>
                 <div className='row mb-3'>
@@ -97,12 +148,12 @@ const AdminParcela = () => {
                       type='text'
                       className='form-control'
                       id='inputPassword3'
-                      name='summary'
-                      value={input}
+                      name='price'
+                      value={input.price}
                       onChange={handleInput}
                       placeholder='Precio del producto'
                     />
-                    {errors && <p>{errors}</p>}
+                    {errors.price && <p>{errors.price}</p>}
                   </div>
                 </div>
                 <div className='row mb-3'>
@@ -117,12 +168,12 @@ const AdminParcela = () => {
                       className='form-control'
                       id='exampleFormControlTextarea1'
                       rows='5'
-                      name='content'
-                      value={input}
+                      name='description'
+                      value={input.description}
                       onChange={handleInput}
                       placeholder='Descripcion del producto'
                     ></textarea>
-                    {errors && <p>{errors}</p>}
+                    {errors.description && <p>{errors.description}</p>}
                   </div>
                 </div>
                 <div className='row mb-3'>

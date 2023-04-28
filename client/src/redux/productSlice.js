@@ -4,17 +4,24 @@ const productSlice = createSlice({
   name: 'product',
   initialState: {
     product: [],
-    resPostProduct: {},
+    resDel: '',
   },
   reducers: {
     getAllProductsByShopId: (state, action) => {
       state.product = action.payload;
     },
-    postNewProduct: (state, action) => {
-      state.resPostProduct = action.payload.data;
+    update: (state, action) => {
+      return { ...state };
+    },
+    post: (state, action) => {
+      return { ...state };
+    },
+    delProduct: (state, action) => {
+      state.resDel = action.payload;
     },
   },
 });
 
-export const { getAllProductsByShopId, postNewProduct } = productSlice.actions;
+export const { getAllProductsByShopId, post, delProduct, update } =
+  productSlice.actions;
 export default productSlice.reducer;
