@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { getAllProductsByShopId, post } from './productSlice';
+import {
+  delProduct,
+  getAllProductsByShopId,
+  post,
+  update,
+} from './productSlice';
 
 export const getProductsByShopId = (shopId) => {
   //agregar por porps shopId
@@ -21,6 +26,28 @@ export const postProduct = (product) => {
       dispatch(post(posted));
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const updateProduct = (input) => {
+  return async (dispatch) => {
+    try {
+      const product = await axios.put(`/product/`, input);
+      dispatch(update(product.data));
+    } catch (error) {
+      window.alert(error.response.data.error);
+    }
+  };
+};
+
+export const deleteProduct = (id) => {
+  return async (dispatch) => {
+    try {
+      const product = await axios.delete(`/product/${id}`);
+      dispatch(delProduct(product.data));
+    } catch (error) {
+      window.alert(error.response.data.error);
     }
   };
 };

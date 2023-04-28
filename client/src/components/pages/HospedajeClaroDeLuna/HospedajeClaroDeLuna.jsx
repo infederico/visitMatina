@@ -10,6 +10,7 @@ import style from './HospedajeClaroDeLuna.module.css';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
 import Reviews from '../../common/Reviews/Reviews';
 import Footer from '../../common/Footer/Footer';
+import CardGalleryContainer from '../../common/CardGalleryContainer/CardGalleryContainer';
 
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
@@ -44,13 +45,15 @@ export default function HospedajeClaroDeLuna() {
       <section className={style.titleSection}>
         <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
       </section>
-
+      <section>
+        <CardGalleryContainer/>
+      </section>
       {/* se mapean las imagenes de la galeria */}
-      <div className={style.gallery}>
+{/*       <div className={style.gallery}>
         {BD.map((image) => {
           return <img src={image.img} alt='AGREGAR ALT' />
         })}
-      </div>
+      </div> */}
 
       <section>
         <div className='container'>

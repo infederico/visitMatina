@@ -17,6 +17,7 @@ import { Routes, Route } from 'react-router-dom';
 import Register from './components/pages/Login/Register/Register';
 import Admin from './components/pages/Admin/Admin';
 import Comollegar from './components/pages/comoLlegar/Comollegar';
+import QueHacer from './components/pages/QueHacer/QueHacer';
 import SuccessPay from './components/pages/SuccessPay'
 
 import axios from 'axios'
@@ -44,6 +45,7 @@ const App = () => {
         <Route path='/successPay' element={<SuccessPay />} />
         <Route path='*' element={<NotFound />} />
         <Route path='/comoLlegar' element={<Comollegar />} />
+        <Route path='/queHacer' element={<QueHacer />} />
       </Routes>
     </Layout>
   )
