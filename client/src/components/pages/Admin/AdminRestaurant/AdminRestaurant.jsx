@@ -5,18 +5,25 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CardImageAdmin from './CardImageAdmin/CardImageAdmin';
 import validate from './validate';
-
+import AlertContact from '../../Contact/AlertContact';
 
 import {
   getProductsByShopId,
   postProduct,
 } from '../../../../redux/productActions';
+import {
+  cleanResPost,
+  cleanResUpd,
+  cleanResDel,
+} from '../../../../redux/productSlice';
 
 
 const AdminRestaurant = ({shopId}) => {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.product.product);
     const resPostProduct = useSelector((state) => state.product.resPostProduct);
+    const resUpdProduct = useSelector((state) => state.product.resUpdProduct);
+    const resDelProduct = useSelector((state) => state.product.resDelProduct);
 
     const [newImage, setNewImage] = useState({
         name: 'imagen de galería',
@@ -25,12 +32,19 @@ const AdminRestaurant = ({shopId}) => {
         image: '',
         shop_id: shopId,
     });
-    const [submitted, setSubmitted] = useState(false)
-    const [errors, setErrors] = useState({})
+    const [ submitted, setSubmitted ] = useState(false)
+    const [ errors, setErrors ] = useState({})
+    const [ showAlert, setShowAlert ] = useState(false)
+    const [ alertMessage, setAlertMessage ] = useState('')
 
   useEffect(() => {
     dispatch(getProductsByShopId(shopId));
-  }, [resPostProduct]);
+
+    if (resPostProduct !== '') { dispatch(cleanResPost()) }
+    if (resUpdProduct !== '') { dispatch(cleanResUpd()) }
+    if (resDelProduct !== '') { dispatch(cleanResDel()) }
+  // eslint-disable-next-line
+  }, [ resPostProduct, resUpdProduct, resDelProduct ]);
 
     const handlerInputs = (event) => {
         setNewImage({
@@ -67,9 +81,13 @@ const AdminRestaurant = ({shopId}) => {
                 image: '',
                 id_shop: shopId,
             });
-            window.alert('Imagen agregada exitosamente');
+            setShowAlert(true)
+            setAlertMessage('Imagen agregada exitosamente')
+            //window.alert('Imagen agregada exitosamente');
         } else {
-            window.alert('Completa todos los campos');
+            setShowAlert(true)
+            setAlertMessage('Completa todos los campos')
+            //window.alert('Completa todos los campos');
         }
     };
 
@@ -81,6 +99,10 @@ const AdminRestaurant = ({shopId}) => {
         image: res,
       });
     }
+  };
+
+  const handleOnClose = () => {
+    setShowAlert(false)
   };
 
   return (
@@ -98,6 +120,7 @@ const AdminRestaurant = ({shopId}) => {
           >
            Nueva imagen
           </button>
+          { showAlert && (<AlertContact show={showAlert} message={alertMessage} onClose={handleOnClose} />) }
           <button
             className='btn btn-primary'
             type='button'

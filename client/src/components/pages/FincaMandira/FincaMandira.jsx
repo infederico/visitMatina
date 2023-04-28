@@ -66,9 +66,6 @@ export default function FincaMandira() {
         </div>
       </div>
       <section>
-        <div className='container text-center'>
-          <h4>Nuestros clientes</h4>
-        </div>
         { shopId && <Reviews shopId={shopId}/> }
       </section>
       
