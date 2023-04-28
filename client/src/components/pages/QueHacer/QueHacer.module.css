@@ -17,13 +17,14 @@
     display: contents;
 }
 .nombre{
+    text-align: center;
     font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 10px;
     margin-top: 20px;
     z-index: 5;
     position: absolute;
-    top: 60%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Marcellus', serif;
@@ -39,4 +40,14 @@
 }
 .color{
     background: var(--tertiary-color-0);
+}
+.sec{
+    position: relative;
+}
+.divMain{
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.divFullCanales{
+    width: 100%;
 }

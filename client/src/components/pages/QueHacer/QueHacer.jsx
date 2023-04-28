@@ -1,4 +1,6 @@
 import styles from "./QueHacer.module.css";
+import Footer from "../../common/Footer/Footer"
+import { arrayRedes } from "./arrayRedes";
 import { Link } from "react-router-dom";
 import locationLogo from "../../../assets/images/locationLogo.png";
 import { caminatas, kayaking, camping1, camping2, rioZent, canales, cacao, caprina } from "./data";
@@ -7,15 +9,15 @@ const QueHacer = () => {
     return(
         <div>
             <div>
-                <section>
+                <section className={styles.sec}>
                   <img className={styles.imageFull} src ="https://res.cloudinary.com/dfnw2l08x/image/upload/v1682627194/QueHacer/riozent_inecow.jpg"></img>
-                  <h5 className={`${styles.nombre} `}>Actividades que no te puedes perder</h5>
+                  <h5 className={styles.nombre}>Actividades que no te puedes perder</h5>
                 </section>
             </div>
             
-            <div>
+            <div className={styles.divMain}>
                 <section>
-                <div classNameName="accordion accordion-flush" id="accordionFlushExample">
+                <div className="accordion accordion-flush" id="accordionFlushExample">
   <div className= {`${styles.colorBackgroundRow} accordion-item`}>
     <h2 className="accordion-header" id="flush-headingOne">
       <button className={`${styles.color} accordion-button collapsed`} type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -151,7 +153,7 @@ const QueHacer = () => {
     <div id="flush-collapseFive" className="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
       <div className="accordion-body">
 
-    <div className="col-md-8">
+    <div className={`${styles.divFullCanales} col-md-8`}>
       <div className="card-body">
         <p className={`${styles.text} card-text`}>{nl2br(canales)}</p>
         <div className={styles.divLocation}>
@@ -225,6 +227,10 @@ const QueHacer = () => {
   </div>
 </div>
                 </section>
+            </div>
+            
+            <div>
+              <Footer socialmedia={arrayRedes}></Footer>
             </div>
             
         </div>
