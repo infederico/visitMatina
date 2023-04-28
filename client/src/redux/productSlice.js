@@ -8,7 +8,7 @@ const productSlice = createSlice({
     resDel: '',
     resUpdt: '',
     resUpdProduct: '',
-    resDelProduct: '',
+    resDelProduct: '', //
   },
   reducers: {
     getAllProductsByShopId: (state, action) => {
