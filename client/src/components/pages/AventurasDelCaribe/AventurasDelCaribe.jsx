@@ -67,7 +67,7 @@ return (
       </section>
       
       <section className={style.contactSection}>
-        {/* <ShopContact /> */}
+        <ShopContact />
       </section>
       <section>
         <Footer socialmedia={arrayRedes} />
