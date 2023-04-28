@@ -30,7 +30,6 @@ const getAllProducts = async () => {
   }
 };
 const getProductById = async (shop_id) => {
-  console.log(shop_id);
   try {
     const products = await Product.findAll({
       include: {
@@ -49,21 +48,22 @@ const getProductById = async (shop_id) => {
     throw new Error(`Error getting product by shop id: ${error.message}`);
   }
 };
-const updateProduct = async (id, name, description, price, image) => {
+const updateProduct = async (id_product, name, description, price, image) => {
   try {
-    let findProduct = await getProductById(id);
+    let findProduct = await Product.findByPk(id_product);
     if (findProduct) {
       if (name) {
-        await Product.update({ name }, { where: { id } });
+        await Product.update({ name }, { where: { id_product } });
       }
       if (description) {
-        await Product.update({ description }, { where: { id } });
+        await Product.update({ description }, { where: { id_product } });
       }
       if (price) {
-        await Product.update({ price }, { where: { id } });
+        await Product.update({ price }, { where: { id_product } });
       }
       if (image) {
-        await Product.update({ image }, { where: { id } });
+        const cloudImg = await uptloadCl(image);
+        await Product.update({ image: cloudImg }, { where: { id_product } });
       }
       return true;
     }
@@ -93,15 +93,22 @@ const createProduct = async (name, description, price, shop_id, image) => {
   }
 };
 
-const deleteProduct = async (id, active) => {
+const deleteProduct = async (id_product) => {
   try {
-    let findProduct = await getProductById(id);
+    let findProduct = await Product.findByPk(id_product);
+    console.log(findProduct.active);
     if (findProduct) {
-      if (active !== undefined) {
-        await Product.update({ active }, { where: { id } });
+      if (findProduct.active === true) {
+        await Product.update({ active: false }, { where: { id_product } });
+        return { success: `El Producto ${findProduct.name} fue eliminado` };
       }
+      if (findProduct.active === false) {
+        await Product.update({ active: true }, { where: { id_product } });
+        return { success: `El Producto ${findProduct.name} fue activado` };
+      }
+    } else {
+      throw new Error('Producto no existe');
     }
-    return true;
   } catch (error) {
     throw new Error(`Error trying to delete product ${error.message}`);
   }

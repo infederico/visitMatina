@@ -114,7 +114,6 @@ const putOnePost = async (post) => {
 const delOnePost = async (id_post) => {
   try {
     const delOnePost = await Post.findByPk(id_post);
-    console.log(delOnePost.active);
     if (delOnePost) {
       if (delOnePost.active === true) {
         await Post.update({ active: false }, { where: { id_post: id_post } });
