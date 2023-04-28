@@ -11,6 +11,7 @@ import CardShop from '../../common/shopsDos/cardShop/CardShop';
 import Reviews from '../../common/Reviews/Reviews';
 import Footer from '../../common/Footer/Footer';
 import CardGalleryContainer from '../../common/CardGalleryContainer/CardGalleryContainer';
+import WhatsApp from '../../common/WhatsApp/WhatsApp';
 
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
@@ -36,10 +37,6 @@ export default function HospedajeClaroDeLuna() {
     };
   }, []);
 
-
-  let BD = require('./imagenes.json')
-  BD = BD.response
-
   return (
     <div className={style.page}>
       <section className={style.titleSection}>
@@ -48,12 +45,6 @@ export default function HospedajeClaroDeLuna() {
       <section>
         <CardGalleryContainer/>
       </section>
-      {/* se mapean las imagenes de la galeria */}
-{/*       <div className={style.gallery}>
-        {BD.map((image) => {
-          return <img src={image.img} alt='AGREGAR ALT' />
-        })}
-      </div> */}
 
       <section>
         { shopId && <Reviews shopId={shopId}/> }
@@ -64,8 +55,12 @@ export default function HospedajeClaroDeLuna() {
         <ShopContact />
       </section>
       <section>
-        <Footer socialmedia={arrayRedes}/>
+        <Footer />
       </section>
+      {shopData?.whatsapp && 
+      <div>
+        <WhatsApp/>
+      </div>}
     </div>
   )
 }

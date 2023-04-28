@@ -2,7 +2,7 @@ import Logo from '../../../assets/images/matina_logo.png';
 import Redes from '../../common/redesSociales/redes/Redes';
 import styles from './Footer.module.css';
 
-const Footer = ({socialmedia}) => {
+const Footer = () => {
     return(
         <div className={styles.containerFooter}>
             <section className={styles.containerIn}>
@@ -12,7 +12,7 @@ const Footer = ({socialmedia}) => {
                 </div>
                 <div className={styles.containerRedes}>
                     <p className={styles.tituloredes}>Siguenos en redes sociales</p>
-                    <Redes socialmedia={socialmedia}/>
+                    <Redes />
                 </div>
                 <div className={styles.containerInfo}>
                     <div className={styles.datos}>
