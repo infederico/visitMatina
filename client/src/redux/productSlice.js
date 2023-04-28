@@ -4,6 +4,7 @@ const productSlice = createSlice({
   name: 'product',
   initialState: {
     product: [],
+    resPostProduct: {},
     resDel: '',
   },
   reducers: {
@@ -14,7 +15,7 @@ const productSlice = createSlice({
       return { ...state };
     },
     post: (state, action) => {
-      return { ...state };
+      state.resPostProduct = action.payload;
     },
     delProduct: (state, action) => {
       state.resDel = action.payload;

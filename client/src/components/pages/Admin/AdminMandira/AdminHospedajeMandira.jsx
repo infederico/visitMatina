@@ -71,6 +71,7 @@ const AdminHospedajeMandira = () => {
       window.alert('Completa todos los campos');
     }
   };
+  console.log(reviews);
 
   return (
     <section>
@@ -231,6 +232,7 @@ const AdminHospedajeMandira = () => {
                 return (
                   <CardMandira
                     key={item.description}
+                    review_id={item.review_id ? item.review_id : null}
                     name={item.user.name ? item.user.name : null}
                     description={item.description ? item.description : null}
                     image={item.user.image ? item.user.image : null}
