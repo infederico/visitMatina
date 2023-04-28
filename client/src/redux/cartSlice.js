@@ -61,7 +61,6 @@ export const cartSlice = createSlice({
             guardar(state.products)
         },
         restoreCart: (state, action) =>{
-            console.log(action.payload)
             let products = action.payload;
             let total = 0;
             let quantity = 0;

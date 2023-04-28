@@ -30,10 +30,6 @@ const AdminRestaurant = ({shopId}) => {
 
   useEffect(() => {
     dispatch(getProductsByShopId(shopId));
-
-    // if (Object.keys(resPostPost).length) {
-    //   dispatch(clnPostPost());
-    // }
   }, [resPostProduct]);
 
     const handlerInputs = (event) => {
@@ -124,7 +120,7 @@ const AdminRestaurant = ({shopId}) => {
               </div>
 
               <div className='row mb-3'>
-                <label for='description' className='col-sm-2 col-form-label'>
+                <label htmlFor='description' className='col-sm-2 col-form-label'>
                   Título
                 </label>
                 <div className='col-sm-10'>
@@ -143,7 +139,7 @@ const AdminRestaurant = ({shopId}) => {
               </div>
 
               <div className='row mb-3'>
-                <label for='imagen' className='col-sm-2 col-form-label'>
+                <label htmlFor='imagen' className='col-sm-2 col-form-label'>
                   Imagen
                 </label>
                 <div className='col-sm-10'>
@@ -175,9 +171,11 @@ const AdminRestaurant = ({shopId}) => {
               return (
                 <CardImageAdmin
                   key={imagen.id_product}
+                  productId={imagen.id_product}
                   image={imagen.image}
                   description={imagen.description}
                   active={imagen.active}
+                  shopId={imagen.shop_id}
                 ></CardImageAdmin>
               );
             })}

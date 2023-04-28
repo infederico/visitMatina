@@ -5,36 +5,22 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
     updateProduct,
-    //clean update falta
     deleteProduct,
-    //cleandelete falta 
 } from '../../../../../redux/productActions';
 
-const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
-
+const CardImageAdmin = ({ productId, image, description, active, shopId }) => {
 
     const dispatch = useDispatch();
-    const { resUpPost } = useSelector((state) => state.post);
-    const { resDel } = useSelector((state) => state.post);
 
     const [inputsM, setInputsM] = useState({
+        id_product: productId,
         name: 'imagen de galería',
         description: '',
         price: 0.00,
         image: '',
-        shop_id: shop_id,
+        shop_id: shopId,
         active: active,
     });
-
-    useEffect(() => {
-        if (Object.keys(resUpPost).length) {
-        //dispatch(clnUpPost());
-        }
-
-        if (Object.keys(resDel).length) {
-        //dispatch(clnDel());
-        }
-    }, [resUpPost, resDel]);
 
     const handlerInputsM = (event) => {
         setInputsM({
@@ -49,24 +35,27 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
         dispatch(updateProduct(inputsM));
 
         setInputsM({
+            id_product: productId,
             name: 'imagen de galería',
             description: '',
             price: 0.00,
             image: '',
-            shop_id: shop_id,
+            shop_id: shopId,
             active: active,
         })
     };
 
     const handlerButtonMod = (event) => {
         setInputsM({
+            id_product: productId,
             name: 'imagen de galería',
             description: description,
             price: 0.00,
             image: image,
-            shop_id: shop_id,
+            shop_id: shopId,
             active: active,
         })
+        console.log(inputsM);
     };
 
     const handlerFile = async (event) => {
@@ -80,6 +69,7 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
     };
 
     const handlerDelete = (event) => {
+        console.log(event.target.value);
         dispatch(deleteProduct(event.target.value))
     };
 
@@ -101,7 +91,7 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
                                 <button
                                     className={`btn btn-primary`}
                                     name='id_product'
-                                    value={key}
+                                    value={productId}
                                     onClick={handlerButtonMod}
                                 >
                                 Cargar Datos
@@ -109,7 +99,8 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
                                 {active === false && (
                                 <button
                                     className={`btn btn-primary`}
-                                    value={key}
+                                    name={'imagen de galería'}
+                                    value={productId}
                                     onClick={handlerDelete}
                                 >
                                     Activar
@@ -119,7 +110,8 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
                                 {active === true && (
                                 <button
                                     className={`btn btn-primary`}
-                                    value={key}
+                                    name={'imagen de galería'}
+                                    value={productId}
                                     onClick={handlerDelete}
                                 >
                                     Eliminar
@@ -139,7 +131,7 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
             <div className='card card-body'>
                 <form onSubmit={handlerSubmitModify}>
                 <div className='row mb-3'>
-                    <label for='inputEmail3' className='col-sm-2 col-form-label'>
+                    <label htmlFor='inputEmail3' className='col-sm-2 col-form-label'>
                     Descripción
                     </label>
                     <div className='col-sm-10'>
@@ -156,7 +148,7 @@ const CardImageAdmin = ({ key, image, description, active, shop_id }) => {
                 
                 
                 <div className='row mb-3'>
-                    <label for='inputPassword3' className='col-sm-2 col-form-label'>
+                    <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
                     Imagen
                     </label>
                     <div className='col-sm-10'>
