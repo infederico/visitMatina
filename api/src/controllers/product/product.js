@@ -96,7 +96,6 @@ const createProduct = async (name, description, price, shop_id, image) => {
 const deleteProduct = async (id_product) => {
   try {
     let findProduct = await Product.findByPk(id_product);
-    console.log(findProduct.active);
     if (findProduct) {
       if (findProduct.active === true) {
         await Product.update({ active: false }, { where: { id_product } });
