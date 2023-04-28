@@ -1,7 +1,7 @@
 import styles from './CardImageAdmin.module.css';
 import { getBase64 } from '../../../../../assets/helpers/fileTo64'
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import {
     updateProduct,
@@ -55,7 +55,6 @@ const CardImageAdmin = ({ productId, image, description, active, shopId }) => {
             shop_id: shopId,
             active: active,
         })
-        console.log(inputsM);
     };
 
     const handlerFile = async (event) => {
@@ -69,7 +68,6 @@ const CardImageAdmin = ({ productId, image, description, active, shopId }) => {
     };
 
     const handlerDelete = (event) => {
-        console.log(event.target.value);
         dispatch(deleteProduct(event.target.value))
     };
 

@@ -161,7 +161,7 @@ const ReviewThread = (props) => {
             <div className={styles.commentForm}>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <label for="exampleFormControlTextarea1" className="form-label">{`Comenta la reseña de ${author}`}</label>
+                        <label htmlFor="exampleFormControlTextarea1" className="form-label">{`Comenta la reseña de ${author}`}</label>
                         <textarea
                             name="description"
                             className="form-control"

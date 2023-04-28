@@ -46,10 +46,6 @@ export default function HospedajeClaroDeLuna() {
       </section>
 
       <section>
-        <div className='container'>
-          <h4>Nuestros clientes</h4>
-          <span>conoce la opinión de nuestros clientes</span>
-        </div>
         { shopId && <Reviews shopId={shopId}/> }
       </section>
 
