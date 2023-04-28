@@ -6,13 +6,16 @@ import {
   getProductsByShopId,
   postProduct,
 } from '../../../../redux/productActions';
-import { getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
+import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
+import { cleanDeleteProduct, cleanUpdateProduct, cleanPostProduct } from "../../../../redux/productActions"
 import CardMandira from './CardMandira';
 import validate from './validate';
 
 const AdminHospedajeMandira = () => {
   const products = useSelector((state) => state.product.product);
+  const {resDel,resUpdt, resPostProduct} =useSelector ((state) => state.product);
   const reviews = useSelector((state) => state.reviews.value);
+  const {resUpdtReview} = useSelector((state) => state.reviews);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
@@ -29,7 +32,21 @@ const AdminHospedajeMandira = () => {
   useEffect(() => {
     dispatch(getProductsByShopId(3));
     dispatch(getAllApprovedReviewsByShopId(3));
-  }, []);
+    if (resUpdtReview !== ""){
+      dispatch(clnResUpdtReview())
+    }
+
+    if (resDel !== ""){
+      dispatch(cleanDeleteProduct())
+    }
+    if (resUpdt !== ""){
+      dispatch(cleanUpdateProduct());
+    }
+    if(resPostProduct !== ""){
+      dispatch(cleanPostProduct());
+    }
+
+  }, [resUpdtReview, resDel, resUpdt, resPostProduct]);
 
   const handleInput = (event) => {
     setInput({ ...input, [event.target.name]: event.target.value });

@@ -65,7 +65,7 @@ const updateProduct = async (id_product, name, description, price, image) => {
         const cloudImg = await uptloadCl(image);
         await Product.update({ image: cloudImg }, { where: { id_product } });
       }
-      return true;
+      return { success: `El Producto ${findProduct.name} fue actualizado` };
     }
   } catch (error) {
     throw new Error(`Error trying to update product ${error.message}`);
@@ -87,7 +87,7 @@ const createProduct = async (name, description, price, shop_id, image) => {
       throw new Error(`Shop with ID ${shop_id} does not exist`);
     }
     newProduct.setShop(shop);
-    return newProduct;
+    return { success: `El Producto ${newProduct.name} fue creado` };
   } catch (error) {
     throw new Error(`Error trying to create product ${error.message}`);
   }
