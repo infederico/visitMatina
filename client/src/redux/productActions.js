@@ -13,7 +13,6 @@ export const getProductsByShopId = (shopId) => {
       const products = await axios(`/product/${shopId}`); //agregar
       dispatch(getAllProductsByShopId(products.data));
     } catch (error) {
-      console.log('no entra');
     }
   };
 };

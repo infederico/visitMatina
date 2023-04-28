@@ -27,6 +27,8 @@ const Reviews = (props) => {
     const reviews = useSelector(state => state.reviews.value);
     const showCommentPanel = useSelector(state => state.reviews.showCommentPanel);
     const selectedReview = useSelector(state => state.reviews.selectedReview);
+    const successMessageReview = useSelector(state => state.reviews.successMessageReview);
+    const successMessageComment = useSelector(state => state.reviews.successMessageComment);
    
     // local states
     const [ overallRatingNumber, setOverallRatingNumber ] = useState(0);
@@ -78,6 +80,13 @@ const Reviews = (props) => {
         setOverallRatingWord(ratingScale[overallRatingNumber]);
     // eslint-disable-next-line
     }, [overallRatingNumber]);
+
+    useEffect( () => {
+        if (successMessageComment) return;
+        setFilterSelectedOption('all');
+        setSortSelectedOption('date-des');
+        setCurrentPage(1);
+    }, [reviews]);
     
     // LOGICA PARA FILTRAR
     useEffect( () => { 
