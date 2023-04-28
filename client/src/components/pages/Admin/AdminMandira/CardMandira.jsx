@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './mandira.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteProduct, updateProduct } from '../../../../redux/productActions';
+import { getBase64 } from '../../../../assets/helpers/fileTo64';
 
 const CardMandira = (props) => {
   const dispatch = useDispatch();
@@ -46,8 +47,14 @@ const CardMandira = (props) => {
     dispatch(deleteProduct(input.id_product));
   };
 
-  const handleFile = (event) => {
-    event.preventDefault();
+  const handleFile = async (event) => {
+    if (event.target.files[0]) {
+      let res = await getBase64(event.target.files[0]);
+      setInput({
+        ...input,
+        image: res,
+      });
+    }
   };
 
   const handleSubmit = (event) => {

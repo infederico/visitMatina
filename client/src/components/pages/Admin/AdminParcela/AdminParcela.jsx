@@ -202,27 +202,25 @@ const AdminParcela = () => {
           </div>
 
           <div className='collapse' id='collapseExample2'>
-            <form>
-              <div className='card card-body'>
-                <h3>Modificar Producto</h3>
-              </div>
-              <div className={styles.divCardsBlog}>
-                {products.map((item) => {
-                  return (
-                    <CardParcela
-                      key={item.id_product}
-                      id_product={item.id_product}
-                      name={item.name ? item.name : null}
-                      description={item.description ? item.description : null}
-                      price={item.price ? item.price : null}
-                      image={item.image ? item.image : null}
-                      shop_id={item.shop_id ? item.shop_id : null}
-                      active={item.active ? item.active : null}
-                    />
-                  );
-                })}
-              </div>
-            </form>
+            <div className='card card-body'>
+              <h3>Modificar Producto</h3>
+            </div>
+            <div className={styles.divCardsBlog}>
+              {products.map((item) => {
+                return (
+                  <CardParcela
+                    key={item.id_product}
+                    id_product={item.id_product}
+                    name={item.name ? item.name : null}
+                    description={item.description ? item.description : null}
+                    price={item.price ? item.price : null}
+                    image={item.image ? item.image : null}
+                    shop_id={item.shop_id ? item.shop_id : null}
+                    active={item.active ? item.active : null}
+                  />
+                );
+              })}
+            </div>
           </div>
           <div className='collapse' id='collapseExample3'>
             <div className='card card-body'>
