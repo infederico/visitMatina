@@ -43,7 +43,6 @@ export const deleteProduct = (id) => {
   return async (dispatch) => {
     try {
       const product = await axios.delete(`/product/${id}`);
-      console.log(product.data);
       dispatch(delProduct(product.data));
     } catch (error) {
       window.alert(error.response.data.error);
