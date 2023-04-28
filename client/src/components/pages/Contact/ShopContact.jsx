@@ -3,6 +3,7 @@ import ValidationContact from '../Login/Validation/validationContact';
 import { useDispatch } from 'react-redux';
 import { PostContact } from '../../../redux/contactActions';
 import styles from './ShopContact.module.css';
+import AlertContact from './AlertContact';
 
 const ShopContact = () => {
   const dispatch = useDispatch();
@@ -29,10 +30,20 @@ const ShopContact = () => {
       })
     );
   };
-  const handleClick = () => {
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
+  const handleClick = async () => {
     if (Object.keys(errors).length === 0) {
-      alert('consulta enviada');
-      dispatch(PostContact(userData));
+      const respuesta = await dispatch(PostContact(userData));
+      setAlertMessage(respuesta);
+      setShowAlert(true);
+      
       setUserData({
         name: '',
         correoxres: '',
@@ -52,7 +63,7 @@ const ShopContact = () => {
           }}
         >
           <h1>Contacto</h1>
-          <div className={` ${styles.nombredeform}`} >
+          <div className={`mb-3`} >
             <label htmlFor='exampleFormControlInput1' className='form-label'>
               Nombre
             </label>
@@ -129,6 +140,13 @@ const ShopContact = () => {
             >
               Enviar consulta
             </button>
+            {showAlert && (
+              <AlertContact
+                show={showAlert}
+                onClose={handleCloseAlert}
+                message={alertMessage}
+              />
+            )}
           </div>
         </div>
       </div>
