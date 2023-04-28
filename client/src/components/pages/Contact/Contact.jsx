@@ -124,7 +124,9 @@ const Contact = () => {
                 value={userData.correoxres}
                 onChange={handleInputChange}
               />
+              <div className={styles.mensajeerror}>
               {errors.correoxres ? errors.correoxres : null}
+              </div>
             </div>
             <div className='mb-3'>
               <label htmlFor='exampleFormControlInput1' className='form-label'>
