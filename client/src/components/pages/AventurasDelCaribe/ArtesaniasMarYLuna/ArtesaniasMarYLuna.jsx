@@ -4,6 +4,7 @@ import style from './ArtesaniasMarYLuna.module.css';
 import CardShop from '../../../common/shopsDos/cardShop/CardShop';
 import Reviews from '../../../common/Reviews/Reviews';
 import Footer from '../../../common/Footer/Footer';
+import WhatsApp from '../../../common/WhatsApp/WhatsApp';
 
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
@@ -63,8 +64,12 @@ export default function ArtesaniasMarYLuna() {
           <ShopContact />
         </section>
         <section>
-          <Footer socialmedia={arrayRedes}/>
+          <Footer />
         </section>
+        {shopData?.whatsapp && 
+        <div>
+          <WhatsApp/>
+        </div>}
     </div>
   )
 }

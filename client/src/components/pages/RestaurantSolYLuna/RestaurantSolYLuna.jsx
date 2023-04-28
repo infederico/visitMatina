@@ -18,6 +18,7 @@ import CardProductContainer from '../../common/CardProductContainer/CardProductC
 import CardProductContainer2 from '../../common/CardProductContainer2/CardProductContainer2';
 import ShopContact from '../Contact/ShopContact';
 import CardGalleryContainer from '../../common/CardGalleryContainer/CardGalleryContainer';
+import WhatsApp from '../../common/WhatsApp/WhatsApp';
 
 export default function RestauranteSolYLuna() {
   const shopId = useSelector((state) => state.shops.shopId);
@@ -59,8 +60,12 @@ export default function RestauranteSolYLuna() {
         <ShopContact />
       </section>
       <section>
-        <Footer socialmedia={arrayRedes} />
+        <Footer  />
       </section>
+      {shopData?.whatsapp && 
+      <div>
+        <WhatsApp/>
+      </div>}
     </div>
   );
 }
