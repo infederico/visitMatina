@@ -20,6 +20,7 @@ const CardGalleryContainer = () => {
             {products && products?.map(prod => {
                 return(
                     <CardGallery
+                    key= {prod.id_product}
                     image= {prod.image}
                     shop= {prod.name}
                     />

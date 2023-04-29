@@ -56,14 +56,14 @@ const Contact = () => {
 
   return (
     <div>
-      <div class='card mb-3'>
+      <div className='card mb-3'>
         <img
           src='https://images.hola.com/images/0278-15e7c52b0b2f-3217791b5b42-1000/fullpage-1900/hoviajes-costa-rica.jpg'
-          class='card-img-top'
+          className='card-img-top'
           alt='...'
         />
         <div
-          class={`card`}
+          className={`card`}
           style={{
             width: '33rem',
             position: 'absolute',
@@ -93,8 +93,8 @@ const Contact = () => {
             >
               Contacto
             </h1>
-            <div class='mb-3'>
-              <label for='exampleFormControlInput1' className='form-label'>
+            <div className='mb-3'>
+              <label htmlFor='exampleFormControlInput1' className='form-label'>
                 Nombre
               </label>
               <br />
@@ -112,7 +112,7 @@ const Contact = () => {
               <br />
             </div>
             <div className='mb-3'>
-              <label for='exampleFormControlInput1' className='form-label'>
+              <label htmlFor='exampleFormControlInput1' className='form-label'>
                 Email
               </label>
               <input
@@ -146,7 +146,7 @@ const Contact = () => {
               </div>
             </div>
             <div className='mb-3'>
-              <label for='exampleFormControlTextarea1' className='form-label'>
+              <label htmlFor='exampleFormControlTextarea1' className='form-label'>
                 Consulta
               </label>
               <textarea
@@ -163,7 +163,7 @@ const Contact = () => {
               {errors.mensaje ? errors.mensaje : null}
               </div>
               <br />
-              <button class="btn btn-outline-success" onClick={handleClick}>Enviar consulta</button>
+              <button className="btn btn-outline-success" onClick={handleClick}>Enviar consulta</button>
               {showAlert && (
               <AlertContact
                             show={showAlert}
