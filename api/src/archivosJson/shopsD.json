@@ -1,6 +1,6 @@
 [
     {
-        "name": "Visit Matina - blog",
+        "name": "Blog",
         "summary": "Somos un sitio colaborativo muestra las bellezas naturales de nuestro cantón y promocionar nuestros servicios turísticos para que puedas disfrutar de Matina en todo su esplendor. Estamos conformados por familias que con nuestras empresas buscamos posicionar un turismo rural comunitario y sostenible. ¡Da un vistazo por lo que te ofrecemos!",
         "path": "/blog",
         "email": "visitmatina@gmail.com",
@@ -14,11 +14,11 @@
         "active": true
     },
     {
-        "name": "Visit Matina - paquetes",
-        "summary": "Somos un sitio colaborativo muestra las bellezas naturales de nuestro cantón y promocionar nuestros servicios turísticos para que puedas disfrutar de Matina en todo su esplendor. Estamos conformados por familias que con nuestras empresas buscamos posicionar un turismo rural comunitario y sostenible. ¡Da un vistazo por lo que te ofrecemos!",
+        "name": "Paquetes",
+        "summary": "Disfrutá de momentos inolvidables junto a tus seres queridos con nuestras opciones a medida",
         "path": "/paquetes",
         "email": "visitmatina@gmail.com",
-        "image":"https://res.cloudinary.com/dfnw2l08x/image/upload/v1682284244/Paquetes_txgpaw.jpg",
+        "image":"https://res.cloudinary.com/dfnw2l08x/image/upload/v1682738218/AC10_h0snyd.jpg",
         "twitter": "",
         "instagram": "",
         "facebook": "",
