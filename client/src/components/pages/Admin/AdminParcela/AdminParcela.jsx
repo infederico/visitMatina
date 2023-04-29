@@ -6,14 +6,18 @@ import {
   getProductsByShopId,
   postProduct,
 } from '../../../../redux/productActions';
-import { getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
+import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
+import { cleanDeleteProduct, cleanUpdateProduct, cleanPostProduct } from "../../../../redux/productActions"
 import CardParcela from './CardParcela';
 import validate from './validate';
 
 const AdminParcela = () => {
   const products = useSelector((state) => state.product.product);
+  const {resDel,resUpdt, resPostProduct} =useSelector ((state) => state.product);
   const reviews = useSelector((state) => state.reviews.value);
+  const {resUpdtReview} = useSelector((state) => state.reviews);
   const dispatch = useDispatch();
+  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     name: '',
     description: '',
@@ -25,12 +29,24 @@ const AdminParcela = () => {
     rating: '',
     approved: '',
   });
-  const [errors, setErrors] = useState({});
-
   useEffect(() => {
     dispatch(getProductsByShopId(4));
     dispatch(getAllApprovedReviewsByShopId(4));
-  }, []);
+    if (resUpdtReview !== ""){
+      dispatch(clnResUpdtReview())
+    }
+
+    if (resDel !== ""){
+      dispatch(cleanDeleteProduct())
+    }
+    if (resUpdt !== ""){
+      dispatch(cleanUpdateProduct());
+    }
+    if(resPostProduct !== ""){
+      dispatch(cleanPostProduct());
+    }
+
+  }, [resUpdtReview, resDel, resUpdt, resPostProduct]);
 
   const handleInput = (event) => {
     setInput({ ...input, [event.target.name]: event.target.value });
@@ -50,6 +66,7 @@ const AdminParcela = () => {
       });
     }
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(errors);
@@ -62,7 +79,7 @@ const AdminParcela = () => {
         price: '',
         image: '',
         id_product: '',
-        shop_id: 4,
+        shop_id: '',
         user_id: '',
         rating: '',
         approved: '',
@@ -71,11 +88,12 @@ const AdminParcela = () => {
       window.alert('Completa todos los campos');
     }
   };
+  console.log(reviews);
 
   return (
     <section>
       <div>
-        <h1 className='display-6 text-left my-2'>Finca Parcela(id:4)</h1>
+        <h1 className='display-6 text-left my-2'>Administrar Finca La Parcela</h1>
         <p>
           <button
             className='btn btn-primary'
@@ -151,7 +169,7 @@ const AdminParcela = () => {
                       name='price'
                       value={input.price}
                       onChange={handleInput}
-                      placeholder='Precio del producto'
+                      placeholder='Precio'
                     />
                     {errors.price && <p>{errors.price}</p>}
                   </div>
@@ -173,7 +191,7 @@ const AdminParcela = () => {
                       onChange={handleInput}
                       placeholder='Descripcion del producto'
                     ></textarea>
-                    {errors.description && <p>{errors.description}</p>}
+                    {errors.price && <p>{errors.price}</p>}
                   </div>
                 </div>
                 <div className='row mb-3'>

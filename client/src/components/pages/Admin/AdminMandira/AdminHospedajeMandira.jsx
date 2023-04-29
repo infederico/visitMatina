@@ -93,7 +93,7 @@ const AdminHospedajeMandira = () => {
   return (
     <section>
       <div>
-        <h1 className='display-6 text-left my-2'>Finca Mandira(id:3)</h1>
+        <h1 className='display-6 text-left my-2'>Administrar Finca Mandira</h1>
         <p>
           <button
             className='btn btn-primary'
