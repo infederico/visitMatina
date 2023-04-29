@@ -1,17 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from 'react';
-import styles from './mandira.module.css';
+import styles from './artesanias.module.css';
 import {
   getProductsByShopId,
   postProduct,
 } from '../../../../redux/productActions';
 import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
 import { cleanDeleteProduct, cleanUpdateProduct, cleanPostProduct } from "../../../../redux/productActions"
-import CardMandira from './CardMandira';
+import CardArtesanias from './CardArtesanias';
 import validate from './validate';
 
-const AdminHospedajeMandira = () => {
+const AdminArtesanias = () => {
   const products = useSelector((state) => state.product.product);
   const {resDel,resUpdt, resPostProduct} =useSelector ((state) => state.product);
   const reviews = useSelector((state) => state.reviews.value);
@@ -24,14 +24,14 @@ const AdminHospedajeMandira = () => {
     price: '',
     image: '',
     id_product: '',
-    shop_id: 3,
+    shop_id: 6,
     user_id: '',
     rating: '',
     approved: '',
   });
   useEffect(() => {
-    dispatch(getProductsByShopId(3));
-    dispatch(getAllApprovedReviewsByShopId(3));
+    dispatch(getProductsByShopId(6));
+    dispatch(getAllApprovedReviewsByShopId(6));
     if (resUpdtReview !== ""){
       dispatch(clnResUpdtReview())
     }
@@ -93,7 +93,7 @@ const AdminHospedajeMandira = () => {
   return (
     <section>
       <div>
-        <h1 className='display-6 text-left my-2'>Administrar Finca Mandira</h1>
+        <h1 className='display-6 text-left my-2'>Administrar Artesanias Mar y Luna</h1>
         <p>
           <button
             className='btn btn-primary'
@@ -226,7 +226,7 @@ const AdminHospedajeMandira = () => {
             <div className={styles.divCardsBlog}>
               {products.map((item) => {
                 return (
-                  <CardMandira
+                  <CardArtesanias
                     key={item.id_product}
                     id_product={item.id_product}
                     name={item.name ? item.name : null}
@@ -247,7 +247,7 @@ const AdminHospedajeMandira = () => {
             <div className={styles.divCardsBlog}>
               {reviews.map((item) => {
                 return (
-                  <CardMandira
+                  <CardArtesanias
                     key={item.description}
                     review_id={item.review_id ? item.review_id : null}
                     name={item.user.name ? item.user.name : null}
@@ -267,4 +267,4 @@ const AdminHospedajeMandira = () => {
     </section>
   );
 };
-export default AdminHospedajeMandira;
+export default AdminArtesanias;

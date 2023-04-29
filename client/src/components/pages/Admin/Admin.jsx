@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AdminAventuras from './AdminAventuras/AdminAventuras';
+import AdminArtesanias from './AdminArtesanias/AdminArtesanias';
 import AdminBlog from './AdminBlog/AdminBlog';
 import AdminHospedaje from './AdminHospedaje/AdminHospedaje';
 import AdminHospedajeMandira from './AdminMandira/AdminHospedajeMandira';
@@ -14,6 +15,7 @@ const Admin = () => {
   const loggedUser = useSelector((state) => state.user.user);
   const [option, setOption] = useState({
     aventuras: false,
+    artesanias: false,
     blog: false,
     hospedaje: false,
     hospedajeMandira: false,
@@ -28,6 +30,7 @@ const Admin = () => {
       case "aventuras":
         setOption({
           aventuras: true,
+          artesanias: false,
     blog: false,
     hospedaje: false,
     hospedajeMandira: false,
@@ -37,9 +40,23 @@ const Admin = () => {
     usuarios: false,
         })
         break;
+        case "artesanias":
+          setOption({
+            aventuras: false,
+            artesanias: true,
+      blog: false,
+      hospedaje: false,
+      hospedajeMandira: false,
+      parcela: false,
+      restaurant: false,
+      shops: false,
+      usuarios: false,
+          })
+          break;
         case "blog":
         setOption({
           aventuras: false,
+          artesanias: false,
     blog: true,
     hospedaje: false,
     hospedajeMandira: false,
@@ -52,6 +69,7 @@ const Admin = () => {
         case "hospedaje":
         setOption({
           aventuras: false,
+          artesanias: false,
     blog: false,
     hospedaje: true,
     hospedajeMandira: false,
@@ -64,6 +82,7 @@ const Admin = () => {
         case "hospedajeMandira":
         setOption({
           aventuras: false,
+          artesanias: false,
     blog: false,
     hospedaje: false,
     hospedajeMandira: true,
@@ -76,6 +95,7 @@ const Admin = () => {
         case "parcela":
         setOption({
           aventuras: false,
+          artesanias: false,
     blog: false,
     hospedaje: false,
     hospedajeMandira: false,
@@ -88,6 +108,7 @@ const Admin = () => {
         case "restaurant":
         setOption({
           aventuras: false,
+          artesanias: false,
     blog: false,
     hospedaje: false,
     hospedajeMandira: false,
@@ -100,6 +121,7 @@ const Admin = () => {
         case "shops":
         setOption({
           aventuras: false,
+          artesanias: false,
     blog: false,
     hospedaje: false,
     hospedajeMandira: false,
@@ -112,6 +134,7 @@ const Admin = () => {
         case "usuarios":
         setOption({
           aventuras: false,
+          artesanias: false,
     blog: false,
     hospedaje: false,
     hospedajeMandira: false,
@@ -168,7 +191,7 @@ const Admin = () => {
                       name='shops'
                       onClick={handlerButton}
                     >
-                      Shops
+                      Emprendimientos
                     </NavLink>
                     <NavLink
                       className='nav-link'
@@ -176,6 +199,13 @@ const Admin = () => {
                       onClick={handlerButton}
                     >
                       Aventuras
+                    </NavLink>
+                    <NavLink
+                      className='nav-link'
+                      name='artesanias'
+                      onClick={handlerButton}
+                    >
+                      Artesanías
                     </NavLink>
                     <NavLink
                       className='nav-link'
@@ -251,6 +281,15 @@ const Admin = () => {
             {option.aventuras === true ? (
               <div>
                 <AdminAventuras></AdminAventuras>
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </section>
+          <section>
+            {option.artesanias === true ? (
+              <div>
+                <AdminArtesanias></AdminArtesanias>
               </div>
             ) : (
               <div></div>

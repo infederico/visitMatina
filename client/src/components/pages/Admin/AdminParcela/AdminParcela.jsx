@@ -131,7 +131,7 @@ const AdminParcela = () => {
       {/*  */}
       <section>
         <div>
-          <div className='collapse' id='collapseExample'>
+          <div className='collapse show' id='collapseExample'>
             <div className='card card-body'>
               <form onSubmit={handleSubmit}>
                 <div>

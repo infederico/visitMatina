@@ -134,7 +134,7 @@ const AdminRestaurant = ({shopId}) => {
         </p>
 
 
-        <div className='collapse' id='agregarImagen'>
+        <div className='collapse show' id='agregarImagen'>
           <div className='card card-body'>
             <form onSubmit={handlerSubmitCreate}>
 
