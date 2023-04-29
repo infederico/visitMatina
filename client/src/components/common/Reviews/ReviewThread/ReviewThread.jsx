@@ -61,10 +61,22 @@ const ReviewThread = (props) => {
     }, [successMessageComment])
 
     useEffect(() => {
+
         setNewComment((prevState) => ({
           ...prevState,
           description: commentLocalStorage.description,
         }))
+
+        return () => {
+            setTimeout( () => {
+              setCommentLocalStorage({
+                ...commentLocalStorage,
+                description: '',
+              });
+              console.log('holi soy el time out');
+            }, 1 * 60 * 1000);
+          }
+
       }, [])
  
     // handlers 

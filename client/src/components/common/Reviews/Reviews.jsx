@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
-// eslint-disable-next-line
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation, NavLink } from 'react-router-dom';
 
 import { getAllApprovedReviewsByShopId } from '../../../redux/reviewsActions';
-import { setShowCommentPanel , setSelectedReview } from '../../../redux/reviewsSlice';
 
 import Review from './Review/Review'; // componente Review (card)
 import ReviewForm from './ReviewForm/ReviewForm'; // componente formulario para postear una nueva review
@@ -27,7 +24,6 @@ const Reviews = (props) => {
     const reviews = useSelector(state => state.reviews.value);
     const showCommentPanel = useSelector(state => state.reviews.showCommentPanel);
     const selectedReview = useSelector(state => state.reviews.selectedReview);
-    const successMessageReview = useSelector(state => state.reviews.successMessageReview);
     const successMessageComment = useSelector(state => state.reviews.successMessageComment);
    
     // local states

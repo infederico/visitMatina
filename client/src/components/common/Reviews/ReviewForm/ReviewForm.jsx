@@ -60,12 +60,25 @@ const ReviewForm = (props) => {
   }, [successMessageReview])
 
   useEffect(() => {
+
     setNewReview((prevState) => ({
       ...prevState,
       rating: reviewLocalStorage.rating,
       description: reviewLocalStorage.description,
     }))
-  }, [])
+     
+    return () => {
+      setTimeout( () => {
+        setReviewLocalStorage({
+          ...reviewLocalStorage,
+          rating: 0,
+          description: '',
+        });
+        console.log('holi soy el time out');
+      }, 1 * 60 * 1000);
+    }
+
+  }, []);
 
   useEffect(() => {
     switch (newReview.rating) {
@@ -134,8 +147,8 @@ const ReviewForm = (props) => {
       })
     }
   }, [newReview.rating])
-
-  // handlers
+  
+   // handlers
   const handleInputChange = (event) => {
     if (!loggedUser.access) {
       window.alert('Debes estar registrado e iniciar sesión para poder postear una reseña');
@@ -156,15 +169,14 @@ const ReviewForm = (props) => {
       [name]: value,
     })
 
-    // setTimeout( ()=>{
+    // setTimeout( () => {
     //     setReviewLocalStorage({
-    //         user_id: loggedUser.id_user,
-    //         rating: 0,
-    //         description: '',
-    //         approved: true, // asi apenas el usuario postea se ve su review, despues el admin lo puede bannear desde dashboard
-    //         shop_id: props.shopId
+    //       ...reviewLocalStorage,
+    //       rating: 0,
+    //       description: '',
     //     });
-    // }, 5000);
+    //     console.log('holi soy el time out');
+    // }, 1 * 60 * 1000);
 
     if (submitted) {
       let err = validation({
