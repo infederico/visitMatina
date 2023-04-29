@@ -29,6 +29,13 @@ const LogIn = () => {
     navigate('/');
   };
 
+  function handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      // 13 es el código para la tecla "Enter"
+      handleClick(event);
+    }
+  }
+
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
@@ -47,11 +54,10 @@ const LogIn = () => {
     });
 
     if (remember.email) {
-      setUserData((prevState) => ({
-        ...prevState,
+      setUserData({
         email: remember.email,
         password: remember.password,
-      }));
+      });
       setRememberButton(() => true);
     }
   }, [remember.email]);
@@ -66,19 +72,23 @@ const LogIn = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    if (Object.keys(errors).length === 0) {
-      dispatch(getUser(userData));
-      if (rememberButton) {
-        // guardar la información en el almacenamiento local
-        setRemember({ email: userData.email, password: userData.password });
-      } else {
-        // eliminar la información del almacenamiento local
-        setRemember({ email: '', password: '' });
+    if (Object.keys(userData).length > 1) {
+      if (Object.keys(errors).length === 0) {
+        dispatch(getUser(userData));
+        if (rememberButton) {
+          // guardar la información en el almacenamiento local
+          setRemember({ email: userData.email, password: userData.password });
+        } else {
+          // eliminar la información del almacenamiento local
+          setRemember({ email: '', password: '' });
+        }
+        navigate('/');
       }
+    } else {
+      alert('Completa todos los campos');
     }
-
-    navigate('/');
   };
+
   const handleChecked = () => {
     rememberButton ? setRememberButton(false) : setRememberButton(true);
   };
@@ -86,7 +96,7 @@ const LogIn = () => {
   return (
     <div className={style.containerContact}>
       <img
-        src='https://i.pinimg.com/564x/c3/02/4b/c3024bc95c94ca75a0f71f41ca6815ef.jpg'
+        src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798177/fondologin_irxhjq.jpg'
         alt='Imagen'
         className={style.responsiveImage}
       />
@@ -125,6 +135,7 @@ const LogIn = () => {
             name='password'
             value={userData.password}
             onChange={handleInputChange}
+            onKeyDown={(event) => handleKeyDown(event)}
           />
           <br />
           {errors.password ? errors.password : null}
@@ -146,6 +157,7 @@ const LogIn = () => {
           className={`btn btn-dark ${style.submitButton}`}
           style={{ width: '22rem' }}
           onClick={handleClick}
+          disabled={errors.email || errors.password ? true : false}
         >
           Ingresar
         </button>

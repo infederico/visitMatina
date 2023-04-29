@@ -1,19 +1,20 @@
-import { useState } from 'react'
-import ValidationRegister from '../Validation/validationRegister'
-import { addUser } from '../../../../redux/userActions'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-
+import { useState } from 'react';
+import ValidationRegister from '../Validation/validationRegister';
+import { addUser } from '../../../../redux/userActions';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import styles from './register.module.css';
+import Footer from '../../../common/Footer/Footer';
 const Register = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     name: '',
     email: '',
     confirmEmail: '',
     password: '',
     confirmPassword: '',
-  })
+  });
 
   const [errors, setErrors] = useState({
     name: '',
@@ -21,41 +22,60 @@ const Register = () => {
     confirmEmail: '',
     password: '',
     confirmPassword: '',
-  })
+  });
 
   const handleInputChange = (event) => {
-    event.preventDefault()
-    setUserData({ ...userData, [event.target.name]: event.target.value })
+    event.preventDefault();
+    setUserData({ ...userData, [event.target.name]: event.target.value });
     setErrors(
       ValidationRegister({
         ...userData,
         [event.target.name]: event.target.value,
       })
-    )
-  }
+    );
+  };
 
   const handleClick = () => {
     if (Object.keys(errors).length === 0) {
-      dispatch(addUser(userData))
-      alert('Registro exitoso')
-      navigate('/login')
+      dispatch(addUser(userData));
+      navigate('/login');
       setUserData({
         name: '',
         email: '',
         confirmEmail: '',
         password: '',
         confirmPassword: '',
-      })
+      });
     }
-  }
+  };
   return (
     <div>
+      <img
+        src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798064/fondoregistroreal_s6icep.jpg'
+        className={` ${styles.backgroundImage} img-fluid`}
+        alt='...'
+        style={{ width: '33%', marginLeft: '.5%' }}
+      />
+      <img
+        src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798064/fondoregistroreal_s6icep.jpg'
+        className={` ${styles.backgroundImage} img-fluid`}
+        alt='...'
+        style={{ width: '33%' }}
+      />
+      <img
+        src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798064/fondoregistroreal_s6icep.jpg'
+        className={` ${styles.backgroundImage} img-fluid`}
+        alt='...'
+        style={{ width: '33%' }}
+      />
+
       <div
         className='card'
         style={{
-          width: '18rem',
+          width: '55rem',
           position: 'absolute',
           left: '50%',
+          top: '16%',
           transform: 'translateX(-50%)',
         }}
       >
@@ -116,8 +136,10 @@ const Register = () => {
         <br />
         <button onClick={handleClick}>Registrarme</button>
       </div>
-    </div>
-  )
-}
 
-export default Register
+      <Footer />
+    </div>
+  );
+};
+
+export default Register;

@@ -1,0 +1,40 @@
+.containerContact {
+  width: 70%;
+  font-family: 'Kanit', sans-serif;
+}
+
+.submitButton {
+  background-color: var(--quaternary-color-200);
+  border: none;
+}
+.submitButton:hover {
+  background-color: var(--quaternary-color-400);
+}
+
+.mensajeerror {
+  color: red;
+  display: flex;
+  justify-content: end;
+  font-size: 12px;
+  margin-top: 2px;
+}
+.nombredeform {
+  height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+  .containerContact {
+    padding-left: 15%;
+  }
+  .responsiveImage {
+    display: none;
+  }
+  .formColumn {
+    background-color: rgb(250, 247, 230);
+  }
+  .submitButton {
+    background-color: black;
+  }
+}
