@@ -108,7 +108,7 @@ const AdminHospedaje = ({shopId}) => {
   return (
     <section>
       <div>
-        <h1>Admin Hospedaje Claro de Luna</h1>
+        <h1 className='display-6 text-left my-2'>Administrar Hospedaje Claro de Luna</h1>
         <p><span>Galería de imágenes</span>
           <button
             className='btn btn-primary'
@@ -134,7 +134,7 @@ const AdminHospedaje = ({shopId}) => {
         </p>
 
 
-        <div className='collapse' id='agregarImagen'>
+        <div className='collapse show' id='agregarImagen'>
           <div className='card card-body'>
             <form onSubmit={handlerSubmitCreate}>
 
