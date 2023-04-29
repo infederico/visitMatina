@@ -37,9 +37,9 @@ const CardProductContainer = () => {
     return (
             <div>                
                 <div  className={`row row-cols-sm-1 row-cols-md-6 row-cols-lg-4 justify-content-center ${styles.cardsContainer}`}>
-                {currentProducts?.map(prod =>{ // cambie products.map
+                {currentProducts?.map((prod, index) =>{ // cambie products.map
                     return(
-                        <div className="col">
+                        <div key= {index} className="col">
                             <CardProduct 
                                 key= {prod.id}
                                 image= {prod.image}

@@ -54,14 +54,14 @@ const Contact = () => {
 
   return (
     <div>
-      <div class='card mb-3'>
+      <div className='card mb-3'>
         <img
           src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798267/hoviajes-costa-rica_r4zbpm.jpg'
           class='card-img-top'
           alt='...'
         />
         <div
-          class={`card`}
+          className={`card`}
           style={{
             width: '33rem',
             position: 'absolute',
@@ -91,8 +91,8 @@ const Contact = () => {
             >
               Contacto
             </h1>
-            <div class='mb-3'>
-              <label for='exampleFormControlInput1' className='form-label'>
+            <div className='mb-3'>
+              <label htmlFor='exampleFormControlInput1' className='form-label'>
                 Nombre
               </label>
               <br />
@@ -110,7 +110,7 @@ const Contact = () => {
               <br />
             </div>
             <div className='mb-3'>
-              <label for='exampleFormControlInput1' className='form-label'>
+              <label htmlFor='exampleFormControlInput1' className='form-label'>
                 Email
               </label>
               <input
@@ -144,7 +144,10 @@ const Contact = () => {
               </div>
             </div>
             <div className='mb-3'>
-              <label for='exampleFormControlTextarea1' className='form-label'>
+              <label
+                htmlFor='exampleFormControlTextarea1'
+                className='form-label'
+              >
                 Consulta
               </label>
               <textarea
@@ -161,7 +164,7 @@ const Contact = () => {
                 {errors.mensaje ? errors.mensaje : null}
               </div>
               <br />
-              <button class='btn btn-outline-success' onClick={handleClick}>
+              <button className='btn btn-outline-success' onClick={handleClick}>
                 Enviar consulta
               </button>
               {showAlert && (

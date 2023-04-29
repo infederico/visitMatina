@@ -14,7 +14,7 @@ const AdminUsuarios = () => {
       hand: null
     });
 
-    const filterUser = users.filter(user => user.id_user === Number(check.id_user));
+    const filterUser = users?.filter(user => user.id_user === Number(check.id_user));
 
     const[inputs, setInputs] = useState({
       id_user: 0,
@@ -28,7 +28,7 @@ const AdminUsuarios = () => {
         if (upDtRes !== ""){
           dispatch(clnUpDt());
         }
-
+// eslint-disable-next-line
     }, [upDtRes]);
 
     console.log(inputs)
@@ -105,7 +105,7 @@ const AdminUsuarios = () => {
 
 
           
-    {filterUser.map(user => {
+    {filterUser?.map(user => {
         return(  
         <div>
             <table className="table">
@@ -170,7 +170,7 @@ const AdminUsuarios = () => {
     </tr>
   </thead>
   <tbody>
-    {users.map(user => {
+    {users?.map(user => {
         return(
             <tr>
       <input className="form-check-input" type="checkbox"  name="id_user" value={user.id_user} onChange={handlerCheck} id="flexCheckDefault" checked={check.hand}></input>

@@ -29,36 +29,39 @@
 
 .containerFooter{
     width: 100%;
-    height: 300px;
-    border-top:1px var(--quaternary-color-400) solid;
+    height: 150px;
+    /* border-top:1px var(--quaternary-color-400) solid; */
     
     display:flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--quaternary-color-200) ;
+    background-color: var(--quaternary-color-600);
+    font-family: 'Kanit', sans-serif;
 }
    
 .containerIn{
     width: 90%;
     height: 80%;
-   border-right:2px var(--quaternary-color-300) dashed; 
-   border-left:2px var(--quaternary-color-300) dashed; 
+   /* border-right:2px var(--quaternary-color-300) dashed; 
+   border-left:2px var(--quaternary-color-300) dashed;  */
     display:flex;
 }
 .containerLogo{
     width: 25%;
     height: 100%;
-    border-right:2px var(--quaternary-color-300) dashed;
+    /* border-right:2px var(--quaternary-color-300) dashed; */
     display:flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: left;
     align-items: center;
    
 }
 .logo{
     width: 50%;
-    height: 50%;
+    height: 90%;
     object-fit: contain;
-    background: url('../../../assets/images/matina_logo.png');
+    /* background: url('../../../assets/images/matina_logo.png'); */
+    background: url('../../../assets/images/logo-municipalidad-matina.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -78,12 +81,13 @@
 .containerRedes{
     width: 25%;
     height: 100%;
-    border-right:2px var(--quaternary-color-300) dashed;
+    /* border-right:2px var(--quaternary-color-300) dashed; */
     display:flex;
     justify-content: center;
     
     flex-direction: column;
     margin-bottom: 10px;
+    color: var(--quaternary-color-100);
 
 
 }
@@ -101,7 +105,7 @@
 .containerInfo{
     width: 25%;
     height: 100%;
-    border-right:2px var(--quaternary-color-300) dashed; 
+    /* border-right:2px var(--quaternary-color-300) dashed;  */
     display:flex;
     justify-content: center;
     
@@ -119,12 +123,15 @@
 }
 .desarrollo{
     width: 100%;
-    height: 50%;
+    height: 30%;
     /* border:1px black solid; */
     display:flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: column;
+    color: var(--quaternary-color-100);
 }
 .link{
     font-size: 12px;
@@ -132,20 +139,22 @@
     width: 100%;
     text-align: center;
     text-decoration: none;
-    color: black;
+    color: var(--quaternary-color-100);
 }
 .link:hover{
-    font-size: 15px;
-    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--tertiary-color-600);
 }
 
 .titulodesarrollo{
     letter-spacing: 2px;
     font-weight: bold;
-    width: 50%;
+    
     text-align: center;
    /*  border: 1px black solid; */
     display: flex;
+    justify-items: center;
     font-size: 12px;
 }
 .datos{
@@ -154,11 +163,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: var(--quaternary-color-600) ;
 
 }
 .titulo{
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1rem;
+    
     margin-bottom: 10px;
     margin: 0;
     letter-spacing: 4px;
@@ -166,6 +176,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--quaternary-color-100) ;
 }
 .subtitulo{
     font-size: 1rem;
@@ -197,8 +208,9 @@
     margin-bottom: 0;
 }
 .correo{
-    font-size: 1rem;
+    font-size: 1.32rem;
     margin: 0;
+    color: var(--quaternary-color-100) ;
 }
 .horario{
     font-size: 1rem;
@@ -207,11 +219,13 @@
 .matina{
     font-size: 1rem;
     margin: 0;
-    font-weight: bold;
-    letter-spacing: 5px;
+    /* font-weight: bold; */
+    letter-spacing: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    color: var(--quaternary-color-100) ;
 }
 
 @media (max-width: 800px) {
@@ -222,6 +236,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
         
   }
     .containerIn{
@@ -237,7 +252,7 @@
         width: 100%;
         height: 80%;
         border-right: none;
-        border-bottom:2px var(--quaternary-color-300) dashed;
+        /* border-bottom:2px var(--quaternary-color-300) dashed; */
         display:flex;
         justify-content: center;
         align-items: center;
@@ -246,7 +261,7 @@
         width: 100%;
         height: 100%;
         border-right: none;
-        border-bottom:2px var(--quaternary-color-300) dashed;
+        /* border-bottom:2px var(--quaternary-color-300) dashed; */
         display:flex;
         justify-content: center;
         align-items: center;
@@ -257,7 +272,7 @@
         width: 100%;
         height: 100%;
         border-right: none;
-        border-bottom:2px var(--quaternary-color-300) dashed;
+        /* border-bottom:2px var(--quaternary-color-300) dashed; */
         display:flex;
         justify-content: center;
         align-items: center;
@@ -291,7 +306,7 @@
         width: 400px;
         height: 100%;
         
-        border-right:2px var(--quaternary-color-300) dashed;
+        /* border-right:2px var(--quaternary-color-300) dashed; */
         display:flex;
         justify-content: center;
         align-items: center;
@@ -300,8 +315,8 @@
     .matina{
         font-size: 1rem;
         margin: 0;
-        font-weight: bold;
-        letter-spacing: 5px;
+    
+        letter-spacing: 2px;
         display: flex;
         justify-content: center;
         align-items: center;

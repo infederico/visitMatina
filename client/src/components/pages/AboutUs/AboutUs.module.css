@@ -1,12 +1,6 @@
-.backgroundImage {
-  background-image: url('https://res.cloudinary.com/dfnw2l08x/image/upload/v1682796309/fondonosotros_nidtuj.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% 90%;
+.container {
+  background-color: var(--tertiary-color-0);
 }
-.carouselContainer {
-  margin: 0;
-}
-
 .textContainer {
   width: 70%;
   margin: 0px auto;
@@ -32,7 +26,8 @@
   height: 8px;
   transform: skew(-17deg) translateX(-50%);
   background: var(--primary-color-200);
-  z-index: -1;
+  opacity: 0.6;
+  z-index: 0;
 }
 .textContainer p {
   text-indent: 10px;
