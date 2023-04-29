@@ -61,10 +61,22 @@ const ReviewThread = (props) => {
     }, [successMessageComment])
 
     useEffect(() => {
+
         setNewComment((prevState) => ({
           ...prevState,
           description: commentLocalStorage.description,
         }))
+
+        return () => {
+            setTimeout( () => {
+              setCommentLocalStorage({
+                ...commentLocalStorage,
+                description: '',
+              });
+              //console.log('holi soy el time out');
+            }, 15 * 60 * 1000);
+          }
+
       }, [])
  
     // handlers 
@@ -171,9 +183,9 @@ const ReviewThread = (props) => {
                             value={newComment.description}
                         ></textarea>
                         {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
-                        { incompleteFormAlert && <div class="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>Por favor escribe un comentario</div> }
-                        { successMessageComment && <div class="alert alert-success d-flex align-items-center" role="alert" style={{ height: "12px" }}>Tu comentario se ha registrado con éxito</div> }
-                        { backendError && <div class="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>{`No se ha registrado tu comentario. Server Error ${backendError}`}</div> }
+                        { incompleteFormAlert && <div className="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>Por favor escribe un comentario</div> }
+                        { successMessageComment && <div className="alert alert-success d-flex align-items-center" role="alert" style={{ height: "12px" }}>Tu comentario se ha registrado con éxito</div> }
+                        { backendError && <div className="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>{`No se ha registrado tu comentario. Server Error ${backendError}`}</div> }
                     </div>
                     <div>
                         <button  className={styles.submitButton} type="submit">Enviar</button>
@@ -203,7 +215,7 @@ const ReviewThread = (props) => {
             </div>
 
             <div className={styles.closeButton}>
-                <button type="button" class="btn-close" aria-label="Close" onClick={handleClose}></button>
+                <button type="button" className="btn-close" aria-label="Close" onClick={handleClose}></button>
             </div>
         </div>
     );
