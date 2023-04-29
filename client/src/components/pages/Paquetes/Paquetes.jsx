@@ -22,9 +22,12 @@ export default function Paquetes() {
     return(
         <div className={styles.container}>  
             <section className={styles.titleSection}>
-                { <CardShop/> && <CardShop name={shopData.name} image={shopData.image} />}
+                { <CardShop/> && <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} style={{}}/>}
             </section>
-            <section>
+            <section className={styles.cardTitleContainer}>
+                <h4 className={styles.cardTitle}>Disfrutá de momentos inolvidables junto a tus seres queridos con nuestras opciones a medida</h4>
+            </section>
+            <section className={styles.cardContainer}>
                 <CardProductContainer2/>  
             </section>
             <section>
