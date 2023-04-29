@@ -100,7 +100,7 @@ const AdminUsuarios = () => {
     return(
         <section>
             <div>
-                <h1>AdminUsuarios</h1>
+                <h1 className='display-6 text-left my-2'>Administar Usuarios</h1>
             </div>
 
 

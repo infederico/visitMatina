@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import styles from './parcela.module.css';
 import { useDispatch } from 'react-redux';
-import { deleteProduct, updateProduct } from '../../../../redux/productActions';
+import { deleteProductLeo, updateProductLeo } from '../../../../redux/productActions';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { deleteReview } from '../../../../redux/reviewsActions';
 
 const CardParcela = (props) => {
+ 
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     review_id: '',
@@ -18,6 +19,7 @@ const CardParcela = (props) => {
     user_id: '',
     rating: '',
     approved: '',
+    active: '',
   });
 
   const handleInput = (event) => {
@@ -40,17 +42,27 @@ const CardParcela = (props) => {
       user_id: props.user_id ? props.user_id : null,
       rating: props.ratind ? props.rating : null,
       approved: props.approved ? props.approved : null,
+      active: props.active ? props.active : null,
     });
   };
 
-  const handleDelete = (event) => {
+/*   const handleDelete = (event) => {
     event.preventDefault();
     if (input.id_product) {
       dispatch(deleteProduct(input.id_product));
     } else {
       dispatch(deleteReview(input));
     }
+  }; */
+
+  const handleDeleteProduct = (event) => {
+      dispatch(deleteProductLeo(event.target.value));
   };
+
+  const handleDeleteReview = (event) => {
+    dispatch(deleteReview(event.target.value));
+  };
+
 
   const handleFile = async (event) => {
     if (event.target.files[0]) {
@@ -64,7 +76,7 @@ const CardParcela = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(updateProduct(input));
+    dispatch(updateProductLeo(input));
     setInput({
       name: '',
       description: '',
@@ -82,46 +94,69 @@ const CardParcela = (props) => {
     <section>
       <div className={`card mb-3`} style={{ width: '540px' }}>
         <div className={`row g-0`}>
-          <div className={`col-md-4`}>
+          {props.image ? <div className={`col-md-4`}>
             <img
               src={props.image}
               className={`${styles.image} img-fluid rounded-start`}
               alt='...'
             />
-          </div>
+          </div>: null}
           <div className={`col-md-8`}>
             <div className={`card-body`}>
-              <h5 className={`card-title`}>{props.title}</h5>
-              <p className={`card-text`}>{props.summary}</p>
+              <h5 className={`card-title`}>{props.name}</h5>
+              <p className={`card-text`}>{props.description}</p>
+              <p className={`card-text`}>{props.price}</p>
+              {props.rating && <p>Rating: {props.rating} estrellas</p>}
               <div className={styles.divButtons}>
-                <button
+                {props.id_product ? <button
                   className={`btn btn-primary`}
                   name='id_post'
                   value={props.id_post}
                   onClick={handleButton}
                 >
                   Cargar Datos
-                </button>
+                </button>:null}
 
-                {props.active === true ? (
+
+                {props.id_product ? props.active === true ? (
                   <button
                     className={`btn btn-primary`}
-                    name={props.title}
-                    value={props.id_post}
-                    onClick={handleDelete}
+                    name={props.name}
+                    value={props.id_product}
+                    onClick={handleDeleteProduct}
                   >
                     Eliminar
                   </button>
                 ) : (
                   <button
                     className={`btn btn-primary`}
-                    name={props.title}
-                    value={props.id_post}
-                    onClick={handleDelete}
+                    name={props.name}
+                    value={props.id_product}
+                    onClick={handleDeleteProduct}
                   >
                     Activar
                   </button>
-                )}
+                ):null}
+
+                {props.review_id ? props.active === true ? (
+                  <button
+                    className={`btn btn-primary`}
+                    value={props.review_id}
+                    onClick={handleDeleteReview}
+                  >
+                    Eliminar
+                  </button>
+                ) : (
+                  <button
+                    className={`btn btn-primary`}
+                    value={props.review_id}
+                    onClick={handleDeleteReview}
+                  >
+                    Activar
+                  </button>
+                ):null}
+
+                
                 {props.active === true ? (
                   <p className={`${styles.txtButtonG} `}>Active</p>
                 ) : (
@@ -133,10 +168,8 @@ const CardParcela = (props) => {
         </div>
       </div>
 
-      <div className='card card-body'>
-        <form onSubmit={handleSubmit}>
-          <div></div>
-          <div>{props.rating}</div>
+      {props.id_product ?<form onSubmit={handleSubmit}>
+        <div className='card card-body'>
           <div className='row mb-3'>
             <label for='inputEmail3' className='col-sm-2 col-form-label'>
               Nombre
@@ -169,8 +202,7 @@ const CardParcela = (props) => {
               </div>
             </div>
           ) : null}
-
-          <div className='row mb-3'>
+          {props.id_product ? <div className='row mb-3'>
             <label for='inputPassword3' className='col-sm-2 col-form-label'>
               Descripcion
             </label>
@@ -184,7 +216,7 @@ const CardParcela = (props) => {
                 onChange={handleInput}
               ></textarea>
             </div>
-          </div>
+          </div>:null}
           {props.image ? (
             <div className='row mb-3'>
               <label for='inputPassword3' className='col-sm-2 col-form-label'>
@@ -206,8 +238,8 @@ const CardParcela = (props) => {
               Modificar
             </button>
           ) : null}
-        </form>
-      </div>
+        </div>
+      </form>: null}
     </section>
   );
 };

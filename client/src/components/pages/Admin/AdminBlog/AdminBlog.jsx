@@ -89,7 +89,7 @@ const AdminBlog = () => {
   return (
     <section>
       <div>
-        <h1>Admin Blog</h1>
+        <h1 className='display-6 text-left my-2'>Administrar Blog</h1>
         <p>
           <button
             className='btn btn-primary'
@@ -112,7 +112,7 @@ const AdminBlog = () => {
             Modificar Post
           </button>
         </p>
-        <div className='collapse' id='collapseExample'>
+        <div className='collapse show' id='collapseExample'>
           <div className='card card-body'>
             <form onSubmit={handlerSubmitCreate}>
               <div>

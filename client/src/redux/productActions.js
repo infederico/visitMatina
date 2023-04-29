@@ -7,6 +7,8 @@ import {
   clnDelProduct,
   clnUpdtProduct,
   clnPstProduct,
+  updateLeo,
+  delProductLeo
 } from './productSlice';
 
 export const getProductsByShopId = (shopId) => {
@@ -42,11 +44,33 @@ export const updateProduct = (input) => {
   };
 };
 
+export const updateProductLeo = (input) => {
+  return async (dispatch) => {
+    try {
+      const product = await axios.put(`/product/`, input);
+      dispatch(updateLeo(product.data.success));
+    } catch (error) {
+      window.alert(error.response.data.error);
+    }
+  };
+};
+
 export const deleteProduct = (id) => {
   return async (dispatch) => {
     try {
       const product = await axios.delete(`/product/${id}`);
       dispatch(delProduct(product.data.success));
+    } catch (error) {
+      window.alert(error.response.data.error);
+    }
+  };
+};
+
+export const deleteProductLeo = (id) => {
+  return async (dispatch) => {
+    try {
+      const product = await axios.delete(`/product/${id}`);
+      dispatch(delProductLeo(product.data.success));
     } catch (error) {
       window.alert(error.response.data.error);
     }

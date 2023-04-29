@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import styles from './mandira.module.css';
+import styles from './aventuras.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteProductLeo, updateProductLeo } from '../../../../redux/productActions';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { deleteReview } from '../../../../redux/reviewsActions';
 
-const CardMandira = (props) => {
+const CardAventuras = (props) => {
 
   const dispatch = useDispatch();
   const [input, setInput] = useState({
@@ -244,4 +244,4 @@ const CardMandira = (props) => {
   );
 };
 
-export default CardMandira;
+export default CardAventuras;
