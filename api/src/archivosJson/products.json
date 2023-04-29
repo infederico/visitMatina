@@ -106,24 +106,24 @@
         "shop_id": 4
     },
     {
-        "name": "Tour de 1 dia",
-        "description":"la bebida de los hogares argentinos",
+        "name": "One day trip",
+        "description":"Tour Garza tigre en la Barra de Matina. Tour en Finca Santuario Mandira Tour en Finca Integral La Parcela",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682738601/AC4_sprtlz.jpg",
         "shop_id": 2
     },
     {
-        "name": "Tour de 2 dias y 1 noches",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Aventura de dos dias",
+        "description":"Tour Garza tigre en la Barra de Matina + Tour en Finca Integral La Parcela.Tour Garza tigre en la Barra de Matina + Tour en Finca Santuario Mandira.Tour en kayak Goshen Barra del Pacuare.",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682738220/AC12_uebbxn.jpg",
         "shop_id": 2
     },
     {
-        "name": "Tour de 3 dias y 2 noches",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Aventura de tres dias",
+        "description":"Tour Garza tigre en la Barra de Matina + Tour en Finca Integral La Parcela + Tour en Finca Santuario Mandira.",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682738603/IMG-20230412-WA0093_lwfzvp.jpg",
         "shop_id": 2
     },
     {

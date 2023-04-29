@@ -5,7 +5,7 @@ import styles from './AboutUs.module.css'
 
 export default function AboutUs() {
     return(
-        <div>    
+        <div className={styles.container}>    
             <section className={styles.carouselContainer}>
                 <Carousel />
             </section>
