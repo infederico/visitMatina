@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, authGoogle } from '../../../redux/userActions';
 import style from './login.module.css';
+import Footer from '../../common/Footer/Footer';
 
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -94,86 +95,97 @@ const LogIn = () => {
   };
 
   return (
-    <div className={style.containerContact}>
-      <img
-        src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798177/fondologin_irxhjq.jpg'
-        alt='Imagen'
-        className={style.responsiveImage}
-      />
-      <div className={style.formColumn}>
-        <h1 className='text-center'>Bienvenido</h1>
-        <div id='signInDiv'></div>
-        <hr />
-        <div className='mb-3'>
-          <label htmlFor='formGroupExampleInput' className='form-label'>
-            Email
-          </label>
-          <input
-            autoComplete='off'
-            type='text'
-            className='form-control border-0 border-bottom'
-            id='formGroupExampleInput'
-            placeholder='ingrese su email'
-            name='email'
-            value={userData.email}
-            onChange={handleInputChange}
-          />
-          <br />
-          {errors.email ? errors.email : null}
-          <br />
-        </div>
-        <div>
-          <label htmlFor='formGroupExampleInput2' className='form-label'>
-            Contrasena
-          </label>
-          <input
-            autoComplete='off'
-            type='password'
-            className='form-control border-0 border-bottom'
-            id='formGroupExampleInput2'
-            placeholder='ingrese su contrasena'
-            name='password'
-            value={userData.password}
-            onChange={handleInputChange}
-            onKeyDown={(event) => handleKeyDown(event)}
-          />
-          <br />
-          {errors.password ? errors.password : null}
-          <br />
-        </div>
-        <label className='form-check-label' htmlFor='autoSizingCheck'>
-          <input
-            className='form-check-input form-control border-10 border-bottom'
-            type='checkbox'
-            checked={rememberButton}
-            id='autoSizingCheck'
-            onChange={handleChecked}
-          />
-          Recordarme
-        </label>
-        <br />
-        <br />
-        <button
-          className={`btn btn-dark ${style.submitButton}`}
-          style={{ width: '22rem' }}
-          onClick={handleClick}
-          disabled={errors.email || errors.password ? true : false}
-        >
-          Ingresar
-        </button>
-        <br />
+    <div>
+      <div className={`${style.containerContact} card-body p-4`}>
+        <img
+          src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798177/fondologin_irxhjq.jpg'
+          alt='Imagen'
+          className={`${style.responsiveImage} img-fluid`}
+        />
+        <div className='card-body p-4'>
+          <div className={`card ${style.formColumn}`}>
+            <h2 className={`text-center mb-4 `}>Bienvenido</h2>
+            <form>
+              <div className='form-group' id='signInDiv'></div>
+              <div className='form-group'>
+                <label htmlFor='email' className='form-label text-center'>
+                  Email
+                </label>
+                <input
+                  autoComplete='off'
+                  type='email'
+                  className='form-control border-0 border-bottom'
+                  id='email'
+                  placeholder='ingrese su email'
+                  name='email'
+                  value={userData.email}
+                  onChange={handleInputChange}
+                />
+                <br />
+                {errors.email ? errors.email : null}
+                <br />
+              </div>
+              <div className='form-group'>
+                <label htmlFor='password' className='form-label'>
+                  Contrasena
+                </label>
+                <input
+                  autoComplete='off'
+                  type='password'
+                  className='form-control border-0 border-bottom'
+                  id='formGroupExampleInput2'
+                  placeholder='ingrese su contrasena'
+                  name='password'
+                  value={userData.password}
+                  onChange={handleInputChange}
+                  onKeyDown={(event) => handleKeyDown(event)}
+                />
+                <br />
+                {errors.password ? errors.password : null}
+                <br />
+              </div>
+              <label className='form-check-label' htmlFor='autoSizingCheck'>
+                <input
+                  className='form-check-input form-control border-10 border-bottom'
+                  type='checkbox'
+                  checked={rememberButton}
+                  id='autoSizingCheck'
+                  onChange={handleChecked}
+                />
+                Recordarme
+              </label>
+              <br />
+              <br />
+              <button
+                className={`btn btn-dark  ${style.submitButton}`}
+                style={{ width: '22rem' }}
+                onClick={handleClick}
+                disabled={errors.email || errors.password ? true : false}
+              >
+                Ingresar
+              </button>
+              <br />
 
-        <br />
+              <br />
 
-        <Link to='/register'>
-          <button
-            className={`btn btn-dark ${style.submitButton}`}
-            style={{ width: '22rem' }}
-          >
-            No tienes cuenta? Registrate
-          </button>
-        </Link>
+              <Link to='/register'>
+                <button
+                  className={`btn btn-dark ${style.submitButton}`}
+                  style={{ width: '22rem' }}
+                >
+                  No tienes cuenta? Registrate
+                </button>
+              </Link>
+            </form>
+          </div>
+        </div>
+        <img
+          src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798177/fondologin_irxhjq.jpg'
+          alt='Imagen'
+          className={`${style.responsiveImage} img-fluid`}
+        />
       </div>
+      <Footer />
     </div>
   );
 };
