@@ -74,8 +74,8 @@ const ReviewForm = (props) => {
           rating: 0,
           description: '',
         });
-        console.log('holi soy el time out');
-      }, 1 * 60 * 1000);
+        //console.log('holi soy el time out');
+      }, 15 * 60 * 1000);
     }
 
   }, []);
