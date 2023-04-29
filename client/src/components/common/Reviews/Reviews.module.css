@@ -1,33 +1,10 @@
-
-/*
-.generalCalifImg {
-    text-align: center;
-    margin-left: 110px;
-}
-.reviewContainer{
-    background-color: var(--quaternary-color-200);
-}
-.reviewThread{
-    max-height: fit-content;
-    background-color: var(--neutral-color-100);
-}
-.reviewThread .form{
-    max-height: fit-content;
-    background-color: var(--neutral-color-100);
-} */
-
-/* font-family: 'Lora', serif; */
-
-/* font-family: 'Marcellus', serif; */
-/* font-family: 'Vollkorn', serif; */
-/* font-family: 'Kanit', sans-serif; */
-
 .reviewsContainer {
     /* height: 640px; */
     height: 100vh;
     width: 100%;
     background-color: var(--quaternary-color-0);
     /* background-image: url('../../../assets/images/fondo\ reviews\ prueba-01.jpg'); */
+    background-size: cover;
     font-family: 'Kanit', sans-serif;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -40,6 +17,7 @@
     width: 100%;
     background-color: var(--quaternary-color-0);
     /* background-image: url('../../../assets/images/fondo\ reviews\ prueba-01.jpg'); */
+    background-size: cover;
     font-family: 'Kanit', sans-serif;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -145,7 +123,7 @@
 }
 .paginationButton {
     /* background-color: blue; */
-    width: 5%;
+    width: 3%;
     height: 97%;
     scale: 30%;
 }

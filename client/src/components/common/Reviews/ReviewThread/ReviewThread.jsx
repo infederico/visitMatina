@@ -68,7 +68,7 @@ const ReviewThread = (props) => {
       }, [])
  
     // handlers 
-    const handleClick = () => {
+    const handleClose = () => {
         dispatch(setShowCommentPanel(false));
     };
 
@@ -161,7 +161,7 @@ const ReviewThread = (props) => {
             <div className={styles.commentForm}>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <label for="exampleFormControlTextarea1" className="form-label">{`Comenta la reseña de ${author}`}</label>
+                        <label htmlFor="exampleFormControlTextarea1" className="form-label">{`Comenta la reseña de ${author}`}</label>
                         <textarea
                             name="description"
                             className="form-control"
@@ -203,7 +203,7 @@ const ReviewThread = (props) => {
             </div>
 
             <div className={styles.closeButton}>
-                <button type="button" class="btn-close" aria-label="Close" onClick={handleClick}></button>
+                <button type="button" class="btn-close" aria-label="Close" onClick={handleClose}></button>
             </div>
         </div>
     );

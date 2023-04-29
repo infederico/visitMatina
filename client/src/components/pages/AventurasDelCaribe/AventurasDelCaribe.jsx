@@ -10,6 +10,7 @@ import CardShop from '../../common/shopsDos/cardShop/CardShop';
 import Reviews from '../../common/Reviews/Reviews';
 import Redes from '../../common/redesSociales/redes/Redes';
 import Footer from '../../common/Footer/Footer';
+import WhatsApp from '../../common/WhatsApp/WhatsApp';
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
 import { arrayRedes } from './arrayRedes'
@@ -63,10 +64,6 @@ return (
         </div>
       </div>
       <section>
-        <div className='container'>
-          <h4>Nuestros clientes</h4>
-          <span>conoce la opinión de nuestros clientes</span>
-        </div>
         { shopId && <Reviews shopId={shopId}/> }
       </section>
       
@@ -74,8 +71,12 @@ return (
         {/* <ShopContact /> */}
       </section>
       <section>
-        <Footer socialmedia={arrayRedes} />
+        <Footer />
       </section>
+      {shopData?.whatsapp && 
+      <div>
+        <WhatsApp/>
+      </div>}
     </div>
   )
 }

@@ -42,7 +42,7 @@ const Admin = () => {
                   data-bs-toggle='collapse'
                   data-bs-target='#navbarSupportedContent'
                   aria-controls='navbarSupportedContent'
-                  aria-expanded='false'
+                  aria-expanded='false' 
                   aria-label='Toggle navigation'
                 >
                   <span className='navbar-toggler-icon'></span>
@@ -155,7 +155,7 @@ const Admin = () => {
           <section>
             {option.hospedaje === true ? (
               <div>
-                <AdminHospedaje></AdminHospedaje>
+                <AdminHospedaje  shopId={8}></AdminHospedaje>
               </div>
             ) : (
               <div></div>
@@ -164,7 +164,7 @@ const Admin = () => {
           <section>
             {option.restaurant === true ? (
               <div>
-                <AdminRestaurant></AdminRestaurant>
+                <AdminRestaurant shopId={7}></AdminRestaurant>
               </div>
             ) : (
               <div></div>

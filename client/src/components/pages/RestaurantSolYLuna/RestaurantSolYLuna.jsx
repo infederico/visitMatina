@@ -14,12 +14,11 @@ import Footer from '../../common/Footer/Footer';
 //importamos el array que simula los datos que llegan del back-componente redes sociales
 import { arrayRedes } from './arrayRedes';
 
-//importamos elementos que simula los datos que llegan del estado global
-import { descriptions, name, imagen } from './descriptions';
 import CardProductContainer from '../../common/CardProductContainer/CardProductContainer';
 import CardProductContainer2 from '../../common/CardProductContainer2/CardProductContainer2';
 import ShopContact from '../Contact/ShopContact';
 import CardGalleryContainer from '../../common/CardGalleryContainer/CardGalleryContainer';
+import WhatsApp from '../../common/WhatsApp/WhatsApp';
 
 export default function RestauranteSolYLuna() {
   const shopId = useSelector((state) => state.shops.shopId);
@@ -35,9 +34,6 @@ export default function RestauranteSolYLuna() {
       dispatch(resetShopData({}));
     };
   }, []);
-
-  let DB = require('./imagenes.json');
-  DB = DB.response;
 
   return (
     <div className={style.page}>
@@ -64,8 +60,12 @@ export default function RestauranteSolYLuna() {
         <ShopContact />
       </section>
       <section>
-        <Footer socialmedia={arrayRedes} />
+        <Footer  />
       </section>
+      {shopData?.whatsapp && 
+      <div>
+        <WhatsApp/>
+      </div>}
     </div>
   );
 }
