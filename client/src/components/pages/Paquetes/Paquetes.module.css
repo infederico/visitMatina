@@ -29,16 +29,16 @@
     align-items: center;
     background-image: url(../../../assets/images/concrete-wall-2.png);
 
+
 }
 .cardTitleContainer{
     height: auto;
 }
 .cardTitle{
-    padding: 7% 17%;
+    padding: 5% 17%;
     font-family: 'Roboto', sans-serif;    font-size: 27px;
     font-weight: 100;
     text-align: center;
-    text-shadow: 10px 1px 50px rgba(140, 140, 140, 0.607);
     position: relative;
     margin: 0;
 
@@ -55,4 +55,14 @@
     background: var(--primary-color-200);
     opacity: .6;
     z-index: 0;
+  }
+
+  hr{
+    height: 2px;
+    background-color:    var(--neutral-color-300) ;
+    opacity: 1;
+    width: 250px;
+    margin: auto;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
   }

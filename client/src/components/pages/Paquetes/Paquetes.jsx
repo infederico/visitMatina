@@ -25,7 +25,9 @@ export default function Paquetes() {
                 { <CardShop/> && <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} style={{}}/>}
             </section>
             <section className={styles.cardTitleContainer}>
+                <hr />
                 <h4 className={styles.cardTitle}>Disfrutá de momentos inolvidables junto a tus seres queridos con nuestras opciones a medida</h4>
+                <hr />
             </section>
             <section className={styles.cardContainer}>
                 <CardProductContainer2/>  
