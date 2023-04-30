@@ -42,7 +42,7 @@ const reviewsSlice = createSlice({
     cleanUpdateReview: (state, action) => {
       
       if(state.resUpdtReview !== ""){
-        window.alert(state.resUpdtReview)
+        //window.alert(state.resUpdtReview)
       }
       state.resUpdtReview = "";
     },
