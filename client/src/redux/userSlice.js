@@ -8,7 +8,7 @@ const userSlice = createSlice({
     upDtRes: '',
   },
   reducers: {
-    getUserById: (state, action) => {
+    getUserByEmail: (state, action) => {
       return {
         ...state,
         user: {
@@ -59,7 +59,7 @@ const userSlice = createSlice({
 });
 
 export const {
-  getUserById,
+  getUserByEmail,
   postUser,
   gUSer,
   logOutUser,
