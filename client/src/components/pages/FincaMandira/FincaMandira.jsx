@@ -11,6 +11,7 @@ import style from './FincaMandira.module.css'
 import CardShop from '../../common/shopsDos/cardShop/CardShop'
 import Reviews from '../../common/Reviews/Reviews';
 import Footer from '../../common/Footer/Footer';
+import WhatsApp from '../../common/WhatsApp/WhatsApp';
 
 
 
@@ -40,14 +41,6 @@ export default function FincaMandira() {
 
 
 
-  // useEffect( () => {
-  //   dispatch(getShops(location.pathname));
-  // }, []);
-  // useEffect( () => {
-  //   const shopFiltered = shops.filter(shop => shop.path === location.pathname);
-  //   if (shopFiltered.at(0)) setShopId(shopFiltered[0]['id_shop']);
-  // }, [shops]);
-
   return (
     <div className={style.page}>
       <section className={style.titleSection}>
@@ -66,9 +59,6 @@ export default function FincaMandira() {
         </div>
       </div>
       <section>
-        <div className='container text-center'>
-          <h4>Nuestros clientes</h4>
-        </div>
         { shopId && <Reviews shopId={shopId}/> }
       </section>
       
@@ -76,8 +66,12 @@ export default function FincaMandira() {
         <ShopContact />
       </section>
       <section>
-        <Footer socialmedia={arrayRedes}/>
+        <Footer/>
       </section>
+      {shopData?.whatsapp && 
+      <div>
+        <WhatsApp/>
+      </div>}
     </div>
   )
 }

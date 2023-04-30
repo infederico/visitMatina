@@ -37,7 +37,7 @@ const AdminUsuarios = () => {
         if (upDtRes !== ""){
           dispatch(clnUpDt());
         }
-
+// eslint-disable-next-line
     }, [upDtRes]);
 
     console.log(inputs)
@@ -112,7 +112,7 @@ const AdminUsuarios = () => {
     return(
         <section>
             <div>
-                <h1>AdminUsuarios</h1>
+            <h1 className='display-6 text-left my-2'>Administar Usuarios</h1>
                 {showAlert && (
                   <AlertContact
                     message={alertMessage}
@@ -120,6 +120,7 @@ const AdminUsuarios = () => {
                     show={showAlert}
                   />
                 )}
+                
             </div>
 
 

@@ -5,18 +5,31 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CardImageAdmin from './CardImageAdmin/CardImageAdmin';
 import validate from './validate';
-
+import AlertContact from '../../Contact/AlertContact';
+import CardRestaurant from './CardRestaurant';
 
 import {
   getProductsByShopId,
   postProduct,
 } from '../../../../redux/productActions';
+import {
+  cleanResPost,
+  cleanResUpd,
+  cleanResDel,
+} from '../../../../redux/productSlice';
+
+import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
 
 
 const AdminRestaurant = ({shopId}) => {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.product.product);
     const resPostProduct = useSelector((state) => state.product.resPostProduct);
+    const resUpdProduct = useSelector((state) => state.product.resUpdProduct);
+    const resDelProduct = useSelector((state) => state.product.resDelProduct);
+
+    const reviews = useSelector((state) => state.reviews.value);
+    const {resUpdtReview} = useSelector((state) => state.reviews);
 
     const [newImage, setNewImage] = useState({
         name: 'imagen de galería',
@@ -25,12 +38,28 @@ const AdminRestaurant = ({shopId}) => {
         image: '',
         shop_id: shopId,
     });
-    const [submitted, setSubmitted] = useState(false)
-    const [errors, setErrors] = useState({})
+    const [ submitted, setSubmitted ] = useState(false)
+    const [ errors, setErrors ] = useState({})
+    const [ showAlert, setShowAlert ] = useState(false)
+    const [ alertMessage, setAlertMessage ] = useState('')
 
   useEffect(() => {
     dispatch(getProductsByShopId(shopId));
-  }, [resPostProduct]);
+
+    if (resPostProduct !== '') { dispatch(cleanResPost()) }
+    if (resUpdProduct !== '') { dispatch(cleanResUpd()) }
+    if (resDelProduct !== '') { dispatch(cleanResDel()) }
+  // eslint-disable-next-line
+  }, [ resPostProduct, resUpdProduct, resDelProduct ]);
+
+  useEffect(() => {
+
+    dispatch(getAllApprovedReviewsByShopId(shopId));
+    if (resUpdtReview !== ""){
+      dispatch(clnResUpdtReview())
+    }
+
+  }, [resUpdtReview]);
 
     const handlerInputs = (event) => {
         setNewImage({
@@ -67,9 +96,13 @@ const AdminRestaurant = ({shopId}) => {
                 image: '',
                 id_shop: shopId,
             });
-            window.alert('Imagen agregada exitosamente');
+            setShowAlert(true)
+            setAlertMessage('Imagen agregada exitosamente')
+            //window.alert('Imagen agregada exitosamente');
         } else {
-            window.alert('Completa todos los campos');
+            setShowAlert(true)
+            setAlertMessage('Completa todos los campos')
+            //window.alert('Completa todos los campos');
         }
     };
 
@@ -83,10 +116,14 @@ const AdminRestaurant = ({shopId}) => {
     }
   };
 
+  const handleOnClose = () => {
+    setShowAlert(false)
+  };
+
   return (
     <section>
       <div>
-        <h1>Admin Restaurant Sol y Luna</h1>
+        <h1 className='display-6 text-left my-2'>Administrar Restaurant Sol y Luna</h1>
         <p><span>Galería de imágenes</span>
           <button
             className='btn btn-primary'
@@ -98,6 +135,7 @@ const AdminRestaurant = ({shopId}) => {
           >
            Nueva imagen
           </button>
+          { showAlert && (<AlertContact show={showAlert} message={alertMessage} onClose={handleOnClose} />) }
           <button
             className='btn btn-primary'
             type='button'
@@ -108,10 +146,20 @@ const AdminRestaurant = ({shopId}) => {
           >
             Modificar imagen
           </button>
+          <button
+            className='btn btn-primary'
+            type='button'
+            data-bs-toggle='collapse'
+            data-bs-target='#collapseExample3'
+            aria-expanded='false'
+            aria-controls='collapseExample2'
+          >
+            Control de reviews
+          </button>
         </p>
 
 
-        <div className='collapse' id='agregarImagen'>
+        <div className='collapse show' id='agregarImagen'>
           <div className='card card-body'>
             <form onSubmit={handlerSubmitCreate}>
 
@@ -164,7 +212,7 @@ const AdminRestaurant = ({shopId}) => {
 
         <div className='collapse' id='modificarImagen'>
           <div className='card card-body'>
-            <h3>Modificar Imagen</h3>
+            <h3>Modificar imagen de tu galería</h3>
           </div>
           <div className={styles.divCardsBlog}>
             {products?.map((imagen) => {
@@ -182,6 +230,29 @@ const AdminRestaurant = ({shopId}) => {
           </div>
         </div>
       </div>
+
+      <div className='collapse' id='collapseExample3'>
+            <div className='card card-body'>
+              <h3>Control de Reviews</h3>
+            </div>
+            <div className={styles.divCardsBlog}>
+              {reviews.map((item) => {
+                return (
+                  <CardRestaurant
+                    key={item.description}
+                    review_id={item.review_id ? item.review_id : null}
+                    name={item.user.name ? item.user.name : null}
+                    description={item.description ? item.description : null}
+                    image={item.user.image ? item.user.image : null}
+                    shop_id={item.shop_id ? item.shop_id : null}
+                    rating={item.rating ? item.rating : null}
+                    active={item.active ? item.active : null}
+                    approved={item.active ? item.active : null}
+                  />
+                );
+              })}
+            </div>
+          </div>
     </section>
   );
 };

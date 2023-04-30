@@ -42,9 +42,12 @@ const ReviewThread = (props) => {
     const navigate = useNavigate();
 
     useEffect( () => {
-        let filteredByReviewId = reviews.filter( (review) => review.review_id === selectedReview);
-        let comments = filteredByReviewId.at(0).respuestas;
-        setCommentsToRender(comments);
+        let filteredByReviewId = reviews.filter( (review) => review.review_id === selectedReview)
+        let comments = []
+        if (filteredByReviewId.at(0).active) {
+            comments = filteredByReviewId.at(0).respuestas
+        }
+        setCommentsToRender(comments)
     }, [reviews, selectedReview, successMessageComment]);
 
     useEffect( () => {
@@ -61,10 +64,22 @@ const ReviewThread = (props) => {
     }, [successMessageComment])
 
     useEffect(() => {
+
         setNewComment((prevState) => ({
           ...prevState,
           description: commentLocalStorage.description,
         }))
+
+        return () => {
+            setTimeout( () => {
+              setCommentLocalStorage({
+                ...commentLocalStorage,
+                description: '',
+              });
+              //console.log('holi soy el time out');
+            }, 15 * 60 * 1000);
+          }
+
       }, [])
  
     // handlers 
@@ -155,13 +170,14 @@ const ReviewThread = (props) => {
 
     // helpers
     let author = reviews.filter(review => review.review_id === selectedReview).at(0).user.name;
-    
+    let active = reviews.filter(review => review.review_id === selectedReview).at(0).active;
     return (
         <div className={styles.threadContainer}>
+            { active &&
             <div className={styles.commentForm}>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <label for="exampleFormControlTextarea1" className="form-label">{`Comenta la reseña de ${author}`}</label>
+                        <label htmlFor="exampleFormControlTextarea1" className="form-label">{`Comenta la reseña de ${author}`}</label>
                         <textarea
                             name="description"
                             className="form-control"
@@ -171,15 +187,16 @@ const ReviewThread = (props) => {
                             value={newComment.description}
                         ></textarea>
                         {errors.description2 && <span className={styles.errors} >{errors.description2}</span>}
-                        { incompleteFormAlert && <div class="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>Por favor escribe un comentario</div> }
-                        { successMessageComment && <div class="alert alert-success d-flex align-items-center" role="alert" style={{ height: "12px" }}>Tu comentario se ha registrado con éxito</div> }
-                        { backendError && <div class="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>{`No se ha registrado tu comentario. Server Error ${backendError}`}</div> }
+                        { incompleteFormAlert && <div className="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>Por favor escribe un comentario</div> }
+                        { successMessageComment && <div className="alert alert-success d-flex align-items-center" role="alert" style={{ height: "12px" }}>Tu comentario se ha registrado con éxito</div> }
+                        { backendError && <div className="alert alert-warning d-flex align-items-center" role="alert" style={{ height: "12px" }}>{`No se ha registrado tu comentario. Server Error ${backendError}`}</div> }
                     </div>
                     <div>
                         <button  className={styles.submitButton} type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
+            }
 
             <div className={styles.commentPanel}>
                 {
@@ -203,7 +220,7 @@ const ReviewThread = (props) => {
             </div>
 
             <div className={styles.closeButton}>
-                <button type="button" class="btn-close" aria-label="Close" onClick={handleClose}></button>
+                <button type="button" className="btn-close" aria-label="Close" onClick={handleClose}></button>
             </div>
         </div>
     );

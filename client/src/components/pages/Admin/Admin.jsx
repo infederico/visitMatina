@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import AdminAventuras from './AdminAventuras/AdminAventuras';
+import AdminArtesanias from './AdminArtesanias/AdminArtesanias';
 import AdminBlog from './AdminBlog/AdminBlog';
 import AdminHospedaje from './AdminHospedaje/AdminHospedaje';
 import AdminHospedajeMandira from './AdminMandira/AdminHospedajeMandira';
@@ -14,6 +15,22 @@ const Admin = () => {
   const loggedUser = useSelector((state) => state.user.user);
   const [option, setOption] = useState({
     aventuras: false,
+    artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: false,
+    shops: false,
+    usuarios: true,
+  });
+
+  const handlerButton = (event) => {
+    switch ([event.target.name]) {
+      case "aventuras":
+        setOption({
+          aventuras: true,
+          artesanias: false,
     blog: false,
     hospedaje: false,
     hospedajeMandira: false,
@@ -21,9 +38,119 @@ const Admin = () => {
     restaurant: false,
     shops: false,
     usuarios: false,
-  });
+        })
+        break;
+        case "artesanias":
+          setOption({
+            aventuras: false,
+            artesanias: true,
+      blog: false,
+      hospedaje: false,
+      hospedajeMandira: false,
+      parcela: false,
+      restaurant: false,
+      shops: false,
+      usuarios: false,
+          })
+          break;
+        case "blog":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: true,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: false,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "hospedaje":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: true,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: false,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "hospedajeMandira":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: true,
+    parcela: false,
+    restaurant: false,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "parcela":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: true,
+    restaurant: false,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "restaurant":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: true,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "shops":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: false,
+    shops: true,
+    usuarios: false,
+        })
+        break;
+        case "usuarios":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: false,
+    shops: false,
+    usuarios: true,
+        })
+        break;
+    
+      default:
+        break;
+    }
 
-  const handlerButton = (event) => {
+
+
     setOption({
       [event.target.name]: true,
     });
@@ -64,7 +191,7 @@ const Admin = () => {
                       name='shops'
                       onClick={handlerButton}
                     >
-                      Shops
+                      Emprendimientos
                     </NavLink>
                     <NavLink
                       className='nav-link'
@@ -72,6 +199,13 @@ const Admin = () => {
                       onClick={handlerButton}
                     >
                       Aventuras
+                    </NavLink>
+                    <NavLink
+                      className='nav-link'
+                      name='artesanias'
+                      onClick={handlerButton}
+                    >
+                      Artesanías
                     </NavLink>
                     <NavLink
                       className='nav-link'
@@ -153,9 +287,18 @@ const Admin = () => {
             )}
           </section>
           <section>
+            {option.artesanias === true ? (
+              <div>
+                <AdminArtesanias></AdminArtesanias>
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </section>
+          <section>
             {option.hospedaje === true ? (
               <div>
-                <AdminHospedaje></AdminHospedaje>
+                <AdminHospedaje  shopId={8}></AdminHospedaje>
               </div>
             ) : (
               <div></div>

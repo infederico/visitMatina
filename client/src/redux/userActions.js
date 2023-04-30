@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  getUserById,
+  getUserByEmail,
   postUser,
   gUSer,
   logOutUser,
@@ -15,17 +15,24 @@ export const getUser = (user) => {
       const users = await axios(
         `/users/?email=${user.email}&password=${user.password}`
       );
-      return dispatch(getUserById(users.data));
+      return dispatch(getUserByEmail(users.data));
     } catch (error) {
-      console.log('Error al obtener usuario:', error);
+      alert('Error al obtener usuario:', error.message);
     }
   };
 };
 
 export const addUser = (user) => {
   return async (dispatch) => {
-    let post = await axios.post('/users/', user);
-    return dispatch(postUser(post));
+    try {
+      let post = await axios.post('/users/', user);
+      if (post) {
+        alert('Registro exitoso.');
+      }
+      return dispatch(postUser(post));
+    } catch (error) {
+      alert(error.message);
+    }
   };
 };
 

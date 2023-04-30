@@ -1,6 +1,6 @@
 [
     {
-        "name": "Visit Matina - blog",
+        "name": "Blog",
         "summary": "Somos un sitio colaborativo muestra las bellezas naturales de nuestro cantón y promocionar nuestros servicios turísticos para que puedas disfrutar de Matina en todo su esplendor. Estamos conformados por familias que con nuestras empresas buscamos posicionar un turismo rural comunitario y sostenible. ¡Da un vistazo por lo que te ofrecemos!",
         "path": "/blog",
         "email": "visitmatina@gmail.com",
@@ -14,11 +14,11 @@
         "active": true
     },
     {
-        "name": "Visit Matina - paquetes",
-        "summary": "Somos un sitio colaborativo muestra las bellezas naturales de nuestro cantón y promocionar nuestros servicios turísticos para que puedas disfrutar de Matina en todo su esplendor. Estamos conformados por familias que con nuestras empresas buscamos posicionar un turismo rural comunitario y sostenible. ¡Da un vistazo por lo que te ofrecemos!",
+        "name": "Paquetes",
+        "summary": "Disfrutá de momentos inolvidables junto a tus seres queridos con nuestras opciones a medida",
         "path": "/paquetes",
         "email": "visitmatina@gmail.com",
-        "image":"https://res.cloudinary.com/dfnw2l08x/image/upload/v1682284244/Paquetes_txgpaw.jpg",
+        "image":"https://res.cloudinary.com/dfnw2l08x/image/upload/v1682738218/AC10_h0snyd.jpg",
         "twitter": "",
         "instagram": "",
         "facebook": "",
@@ -36,7 +36,7 @@
         "twitter": "",
         "instagram": "",
         "facebook": "https://www.facebook.com/fincamandira",
-        "whatsapp": "",
+        "whatsapp": "50683403888",
         "youtube": "",
         "location": "",
         "active": true
@@ -50,7 +50,7 @@
         "twitter": "",
         "instagram": "",
         "facebook": "https://www.facebook.com/people/Finca-Integral-La-Parcela/100090864223960/",
-        "whatsapp": "",
+        "whatsapp": "50688917499",
         "youtube": "",
         "location": "",
         "active": true
@@ -64,7 +64,7 @@
         "twitter": "",
         "instagram": "",
         "facebook": "https://www.facebook.com/people/Aventuras-del-Caribe/100063665426054/",
-        "whatsapp": "",
+        "whatsapp": "50687254119",
         "youtube": "",
         "location": "",
         "active": true
@@ -92,7 +92,7 @@
         "twitter": "",
         "instagram": "https://www.instagram.com/restsolyluna/",
         "facebook": "https://www.facebook.com/restsolyluna",
-        "whatsapp": "",
+        "whatsapp": "50683952683",
         "youtube": "",
         "location": "",
         "active": true

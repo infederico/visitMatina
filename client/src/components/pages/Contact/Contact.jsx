@@ -1,13 +1,11 @@
-import { useState } from 'react'
-import ValidationContact from '../Login/Validation/validationContact'
-import { useDispatch } from 'react-redux'
-import { PostContact } from '../../../redux/contactActions'
-import styles from './ShopContact.module.css'
-import AlertContact from './AlertContact'
-
+import { useState } from 'react';
+import ValidationContact from '../Login/Validation/validationContact';
+import { useDispatch } from 'react-redux';
+import { PostContact } from '../../../redux/contactActions';
+import styles from './ShopContact.module.css';
+import AlertContact from './AlertContact';
 
 const Contact = () => {
-
   const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({
@@ -15,55 +13,55 @@ const Contact = () => {
     correoxres: '',
     confirmEmail: '',
     mensaje: '',
-  })
+  });
 
   const [errors, setErrors] = useState({
     name: '',
     correoxres: '',
     mensaje: '',
-  })
+  });
 
   const handleInputChange = (event) => {
-    event.preventDefault()
-    setUserData({ ...userData, [event.target.name]: event.target.value })
+    event.preventDefault();
+    setUserData({ ...userData, [event.target.name]: event.target.value });
     setErrors(
       ValidationContact({
         ...userData,
         [event.target.name]: event.target.value,
       })
-    )
-  }
+    );
+  };
   const [showAlert, setShowAlert] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
+  const [alertMessage, setAlertMessage] = useState('');
 
   const handleCloseAlert = () => {
     setShowAlert(false);
   };
-  
+
   const handleClick = async () => {
     if (Object.keys(errors).length === 0) {
-     const respuesta= await dispatch(PostContact(userData))
-     setAlertMessage(respuesta);
+      const respuesta = await dispatch(PostContact(userData));
+      setAlertMessage(respuesta);
       setShowAlert(true);
       setUserData({
         name: '',
         correoxres: '',
         confirmEmail: '',
         mensaje: '',
-      })
+      });
     }
-  }
+  };
 
   return (
     <div>
-      <div class='card mb-3'>
+      <div className='card mb-3'>
         <img
-          src='https://images.hola.com/images/0278-15e7c52b0b2f-3217791b5b42-1000/fullpage-1900/hoviajes-costa-rica.jpg'
+          src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798267/hoviajes-costa-rica_r4zbpm.jpg'
           class='card-img-top'
           alt='...'
         />
         <div
-          class={`card`}
+          className={`card`}
           style={{
             width: '33rem',
             position: 'absolute',
@@ -76,7 +74,7 @@ const Contact = () => {
             alt='headerImage'
             className={`img-fluid `}
             src={
-              'https://images.hola.com/images/0278-15e7c52b0b2f-3217791b5b42-1000/fullpage-1900/hoviajes-costa-rica.jpg'
+              'https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798267/hoviajes-costa-rica_r4zbpm.jpg'
             }
           />
           <div className='card-body'>
@@ -93,8 +91,8 @@ const Contact = () => {
             >
               Contacto
             </h1>
-            <div class='mb-3'>
-              <label for='exampleFormControlInput1' className='form-label'>
+            <div className='mb-3'>
+              <label htmlFor='exampleFormControlInput1' className='form-label'>
                 Nombre
               </label>
               <br />
@@ -107,12 +105,12 @@ const Contact = () => {
               />
               <br />
               <div className={styles.mensajeerror}>
-              {errors.name ? errors.name : null}
+                {errors.name ? errors.name : null}
               </div>
               <br />
             </div>
             <div className='mb-3'>
-              <label for='exampleFormControlInput1' className='form-label'>
+              <label htmlFor='exampleFormControlInput1' className='form-label'>
                 Email
               </label>
               <input
@@ -125,7 +123,7 @@ const Contact = () => {
                 onChange={handleInputChange}
               />
               <div className={styles.mensajeerror}>
-              {errors.correoxres ? errors.correoxres : null}
+                {errors.correoxres ? errors.correoxres : null}
               </div>
             </div>
             <div className='mb-3'>
@@ -142,11 +140,14 @@ const Contact = () => {
                 onChange={handleInputChange}
               />
               <div className={styles.mensajeerror}>
-              {errors.confirmEmail ? errors.confirmEmail : null}
+                {errors.confirmEmail ? errors.confirmEmail : null}
               </div>
             </div>
             <div className='mb-3'>
-              <label for='exampleFormControlTextarea1' className='form-label'>
+              <label
+                htmlFor='exampleFormControlTextarea1'
+                className='form-label'
+              >
                 Consulta
               </label>
               <textarea
@@ -160,23 +161,25 @@ const Contact = () => {
                 style={{ resize: 'none' }}
               ></textarea>
               <div className={styles.mensajeerror}>
-              {errors.mensaje ? errors.mensaje : null}
+                {errors.mensaje ? errors.mensaje : null}
               </div>
               <br />
-              <button class="btn btn-outline-success" onClick={handleClick}>Enviar consulta</button>
+              <button className='btn btn-outline-success' onClick={handleClick}>
+                Enviar consulta
+              </button>
               {showAlert && (
-              <AlertContact
-                            show={showAlert}
-                            onClose={handleCloseAlert}
-                            message={alertMessage}
-              />
-      )}
+                <AlertContact
+                  show={showAlert}
+                  onClose={handleCloseAlert}
+                  message={alertMessage}
+                />
+              )}
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
