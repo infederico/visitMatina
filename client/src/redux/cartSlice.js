@@ -56,7 +56,9 @@ export const cartSlice = createSlice({
       }
     },
     delProduct: (state, action) => {
+      console.log(action.payload);
       let find = state.products.find((p) => p.id === Number(action.payload));
+      console.log(find);
       let filteredProducts = state.products.filter(
         (p) => p.id !== Number(action.payload)
       );
@@ -78,7 +80,6 @@ export const cartSlice = createSlice({
       state.products = action.payload;
       state.quantity = quantity;
       state.total = total;
-      state.payment = '';
     },
     cleanCart: (state, action) => {
       state.products = [];
@@ -87,7 +88,7 @@ export const cartSlice = createSlice({
       localStorage.removeItem('products');
     },
     pay: (state, action) => {
-      state.payment = action.payload;
+      return { ...state, payment: action.payload };
     },
   },
 });
