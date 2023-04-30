@@ -58,3 +58,36 @@
     z-index: 1;
   }
 }
+.mymodal {
+}
+.mymodalheader {
+  background-color: var(--tertiary-color-0);
+  color: var(--primary-color-200);
+  border-bottom: 1px solid var(--primary-color-200);
+}
+
+.botonalert {
+  background-color: var(--primary-color-100);
+  color: var(--primary-color-400);
+  border: 1px solid var(--primary-color-200);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.mensajealert {
+  color: green;
+  display: flex;
+  justify-content: end;
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 2px;
+}
