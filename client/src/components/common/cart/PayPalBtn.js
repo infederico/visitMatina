@@ -38,10 +38,10 @@ export default function PayPalBtn() {
 
       const localCart = localStorage.getItem('products');
       products = JSON.parse(localCart) || [];
-      console.log('createOrder:', products);
+      //console.log('createOrder:', products);
       products.map((p) => {
         let subtotal = Number(p.price) * p.quantity;
-        console.log(p.quantity, subtotal);
+        //console.log(p.quantity, subtotal);
         purchase_units.push({
           reference_id: p.id,
           description: p.title,
@@ -69,7 +69,7 @@ export default function PayPalBtn() {
   );
 
   useEffect(() => {
-    console.log('useEfect:', total, products);
+    //console.log('useEfect:', total, products);
   }, [total, products]);
 
   // console.log(store.getState().cart.products)

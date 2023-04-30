@@ -20,7 +20,7 @@ export default function Blog() {
   const lastOne = orderPosts.slice(orderPosts.length-3)
 
 
-  console.log(lastOne);
+  //console.log(lastOne);
   
   for (let i = 0; i < totalPages; i++) {
     arrayPages.push(i + 1);
@@ -78,9 +78,9 @@ export default function Blog() {
         </div>
         <div className={`carousel-inner w-100 h-100`}>
 
-          {lastOne.slice (2,3).map(elem => {
+          {lastOne.slice (2,3).map((elem, index) => {
             return(
-              <div className={`${styles.divCarousel} carousel-item active`}>
+              <div key={index} className={`${styles.divCarousel} carousel-item active`}>
             <Link to ={`/detailBlog/${elem.id_post}`}><img src={elem.image} className={`${styles.image} "d-block"`} alt={elem.title}/></Link>
             <div className={`carousel-caption d-none d-md-block`}>
                 <h2 className={styles.textCarousel}>"{elem.title}"</h2>
@@ -88,9 +88,9 @@ export default function Blog() {
             </div>
             )
           })}
-          {lastOne.slice (0,2).map(elem => {
+          {lastOne.slice (0,2).map((elem, index) => {
             return(
-              <div className={`${styles.divCarousel} carousel-item`}>
+              <div key={index} className={`${styles.divCarousel} carousel-item`}>
             <Link to ={`/detailBlog/${elem.id_post}`}><img src={elem.image} className={`${styles.image} "d-block w-100"`} alt={elem.title}/></Link>
             <div className={`carousel-caption d-none d-md-block`}>
                 <h2 className={styles.textCarousel}>"{elem.title}"</h2>

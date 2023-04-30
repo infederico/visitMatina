@@ -187,7 +187,7 @@ const AdminHospedaje = ({shopId}) => {
 
         <div className='collapse' id='modificarImagen'>
           <div className='card card-body'>
-            <h3>Modificar Imagen</h3>
+            <h3>Modificar imagen de tu galería</h3>
           </div>
           <div className={styles.divCardsBlog}>
             {products.map((imagen) => {
