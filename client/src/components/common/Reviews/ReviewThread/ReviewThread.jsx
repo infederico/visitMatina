@@ -42,9 +42,12 @@ const ReviewThread = (props) => {
     const navigate = useNavigate();
 
     useEffect( () => {
-        let filteredByReviewId = reviews.filter( (review) => review.review_id === selectedReview);
-        let comments = filteredByReviewId.at(0).respuestas;
-        setCommentsToRender(comments);
+        let filteredByReviewId = reviews.filter( (review) => review.review_id === selectedReview)
+        let comments = []
+        if (filteredByReviewId.at(0).active) {
+            comments = filteredByReviewId.at(0).respuestas
+        }
+        setCommentsToRender(comments)
     }, [reviews, selectedReview, successMessageComment]);
 
     useEffect( () => {
@@ -167,9 +170,10 @@ const ReviewThread = (props) => {
 
     // helpers
     let author = reviews.filter(review => review.review_id === selectedReview).at(0).user.name;
-    
+    let active = reviews.filter(review => review.review_id === selectedReview).at(0).active;
     return (
         <div className={styles.threadContainer}>
+            { active &&
             <div className={styles.commentForm}>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
@@ -192,6 +196,7 @@ const ReviewThread = (props) => {
                     </div>
                 </form>
             </div>
+            }
 
             <div className={styles.commentPanel}>
                 {

@@ -7,6 +7,7 @@ import Footer from '../../../common/Footer/Footer';
 import WhatsApp from '../../../common/WhatsApp/WhatsApp';
 
 
+
 //importamos el array que simula los datos que llegan del back-componente redes sociales
 import { arrayRedes } from '../arrayRedes'
 
@@ -48,20 +49,24 @@ export default function ArtesaniasMarYLuna() {
       <section className={style.cardProductContainerContainer}>
         <CardProductContainer2 />
       </section>
-      <section>
-          { shopId && <Reviews shopId={shopId}/> }
-      </section>
-
-      <section className={style.contactSection}>
-        <ShopContact />
-      </section>
-      <section>
-        <Footer />
-      </section>
-      {shopData?.whatsapp && 
-      <div>
-        <WhatsApp/>
-      </div>}
+            <section>
+                { shopId && <Reviews shopId={shopId}/> }
+            </section>
+      {/* <section>
+        <Reviews />
+      </section> */}      
+      
+        <section className={style.contactSection}>
+          <ShopContact />
+          
+        </section>
+        <section>
+          <Footer />
+        </section>
+        {shopData?.whatsapp && 
+        <div>
+          <WhatsApp/>
+        </div>}
     </div>
   )
 }

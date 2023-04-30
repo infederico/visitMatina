@@ -22,9 +22,9 @@ const CardProduct2 = ({image, name, description, id, price}) => {
     
     const dispatch = useDispatch();
 
-    const handleAddToCart = () => {
-        dispatch(addProduct(product[0]));
-    }
+  const handleAddToCart = () => {
+    dispatch(addProduct(product[0]));
+  };
 
     const handlePayment = () => {
         axios.post("http://localhost:3001/api/payments", product)
@@ -38,27 +38,40 @@ const CardProduct2 = ({image, name, description, id, price}) => {
     const [showDescription, setShowDescription] = useState(false);
     const shopId = useSelector(state => state.shops.shopId);    
 
-    return(
-        /* Card */
-        <div className={ style.customCard } >
-            <div className={`card text-bg-dark card-container ${style.container}`} 
-            onMouseEnter={() => setShowDescription(true)}
-            onMouseLeave={() => setShowDescription(false)} /* style={{width: "200%"}} */>
-                <img src={image} className={`card-img ${style.image}` } alt={name}/>
-                <div className={ `card-img-overlay ${style.customOverlay}` }>
-                    <h4 className={`card-title ${style.text}`}>{name}</h4>
-                    {/* <h4 className={`${style.text} ${showDescription ? style.showDescription : ""}`}>{description}</h4> */}
+  return (
+    /* Card */
+    <div className={style.customCard}>
+      <div
+        className={`card text-bg-dark card-container ${style.container}`}
+        onMouseEnter={() => setShowDescription(true)}
+        onMouseLeave={() =>
+          setShowDescription(false)
+        } /* style={{width: "200%"}} */
+      >
+        <img src={image} className={`card-img ${style.image}`} alt={name} />
+        <div className={`card-img-overlay ${style.customOverlay}`}>
+          <h4 className={`card-title ${style.text}`}>{name}</h4>
+          {/* <h4 className={`${style.text} ${showDescription ? style.showDescription : ""}`}>{description}</h4> */}
 
-                    {showDescription? <p className={`${style.text} ${style.show}`}>{description}</p> 
-                    :<p className={`${style.text} ${style.hide}`} style={{ opacity:0 }}>{description}</p>}
-                    <button type="button" className="btn btn-success" onClick={ handleAddToCart }> A&ntilde;adir al carrito</button>
-                    {/* {shopId === 2
-                    ?<button type="button" className="btn btn-success" onClick={ handleAddToCart }> A&ntilde;adir al carrito</button>
-                    :<a href="#contact"><button type="button" className="btn btn-success">Consulta</button></a>   } */}
-                </div>
-            </div>
+          {showDescription ? (
+            <p className={`${style.text} ${style.show}`}>{description}</p>
+          ) : (
+            <p className={`${style.text} ${style.hide}`} style={{ opacity: 0 }}>
+              {description}
+            </p>
+          )}
+          <button
+            type='button'
+            className='btn btn-success'
+            onClick={handleAddToCart}
+          >
+            {' '}
+            A&ntilde;adir al carrito
+          </button>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default CardProduct2;

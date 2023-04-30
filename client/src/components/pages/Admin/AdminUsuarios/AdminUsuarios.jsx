@@ -2,12 +2,21 @@ import styles from "./AdminUsuarios.module.css"
 import { getAllUsers, updateUsers, clnUpDt } from "../../../../redux/userActions";
 import { useSelector , useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import AlertContact from "../../Contact/AlertContact";
 
 const AdminUsuarios = () => {
     
     const dispatch = useDispatch();
     const {users}= useSelector(state => state.user);
     const {upDtRes} = useSelector(state => state.user);
+
+    //personalizar alerta
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
+
+    const handleCloseAlert = () => {
+      setShowAlert(false);
+    };
 
     const[check, setCheck] = useState({
       id_user: null,
@@ -89,8 +98,11 @@ const AdminUsuarios = () => {
       }
     }
 
-    const handlerUpdate = () => {
-      dispatch(updateUsers(inputs));
+    const handlerUpdate =  async () => {
+      const respuesta= await dispatch(updateUsers(inputs)) ;
+      setShowAlert(true);
+      setAlertMessage(respuesta.payload);
+      
       setCheck({
         id_user: null,
         hand: false
@@ -100,7 +112,15 @@ const AdminUsuarios = () => {
     return(
         <section>
             <div>
-                <h1 className='display-6 text-left my-2'>Administar Usuarios</h1>
+            <h1 className='display-6 text-left my-2'>Administar Usuarios</h1>
+                {showAlert && (
+                  <AlertContact
+                    message={alertMessage}
+                    onClose={handleCloseAlert}
+                    show={showAlert}
+                  />
+                )}
+                
             </div>
 
 

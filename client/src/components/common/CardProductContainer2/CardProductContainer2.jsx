@@ -10,8 +10,8 @@ import Paginado from "./Paginado";
 
 
 const CardProductContainer2 = () => {
-    const products = useSelector(state => state.product.product)
-    const shopId = useSelector(state => state.shops.shopId);    
+  const products = useSelector((state) => state.product.product);
+  const shopId = useSelector((state) => state.shops.shopId);
 
     const location = useLocation()
     const dispatch = useDispatch()
@@ -61,5 +61,3 @@ const CardProductContainer2 = () => {
         </div>
     )
 }
-
-export default CardProductContainer2

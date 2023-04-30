@@ -232,15 +232,17 @@ const Reviews = (props) => {
                 { paginatedReviews.length !== 0 &&<div className={styles.paginationButton}><img src={prevPageIcon} alt="previous-page" onClick={pageDecrement} /></div> }
                 {
                     paginatedReviews?.map((review) => {
-                        return <Review
-                            key={review.review_id}
-                            reviewId={review.review_id}
-                            image={review.user.image}
-                            name={review.user.name}
-                            date={formatDate(review.createdAt)}
-                            rating={review.rating}
-                            description={review.description}
-                        />
+                        if (review.active) {
+                            return <Review
+                                key={review.review_id}
+                                reviewId={review.review_id}
+                                image={review.user.image}
+                                name={review.user.name}
+                                date={formatDate(review.createdAt)}
+                                rating={review.rating}
+                                description={review.description}
+                            />
+                        }
                     })
                 }
                 { paginatedReviews.length !== 0 && <div className={styles.paginationButton}><img src={nexPageIcon} alt="next-page" onClick={pageIncrement} /></div> }

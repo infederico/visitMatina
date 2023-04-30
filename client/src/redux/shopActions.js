@@ -42,9 +42,9 @@ export const getShopData = (path) => async (dispatch) => {
 export const postShop = (obj) => async (dispatch) => {
     try {
         const shops = await axios.post("/shops" , obj);
-        dispatch(resPostShop(shops.data.message));
+        return dispatch(resPostShop(shops.data.message));
     } catch (error) {
-        window.alert(error.response.data.error);
+        return (error.response.data.error);
     }
 };
 
@@ -53,7 +53,7 @@ export const updateShop = (obj) => async (dispatch) => {
         const shops = await axios.put("/shops" , obj);
         dispatch(updtShop(shops.data.message));
     } catch (error) {
-        window.alert(error.response.data.error);
+        return (error.response.data.error);
     }
 };
 

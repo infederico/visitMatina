@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CardImageAdmin from './CardImageAdmin/CardImageAdmin';
 import validate from './validate';
 import AlertContact from '../../Contact/AlertContact';
+import CardRestaurant from './CardRestaurant';
 
 import {
   getProductsByShopId,
@@ -17,6 +18,8 @@ import {
   cleanResDel,
 } from '../../../../redux/productSlice';
 
+import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
+
 
 const AdminRestaurant = ({shopId}) => {
     const dispatch = useDispatch();
@@ -24,6 +27,9 @@ const AdminRestaurant = ({shopId}) => {
     const resPostProduct = useSelector((state) => state.product.resPostProduct);
     const resUpdProduct = useSelector((state) => state.product.resUpdProduct);
     const resDelProduct = useSelector((state) => state.product.resDelProduct);
+
+    const reviews = useSelector((state) => state.reviews.value);
+    const {resUpdtReview} = useSelector((state) => state.reviews);
 
     const [newImage, setNewImage] = useState({
         name: 'imagen de galería',
@@ -45,6 +51,15 @@ const AdminRestaurant = ({shopId}) => {
     if (resDelProduct !== '') { dispatch(cleanResDel()) }
   // eslint-disable-next-line
   }, [ resPostProduct, resUpdProduct, resDelProduct ]);
+
+  useEffect(() => {
+
+    dispatch(getAllApprovedReviewsByShopId(shopId));
+    if (resUpdtReview !== ""){
+      dispatch(clnResUpdtReview())
+    }
+
+  }, [resUpdtReview]);
 
     const handlerInputs = (event) => {
         setNewImage({
@@ -131,6 +146,16 @@ const AdminRestaurant = ({shopId}) => {
           >
             Modificar imagen
           </button>
+          <button
+            className='btn btn-primary'
+            type='button'
+            data-bs-toggle='collapse'
+            data-bs-target='#collapseExample3'
+            aria-expanded='false'
+            aria-controls='collapseExample2'
+          >
+            Control de reviews
+          </button>
         </p>
 
 
@@ -190,7 +215,7 @@ const AdminRestaurant = ({shopId}) => {
             <h3>Modificar imagen de tu galería</h3>
           </div>
           <div className={styles.divCardsBlog}>
-            {products.map((imagen) => {
+            {products?.map((imagen) => {
               return (
                 <CardImageAdmin
                   key={imagen.id_product}
@@ -205,6 +230,29 @@ const AdminRestaurant = ({shopId}) => {
           </div>
         </div>
       </div>
+
+      <div className='collapse' id='collapseExample3'>
+            <div className='card card-body'>
+              <h3>Control de Reviews</h3>
+            </div>
+            <div className={styles.divCardsBlog}>
+              {reviews.map((item) => {
+                return (
+                  <CardRestaurant
+                    key={item.description}
+                    review_id={item.review_id ? item.review_id : null}
+                    name={item.user.name ? item.user.name : null}
+                    description={item.description ? item.description : null}
+                    image={item.user.image ? item.user.image : null}
+                    shop_id={item.shop_id ? item.shop_id : null}
+                    rating={item.rating ? item.rating : null}
+                    active={item.active ? item.active : null}
+                    approved={item.active ? item.active : null}
+                  />
+                );
+              })}
+            </div>
+          </div>
     </section>
   );
 };

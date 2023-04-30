@@ -6,6 +6,7 @@ import store from '../../../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { transaccion } from '../../../redux/cartActions';
 import { cleanCart } from '../../../redux/cartSlice';
+import styles from './paypalBtn.module.css';
 
 // export default function PayPalBtn() {
 //
@@ -103,6 +104,8 @@ export default function PayPalBtn() {
     //     console.log(error);
     //   }}
     // />
-    <button onClick={handleClick}>Pagar</button>
+    <button className={styles.btn} onClick={handleClick}>
+      Pagar con Paypal
+    </button>
   );
 }

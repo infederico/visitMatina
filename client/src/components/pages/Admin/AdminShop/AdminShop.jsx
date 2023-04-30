@@ -122,11 +122,13 @@ const AdminShop = () => {
     );
   };
 
-  const handlerSubmitCreate = (event) => {
+  const handlerSubmitCreate = async (event) => {
     event.preventDefault();
     const numErrors = Object.keys(errors).length;
     if (numErrors === 0) {
-      dispatch(postShop(inputs));
+      const respuesta= await dispatch(postShop(inputs));
+      alert(respuesta.payload)
+      
       setErrors({});
       setInputs({
         ...inputs,
@@ -148,11 +150,12 @@ const AdminShop = () => {
   };
 
 
-  const handlerSubmitUpdate = (event) => {
+  const handlerSubmitUpdate = async (event) => {
     event.preventDefault();
     const numErrors = Object.keys(errors).length;
     if (numErrors === 0) {
-      dispatch(updateShop(inputsM));
+      const res = await dispatch(updateShop(inputsM));
+      alert(res.payload)
       setErrors({});
       setInputs({
         ...inputs,
