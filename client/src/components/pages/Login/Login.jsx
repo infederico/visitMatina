@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react';
 import ValidationLogIn from './Validation/validationLogIn';
 import useLocalStorage from '../../localStorage/useLocalStorage';
 import jwt_decode from 'jwt-decode';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getUser, authGoogle } from '../../../redux/userActions';
 import style from './login.module.css';
 import Footer from '../../common/Footer/Footer';
+import { arrayRedes } from '../../pages/comoLlegar/arrayRedes';
 
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -185,7 +186,7 @@ const LogIn = () => {
           className={`${style.responsiveImage} img-fluid`}
         />
       </div>
-      <Footer />
+      <Footer socialmedia={arrayRedes} />
     </div>
   );
 };

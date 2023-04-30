@@ -39,6 +39,14 @@
 }
 
 @media (max-width: 800px) {
+  .pagina {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
   .containerContact {
     flex-direction: column;
     padding: 0;

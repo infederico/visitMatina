@@ -48,13 +48,6 @@ export default function Cart() {
     console.log(products);
   }, [payment]);
 
-  const handlePayment = () => {
-    axios.post('http://localhost:3001/api/payments', products).then((resp) => {
-      let payUrl = resp.data.resp.body.sandbox_init_point;
-      window.location.href = payUrl;
-    });
-  };
-
   return (
     <>
       {products.length > 0 && (
@@ -121,16 +114,8 @@ export default function Cart() {
                 <p>
                   Total: <span>${totalToPay.toFixed(2)}</span>
                 </p>
-                {/* <PayPalBtn products={products} /> */}
+
                 <PayPalBtn />
-                {/*        
-                                    <button 
-                                        className={`btn btn-primary btn-block`}
-                                        onClick={ handlePayment }
-                                    > 
-                                        Ir a pagar $ { totalToPay } 
-                                    </button>
-                                    */}
               </div>
             </div>
           )}
