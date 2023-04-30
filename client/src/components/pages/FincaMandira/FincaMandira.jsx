@@ -48,11 +48,6 @@ export default function FincaMandira() {
           <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
         </div>
       </section>
-      <section className={style.Cajaredes}>
-        <Redes socialmedia={arrayRedes} />
-        {/*aca enviamos por props el array que importamos
-                                                    simulando los datos que llegarian del back*/}
-      </section>
       <div className={style.cardProductContainerContainer}>
         < div >
           <CardProductContainer />

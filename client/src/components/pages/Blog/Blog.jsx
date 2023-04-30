@@ -108,38 +108,24 @@ export default function Blog() {
             <span className={`visually-hidden`}>Next</span>
         </button>
         </div>
-        <section>
-
-
-
-
-          
-      <div className={styles.divCardsBlog}>
-          {allPosts.slice(current * 10, (current * 10) + 10).map((elem) => {
-            return (
-              <div key={elem.id_post}>
-                <CardBlog
-                  id={elem.id_post}
-                  title={elem.title}
-                  summary={elem.summary}
-                  content={elem.content}
-                  image={elem.image}
-                  date={elem.date}
-                />
-              </div>
-            );
-          })}
-      </div>
-      </section>
+        <section> 
+          <div className={ styles.wrapCards }>
+              {allPosts.slice(current * 10, (current * 10) + 10).map((elem) => {
+                return (
+                    <CardBlog
+                      id={elem.id_post}
+                      title={elem.title}
+                      summary={elem.summary}
+                      content={elem.content}
+                      image={elem.image}
+                      date={elem.date}
+                    />
+                );
+              })}
+          </div>
+        </section>
     </div>
 
-
-
-   
-
-
-    
-    
 
           <div className={styles.divPag}>
 

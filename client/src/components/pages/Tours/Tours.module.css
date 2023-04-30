@@ -87,6 +87,13 @@
 
 
 }
+
+@media only screen and (max-width: 1200px) {
+    .cardTitle::before{
+        display: none;
+    }
+}
+
 /* 
 .image{
     width: 5%;

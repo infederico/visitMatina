@@ -43,24 +43,38 @@
         "shop_id": 5
     },
     {
-        "name": "Llavero",
-        "description":"LLavero hecho a mano",
+        "name": "Llavero Tortuga",
+        "description":"Hecho en coco",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/llaveroTortuga_kdjzqg.jpg",
         "shop_id": 6
     },
     {
-        "name": "llavero",
-        "description":"LLavero hecho a mano",
+        "name": "Collar Mantarralla",
+        "description":"Hecho en hueso",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarMantarralla_wlowya.jpg",
         "shop_id": 6
     },
     {
-        "name": "llavero",
-        "description":"LLavero hecho a mano",
+        "name": "Collar Ballena",
+        "description":"Hecho en hueso",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarBallena_g6j10n.jpg",
+        "shop_id": 6
+    },
+    {
+        "name": "Llavero Tortuga",
+        "description":"Hecho en hueso",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarTortuga_haea7j.jpg",
+        "shop_id": 6
+    },
+    {
+        "name": "Collar Búho",
+        "description":"Hecho en hueso",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarBuho_nyavhl.jpg",
         "shop_id": 6
     },
     {

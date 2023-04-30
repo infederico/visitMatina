@@ -1,9 +1,9 @@
 import axios from "axios";
 import style from "./CardProduct2.module.css"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../../../redux/cartSlice";
 import { useState } from "react";
-const CardProduct2 = ({image, name, description, id, price, idModal}) => {
+const CardProduct2 = ({image, name, description, id, price}) => {
 
     const product = [{
                 id: id,
@@ -36,6 +36,7 @@ const CardProduct2 = ({image, name, description, id, price, idModal}) => {
         )
     }
     const [showDescription, setShowDescription] = useState(false);
+    const shopId = useSelector(state => state.shops.shopId);    
 
     return(
         /* Card */
@@ -51,6 +52,9 @@ const CardProduct2 = ({image, name, description, id, price, idModal}) => {
                     {showDescription? <p className={`${style.text} ${style.show}`}>{description}</p> 
                     :<p className={`${style.text} ${style.hide}`} style={{ opacity:0 }}>{description}</p>}
                     <button type="button" className="btn btn-success" onClick={ handleAddToCart }> A&ntilde;adir al carrito</button>
+                    {/* {shopId === 2
+                    ?<button type="button" className="btn btn-success" onClick={ handleAddToCart }> A&ntilde;adir al carrito</button>
+                    :<a href="#contact"><button type="button" className="btn btn-success">Consulta</button></a>   } */}
                 </div>
             </div>
         </div>

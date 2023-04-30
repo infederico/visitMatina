@@ -54,7 +54,7 @@ const ShopContact = () => {
   };
 
   return (
-    <div className={styles.containerContact}>
+    <div id="contact" className={styles.containerContact}>
       <div className='card border-0 '>
         <div
           className='card-body '

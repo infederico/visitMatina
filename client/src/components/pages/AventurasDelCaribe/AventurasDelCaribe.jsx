@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 import { getShops, getShopId, getShopData } from '../../../redux/shopActions';
@@ -54,7 +55,7 @@ export default function AventurasDelCaribe() {
 
 return (
     <div className={style.page}>
-      <section className={style.titleSection}>
+      <section  className={style.titleSection}>
         <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
       </section>
 
@@ -66,7 +67,9 @@ return (
       <section>
         { shopId && <Reviews shopId={shopId}/> }
       </section>
-      
+      <section>
+        <Link to={`/artesaniasMarYLuna`} > <h2>Clickeá para conocer nuestras artesanías</h2></Link>
+      </section>
       <section className={style.contactSection}>
         <ShopContact />
       </section>

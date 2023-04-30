@@ -20,7 +20,7 @@ import { useLocation } from 'react-router-dom';
 import { getShops, getShopId, getShopData } from '../../../../redux/shopActions';
 import { resetShopId, resetShopData } from '../../../../redux/shopSlice';
 
-import CardProductContainer from '../../../common/CardProductContainer/CardProductContainer';
+import CardProductContainer2 from '../../../common/CardProductContainer2/CardProductContainer2';
 import ShopContact from '../../Contact/ShopContact';
 
 export default function ArtesaniasMarYLuna() {
@@ -45,31 +45,23 @@ export default function ArtesaniasMarYLuna() {
         <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
       </section>
 
-      <section className={style.Cajaredes}>
-        <Redes socialmedia={arrayRedes} />
-        {/*aca enviamos por props el array que importamos
-                                                    simulando los datos que llegarian del back*/}
-      </section>
       <section className={style.cardProductContainerContainer}>
-        <CardProductContainer />
+        <CardProductContainer2 />
       </section>
-            <section>
-                { shopId && <Reviews shopId={shopId}/> }
-            </section>
-      {/* <section>
-        <Reviews />
-      </section> */}      
-      
-        <section className={style.contactSection}>
-          <ShopContact />
-        </section>
-        <section>
-          <Footer />
-        </section>
-        {shopData?.whatsapp && 
-        <div>
-          <WhatsApp/>
-        </div>}
+      <section>
+          { shopId && <Reviews shopId={shopId}/> }
+      </section>
+
+      <section className={style.contactSection}>
+        <ShopContact />
+      </section>
+      <section>
+        <Footer />
+      </section>
+      {shopData?.whatsapp && 
+      <div>
+        <WhatsApp/>
+      </div>}
     </div>
   )
 }
