@@ -1,9 +1,10 @@
 import style from './CardBlogDetail.module.css';
-import Reviews from '../../common/Reviews/Reviews';
 import { clnDetail } from '../../../redux/postActions';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import nl2br from 'react-nl2br';
+import Footer from "../Footer/Footer"
+import { arrayRedes } from "./arrayRedes";
 
 const CardBlogDetail = (props) => {
 
@@ -13,28 +14,47 @@ const CardBlogDetail = (props) => {
     return (()=> dispatch(clnDetail()));
   },[]);
 
-
     return (
-      <section>
+      <div>
         <section>
-        <div className={`${style.card} card mb-3`}>
-            <h5 className={`${style.nombre} card-title`}>{props.title}</h5>
-          <div className={`card-body`}>
-            <img className={`${style.foto} card-img-top`} src={props.image} alt="..." />
+        <div className={`${style.card} card mb-0`}>
+
+            <div className={style.textConteiner}>
+
+              <h1 className={`${style.title} card-title`}>{props.title}</h1>
+
+            </div>
+            
+            
+          <div className={style.divTextImg}>
+
             <div className={`${style.descri} card-text`}>{nl2br(props.content)}</div>
-            <p className={`${style.descri} card-text`}>Creado por: {props.user}</p>
-            <p className={`${style.descri} card-text`}>Email: {props.email}</p>
-            <p className={`${style.descri} card-text`}>Fecha de creación: {props.date}</p>
+            <div className={style.textConteiner}>
+              <img className={`${style.foto} card-img-top`} src={props.image} alt="..." />
+              </div>
 
           </div>
+
+        <div className={style.textConteiner}>
+
+             <p className={`${style.footer} card-text`}>Creado por: {props.user}</p>
+            <p className={`${style.footer} card-text`}>Email: {props.email}</p>
+            <p className={`${style.footer} card-text`}>Fecha de creación: {props.date}</p> 
+            
         </div>
+        
+        </div>
+        
         </section>
         <section>
 {/*         <div>
           <Reviews></Reviews>
         </div> */}
         </section>
-        </section>
+         <div>
+              <Footer socialmedia={arrayRedes}></Footer>
+            </div>
+        </div>
     );
   };
   
