@@ -6,6 +6,7 @@ import Reviews from '../../../common/Reviews/Reviews';
 import Footer from '../../../common/Footer/Footer';
 
 
+
 //importamos el array que simula los datos que llegan del back-componente redes sociales
 import { arrayRedes } from '../arrayRedes'
 
@@ -65,6 +66,7 @@ export default function ArtesaniasMarYLuna() {
       
         <section className={style.contactSection}>
           <ShopContact />
+          
         </section>
         <section>
           <Footer socialmedia={arrayRedes}/>

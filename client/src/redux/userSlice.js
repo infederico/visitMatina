@@ -49,7 +49,7 @@ const userSlice = createSlice({
     updtUser: (state, action) => {
       state.upDtRes = action.payload;
       if (state.upDtRes !== '') {
-        window.alert(action.payload);
+        //window.alert(action.payload); 
       }
     },
     cleanUpdt: (state, action) => {

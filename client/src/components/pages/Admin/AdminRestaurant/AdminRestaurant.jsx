@@ -167,7 +167,7 @@ const AdminRestaurant = ({shopId}) => {
             <h3>Modificar Imagen</h3>
           </div>
           <div className={styles.divCardsBlog}>
-            {products.map((imagen) => {
+            {products?.map((imagen) => {
               return (
                 <CardImageAdmin
                   key={imagen.id_product}

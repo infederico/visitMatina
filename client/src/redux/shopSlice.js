@@ -31,7 +31,7 @@ const shopSlice = createSlice({
       state.shopData = action.payload
     },
     resPostShop: (state, action) =>{
-      window.alert(action.payload)
+      //window.alert(action.payload)
     },
     updtShop: (state, action) => {
       state.resUpdateShop = action.payload

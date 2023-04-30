@@ -2,6 +2,7 @@ import styles from "./AdminUsuarios.module.css"
 import { getAllUsers, updateUsers, clnUpDt } from "../../../../redux/userActions";
 import { useSelector , useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import AlertContact from "../../Contact/AlertContact";
 
 const AdminUsuarios = () => {
     
@@ -9,12 +10,20 @@ const AdminUsuarios = () => {
     const {users}= useSelector(state => state.user);
     const {upDtRes} = useSelector(state => state.user);
 
+    //personalizar alerta
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
+
+    const handleCloseAlert = () => {
+      setShowAlert(false);
+    };
+
     const[check, setCheck] = useState({
       id_user: null,
       hand: null
     });
 
-    const filterUser = users.filter(user => user.id_user === Number(check.id_user));
+    const filterUser = users?.filter(user => user.id_user === Number(check.id_user));
 
     const[inputs, setInputs] = useState({
       id_user: 0,
@@ -89,8 +98,11 @@ const AdminUsuarios = () => {
       }
     }
 
-    const handlerUpdate = () => {
-      dispatch(updateUsers(inputs));
+    const handlerUpdate =  async () => {
+      const respuesta= await dispatch(updateUsers(inputs)) ;
+      setShowAlert(true);
+      setAlertMessage(respuesta.payload);
+      
       setCheck({
         id_user: null,
         hand: false
@@ -101,11 +113,18 @@ const AdminUsuarios = () => {
         <section>
             <div>
                 <h1>AdminUsuarios</h1>
+                {showAlert && (
+                  <AlertContact
+                    message={alertMessage}
+                    onClose={handleCloseAlert}
+                    show={showAlert}
+                  />
+                )}
             </div>
 
 
           
-    {filterUser.map(user => {
+    {filterUser?.map(user => {
         return(  
         <div>
             <table className="table">
@@ -170,7 +189,7 @@ const AdminUsuarios = () => {
     </tr>
   </thead>
   <tbody>
-    {users.map(user => {
+    {users?.map(user => {
         return(
             <tr>
       <input className="form-check-input" type="checkbox"  name="id_user" value={user.id_user} onChange={handlerCheck} id="flexCheckDefault" checked={check.hand}></input>
