@@ -10,6 +10,7 @@ import mapa from './imgMaps/mapa.png';
 import mapa2 from './imgMaps/mapa2.png';
 import { arrayRedes } from './arrayRedes';
 
+
 const Comollegar = () => {
   const [descripciones, setDescripciones] = useState(sanjosematina1);
 
@@ -46,6 +47,7 @@ const Comollegar = () => {
           <img className={style.foto} src={mapa2} />
         </div>
       </div>
+      
       <Footer socialmedia={arrayRedes} />
     </div>
   );

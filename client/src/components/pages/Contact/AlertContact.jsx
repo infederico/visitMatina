@@ -1,14 +1,15 @@
 import { Button, Modal } from "react-bootstrap";
+import style from "./ShopContact.module.css";
 
 function AlertContact({ show, onClose, message }) {
   return (
-    <Modal show={show} onHide={onClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Hola!</Modal.Title>
+    <Modal show={show} onHide={onClose} className={style.mymodal}>
+      <Modal.Header closeButton className={style.mymodalheader}>
+        <Modal.Title className={style.titlealert}></Modal.Title>
       </Modal.Header>
-      <Modal.Body>{message}</Modal.Body>
+      <Modal.Body className={style.mensajealert}>{message}</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onClose}>
+        <Button className={style.botonalert} variant="secondary" onClick={onClose}>
           Cerrar
         </Button>
       </Modal.Footer>

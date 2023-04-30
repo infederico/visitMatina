@@ -196,7 +196,7 @@ const AdminBlog = () => {
             <h3>Modificar Post</h3>
           </div>
           <div className={styles.divCardsBlog}>
-            {allAllPosts.map((ele) => {
+            {allAllPosts?.map((ele) => {
               return (
                 <CardBlog
                   id_post={ele.id_post}
