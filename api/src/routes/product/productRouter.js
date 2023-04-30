@@ -155,7 +155,6 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     let { id } = req.params;
-    console.log(id);
     let productById = await getProductById(id);
     res.status(200).send(productById);
   } catch (error) {

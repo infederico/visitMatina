@@ -10,12 +10,10 @@ import {
   delItem,
   restoreCart,
 } from '../../../redux/cartSlice';
-import { useNavigate } from 'react-router-dom';
-import { cleanPayment } from '../../../redux/cartActions';
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const [visible, setVisible] = useState(false);
 
   const openCart = () => {
@@ -43,9 +41,11 @@ export default function Cart() {
   };
 
   useEffect(() => {
+    localStorage.clear();
     const localCart = localStorage.getItem('products');
     let local = JSON.parse(localCart) || [];
     dispatch(restoreCart(local));
+    console.log(products);
   }, [payment]);
 
   const handlePayment = () => {
@@ -119,7 +119,7 @@ export default function Cart() {
               <div className='d-grid gap-2'></div>
               <div className={styles.resume}>
                 <p>
-                  Total: <span>${totalToPay}</span>
+                  Total: <span>${totalToPay.toFixed(2)}</span>
                 </p>
                 {/* <PayPalBtn products={products} /> */}
                 <PayPalBtn />
