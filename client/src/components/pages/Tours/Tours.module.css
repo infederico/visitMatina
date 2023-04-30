@@ -67,7 +67,8 @@
 
   }
 .Title{
-    font-family: 'Actor', sans-serif
+    font-family: 'Actor', sans-serif;
+    font-size: 22px;
 }
 .Body {
     font-family: 'Kanit', sans-serif;
@@ -75,6 +76,7 @@
 }
 .subtitle {
     font-family: 'Actor', sans-serif;
+    font-size: 19px;
     font-weight: 500;
     margin: 0;
 
