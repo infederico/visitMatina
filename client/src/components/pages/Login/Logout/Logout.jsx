@@ -1,6 +1,6 @@
 import { logOut } from '../../../../redux/userActions'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 const LogOutUser = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -9,15 +9,11 @@ const LogOutUser = () => {
     navigate('/login')
   }
   return (
-    <button
-      type='button'
-      class='btn btn-outline-secondary'
-      onClick={() => {
-        handleLogOut()
-      }}
-    >
-      Cerrar sesion
-    </button>
+    <NavLink className='nav-link' onClick={() => {
+      handleLogOut()
+    }}>
+    Cerrar sesión
+    </NavLink>
   )
 }
 

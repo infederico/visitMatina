@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
-// eslint-disable-next-line
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation, NavLink } from 'react-router-dom';
 
 import { getAllApprovedReviewsByShopId } from '../../../redux/reviewsActions';
-import { setShowCommentPanel , setSelectedReview } from '../../../redux/reviewsSlice';
 
 import Review from './Review/Review'; // componente Review (card)
 import ReviewForm from './ReviewForm/ReviewForm'; // componente formulario para postear una nueva review
@@ -16,6 +13,8 @@ import stars2 from '../../../assets/images/review-stars/2stars.png';
 import stars3 from '../../../assets/images/review-stars/3stars.png';
 import stars4 from '../../../assets/images/review-stars/4stars.png';
 import stars5 from '../../../assets/images/review-stars/5stars.png';
+import prevPageIcon from '../../../assets/images/previous-tertiary-900.png';
+import nexPageIcon from '../../../assets/images/next-tertiary-900.png';
 
 import styles from './Reviews.module.css';
 
@@ -25,6 +24,7 @@ const Reviews = (props) => {
     const reviews = useSelector(state => state.reviews.value);
     const showCommentPanel = useSelector(state => state.reviews.showCommentPanel);
     const selectedReview = useSelector(state => state.reviews.selectedReview);
+    const successMessageComment = useSelector(state => state.reviews.successMessageComment);
    
     // local states
     const [ overallRatingNumber, setOverallRatingNumber ] = useState(0);
@@ -76,6 +76,13 @@ const Reviews = (props) => {
         setOverallRatingWord(ratingScale[overallRatingNumber]);
     // eslint-disable-next-line
     }, [overallRatingNumber]);
+
+    useEffect( () => {
+        if (successMessageComment) return;
+        setFilterSelectedOption('all');
+        setSortSelectedOption('date-des');
+        setCurrentPage(1);
+    }, [reviews]);
     
     // LOGICA PARA FILTRAR
     useEffect( () => { 
@@ -124,7 +131,7 @@ const Reviews = (props) => {
 
     // LOGICA PARA PAGINAR
     useEffect( () => { 
-        let auxPaginatedReviews = sortedReviews.slice(((currentPage * 6) - 6), (currentPage * 6))
+        let auxPaginatedReviews = sortedReviews.slice(((currentPage * reviewsPerPage) - reviewsPerPage), (currentPage * reviewsPerPage))
         setPaginatedReviews(auxPaginatedReviews);
     }, [sortedReviews, currentPage]);
     
@@ -139,7 +146,7 @@ const Reviews = (props) => {
     };
 
     const pageIncrement = () => {
-        let lastPage = Math.ceil(sortedReviews.length / 6);
+        let lastPage = Math.ceil(sortedReviews.length / reviewsPerPage);
         if (currentPage < lastPage) {
             let nextPage = currentPage + 1;
             setCurrentPage(nextPage);
@@ -154,19 +161,25 @@ const Reviews = (props) => {
     };
 
     //aux para calcular paginado en mstrando 1 a 6 de 10 Reviews
-    const reviewsPerPage = 6;
+    const reviewsPerPage = 3;
     const startIndex = (currentPage - 1) * reviewsPerPage;
-    const endIndex = Math.min(startIndex + reviewsPerPage, reviews.length);
+    const endIndex = Math.min(startIndex + reviewsPerPage, filteredReviews.length);
 
     return (
-        <div className={styles.reviewContainer}>
-            <br />
-            <section>
-                <div className='container'>
-                    { reviews.length !== 0 && <p className='text-center'>calificación general: </p> }
-                    { reviews.length !== 0 && <p className='text-center mb-0' style={{fontWeight:"bold"}}>{`${overallRatingWord}`}</p> }
-                    { reviews.length !== 0 && <p className='text-center' style={{fontSize:"small", marginLeft:"10px"}}>{`(${reviews.length} reseñas)`}</p> }    
-                    { reviews.length !== 0 && <div style={{textAlign: 'center'}} className={styles.starWrapper}>
+        <div className={ showCommentPanel ? styles.expandedContainer : styles.reviewsContainer }>
+            { !showCommentPanel &&
+            <div className={styles.header}>
+                
+                <div className={styles.sectionTitle}>
+                    {/* <span>Viajeros Felices</span> */}
+                    <span className={styles.title}>VIAJEROS FELICES</span> 
+                    <br />
+                    <span className={styles.subtitle}>conoce la opinión de nuestros clientes</span> 
+                </div>
+
+                <div className={styles.gralRating}>
+                    { reviews.length !== 0 && <p className={styles.ratingWord}>{`${overallRatingWord}`}</p> }   
+                    { reviews.length !== 0 && <div className={styles.starWrapper}>
                         {
                             (overallRatingNumber === 0 || overallRatingNumber === 0.5) && <img src={stars0} alt='0stars' />
                         }
@@ -186,19 +199,26 @@ const Reviews = (props) => {
                             overallRatingNumber === 5 && <img src={stars5} alt='5stars' />
                         }
                     </div> }
+                    { reviews.length !== 0 && <p className={styles.totalReviews}>{`(${reviews.length} reseñas)`}</p> } 
                 </div>
-            </section>
-            <br />
-            <section>
-                <div className='container'>
+            </div>
+            }
+
+            <div className={styles.select}>
+                <div>
                     <label htmlFor="rating-filter">mostrar:  </label>   
-                    <select id="rating-filter" value={filterSelectedOption} onChange={handleFilterChange} className="selectpicker " aria-label="Default select example"> 
+                    <select id="rating-filter" value={filterSelectedOption} onChange={handleFilterChange} className={styles.selectFilter}> 
                         <option value="all">Todas</option>
                         <option value="positives">Positivas</option>
                         <option value="negatives">Negativas</option>
                     </select>
+                </div>
+                <div className={styles.paginationIndex}>
+                { paginatedReviews.length !== 0 && <span>{`Mostrando ${(startIndex + 1)} a ${endIndex} de ${filteredReviews.length} Reseñas`}</span> }
+                </div>
+                <div>
                     <label htmlFor='sort ml-5'>ordenar por:  </label>
-                    <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className="selectpicker" aria-label="Default select example"> 
+                    <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className={styles.selectFilter}> 
                         <option value=''></option>
                         <option value='date-des'>Fecha - Más recientes primero</option>
                         <option value='date-asc'>Fecha - Más antiguas primero</option>
@@ -206,67 +226,37 @@ const Reviews = (props) => {
                         <option value='rating-asc'>Peor puntuación - asc.</option>
                     </select>
                 </div>
-            </section>
+            </div>
 
-           {/*  <section>
-                <div className='container'>
-                    <label htmlFor='sort'>ordenar por:  </label>
-                    <select id='sort' value={sortSelectedOption} onChange={handleSortChange} className="selectpicker" aria-label="Default select example"> 
-                        <option value=''></option>
-                        <option value='date-des'>Fecha - Más recientes primero</option>
-                        <option value='date-asc'>Fecha - Más antiguas primero</option>
-                        <option value='rating-des'>Mejor puntuación - des.</option>
-                        <option value='rating-asc'>Peor puntuación - asc.</option>
-                    </select>
-                </div>
-            </section> */}
-
-            <section >
-                <div className='container mt-5 mb-5 '> {/* <div className='container'> */}
-                    <div className="row g-2"> {/* <div className="row mt-3">  */}
-                        {
-                            paginatedReviews?.map((review) => {
-                                return <Review
-                                    key={review.review_id}
-                                    reviewId={review.review_id}
-                                    image={review.user.image}
-                                    name={review.user.name}
-                                    date={formatDate(review.createdAt)}
-                                    rating={review.rating}
-                                    description={review.description}
-                                />
-                            })
+            <div className={styles.reviewsCarousel}>
+                { paginatedReviews.length !== 0 &&<div className={styles.paginationButton}><img src={prevPageIcon} alt="previous-page" onClick={pageDecrement} /></div> }
+                {
+                    paginatedReviews?.map((review) => {
+                        if (review.active) {
+                            return <Review
+                                key={review.review_id}
+                                reviewId={review.review_id}
+                                image={review.user.image}
+                                name={review.user.name}
+                                date={formatDate(review.createdAt)}
+                                rating={review.rating}
+                                description={review.description}
+                            />
                         }
-                    </div>
-                </div>
-            </section>
-           
-            <section>
-                <div className='container'>
-                { reviews.length !== 0 && <span>{`Mostrando ${(startIndex + 1)} a ${endIndex} de ${reviews.length} Reseñas`}</span> }
+                    })
+                }
+                { paginatedReviews.length !== 0 && <div className={styles.paginationButton}><img src={nexPageIcon} alt="next-page" onClick={pageIncrement} /></div> }
+            </div>
 
-                        <div className=" d-flex justify-content-center">
-                            <NavLink className="link-dark me-1" >Previous</NavLink>
-                            <NavLink className="link-dark ms-1" >Next</NavLink>
-                        </div>
+            <div className={styles.threadPanel}>
+                {
+                    showCommentPanel && <ReviewThread reviewId={selectedReview} shopId={props.shopId} />
+                }
+            </div>
 
-                </div>  
-            </section>
-
-            <section className={styles.reviewThread}>
-                <div className='container'>
-                    {
-                        showCommentPanel && <ReviewThread reviewId={selectedReview} shopId={props.shopId} />
-                    }
-                </div>
-            </section>
-
-            <section>
-                <div className='container'>
-                    <ReviewForm shopId={props.shopId} />
-                </div>
-            </section>
-
+            <div className={styles.reviewsForm}>
+                <ReviewForm shopId={props.shopId} />
+            </div>
         </div>
     );
 };

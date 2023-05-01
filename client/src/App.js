@@ -1,26 +1,27 @@
-import Layout from './components/Layout/Layout'
-import Home from './components/pages/Home/Home'
-import AboutUs from './components/pages/AboutUs/AboutUs'
-import AventurasDelCaribe from './components/pages/AventurasDelCaribe/AventurasDelCaribe'
-import FincaMandira from './components/pages/FincaMandira/FincaMandira'
-import FincaLaParcela from './components/pages/FincaLaParcela/FincaLaParcela'
-import RestaurantSolYLuna from './components/pages/RestaurantSolYLuna/RestaurantSolYLuna'
-import HospedajeClaroDeLuna from './components/pages/HospedajeClaroDeLuna/HospedajeClaroDeLuna'
-import Paquetes from './components/pages/Paquetes/Paquetes'
-import Blog from './components/pages/Blog/Blog'
-import DetailBlog from './components/pages/Blog/DetailBlog'
-import Contact from './components/pages/Contact/Contact'
-import Login from './components/pages/Login/Login'
-import NotFound from './components/pages/NotFound/NotFound'
-import ArtesaniasMaryLuna from './components/pages/AventurasDelCaribe/ArtesaniasMarYLuna/ArtesaniasMarYLuna'
-import { Routes, Route } from 'react-router-dom'
-import Register from './components/pages/Login/Register/Register'
-import Admin from './components/pages/Admin/Admin'
+import Layout from './components/Layout/Layout';
+import Home from './components/pages/Home/Home';
+import AboutUs from './components/pages/AboutUs/AboutUs';
+import AventurasDelCaribe from './components/pages/AventurasDelCaribe/AventurasDelCaribe';
+import FincaMandira from './components/pages/FincaMandira/FincaMandira';
+import FincaLaParcela from './components/pages/FincaLaParcela/FincaLaParcela';
+import RestaurantSolYLuna from './components/pages/RestaurantSolYLuna/RestaurantSolYLuna';
+import HospedajeClaroDeLuna from './components/pages/HospedajeClaroDeLuna/HospedajeClaroDeLuna';
+import Paquetes from './components/pages/Paquetes/Paquetes';
+import Blog from './components/pages/Blog/Blog';
+import DetailBlog from './components/pages/Blog/DetailBlog';
+import Contact from './components/pages/Contact/Contact';
+import Login from './components/pages/Login/Login';
+import NotFound from './components/pages/NotFound/NotFound';
+import ArtesaniasMaryLuna from './components/pages/AventurasDelCaribe/ArtesaniasMarYLuna/ArtesaniasMarYLuna';
+import { Routes, Route } from 'react-router-dom';
+import Register from './components/pages/Login/Register/Register';
+import Admin from './components/pages/Admin/Admin';
+import Comollegar from './components/pages/comoLlegar/Comollegar';
+import QueHacer from './components/pages/QueHacer/QueHacer';
+import SuccessPay from './components/pages/SuccessPay';
 
-import axios from 'axios'
-
-axios.defaults.baseURL = 'https://visitmatina.onrender.com/api'
-
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:3001/api';
 
 const App = () => {
   return (
@@ -41,10 +42,13 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/admin' element={<Admin />} />
+        <Route path='/execute-payment' element={<SuccessPay />} />
         <Route path='*' element={<NotFound />} />
+        <Route path='/comoLlegar' element={<Comollegar />} />
+        <Route path='/queHacer' element={<QueHacer />} />
       </Routes>
     </Layout>
-  )
-}
+  );
+};
 
-export default App
+export default App;

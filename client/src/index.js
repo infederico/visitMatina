@@ -8,6 +8,9 @@ import store from './redux/store'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css';
 
+
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
+
 const persistor = persistStore(store)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -15,7 +18,9 @@ root.render(
   <PersistGate persistor={persistor}>
     <Provider store={store}>
       <BrowserRouter>
-        <App className= "index"/>
+        <PayPalScriptProvider potions={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+          <App className= "index"/>
+        </PayPalScriptProvider>
       </BrowserRouter>
     </Provider>
   </PersistGate>

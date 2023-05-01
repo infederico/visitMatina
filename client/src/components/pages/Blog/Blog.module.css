@@ -1,5 +1,5 @@
 .divMain{
-  padding: 80px;
+  background-color: var(--quaternary-color-0);
 }
 .divCardsBlog {
   justify-content: center;
@@ -8,10 +8,13 @@
   display: grid;
   gap: 1rem;
   padding-top: 6%;
+  padding-bottom: 40px;
 }
 .divPag{
+  height: 38px;
   display: flex;
   justify-content: center;
+  background-color: var(--quaternary-color-0);
 }
 
 @media (min-width: 1100px) {
@@ -19,15 +22,60 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.image{
+.textCarousel{
+  text-align: center;
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 150px;
+    font-family: 'Marcellus', serif;
+    text-shadow: .7px .7px 28px black;
+    color: var(--white-color)
+}
+.divButtons{
+  margin-bottom: 140px;
+}
+/* .image{
   width: 100%;
   position:absolute;
   top: -130px;
 }
 .divCarousel{
   height: 360px;
-}
-.textCarousel{
+} */
+/* .textCarousel{
+  position: absolute;
+  bottom:100px;
   color: white;
   text-shadow: 2px 2px black;
-}
+} */
+
+
+ .image {
+  width: 100%;
+  height: 100vh;
+  object-fit:cover;
+ }
+ .divAux{
+  height: 40px;
+  background-color: var(--quaternary-color-0);
+ }
+ .buttonPage{
+  border: 0px;
+  padding: 0px 10px 0px 10px;
+  color: var(--quaternary-color-700);
+  background-color: var(--quaternary-color-100)
+ }
+ .buttonPage:hover{
+  background-color: var(--quaternary-color-400);
+  color: var(--quaternary-color-0);
+ }
+ .buttonPage2{
+  border: 0px;
+  padding: 7px 10px 7px 10px;
+  color: var(--quaternary-color-700);
+  background-color: var(--quaternary-color-100)
+ }
+ .buttonPage2:hover{
+  background-color: var(--quaternary-color-400);
+  color: var(--quaternary-color-0);
+ }

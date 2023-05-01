@@ -1,11 +1,26 @@
 .customCaption{
-    font-size: 1.3rem;
-    text-align: justify;
-    background-color: rgba(0,0,0,0.6);
-    backdrop-filter: blur( 5px );
-    padding: 1rem 2rem;
-    padding-bottom: 2rem;
+    /* font-size: 16px; */
+    /* text-align: start; */
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+    /* backdrop-filter: blur( 5px ); */
+    padding: 1.5rem 15rem;
     left: 0;
-    bottom: 0;
+    top: 0;
     width: 100%;
+    height: fit-content;
+}
+
+.title{
+    font-family: 'Kanit', sans-serif;
+    font-size: 32px;
+}
+.body {
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.1rem;
+}
+.img {
+    filter: brightness(70%); 
+    height: 100vh;
+    object-fit:cover;
 }

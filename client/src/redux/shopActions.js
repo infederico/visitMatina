@@ -1,10 +1,18 @@
 import axios from "axios";
-import { getAllShops, getShopIdByPath, getShopDataByPath } from "./shopSlice";
+import { getAllShops, getAllAllShops, getShopIdByPath, getShopDataByPath, resPostShop, updtShop, delShop, clnResDel, clnResUpDt} from "./shopSlice";
 
 export const getShops = () => async (dispatch) => {
     try{
         const shops = await axios("/shops");
           dispatch(getAllShops(shops.data));
+    }catch(error) {
+        console.log(error);
+    }
+};
+export const getFullShops = () => async (dispatch) => {
+    try{
+        const shops = await axios("/shops/all");
+          dispatch(getAllAllShops(shops.data));
     }catch(error) {
         console.log(error);
     }
@@ -29,4 +37,39 @@ export const getShopData = (path) => async (dispatch) => {
     }catch(error) {
         console.log(error);
     }
+};
+
+export const postShop = (obj) => async (dispatch) => {
+    try {
+        const shops = await axios.post("/shops" , obj);
+        return dispatch(resPostShop(shops.data.message));
+    } catch (error) {
+        return (error.response.data.error);
+    }
+};
+
+export const updateShop = (obj) => async (dispatch) => {
+    try {
+        const shops = await axios.put("/shops" , obj);
+        dispatch(updtShop(shops.data.message));
+    } catch (error) {
+        return (error.response.data.error);
+    }
+};
+
+export const deleteShop = (id_shop) => async (dispatch) => {
+    try {
+        const shops = await axios.delete(`/shops/${id_shop}`);
+        dispatch(delShop(shops.data.message));
+    } catch (error) {
+        window.alert(error.response.data.error);
+    }
+};
+
+export const clnDel = () => {
+    return (clnResDel());
+};
+
+export const clnUpdt= () => {
+    return (clnResUpDt());
 };

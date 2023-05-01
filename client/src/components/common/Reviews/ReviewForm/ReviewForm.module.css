@@ -2,7 +2,24 @@
     margin: 0;
     padding: 0;
 }
+
+.form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+}
+
 .rate {
+    width: 20%;
     float: left;
     height: 46px;
     padding: 0 10px;
@@ -39,4 +56,44 @@
     color: #c59b08;
 }
 
-/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+.reviewBox {
+    width: 70%;
+    align-items: center;
+    display: flex;
+}
+
+.submitSection {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitButton {
+    margin: 10%;
+    padding: 10%;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 1px solid var(--tertiary-color-700);
+    background-color: transparent;
+    color: var(--tertiary-color-700);
+}
+.submitButton:hover {
+    cursor: pointer;
+    background-color: var(--tertiary-color-700);
+    color: var(--tertiary-color-0);
+}
+
+
+.alertSection {
+    height: 10%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    /* position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%); */
+  }

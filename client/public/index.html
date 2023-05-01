@@ -24,9 +24,45 @@
       href="https://unpkg.com/cloudinary-video-player@1.9.5/dist/cld-video-player.min.css"
       rel="stylesheet"
     />
+<!--     <link rel="stylesheet" type="text/css" href="//translate.google.com/translate_static/css/translateelement.css" />
+ -->
+ 
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: 'es',
+            includedLanguages: 'en,fr',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          'google_translate_element'
+        );
+      }
+
+      $(document).on('DOMNodeInserted', function (e) {
+        var node = e.target;
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          // Traducir el contenido del nuevo elemento agregado al DOM
+          var translator = new google.translate.TranslateElement({
+            pageLanguage: 'es',
+            includedLanguages: 'en,fr',
+          });
+          translator.translatePage();
+        }
+      });
+    </script>
   </head>
 
   <body>
+    <div
+      id="google_translate_element"
+      style="background-color: var(--tertiary-color-0)"
+    ></div>
+    <div id="content"></div>
     <div id="root"></div>
     <!-- Bootstrap 5 -->
     <script
