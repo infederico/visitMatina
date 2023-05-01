@@ -167,8 +167,8 @@ const Admin = () => {
                   className='navbar-toggler'
                   type='button'
                   data-bs-toggle='collapse'
-                  data-bs-target='#navbarSupportedContent'
-                  aria-controls='navbarSupportedContent'
+                  data-bs-target='#navbarSupportedContent2'
+                  aria-controls='navbarSupportedContent2'
                   aria-expanded='false' 
                   aria-label='Toggle navigation'
                 >
@@ -176,7 +176,7 @@ const Admin = () => {
                 </button>
                 <div
                   className='collapse navbar-collapse nav nav-tabs'
-                  id='navbarSupportedContent'
+                  id='navbarSupportedContent2'
                 >
                   <ul className='navbar-nav ms-auto nav nav-item '>
                     <NavLink
