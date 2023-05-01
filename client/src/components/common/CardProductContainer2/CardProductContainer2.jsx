@@ -40,6 +40,7 @@ const CardProductContainer2 = () => {
     <div className={styles.container}>
       <div className={styles.wrapCards}>
         {currentProducts &&
+          Array.isArray(currentProducts) &&
           currentProducts.map((paq) => {
             return (
               <CardProduct2
