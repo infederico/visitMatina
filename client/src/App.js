@@ -21,7 +21,7 @@ import Tours from './components/pages/Tours/Tours.jsx';
 import SuccessPay from './components/pages/SuccessPay';
 
 import axios from 'axios';
-axios.defaults.baseURL = 'https://visitmatina.onrender.com/api';
+axios.defaults.baseURL = 'http://localhost:3001/api';
 
 const App = () => {
   return (

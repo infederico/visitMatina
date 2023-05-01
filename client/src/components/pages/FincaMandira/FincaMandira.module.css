@@ -50,14 +50,14 @@
 }
 .contactSection{
     /* border: 1px solid #000; */
-    width: 100%;
+/*     width: 100%;
     margin-top: 80px;
     padding-bottom: 80px;
     display: flex;
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: var(--quaternary-color-0);
+    background-color: var(--quaternary-color-0); */
 }
 .contact{
     width: 100%;
@@ -96,6 +96,7 @@
 .cardProductContainerContainer {
  /*    margin: 20px 0 0 0;
     padding: 2.7rem 0; */
-    height: 100vh;
-    background-image: linear-gradient(to bottom, var(--quaternary-color-200), var(--quaternary-color-400));
+    min-height: 100%;
+    max-height: auto;
+    /* background-image: linear-gradient(to bottom, var(--quaternary-color-200), var(--quaternary-color-400)); */
 }
