@@ -11,9 +11,15 @@
     padding: 0px;
 }
 .text{
-    font-family: 'Actor', sans-serif;
-    font-size: .85rem;
+    font-family: 'Marcellus', serif;
+    font-size: .90rem;
+    font-weight: normal;
+    color: var(--tertiary-color-900);
 }
 .navlogo{
     width: 3.8rem;
+}
+.text ul {
+    background-color: var(--tertiary-color-0);
+
 }

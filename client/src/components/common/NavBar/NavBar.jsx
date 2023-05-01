@@ -1,22 +1,24 @@
 //import { useState } from 'react';
 //import { useDispatch } from 'react-redux';
 //import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 // eslint-disable-next-line
-import styles from './NavBar.module.css'
-import { NavLink } from 'react-router-dom'
+import styles from './NavBar.module.css';
+import { NavLink } from 'react-router-dom';
 
-import Logo from '../../../assets/images/matina_logo.png'
-import LogOutUser from '../../pages/Login/Logout/Logout'
+import Logo from '../../../assets/images/matina_logo.png';
+import LogOutUser from '../../pages/Login/Logout/Logout';
 
 export default function NavBar() {
   //const dispatch = useDispatch();
   //const location = useLocation();
-  const loggedUser = useSelector((state) => state.user.user)
+  const loggedUser = useSelector((state) => state.user.user);
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light ${styles.navBarCustom}`}>
+    <nav
+      className={`navbar navbar-expand-lg navbar-light ${styles.navBarCustom}`}
+    >
       <div className='container'>
         <NavLink className='navbar-brand' to='/'>
           <img src={Logo} alt='Visit_Matina_Logo' className={styles.navlogo} />
@@ -34,17 +36,17 @@ export default function NavBar() {
         </button>
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className={`navbar-nav ms-auto ${styles.text}`}>
-            <NavLink className='nav-link' aria-current='page' to='/'>
+            <NavLink className='nav-link' to='/'>
               Inicio
             </NavLink>
             <NavLink className='nav-link' to='/aboutUs'>
               Nosotros
             </NavLink>
-            {/* esta ruta aún no existe */}
             <NavLink className='nav-link' to='/comollegar'>
               Cómo llegar
             </NavLink>
             {/* esta ruta aún no existe */}
+
             <li className='nav-item dropdown'>
               <NavLink
                 className='nav-link dropdown-toggle'
@@ -53,40 +55,7 @@ export default function NavBar() {
                 data-bs-toggle='dropdown'
                 aria-expanded='false'
               >
-                Que hacer
-              </NavLink>
-              <ul
-                className='dropdown-menu'
-                aria-labelledby='navbarDropdownMenuLink'
-              >
-                {/* falta feedback del PO para ver el detalle de que quiere poner aca y armar estas rutas */}
-                <li>
-                  <NavLink className='dropdown-item' to='/dondeir/aves'>
-                    Avistar aves
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className='dropdown-item' to='/dondeir/pesca'>
-                    Pescar
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className='dropdown-item' to='/dondeir/etc'>
-                    etc
-                  </NavLink>
-                </li>
-                {/* falta feedback del PO para ver el detalle de que quiere poner aca y armar estas rutas */}
-              </ul>
-            </li>
-            <li className='nav-item dropdown'>
-              <NavLink
-                className='nav-link dropdown-toggle'
-                id='navbarDropdownMenuLink'
-                role='button'
-                data-bs-toggle='dropdown'
-                aria-expanded='false'
-              >
-                Donde ir
+                Dónde ir
               </NavLink>
               <ul
                 className='dropdown-menu'
@@ -107,11 +76,11 @@ export default function NavBar() {
                     Aventuras del Caribe
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink className='dropdown-item' to='/artesaniasMarYLuna'>
                     Artesanías Mar y Luna
                   </NavLink>
-                </li>
+                </li> */}
               </ul>
             </li>
             <li className='nav-item dropdown'>
@@ -122,7 +91,7 @@ export default function NavBar() {
                 data-bs-toggle='dropdown'
                 aria-expanded='false'
               >
-                Gastronomia
+                Gastronomía
               </NavLink>
               <ul
                 className='dropdown-menu'
@@ -156,6 +125,13 @@ export default function NavBar() {
                 </li>
               </ul>
             </li>
+            <li className='nav-item dropdown'>
+              <NavLink className='nav-link' to='/Tours'
+              >
+                Tours
+              </NavLink>
+              
+            </li>
             <NavLink className='nav-link' to='/paquetes'>
               Paquetes
             </NavLink>
@@ -181,5 +157,5 @@ export default function NavBar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

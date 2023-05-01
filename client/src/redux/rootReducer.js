@@ -8,6 +8,7 @@ import postReducer from './postSlice'
 import productReducer from './productSlice'
 import contactReducer from './contactSlice'
 import shopReducer from './shopSlice'
+import cartReducer from './cartSlice'
 
 
 const rootReducer = combineReducers({
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   post: postReducer,
   product: productReducer, //ruta definitiva
   shops: shopReducer,
-  contact: contactReducer
+  contact: contactReducer,
+  cart: cartReducer,
 })
 
 

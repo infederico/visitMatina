@@ -5,12 +5,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { getShops, getShopId, getShopData } from '../../../redux/shopActions';
 import { resetShopId, resetShopData } from '../../../redux/shopSlice';
 
-import CardProductContainer from '../../common/CardProductContainer/CardProductContainer'
+import CardProductContainer2 from '../../common/CardProductContainer2/CardProductContainer2'
 import Redes from '../../common/redesSociales/redes/Redes'
 import style from './FincaMandira.module.css'
 import CardShop from '../../common/shopsDos/cardShop/CardShop'
 import Reviews from '../../common/Reviews/Reviews';
 import Footer from '../../common/Footer/Footer';
+import WhatsApp from '../../common/WhatsApp/WhatsApp';
 
 
 
@@ -40,14 +41,6 @@ export default function FincaMandira() {
 
 
 
-  // useEffect( () => {
-  //   dispatch(getShops(location.pathname));
-  // }, []);
-  // useEffect( () => {
-  //   const shopFiltered = shops.filter(shop => shop.path === location.pathname);
-  //   if (shopFiltered.at(0)) setShopId(shopFiltered[0]['id_shop']);
-  // }, [shops]);
-
   return (
     <div className={style.page}>
       <section className={style.titleSection}>
@@ -55,20 +48,12 @@ export default function FincaMandira() {
           <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
         </div>
       </section>
-      <section className={style.Cajaredes}>
-        <Redes socialmedia={arrayRedes} />
-        {/*aca enviamos por props el array que importamos
-                                                    simulando los datos que llegarian del back*/}
-      </section>
       <div className={style.cardProductContainerContainer}>
         < div >
-          <CardProductContainer />
+          <CardProductContainer2 />
         </div>
       </div>
       <section>
-        <div className='container text-center'>
-          <h4>Nuestros clientes</h4>
-        </div>
         { shopId && <Reviews shopId={shopId}/> }
       </section>
       
@@ -76,8 +61,12 @@ export default function FincaMandira() {
         <ShopContact />
       </section>
       <section>
-        <Footer socialmedia={arrayRedes}/>
+        <Footer/>
       </section>
+      {shopData?.whatsapp && 
+      <div>
+        <WhatsApp/>
+      </div>}
     </div>
   )
 }

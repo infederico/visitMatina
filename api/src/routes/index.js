@@ -8,6 +8,7 @@ const shopsRoutes = require('./shops/shopsRoutes')
 const { comment } = require('./comments/comments')
 const { review } = require('./reviews/reviews')
 const sendMail = require('./SendMail/sendMail')
+const payments = require('./payments/payments')
 
 const router = Router()
 
@@ -24,5 +25,7 @@ router.use('/post', post)
 router.use('/shops', shopsRoutes)
 
 router.use('/sendMail', sendMail) //path: /api/sendMail
+
+router.use('/payments', payments)
 
 module.exports = router

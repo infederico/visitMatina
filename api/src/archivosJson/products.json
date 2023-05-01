@@ -1,129 +1,220 @@
 
 [
     {
-    "name": "Tours de avistamiento de flora y fauna, diurno y nocturno",
-    "description":"la bebida de los hogares argentinos",
+    "name": "Tour de avistamiento: ",
+    "description":"Flora y fauna, diurno y nocturno",
     "price": 14.99,
-    "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+    "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682903915/florayfaunadiurnaynoc_ecpbg8.jpg",
     "shop_id": 5
     },
     {
-        "name": "Tour de avistamiento de caimanes",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Tour de avistamiento: ",
+        "description":"Caimanes",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682903915/caimanes_xebl2f.jpg",
         "shop_id": 5
     },
     {
-        "name": "Tour de avistamiento de cocodrilo",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Tour de avistamiento: ",
+        "description":"Cocodrilo",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682903916/cocodrilo_ozuc81.jpg",
         "shop_id": 5
     },
     {
-        "name": "Tour de desove de tortugas marinas en la Reserva Pacuare",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Tour de desove: ",
+        "description":"Tortugas marinas en la Reserva Pacuare",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682903915/tortuga_clycvt.jpg",
         "shop_id": 5
     },
     {
-        "name": "Taller de cocina caribeña",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Taller de cocina: ",
+        "description":"Gastronomía caribeña",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682904344/tallerdecocina_bxl5e5.jpg",
         "shop_id": 5
     },
     {
-        "name": "Taller de elaboración de artesanía ecológicas",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Taller de elaboración:",
+        "description":"Artesanía ecológicas",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682904345/coco_p5wx2t.jpg",
         "shop_id": 5
     },
     {
-        "name": "Llavero",
-        "description":"LLavero hecho a mano",
+        "name": "Taller de elaboración: ",
+        "description":"Aceite de coco",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682904345/coco_p5wx2t.jpg",
+        "shop_id": 5
+    },
+    {
+        "name": "Llavero Tortuga",
+        "description":"Hecho en coco",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/llaveroTortuga_kdjzqg.jpg",
         "shop_id": 6
     },
     {
-        "name": "llavero",
-        "description":"LLavero hecho a mano",
+        "name": "Collar Mantarralla",
+        "description":"Hecho en hueso",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarMantarralla_wlowya.jpg",
         "shop_id": 6
     },
     {
-        "name": "llavero",
-        "description":"LLavero hecho a mano",
+        "name": "Collar Ballena",
+        "description":"Hecho en hueso",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarBallena_g6j10n.jpg",
         "shop_id": 6
     },
     {
-        "name": "Visita nuestra finca",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Llavero Tortuga",
+        "description":"Hecho en hueso",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarTortuga_haea7j.jpg",
+        "shop_id": 6
+    },
+    {
+        "name": "Collar Búho",
+        "description":"Hecho en hueso",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarBuho_nyavhl.jpg",
+        "shop_id": 6
+    },
+    {
+        "name": "Cholocate",
+        "description":"El mejor chocolate de Matina",
         "price": 14.99,
         "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
         "shop_id": 3
     },
     {
-        "name": "Taller de cholocate",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Cholocate",
+        "description":"El mejor chocolate de Matina",
         "price": 14.99,
         "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
         "shop_id": 3
     },
     {
-        "name": "Tour del cacao",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Chocolate",
+        "description":"El mejor chocolate de Matina",
         "price": 14.99,
         "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
         "shop_id": 3
     },
     {
-        "name": "Taller de construccion en bambu",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Queso de leche de cabra",
+        "description":"Hecha a la vista",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
-        "shop_id": 3
-    },
-    {
-        "name": "Queso fresco de leche de vaca",
-        "description":"la bebida de los hogares argentinos",
-        "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682952107/quesolechecabra_daubsw.jpg",
         "shop_id": 4
     },
     {
-        "name": "Queso fresco de leche de coco",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Queso leche de vaca",
+        "description":"Fresca y natural",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682952107/quelechevaca_xqtqjr.jpg",
         "shop_id": 4
     },
     {
-        "name": "Tour de 1 dia",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Yogurt de leche de cabra",
+        "description":"Refrescante y nutritiva, sabor maracuyá",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682952107/yogurtlechecabra_aj3ihc.jpg",
+        "shop_id": 4
+    },
+    {
+        "name": "One day trip",
+        "description":"Tour Garza tigre en la Barra de Matina. Tour en Finca Santuario Mandira Tour en Finca Integral La Parcela",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682738601/AC4_sprtlz.jpg",
         "shop_id": 2
     },
     {
-        "name": "Tour de 2 dias y 1 noches",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Aventura de dos dias",
+        "description":"Tour Garza tigre en la Barra de Matina + Tour en Finca Integral La Parcela.Tour Garza tigre en la Barra de Matina + Tour en Finca Santuario Mandira.Tour en kayak Goshen Barra del Pacuare.",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682738220/AC12_uebbxn.jpg",
         "shop_id": 2
     },
     {
-        "name": "Tour de 3 dias y 2 noches",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Aventura de tres dias",
+        "description":"Tour Garza tigre en la Barra de Matina + Tour en Finca Integral La Parcela + Tour en Finca Santuario Mandira.",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682738603/IMG-20230412-WA0093_lwfzvp.jpg",
         "shop_id": 2
+    },
+    {
+        "name": "imagen para galeria",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285079/Restaurant6_qz4ovd.jpg",
+        "shop_id": 7
+    },
+    {
+        "name": "imagen para galeria",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285079/Restaurant4_d1pdm4.jpg",
+        "shop_id": 7
+    },
+    {
+        "name": "imagen para galeria",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285079/Restaurant1_h80ud8.jpg",
+        "shop_id": 7
+    },
+    {
+        "name": "imagen para galeria",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285079/Restaurant2_uf2vxx.jpg",
+        "shop_id": 7
+    },
+    {
+        "name": "imagen para galeria",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285079/Restaurant5_egapk2.jpg",
+        "shop_id": 7
+    },
+    {
+        "name": "imagen para galeria hospedaje",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285560/HopedajeClaroDeLuna1_mxkzlx.jpg",
+        "shop_id": 8
+    },
+    {
+        "name": "imagen para galeria hospedaje",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285573/HopedajeClaroDeLuna3_r2mc6h.jpg",
+        "shop_id": 8
+    },
+    {
+        "name": "imagen para galeria hospedaje",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285560/HopedajeClaroDeLuna4_hoifr9.jpg",
+        "shop_id": 8
+    },
+    {
+        "name": "imagen para galeria hospedaje",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285560/HopedajeClaroDeLuna2_ronoyy.jpg",
+        "shop_id": 8
+    },
+    {
+        "name": "imagen para galeria hospedaje",
+        "description":"imagen para galeria",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682285560/HopedajeClaroDeLuna5_sskcwg.jpg",
+        "shop_id": 8
     }
 ]

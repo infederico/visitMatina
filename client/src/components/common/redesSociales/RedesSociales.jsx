@@ -4,7 +4,7 @@ const RedesSociales = ({enlace,logo,name }) => {
   return (
     <div className={style.cajaredes}>
       <a href={enlace} target="_blank">
-        <img className={style.imagen} src={logo} alt={name} />
+        <img className={style.imagen} src={logo} alt={`Boton de ${name}`} />
       </a>
     </div>
   );

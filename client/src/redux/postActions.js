@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAllAllPosts, getAllPosts, getPostDetail, postPost, upDtPost, delPost, currPage, cleanUpPost, cleanPostPost, cleanDel} from "./postSlice";
+import { getAllAllPosts, getAllPosts, getPostDetail, clnPostDetail, postPost, upDtPost, delPost, currPage, cleanUpPost, cleanPostPost, cleanDel} from "./postSlice";
 
 export const getAllPostsSF = () => async (dispatch) => {
   try {
@@ -28,30 +28,36 @@ export const getPostId = (id) => async (dispatch) => {
   }
 };
 
+export const clnDetail = () => {
+  return (clnPostDetail());
+}
+
 export const addPost = (post) => async (dispatch) => {
   try {
    const posts = await axios.post(`/post`, post);
-    dispatch(postPost(posts.data)); 
+    return dispatch(postPost(posts.data.success)); 
   } catch (error) {
-    window.alert(error.response.data.error)
+    return (error.response.data.error)
   }
 };
 
 export const updatePost = (post) => async (dispatch) => {
   try {
+    console.log(post);
    const posts = await axios.put(`/post`, post);
-    dispatch(upDtPost(posts.data));
+    return dispatch(upDtPost(posts.data.success));
+    
   } catch (error) {
-    window.alert(error.response.data.error);
+    return (error.response.data.error);
   }
 };
 
 export const deletePost = (id) => async (dispatch) => {
   try {
    const posts = await axios.delete(`/post?id_post=${id}`);
-    dispatch(delPost(posts.data)); 
+    return dispatch(delPost(posts.data.success)); 
   } catch (error) {
-    window.alert(error.response.data.error)
+    return (error.response.data.error)
   }
 };
 

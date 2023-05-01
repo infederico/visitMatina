@@ -1,32 +1,160 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import AdminAventuras from './AdminAventuras/AdminAventuras'
-import AdminBlog from './AdminBlog/AdminBlog'
-import AdminHospedaje from './AdminHospedaje/AdminHospedaje'
-import AdminHospedajeMandira from './AdminMandira/AdminHospedajeMandira'
-import AdminParcela from './AdminParcela/AdminParcela'
-import AdminRestaurant from './AdminRestaurant/AdminRestaurant'
-import AdminUsuarios from './AdminUsuarios/AdminUsuarios'
-import { useSelector } from 'react-redux'
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import AdminAventuras from './AdminAventuras/AdminAventuras';
+import AdminArtesanias from './AdminArtesanias/AdminArtesanias';
+import AdminBlog from './AdminBlog/AdminBlog';
+import AdminHospedaje from './AdminHospedaje/AdminHospedaje';
+import AdminHospedajeMandira from './AdminMandira/AdminHospedajeMandira';
+import AdminParcela from './AdminParcela/AdminParcela';
+import AdminRestaurant from './AdminRestaurant/AdminRestaurant';
+import AdminShop from './AdminShop/AdminShop';
+import AdminUsuarios from './AdminUsuarios/AdminUsuarios';
+import { useSelector } from 'react-redux';
+
 const Admin = () => {
-  const loggedUser = useSelector((state) => state.user.user)
+  const loggedUser = useSelector((state) => state.user.user);
   const [option, setOption] = useState({
     aventuras: false,
+    artesanias: false,
     blog: false,
     hospedaje: false,
     hospedajeMandira: false,
     parcela: false,
     restaurant: false,
-    usuarios: false,
-  })
+    shops: false,
+    usuarios: true,
+  });
 
   const handlerButton = (event) => {
+    switch ([event.target.name]) {
+      case "aventuras":
+        setOption({
+          aventuras: true,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: false,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "artesanias":
+          setOption({
+            aventuras: false,
+            artesanias: true,
+      blog: false,
+      hospedaje: false,
+      hospedajeMandira: false,
+      parcela: false,
+      restaurant: false,
+      shops: false,
+      usuarios: false,
+          })
+          break;
+        case "blog":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: true,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: false,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "hospedaje":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: true,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: false,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "hospedajeMandira":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: true,
+    parcela: false,
+    restaurant: false,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "parcela":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: true,
+    restaurant: false,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "restaurant":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: true,
+    shops: false,
+    usuarios: false,
+        })
+        break;
+        case "shops":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: false,
+    shops: true,
+    usuarios: false,
+        })
+        break;
+        case "usuarios":
+        setOption({
+          aventuras: false,
+          artesanias: false,
+    blog: false,
+    hospedaje: false,
+    hospedajeMandira: false,
+    parcela: false,
+    restaurant: false,
+    shops: false,
+    usuarios: true,
+        })
+        break;
+    
+      default:
+        break;
+    }
+
+
+
     setOption({
       [event.target.name]: true,
-    })
-  }
-
-  console.log(option)
+    });
+  };
 
   return (
     <div>
@@ -34,25 +162,25 @@ const Admin = () => {
         <section>
           <div>
             <nav className='navbar navbar-expand-lg navbar-light bg-light '>
-              <div className='container'>
+              <div className='container '>
                 <button
                   className='navbar-toggler'
                   type='button'
                   data-bs-toggle='collapse'
-                  data-bs-target='#navbarSupportedContent'
-                  aria-controls='navbarSupportedContent'
-                  aria-expanded='false'
+                  data-bs-target='#navbarSupportedContent2'
+                  aria-controls='navbarSupportedContent2'
+                  aria-expanded='false' 
                   aria-label='Toggle navigation'
                 >
                   <span className='navbar-toggler-icon'></span>
                 </button>
                 <div
-                  className='collapse navbar-collapse'
-                  id='navbarSupportedContent'
+                  className='collapse navbar-collapse nav nav-tabs'
+                  id='navbarSupportedContent2'
                 >
-                  <ul className='navbar-nav ms-auto'>
+                  <ul className='navbar-nav ms-auto nav nav-item '>
                     <NavLink
-                      className='nav-link'
+                      className='nav-link active aria-current="page"'
                       name='usuarios'
                       onClick={handlerButton}
                     >
@@ -60,10 +188,24 @@ const Admin = () => {
                     </NavLink>
                     <NavLink
                       className='nav-link'
+                      name='shops'
+                      onClick={handlerButton}
+                    >
+                      Emprendimientos
+                    </NavLink>
+                    <NavLink
+                      className='nav-link'
                       name='aventuras'
                       onClick={handlerButton}
                     >
                       Aventuras
+                    </NavLink>
+                    <NavLink
+                      className='nav-link'
+                      name='artesanias'
+                      onClick={handlerButton}
+                    >
+                      Artesanías
                     </NavLink>
                     <NavLink
                       className='nav-link'
@@ -105,7 +247,9 @@ const Admin = () => {
               </div>
             </nav>
           </div>
-          <div><h1>Panel Administrador</h1></div>
+          <div>
+            <h1 className='display-6 text-center my-4'>Panel Administrador</h1>
+          </div>
           <section>
             {option.blog === true ? (
               <div>
@@ -125,6 +269,15 @@ const Admin = () => {
             )}
           </section>
           <section>
+            {option.shops === true ? (
+              <div>
+                <AdminShop></AdminShop>
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </section>
+          <section>
             {option.aventuras === true ? (
               <div>
                 <AdminAventuras></AdminAventuras>
@@ -134,9 +287,18 @@ const Admin = () => {
             )}
           </section>
           <section>
+            {option.artesanias === true ? (
+              <div>
+                <AdminArtesanias></AdminArtesanias>
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </section>
+          <section>
             {option.hospedaje === true ? (
               <div>
-                <AdminHospedaje></AdminHospedaje>
+                <AdminHospedaje  shopId={8}></AdminHospedaje>
               </div>
             ) : (
               <div></div>
@@ -145,7 +307,7 @@ const Admin = () => {
           <section>
             {option.restaurant === true ? (
               <div>
-                <AdminRestaurant></AdminRestaurant>
+                <AdminRestaurant shopId={7}></AdminRestaurant>
               </div>
             ) : (
               <div></div>
@@ -172,7 +334,7 @@ const Admin = () => {
         </section>
       ) : null}
     </div>
-  )
-}
+  );
+};
 
-export default Admin
+export default Admin;

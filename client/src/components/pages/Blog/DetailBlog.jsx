@@ -14,8 +14,8 @@ const DetailBlog = () => {
     dispatch(getPostId(id));
   }, []);
 
-  console.log(postDetail);
-
+  //console.log(postDetail);
+  
   return (
     <section>
     <div className={styles.divSection}>
