@@ -1,9 +1,9 @@
-export const caminatas = `Contamos con una gran variedad de escenarios donde podrá realizar caminatas con dificultad variable dependiendo de sus gustos y condición física, entre las opciones se encuentran: 
-
-En la parte norte del cantón podrá recorrer la playa Matina ingresando por la Reserva Pacuare y disfrutando de avistamiento de flora y fauna marina y terrestre. 
-
-En la parte sur se realizan caminatas de la Colonia Puriscaleña a las inmediaciones del Parque Nacional Barbilla, y para los más aventureros incluso podrán adentrarse a conocer la quebrada Surure dentro del Parque. Así mismo, se puede visitar el Territorio Indígena Cabécar en Punta de Lanza.`
-
+export const garza = `Prepárate para disfrutar de una aventura acuática única y descubrir la belleza de la naturaleza en una de las zonas más hermosas del Caribe Norte.
+Nuestro tour comienza en el muelle de Goshen y te llevarán a bordo de una lancha cómoda y segura. Mientras navegamos por los canales, disfrutarás de vistas impresionantes de la exuberante vegetación tropical y la vida silvestre local.
+Durante la actividad, nuestros guías te brindarán información sobre la geografía, la flora y fauna local, y te explicarán la importancia de la conservación de la biodiversidad en la zona. También tendrás la oportunidad de observar de cerca la vida silvestre, como monos, iguanas, caimanes, aves tropicales y mucho más.
+A medida que avanzamos por los canales, nos detendremos en algunos lugares de interés, como pastizales donde se alimenta el manatí y habita la Garza Tigre. También tendremos espacio para hacer una caminata corta y explorar la fauna y flora local.
+Después de completar el recorrido, te llevaremos de regreso al muelle de Goshen. Esta experiencia es una manera única y emocionante de experimentar la belleza de la naturaleza. ¡No te pierdas la oportunidad de disfrutar de una aventura en los canales de Matina con nosotros!
+`
 export const kayaking = `¡Bienvenidos al tour de kayaking más emocionante! Prepárate para explorar desde la perspectiva única de un kayak.
 
 Comenzaremos nuestro tour en el muelle Goshen, donde se te brindará una lección de seguridad y una breve introducción sobre cómo manejar el kayak. Una vez que esté cómodo y confiado con su equipo, remarás sobre el canal que te lleva a la Laguna Madre de Dios rodeado de una exuberante naturaleza.Tendrás la oportunidad de observar de cerca una gran variedad de aves y otros animales que habitan la zona.

@@ -13,7 +13,7 @@ export default function Blog() {
   const {allPosts} = useSelector(state => state.post);  
   const dispatch = useDispatch();
 
-  const itemsPage = 6;
+  const itemsPage = 4;
   const totalPages =  Math.ceil(allPosts.length / itemsPage);
   const arrayPages = [];
   const orderPosts= [...allPosts].sort((a, b) => a.id_post - b.id_post);
@@ -108,46 +108,32 @@ export default function Blog() {
             <span className={`visually-hidden`}>Next</span>
         </button>
         </div>
-        <section>
-
-
-
-
-          
-      <div className={styles.divCardsBlog}>
-          {allPosts.slice(current * 10, (current * 10) + 10).map((elem) => {
-            return (
-              <div key={elem.id_post}>
-                <CardBlog
-                  id={elem.id_post}
-                  title={elem.title}
-                  summary={elem.summary}
-                  content={elem.content}
-                  image={elem.image}
-                  date={elem.date}
-                />
-              </div>
-            );
-          })}
-      </div>
-      </section>
+        <section> 
+          <div className={ styles.wrapCards }>
+              {allPosts.slice(current * itemsPage, (current * itemsPage) + itemsPage).map((elem) => {
+                return (
+                    <CardBlog
+                      id={elem.id_post}
+                      title={elem.title}
+                      summary={elem.summary}
+                      content={elem.content}
+                      image={elem.image}
+                      date={elem.date}
+                    />
+                );
+              })}
+          </div>
+        </section>
     </div>
 
-
-
-   
-
-
-    
-    
 
           <div className={styles.divPag}>
 
           <button className={`${styles.buttonPage} "page-link"`}   onClick={firstHandler}>First</button>
             <button className={`${styles.buttonPage} "page-link"`} onClick={prevHandler}>Prev</button>
             <div>
-            {arrayPages.slice(current - 6 < 0 ? 0 : current - 6 , current).map(ele => ele < 6 ? <button className={`${styles.buttonPage2} "page-link"`} name={ele} onClick={pageHandler} key = {ele}>{ele}</button>: <button className={`${styles.buttonPage2} "page-link"`} name={ele} onClick={pageHandler} key = {ele}>{ele}</button>)}
-              {arrayPages.slice(current, current + 7).map(ele => ele < 6 ? <button className={`${styles.buttonPage2} "page-link"`} name={ele} onClick={pageHandler} key = {ele}>{ele}</button>: <button className={`${styles.buttonPage2} "page-link"`} name={ele} onClick={pageHandler} key = {ele}>{ele}</button>)}
+            {arrayPages.slice(current - itemsPage < 0 ? 0 : current - itemsPage , current).map(ele => ele < itemsPage ? <button className={`${styles.buttonPage2} "page-link"`} name={ele} onClick={pageHandler} key = {ele}>{ele}</button>: <button className={`${styles.buttonPage2} "page-link"`} name={ele} onClick={pageHandler} key = {ele}>{ele}</button>)}
+              {arrayPages.slice(current, current + (itemsPage+1)).map(ele => ele < itemsPage ? <button className={`${styles.buttonPage2} "page-link"`} name={ele} onClick={pageHandler} key = {ele}>{ele}</button>: <button className={`${styles.buttonPage2} "page-link"`} name={ele} onClick={pageHandler} key = {ele}>{ele}</button>)}
             </div>
             <button className={`${styles.buttonPage} "page-link"`} onClick={nextHandler}>Next</button>
             <button className={`${styles.buttonPage} "page-link"`} onClick={lastHandler}>Last</button>

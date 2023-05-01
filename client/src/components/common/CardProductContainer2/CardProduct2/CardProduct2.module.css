@@ -19,7 +19,7 @@
     border: solid .2rem #f5f5f5;
     overflow: hidden;
     height: auto;
-    max-height: 430px;
+    height: 430px;
 }
 .container:hover {
     /*transform: translateY(-2px);*/
@@ -29,6 +29,8 @@
 .image {
     border-radius: 2px;
     filter: brightness(70%); 
+    height: 430px;
+    object-fit: cover;
 }
 
 .container:hover .image {

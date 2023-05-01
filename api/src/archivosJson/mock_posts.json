@@ -1,13 +1,6 @@
 
      [
-        {
-            "title": "Vistas que enamoran",
-            "summary": "Un extenso territorio con espacios increibles.",
-            "content": "Text prueba",
-            "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682116569/mwxbtfpoiup8zmdu2c6b.jpg",
-            "date": "2023-04-21",
-            "user_id": 1
-        },
+       
         { 
             "title": "10 lugares que debes visitar",
             "summary": "Gran variedad de dentro del lugar.",
@@ -30,6 +23,30 @@
             "summary": "Emocionate.",
             "content": "Texto de prueba, texto de prueba, texto de prueba",
             "image": "https://matinateespera.cr/wp-content/uploads/2021/08/Pacuare_Reserve_2018_Fauna_Lagarto2-2-1024x682.jpg",
+            "date": "2023-04-21",
+            "user_id": 1
+        },
+        {
+            "title": "La ruta del cafe: Aromas tropicales",
+            "summary": "Prueba.",
+            "content": "Texto de prueba, texto de prueba, texto de prueba",
+            "image": "https://www.liderempresarial.com/wp-content/uploads/2019/05/doka-coffee-closeup-1140x570.png",
+            "date": "2023-04-21",
+            "user_id": 1
+        },
+        {
+            "title": "La ruta del cafe: Aromas tropicales",
+            "summary": "Prueba.",
+            "content": "Texto de prueba, texto de prueba, texto de prueba",
+            "image": "https://www.liderempresarial.com/wp-content/uploads/2019/05/doka-coffee-closeup-1140x570.png",
+            "date": "2023-04-21",
+            "user_id": 1
+        },
+        {
+            "title": "La ruta del cafe: Aromas tropicales",
+            "summary": "Prueba.",
+            "content": "Texto de prueba, texto de prueba, texto de prueba",
+            "image": "https://www.liderempresarial.com/wp-content/uploads/2019/05/doka-coffee-closeup-1140x570.png",
             "date": "2023-04-21",
             "user_id": 1
         },

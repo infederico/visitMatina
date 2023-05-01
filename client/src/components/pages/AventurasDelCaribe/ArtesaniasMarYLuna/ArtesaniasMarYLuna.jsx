@@ -22,7 +22,7 @@ import {
 } from '../../../../redux/shopActions';
 import { resetShopId, resetShopData } from '../../../../redux/shopSlice';
 
-import CardProductContainer from '../../../common/CardProductContainer/CardProductContainer';
+import CardProductContainer2 from '../../../common/CardProductContainer2/CardProductContainer2';
 import ShopContact from '../../Contact/ShopContact';
 
 export default function ArtesaniasMarYLuna() {
@@ -50,13 +50,8 @@ export default function ArtesaniasMarYLuna() {
         />
       </section>
 
-      <section className={style.Cajaredes}>
-        <Redes socialmedia={arrayRedes} />
-        {/*aca enviamos por props el array que importamos
-                                                    simulando los datos que llegarian del back*/}
-      </section>
       <section className={style.cardProductContainerContainer}>
-        <CardProductContainer />
+        <CardProductContainer2 />
       </section>
       <section>{shopId && <Reviews shopId={shopId} />}</section>
       {/* <section>

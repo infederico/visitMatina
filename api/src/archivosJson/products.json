@@ -1,92 +1,106 @@
 
 [
     {
-    "name": "Tours de avistamiento de flora y fauna, diurno y nocturno",
-    "description":"la bebida de los hogares argentinos",
+    "name": "Tour de avistamiento: ",
+    "description":"Flora y fauna, diurno y nocturno",
     "price": 14.99,
-    "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+    "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682903915/florayfaunadiurnaynoc_ecpbg8.jpg",
     "shop_id": 5
     },
     {
-        "name": "Tour de avistamiento de caimanes",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Tour de avistamiento: ",
+        "description":"Caimanes",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682903915/caimanes_xebl2f.jpg",
         "shop_id": 5
     },
     {
-        "name": "Tour de avistamiento de cocodrilo",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Tour de avistamiento: ",
+        "description":"Cocodrilo",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682903916/cocodrilo_ozuc81.jpg",
         "shop_id": 5
     },
     {
-        "name": "Tour de desove de tortugas marinas en la Reserva Pacuare",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Tour de desove: ",
+        "description":"Tortugas marinas en la Reserva Pacuare",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682903915/tortuga_clycvt.jpg",
         "shop_id": 5
     },
     {
-        "name": "Taller de cocina caribeña",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Taller de cocina: ",
+        "description":"Gastronomía caribeña",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682904344/tallerdecocina_bxl5e5.jpg",
         "shop_id": 5
     },
     {
-        "name": "Taller de elaboración de artesanía ecológicas",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Taller de elaboración:",
+        "description":"Artesanía ecológicas",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682904345/coco_p5wx2t.jpg",
         "shop_id": 5
     },
     {
-        "name": "Llavero",
-        "description":"LLavero hecho a mano",
+        "name": "Taller de elaboración: ",
+        "description":"Aceite de coco",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682904345/coco_p5wx2t.jpg",
+        "shop_id": 5
+    },
+    {
+        "name": "Llavero Tortuga",
+        "description":"Hecho en coco",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/llaveroTortuga_kdjzqg.jpg",
         "shop_id": 6
     },
     {
-        "name": "llavero",
-        "description":"LLavero hecho a mano",
+        "name": "Collar Mantarralla",
+        "description":"Hecho en hueso",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarMantarralla_wlowya.jpg",
         "shop_id": 6
     },
     {
-        "name": "llavero",
-        "description":"LLavero hecho a mano",
+        "name": "Collar Ballena",
+        "description":"Hecho en hueso",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarBallena_g6j10n.jpg",
         "shop_id": 6
     },
     {
-        "name": "Visita nuestra finca",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Llavero Tortuga",
+        "description":"Hecho en hueso",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarTortuga_haea7j.jpg",
+        "shop_id": 6
+    },
+    {
+        "name": "Collar Búho",
+        "description":"Hecho en hueso",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682882848/collarBuho_nyavhl.jpg",
+        "shop_id": 6
+    },
+    {
+        "name": "Cholocate",
+        "description":"El mejor chocolate de Matina",
         "price": 14.99,
         "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
         "shop_id": 3
     },
     {
-        "name": "Taller de cholocate",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Cholocate",
+        "description":"El mejor chocolate de Matina",
         "price": 14.99,
         "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
         "shop_id": 3
     },
     {
-        "name": "Tour del cacao",
-        "description":"la bebida de los hogares argentinos",
-        "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
-        "shop_id": 3
-    },
-    {
-        "name": "Taller de construccion en bambu",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Chocolate",
+        "description":"El mejor chocolate de Matina",
         "price": 14.99,
         "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
         "shop_id": 3

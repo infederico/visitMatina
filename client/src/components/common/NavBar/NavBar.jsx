@@ -45,11 +45,8 @@ export default function NavBar() {
             <NavLink className='nav-link' to='/comollegar'>
               Cómo llegar
             </NavLink>
-            <li className='nav-item dropdown'>
-              <NavLink className='nav-link' to='/queHacer'>
-                Qué hacer
-              </NavLink>
-            </li>
+            {/* esta ruta aún no existe */}
+
             <li className='nav-item dropdown'>
               <NavLink
                 className='nav-link dropdown-toggle'
@@ -127,6 +124,13 @@ export default function NavBar() {
                   </NavLink>
                 </li>
               </ul>
+            </li>
+            <li className='nav-item dropdown'>
+              <NavLink className='nav-link' to='/Tours'
+              >
+                Tours
+              </NavLink>
+              
             </li>
             <NavLink className='nav-link' to='/paquetes'>
               Paquetes
