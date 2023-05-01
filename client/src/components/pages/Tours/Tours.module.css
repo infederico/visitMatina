@@ -58,7 +58,7 @@
     z-index: 0;
   }
 
-  hr{
+  .hr{
     height: 2px;
     background-color:    var(--neutral-color-300) ;
     opacity: 1;

@@ -106,17 +106,24 @@
         "shop_id": 3
     },
     {
-        "name": "Queso fresco de leche de vaca",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Queso de leche de cabra",
+        "description":"Hecha a la vista",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682952107/quesolechecabra_daubsw.jpg",
         "shop_id": 4
     },
     {
-        "name": "Queso fresco de leche de coco",
-        "description":"la bebida de los hogares argentinos",
+        "name": "Queso leche de vaca",
+        "description":"Fresca y natural",
         "price": 14.99,
-        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682190665/cowzi5bmlouxob2hllcu.jpg",
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682952107/quelechevaca_xqtqjr.jpg",
+        "shop_id": 4
+    },
+    {
+        "name": "Yogurt de leche de cabra",
+        "description":"Refrescante y nutritiva, sabor maracuyá",
+        "price": 14.99,
+        "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682952107/yogurtlechecabra_aj3ihc.jpg",
         "shop_id": 4
     },
     {
