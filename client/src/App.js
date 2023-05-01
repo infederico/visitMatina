@@ -21,7 +21,7 @@ import Tours from './components/pages/Tours/Tours.jsx';
 import SuccessPay from './components/pages/SuccessPay';
 
 import axios from 'axios';
-axios.defaults.baseURL = 'https://visitmatina-production.up.railway.app';
+axios.defaults.baseURL = 'https://visitmatina-production.up.railway.app/api';
 
 const App = () => {
   return (
