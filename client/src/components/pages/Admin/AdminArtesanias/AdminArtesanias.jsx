@@ -10,6 +10,7 @@ import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../red
 import { cleanDeleteProduct, cleanUpdateProduct, cleanPostProduct } from "../../../../redux/productActions"
 import CardArtesanias from './CardArtesanias';
 import validate from './validate';
+import AlertContact from '../../Contact/AlertContact';
 
 const AdminArtesanias = () => {
   const products = useSelector((state) => state.product.product);
@@ -29,6 +30,14 @@ const AdminArtesanias = () => {
     rating: '',
     approved: '',
   });
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handlerCloseAlert = () => {
+    setShowAlert(false);
+  };
+
   useEffect(() => {
     dispatch(getProductsByShopId(6));
     dispatch(getAllApprovedReviewsByShopId(6));
@@ -67,11 +76,13 @@ const AdminArtesanias = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit =async (event) => {
     event.preventDefault();
     console.log(errors);
     if (Object.keys(errors).length < 1) {
-      dispatch(postProduct(input));
+      const res = await dispatch(postProduct(input));
+      setAlertMessage(res.payload);
+      setShowAlert(true);
       setErrors({});
       setInput({
         name: '',
@@ -85,7 +96,8 @@ const AdminArtesanias = () => {
         approved: '',
       });
     } else {
-      window.alert('Completa todos los campos');
+      setAlertMessage('Completa todos los campos');
+      setShowAlert(true);
     }
   };
   console.log(reviews);
@@ -215,6 +227,7 @@ const AdminArtesanias = () => {
                 <button type='submit' className='btn btn-primary'>
                   Crear
                 </button>
+                {showAlert && <AlertContact message={alertMessage} show={showAlert} onClose={handlerCloseAlert} />}
               </form>
             </div>
           </div>

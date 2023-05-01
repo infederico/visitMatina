@@ -39,21 +39,12 @@ const productSlice = createSlice({
       state.resDelProduct = '';
     },
     clnDelProduct: (state, action) => {
-      if (state.resDel !== ""){
-        window.alert(state.resDel);
-      }
       state.resDel = "";
     },
     clnUpdtProduct: (state, action) => {
-      if (state.resUpdt !== ""){
-        window.alert(state.resUpdt);
-      }
       state.resUpdt = "";
     },
     clnPstProduct: (state, action) => {
-      if (state.resPostProduct !== ""){
-        window.alert(state.resPostProduct);
-      }
       state.resPostProduct = "";
     },
 

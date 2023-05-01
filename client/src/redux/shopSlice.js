@@ -31,15 +31,16 @@ const shopSlice = createSlice({
       state.shopData = action.payload
     },
     resPostShop: (state, action) =>{
+      state.resCrateShop = action.payload;
       //window.alert(action.payload)
     },
     updtShop: (state, action) => {
-      state.resUpdateShop = action.payload
-      window.alert(action.payload)
+      state.resUpdateShop = action.payload;
+      //window.alert(action.payload)
     },
     delShop: (state, action) =>{
       state.resDelShop = action.payload;
-      window.alert(action.payload);
+      //window.alert(action.payload);
     },
     clnResDel: (state, action) => {
       state.resDelShop = "";
@@ -47,8 +48,11 @@ const shopSlice = createSlice({
     clnResUpDt: (state, action) => {
       state.resUpdateShop = "";
     },
+    clnResCreate: (state, action) => {
+      state.resCrateShop = "";
+    },
   },
 })
 
-export const { getAllShops, getAllAllShops, getShopIdByPath, resetShopId, getShopDataByPath, resetShopData, resPostShop, updtShop, delShop, clnResDel, clnResUpDt } = shopSlice.actions
+export const { getAllShops, getAllAllShops, getShopIdByPath, resetShopId, getShopDataByPath, resetShopData, resPostShop, updtShop, delShop, clnResDel, clnResUpDt, clnResCreate } = shopSlice.actions
 export default shopSlice.reducer
