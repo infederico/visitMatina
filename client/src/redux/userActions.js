@@ -59,9 +59,7 @@ export const getAllUsers = () => {
 export const updateUsers = (inputs) => {
   return async (dispatch) => {
     let put = await axios.put(`/users`, inputs); // crear otra ruta por body
-    console.log(put.data);
     return dispatch(updtUser(put.data));
-    
   };
 };
 
