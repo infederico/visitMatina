@@ -4,16 +4,30 @@ import { getBase64 } from "../../../../assets/helpers/fileTo64";
 import { useSelector, useDispatch } from "react-redux";
 import validate from "./validate";
 import validateM from "./validateM";
-import { getFullShops, postShop, deleteShop, clnDel, updateShop, clnUpdt } from "../../../../redux/shopActions";
+import { getFullShops, postShop, deleteShop, clnDel, updateShop, clnUpdt, clnPost } from "../../../../redux/shopActions";
+import AlertContact from "../../Contact/AlertContact";
 
 const AdminShop = () => {
   const dispatch = useDispatch();
   const { shops } = useSelector((state) => state.shops);
+  
+  const { resCrateShop } = useSelector((state => state.shops));
   const { resDelShop } = useSelector((state => state.shops));
   const { resUpdateShop } = useSelector((state) => state.shops)
 
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handlerCloseAlert = () => {
+    setShowAlert(false);
+  };
+
   useEffect(() => {
     dispatch(getFullShops());
+
+    if (resCrateShop !== ""){
+      dispatch(clnPost());
+    }
 
     if (resDelShop !== ""){
       dispatch(clnDel());
@@ -21,7 +35,7 @@ const AdminShop = () => {
     if (resUpdateShop !== ""){
       dispatch(clnUpdt());
     }
-  }, [resDelShop, resUpdateShop]);
+  }, [resDelShop, resUpdateShop, resCrateShop]);
 
 
 
@@ -127,8 +141,8 @@ const AdminShop = () => {
     const numErrors = Object.keys(errors).length;
     if (numErrors === 0) {
       const respuesta= await dispatch(postShop(inputs));
-      alert(respuesta.payload)
-      
+      setAlertMessage(respuesta.payload);
+      setShowAlert(true);
       setErrors({});
       setInputs({
         ...inputs,
@@ -145,7 +159,8 @@ const AdminShop = () => {
         location: "",
       });
     } else {
-      window.alert("Completa todos los campos");
+      setShowAlert(true);
+      setAlertMessage("Completa todos los campos");
     }
   };
 
@@ -155,7 +170,8 @@ const AdminShop = () => {
     const numErrors = Object.keys(errors).length;
     if (numErrors === 0) {
       const res = await dispatch(updateShop(inputsM));
-      alert(res.payload)
+      setAlertMessage(res.payload);
+      setShowAlert(true);
       setErrors({});
       setInputs({
         ...inputs,
@@ -177,7 +193,8 @@ const AdminShop = () => {
         hand: false
       })
     } else {
-      window.alert("Completa todos los campos");
+      setShowAlert(true);
+      setAlertMessage("Completa todos los campos");
     }
   };
 
@@ -203,8 +220,10 @@ const AdminShop = () => {
     }
   };
 
-  const handlerDelete = (event) => {
-    dispatch(deleteShop(event.target.value));
+  const handlerDelete = async (event) => {
+    const res = await dispatch(deleteShop(event.target.value));
+    setAlertMessage(res.payload);
+    setShowAlert(true);
   }
 
   useEffect(() => {
@@ -433,6 +452,7 @@ const AdminShop = () => {
               <button type="submit" className="btn btn-primary">
                 Crear
               </button>
+              {showAlert && <AlertContact message={alertMessage} show={showAlert} onClose={handlerCloseAlert} />}
             </form>
           </div>
         </div>

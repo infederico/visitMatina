@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CardBlog from './CardBlog/CardBlog';
 import validate from './validate';
+import AlertContact from '../../Contact/AlertContact';
 
 import {
   addPost,
@@ -22,6 +23,13 @@ const AdminBlog = () => {
 
   const loggedUser = useSelector((state) => state.user.user);
 
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handlerCloseAlert = () => {
+    setShowAlert(false);
+  };
+
   const [errors, setErrors] = useState({});
   const [inputs, setInputs] = useState({
     title: '',
@@ -36,7 +44,7 @@ const AdminBlog = () => {
 
     //dispatch(getAllPostsSF());
 
-    if (Object.keys(resPostPost).length) {
+    if (resPostPost !== "") {
       dispatch(clnPostPost());
     }
   }, [resPostPost, resUpPost, resDel]);
@@ -58,11 +66,13 @@ const AdminBlog = () => {
     );
   };
 
-  const handlerSubmitCreate = (event) => {
+  const handlerSubmitCreate = async (event) => {
     event.preventDefault();
     const numErrors = Object.keys(errors).length;
     if (numErrors === 0) {
-      dispatch(addPost(inputs));
+      const res = await dispatch(addPost(inputs));
+      setShowAlert(true);
+      setAlertMessage(res.payload);
       setErrors({});
       setInputs({
         ...inputs,
@@ -72,7 +82,8 @@ const AdminBlog = () => {
         image: null,
       });
     } else {
-      window.alert('Completa todos los campos');
+      setShowAlert(true);
+      setAlertMessage('Completa todos los campos');
     }
   };
 
@@ -187,6 +198,7 @@ const AdminBlog = () => {
               <button type='submit' className='btn btn-primary'>
                 Crear
               </button>
+              {showAlert && <AlertContact message={alertMessage} show={showAlert} onClose={handlerCloseAlert} />}
             </form>
           </div>
         </div>

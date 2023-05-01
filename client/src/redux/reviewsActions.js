@@ -33,9 +33,9 @@ export const deleteReview = (input) => {
   return async (dispatch) => {
     try {
       const product = await axios.delete(`/reviews/${input}`);
-      dispatch(deleteR(product.data.success));
+      return dispatch(deleteR(product.data.success));
     } catch (error) {
-      window.alert(error.response.data.error);
+      return (error.response.data.error);
     }
   };
 };

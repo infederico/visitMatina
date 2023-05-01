@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAllShops, getAllAllShops, getShopIdByPath, getShopDataByPath, resPostShop, updtShop, delShop, clnResDel, clnResUpDt} from "./shopSlice";
+import { getAllShops, getAllAllShops, getShopIdByPath, getShopDataByPath, resPostShop, updtShop, delShop, clnResDel, clnResUpDt, clnResCreate} from "./shopSlice";
 
 export const getShops = () => async (dispatch) => {
     try{
@@ -42,7 +42,8 @@ export const getShopData = (path) => async (dispatch) => {
 export const postShop = (obj) => async (dispatch) => {
     try {
         const shops = await axios.post("/shops" , obj);
-        return dispatch(resPostShop(shops.data.message));
+        dispatch(resPostShop(shops.data.message));
+        return (shops.data.message);
     } catch (error) {
         return (error.response.data.error);
     }
@@ -51,7 +52,7 @@ export const postShop = (obj) => async (dispatch) => {
 export const updateShop = (obj) => async (dispatch) => {
     try {
         const shops = await axios.put("/shops" , obj);
-        dispatch(updtShop(shops.data.message));
+       return dispatch(updtShop(shops.data.message));
     } catch (error) {
         return (error.response.data.error);
     }
@@ -60,9 +61,9 @@ export const updateShop = (obj) => async (dispatch) => {
 export const deleteShop = (id_shop) => async (dispatch) => {
     try {
         const shops = await axios.delete(`/shops/${id_shop}`);
-        dispatch(delShop(shops.data.message));
+        return dispatch(delShop(shops.data.message));
     } catch (error) {
-        window.alert(error.response.data.error);
+        return (error.response.data.error);
     }
 };
 
@@ -72,4 +73,7 @@ export const clnDel = () => {
 
 export const clnUpdt= () => {
     return (clnResUpDt());
+};
+export const clnPost= () => {
+    return (clnResCreate());
 };

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { deleteProductLeo, updateProductLeo } from '../../../../redux/productActions';
 import { getBase64 } from '../../../../assets/helpers/fileTo64';
 import { deleteReview } from '../../../../redux/reviewsActions';
+import AlertContact from '../../Contact/AlertContact';
 
 const CardMandira = (props) => {
 
@@ -21,6 +22,13 @@ const CardMandira = (props) => {
     approved: '',
     active: '',
   });
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handlerCloseAlert = () => {
+    setShowAlert(false);
+  };
 
   const handleInput = (event) => {
     setInput({
@@ -55,12 +63,16 @@ const CardMandira = (props) => {
     }
   }; */
 
-  const handleDeleteProduct = (event) => {
-      dispatch(deleteProductLeo(event.target.value));
+  const handleDeleteProduct = async (event) => {
+      const res = await dispatch(deleteProductLeo(event.target.value));
+      setShowAlert(true);
+      setAlertMessage(res.payload);
   };
 
-  const handleDeleteReview = (event) => {
-    dispatch(deleteReview(event.target.value));
+  const handleDeleteReview = async (event) => {
+    const res = await dispatch(deleteReview(event.target.value));
+    setShowAlert(true);
+    setAlertMessage(res.payload);
   };
 
 
@@ -74,9 +86,11 @@ const CardMandira = (props) => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(updateProductLeo(input));
+    const res = await dispatch(updateProductLeo(input));
+    setShowAlert(true);
+    setAlertMessage(res.payload);
     setInput({
       name: '',
       description: '',
@@ -240,6 +254,8 @@ const CardMandira = (props) => {
           ) : null}
         </div>
       </form>: null}
+      {showAlert && <AlertContact message={alertMessage} show={showAlert} onClose={handlerCloseAlert} />}
+
     </section>
   );
 };
