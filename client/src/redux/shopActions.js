@@ -42,7 +42,8 @@ export const getShopData = (path) => async (dispatch) => {
 export const postShop = (obj) => async (dispatch) => {
     try {
         const shops = await axios.post("/shops" , obj);
-        return dispatch(resPostShop(shops.data.message));
+        dispatch(resPostShop(shops.data.message));
+        return (shops.data.message);
     } catch (error) {
         return (error.response.data.error);
     }
