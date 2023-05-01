@@ -46,11 +46,9 @@ export default function NavBar() {
               Cómo llegar
             </NavLink>
             <li className='nav-item dropdown'>
-              <NavLink className='nav-link' to='/queHacer'
-              >
+              <NavLink className='nav-link' to='/queHacer'>
                 Qué hacer
               </NavLink>
-              
             </li>
             <li className='nav-item dropdown'>
               <NavLink
@@ -81,11 +79,11 @@ export default function NavBar() {
                     Aventuras del Caribe
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink className='dropdown-item' to='/artesaniasMarYLuna'>
                     Artesanías Mar y Luna
                   </NavLink>
-                </li>
+                </li> */}
               </ul>
             </li>
             <li className='nav-item dropdown'>

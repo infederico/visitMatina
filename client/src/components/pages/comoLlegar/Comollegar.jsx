@@ -70,7 +70,7 @@ opción para llegar a Matina desde San José
           </div>
         </div>
         <div className={style.cajatexto}>
-          <img className={style.foto} src={mapa} />
+          <img className={style.foto} src={mapa} alt='' />
         </div>
         
       </div>
@@ -97,7 +97,7 @@ durante el día.</p>
           {/* <div className={style.continua} onClick={handleclick} >continua...</div> */}
         </div>
         <div className={style.cajatexto}>
-          <img className={style.foto} src={mapa2} />
+          <img className={style.foto} src={mapa2} alt='' />
         </div>
       </div>
       <div className={style.mapaRes}>
