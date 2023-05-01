@@ -35,7 +35,7 @@ const CardProductContainer2 = () => {
     }
 
     return(
-        <div >
+        <div className={styles.container}>
             <div className={ styles.wrapCards }>            
                 {currentProducts.map(paq => {
                     return(
