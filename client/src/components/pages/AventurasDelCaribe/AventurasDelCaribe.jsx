@@ -52,7 +52,7 @@ export default function AventurasDelCaribe() {
   const topRef = useRef(null);
 
   function handleClick() {
-    window.scrollTo({ top: topRef.current.offsetTop, behavior: 'smooth' });
+    window.scrollTo({ top: topRef.current?.offsetTop, behavior: 'smooth' });
   }
   return (
     <div className={style.page}>
