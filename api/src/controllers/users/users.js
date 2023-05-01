@@ -87,7 +87,7 @@ const updateBodyUser = async (
 ) => {
   try {
     let findUser = await getUserById(id_user);
-    console.log(findUser.name);
+    // console.log(findUser.name);
     if (findUser) {
       if (name) {
         await Users.update({ name }, { where: { id_user } });
