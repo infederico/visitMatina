@@ -110,8 +110,8 @@ durante el día.</p>
             marginBottom:"30px",
             color:""}}>Mapas de lugares de interes</div>
           <iframe className={style.mapRestaurante} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.317678671051!2d-83.37255128949795!3d10.073034989994548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa73bb0f6f6238f%3A0xdd0f2c4333c75e49!2sRestaurante%20Sol%20y%20Luna!5e0!3m2!1ses-419!2sco!4v1682896838376!5m2!1ses-419!2sco"
-          width="600"
-          height="450"
+          width="500"
+          height="350"
           style={{border:0}}
           allowFullScreen=""
           loading="lazy"
@@ -119,8 +119,8 @@ durante el día.</p>
           >
           </iframe>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31413.457088417366!2d-83.2724448!3d10.2064475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa741df32644617%3A0xd07c0618b180f0ea!2sAventuras%20del%20Caribe!5e0!3m2!1ses-419!2sco!4v1682897142514!5m2!1ses-419!2sco"
-          width="600"
-          height="450"
+          width="500"
+          height="350"
           style={{border:0}}
           allowFullScreen=""
           loading="lazy"
@@ -129,8 +129,8 @@ durante el día.</p>
           </iframe>
           <iframe 
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.310776368818!2d-83.37274108949799!3d10.073601689994014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa73b56675fe9a3%3A0xc5fc3669c08fce7b!2sHospedaje%20Claro%20de%20Luna!5e0!3m2!1ses-419!2sco!4v1682898232828!5m2!1ses-419!2sco" 
-          width="600" 
-          height="450" 
+          width="500" 
+          height="350" 
           style={{ border: "0",marginTop:"20px" }} 
           allowFullScreen="" 
           loading="lazy" 
@@ -138,8 +138,8 @@ durante el día.</p>
           />
           <iframe 
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d82810.31783912817!2d-83.37121319039366!3d10.08472226967239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa73c4d25e1941b%3A0x4330e9167e94655d!2sLim%C3%B3n%2C%20Matina%2C%20Costa%20Rica!5e0!3m2!1ses-419!2sco!4v1682898942824!5m2!1ses-419!2sco" 
-          width="600" 
-          height="450" 
+          width="500" 
+          height="350" 
           style={{ border: 0,marginTop:"20px" }} 
           allowFullScreen="" 
           loading="lazy" 
