@@ -1,6 +1,7 @@
-.containerContact{
+.containerContact {
   width: 70%;
   font-family: 'Kanit', sans-serif;
+  z-index: 1;
 }
 
 .submitButton {
@@ -12,31 +13,60 @@
   background-color: var(--quaternary-color-400);
 }
 
-.mensajeerror{
+.mensajeerror {
   color: red;
-  display:flex;
+  display: flex;
   justify-content: flex-end;
   font-size: 12px;
   margin-top: 2px;
 }
 
-.nombredeform{
+.nombredeform {
   height: 60px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.mymodal{
-  
-
+.pagina {
+  padding-top: 2rem;
+  height: 93vh;
+  width: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+  background-image: url('https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798267/hoviajes-costa-rica_r4zbpm.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
-.mymodalheader{
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .footer {
+    position: absolute;
+    bottom: 0;
+    height: 10%;
+  }
+  .containerContact {
+    width: 100%;
+    font-family: 'Kanit', sans-serif;
+    z-index: 1;
+  }
+}
+.mymodal {
+}
+.mymodalheader {
   background-color: var(--tertiary-color-0);
   color: var(--primary-color-200);
   border-bottom: 1px solid var(--primary-color-200);
 }
 
-.botonalert{
+.botonalert {
   background-color: var(--primary-color-100);
   color: var(--primary-color-400);
   border: 1px solid var(--primary-color-200);
@@ -53,9 +83,9 @@
   align-items: center;
   text-decoration: none;
 }
-.mensajealert{
+.mensajealert {
   color: green;
-  display:flex;
+  display: flex;
   justify-content: end;
   font-weight: 500;
   font-size: 14px;

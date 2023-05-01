@@ -1,61 +1,18 @@
-import { PayPalButtons } from '@paypal/react-paypal-js';
-import { useCallback, useEffect, useState } from 'react';
-// import { useSelector } from "react-redux";
+import { useEffect, useState } from 'react';
 import watch from 'redux-watch';
 import store from '../../../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { transaccion } from '../../../redux/cartActions';
 import { cleanCart } from '../../../redux/cartSlice';
 import styles from './paypalBtn.module.css';
-
-// export default function PayPalBtn() {
-//
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 export default function PayPalBtn() {
-  // const products = props.products;
-
-  //const products = useSelector(state => state.cart.products)
   let products = [];
 
-  const [paidFor, setPaidFor] = useState(false);
   const [total, setTotal] = useState(0);
-
-  const handleApprove = (orderID) => {
-    //back
-
-    // 200
-    setPaidFor(true);
-    // reload
-    window.location.href = '/SuccessPay';
-  };
-
-  if (paidFor) {
-    // redirect
-  }
-
-  const createOrder = useCallback(
-    (data, actions) => {
-      let purchase_units = [];
-
-      const localCart = localStorage.getItem('products');
-      products = JSON.parse(localCart) || [];
-      //console.log('createOrder:', products);
-      products.map((p) => {
-        let subtotal = Number(p.price) * p.quantity;
-        //console.log(p.quantity, subtotal);
-        purchase_units.push({
-          reference_id: p.id,
-          description: p.title,
-          amount: { value: subtotal },
-        });
-      });
-
-      return actions.order.create({
-        purchase_units,
-      });
-    },
-    [total]
-  );
+  const [loading, setLoading] = useState(false);
 
   const test = (newVal) => {
     setTotal(Number(newVal));
@@ -69,43 +26,29 @@ export default function PayPalBtn() {
     })
   );
 
-  useEffect(() => {
-    //console.log('useEfect:', total, products);
-  }, [total, products]);
+  useEffect(() => {}, [total, products]);
 
-  // console.log(store.getState().cart.products)
   const dispatch = useDispatch();
   const totalPrice = useSelector((state) => state.cart.total);
 
   const handleClick = (event) => {
     event.preventDefault();
+    setLoading(true);
     dispatch(transaccion(totalPrice));
-    dispatch(cleanCart());
+    setTimeout(() => {
+      dispatch(cleanCart());
+    }, 30000);
   };
-  //   return
-  // }
+
   return (
-    // <PayPalButtons
-    //   style={{
-    //     color: 'gold',
-    //     layout: 'horizontal',
-    //     height: 40,
-    //     tagline: false,
-    //     shape: 'rect',
-    //   }}
-    //   createOrder={createOrder}
-    //   forceReRender={createOrder}
-    //   onApprove={async (data, actions) => {
-    //     const order = await actions.order.capture();
-    //     console.log('order', order);
-    //     handleApprove(data.orderID);
-    //   }}
-    //   onError={(error) => {
-    //     console.log(error);
-    //   }}
-    // />
-    <button className={styles.btn} onClick={handleClick}>
-      Pagar con Paypal
-    </button>
+    <>
+      <button className={styles.btn} onClick={handleClick} disabled={loading}>
+        {loading ? (
+          <FontAwesomeIcon icon={faSpinner} spin />
+        ) : (
+          'Pagar con Paypal'
+        )}
+      </button>
+    </>
   );
 }

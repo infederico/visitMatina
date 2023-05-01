@@ -34,7 +34,7 @@ const Comollegar = () => {
           </div>
         </div>
         <div className={style.cajatexto}>
-          <img className={style.foto} src={mapa} />
+          <img className={style.foto} src={mapa} alt='' />
         </div>
       </div>
       <div className={style.cajacentro}>
@@ -44,7 +44,7 @@ const Comollegar = () => {
           {/* <div className={style.continua} onClick={handleclick} >continua...</div> */}
         </div>
         <div className={style.cajatexto}>
-          <img className={style.foto} src={mapa2} />
+          <img className={style.foto} src={mapa2} alt='' />
         </div>
       </div>
       
