@@ -19,7 +19,7 @@ import { arrayRedes } from './arrayRedes'
 //importamos elementos que simula los datos que llegan del estado global
 import { descriptions, name, imagen } from './descriptions'
 
-import CardProductContainer from '../../common/CardProductContainer/CardProductContainer'
+import CardProductContainer2 from '../../common/CardProductContainer2/CardProductContainer2'
 import ShopContact from '../Contact/ShopContact'
 
 export default function FincaLaParcela() {
@@ -47,13 +47,9 @@ export default function FincaLaParcela() {
       <section className={style.titleSection}>
         <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
       </section>
-      <section>
-        <Redes socialmedia={arrayRedes}></Redes>
-      </section>
-
       <div className={style.cardProductContainerContainer}>
         < div >
-          { shopId && <CardProductContainer />}
+          { shopId && <CardProductContainer2 />}
         </div>
       </div>
       <section>

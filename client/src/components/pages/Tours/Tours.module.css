@@ -48,8 +48,8 @@
 .cardTitle::before {
     content: "";
     position: absolute;
-    left: 23.9%;
-    bottom: 64.5%;
+    left: 20.9%;
+    bottom: 58.9%;
     width: 110px;
     height: 5.9px;
     transform: skew(-17deg) translateX(-50%);

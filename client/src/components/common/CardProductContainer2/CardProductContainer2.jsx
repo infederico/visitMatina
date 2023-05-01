@@ -61,3 +61,4 @@ const CardProductContainer2 = () => {
         </div>
     )
 }
+export default CardProductContainer2

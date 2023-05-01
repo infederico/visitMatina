@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { getShops, getShopId, getShopData } from '../../../redux/shopActions';
 import { resetShopId, resetShopData } from '../../../redux/shopSlice';
 
-import CardProductContainer from '../../common/CardProductContainer/CardProductContainer'
+import CardProductContainer2 from '../../common/CardProductContainer2/CardProductContainer2'
 import Redes from '../../common/redesSociales/redes/Redes'
 import style from './FincaMandira.module.css'
 import CardShop from '../../common/shopsDos/cardShop/CardShop'
@@ -50,7 +50,7 @@ export default function FincaMandira() {
       </section>
       <div className={style.cardProductContainerContainer}>
         < div >
-          <CardProductContainer />
+          <CardProductContainer2 />
         </div>
       </div>
       <section>

@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 
 import { getShops, getShopId, getShopData } from '../../../redux/shopActions';
 import { resetShopId, resetShopData } from '../../../redux/shopSlice';
-import CardProductContainer from '../../common/CardProductContainer/CardProductContainer';
+import CardProductContainer2 from '../../common/CardProductContainer2/CardProductContainer2';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
 import Reviews from '../../common/Reviews/Reviews';
 import Redes from '../../common/redesSociales/redes/Redes';
@@ -55,20 +54,17 @@ export default function AventurasDelCaribe() {
 
 return (
     <div className={style.page}>
-      <section  className={style.titleSection}>
+      <section className={style.titleSection}>
         <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
       </section>
 
       <div className={style.cardProductContainerContainer}>
         < div >
-          <CardProductContainer />
+          <CardProductContainer2 />
         </div>
       </div>
       <section>
         { shopId && <Reviews shopId={shopId}/> }
-      </section>
-      <section>
-        <Link to={`/artesaniasMarYLuna`} > <h2>Clickeá para conocer nuestras artesanías</h2></Link>
       </section>
       <section className={style.contactSection}>
         <ShopContact />

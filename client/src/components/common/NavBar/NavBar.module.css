@@ -19,3 +19,7 @@
 .navlogo{
     width: 3.8rem;
 }
+.text ul {
+    background-color: var(--tertiary-color-0);
+
+}
