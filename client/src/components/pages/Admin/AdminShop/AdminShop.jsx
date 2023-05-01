@@ -150,12 +150,11 @@ const AdminShop = () => {
   };
 
 
-  const handlerSubmitUpdate = async (event) => {
+  const handlerSubmitUpdate = (event) => {
     event.preventDefault();
     const numErrors = Object.keys(errors).length;
     if (numErrors === 0) {
-      const res = await dispatch(updateShop(inputsM));
-      alert(res.payload)
+    dispatch(updateShop(inputsM));
       setErrors({});
       setInputs({
         ...inputs,
