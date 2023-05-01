@@ -1,69 +1,77 @@
-import { useState } from 'react'
-import ValidationContact from '../Login/Validation/validationContact'
-import { useDispatch } from 'react-redux'
-import { PostContact } from '../../../redux/contactActions'
-import styles from './ShopContact.module.css'
+import { useState } from 'react';
+import ValidationContact from '../Login/Validation/validationContact';
+import { useDispatch } from 'react-redux';
+import { PostContact } from '../../../redux/contactActions';
+import styles from './ShopContact.module.css';
+import AlertContact from './AlertContact';
 
 const ShopContact = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [userData, setUserData] = useState({
     name: '',
     correoxres: '',
     confirmEmail: '',
     mensaje: '',
-  })
+  });
 
   const [errors, setErrors] = useState({
     name: '',
     correoxres: '',
     mensaje: '',
-  })
+  });
 
   const handleInputChange = (event) => {
-    event.preventDefault()
-    setUserData({ ...userData, [event.target.name]: event.target.value })
+    event.preventDefault();
+    setUserData({ ...userData, [event.target.name]: event.target.value });
     setErrors(
       ValidationContact({
         ...userData,
         [event.target.name]: event.target.value,
       })
-    )
-  }
-  const handleClick = () => {
+    );
+  };
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
+  const handleClick = async () => {
     if (Object.keys(errors).length === 0) {
-      alert('consulta enviada')
-      dispatch(PostContact(userData))
+      const respuesta = await dispatch(PostContact(userData));
+      setAlertMessage(respuesta);
+      setShowAlert(true);
+      
       setUserData({
         name: '',
         correoxres: '',
         confirmEmail: '',
         mensaje: '',
-      })
+      });
     }
-  }
+  };
 
   return (
     <div className={styles.containerContact}>
-      <div
-        className='card border-0 '
-       
-      >
-        <div className='card-body '
-        style={{
-          
-          backgroundColor: "var(--quaternary-color-0)"
-        }}>
+      <div className='card border-0 '>
+        <div
+          className='card-body '
+          style={{
+            backgroundColor: 'var(--quaternary-color-0)',
+          }}
+        >
           <h1>Contacto</h1>
-          <div className='mb-3'>
+          <div className={`mb-3`} >
             <label htmlFor='exampleFormControlInput1' className='form-label'>
               Nombre
             </label>
             <br />
             <input
-            style={{
-          
-              backgroundColor: "transparent"
-            }}
+              style={{
+                backgroundColor: 'transparent',
+              }}
               className='border-0 border-bottom'
               name='name'
               type='text'
@@ -79,11 +87,9 @@ const ShopContact = () => {
               Email
             </label>
             <input
-            style={{
-          
-              backgroundColor: "transparent"
-            }}
-
+              style={{
+                backgroundColor: 'transparent',
+              }}
               type='email'
               className='form-control border-0 border-bottom'
               id='exampleFormControlInput1'
@@ -94,15 +100,14 @@ const ShopContact = () => {
             />
             {errors.email ? errors.email : null}
           </div>
-          <div className='mb-3'>
+          <div className=''>
             <label htmlFor='exampleFormControlInput1' className='form-label'>
               Confirma Email
             </label>
             <input
-            style={{
-          
-              backgroundColor: "transparent"
-            }}
+              style={{
+                backgroundColor: 'transparent',
+              }}
               type='email'
               className='form-control border-0 border-bottom'
               id='exampleFormControlInput1'
@@ -125,16 +130,28 @@ const ShopContact = () => {
               type='text'
               value={userData.mensaje}
               onChange={handleInputChange}
-              style={{ resize: 'none', backgroundColor:"transparent" }}
+              style={{ resize: 'none', backgroundColor: 'transparent' }}
             ></textarea>
             {errors.mensaje ? errors.mensaje : null}
             <br />
-            <button className={`btn btn-primary ${styles.submitButton}`} onClick={handleClick}>Enviar consulta</button>
+            <button
+              className={`btn btn-primary ${styles.submitButton}`}
+              onClick={handleClick}
+            >
+              Enviar consulta
+            </button>
+            {showAlert && (
+              <AlertContact
+                show={showAlert}
+                onClose={handleCloseAlert}
+                message={alertMessage}
+              />
+            )}
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ShopContact
+export default ShopContact;

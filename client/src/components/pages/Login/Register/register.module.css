@@ -1,0 +1,145 @@
+.cardContainer {
+  width: 40rem;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  background-color: #e7eaea;
+  border-radius: 1rem;
+}
+
+.registrationTitle {
+  margin-top: 2rem;
+  text-align: center;
+  color: rgb(73, 73, 73);
+  font-size: 3rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.registrationLabel {
+  text-align: center;
+  color: rgb(73, 73, 73);
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.registrationInput {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  display: block;
+  width: 40%;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgb(73, 73, 73);
+  margin: 0.5rem auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.registrationInput:focus {
+  border-color: #910202;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.5s ease-in-out;
+  outline: black;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+.registrationButton {
+  background-color: #cac26c;
+  border: none;
+  border-radius: 20px;
+  color: #575d16;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.registrationButton:hover {
+  background-color: #919a65;
+}
+
+@media screen and (max-width: 768px) {
+  .cardContainer {
+    width: 90%;
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
+  }
+
+  .registrationTitle {
+    font-size: 1rem;
+  }
+
+  .registrationInput {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1540px) and (max-height: 900px) {
+  .cardContainer {
+    width: 30rem;
+    top: 8%;
+    border-radius: 1.5rem;
+  }
+
+  .registrationTitle {
+    font-size: 2rem;
+  }
+
+  .registrationLabel {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .registrationInput {
+    width: 60%;
+    font-size: 0.9rem;
+    margin: 0.3rem auto;
+  }
+
+  .registrationButton {
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 830px) {
+  .cardContainer {
+    width: 30rem;
+    top: 8%;
+    border-radius: 1.5rem;
+  }
+
+  .registrationTitle {
+    font-size: 2rem;
+  }
+
+  .registrationLabel {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .registrationInput {
+    width: 60%;
+    font-size: 0.9rem;
+    margin: 0.3rem auto;
+  }
+
+  .registrationButton {
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+}

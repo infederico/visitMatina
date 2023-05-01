@@ -1,19 +1,21 @@
-import { useState } from 'react'
-import ValidationRegister from '../Validation/validationRegister'
-import { addUser } from '../../../../redux/userActions'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-
+import { useState } from 'react';
+import ValidationRegister from '../Validation/validationRegister';
+import { addUser } from '../../../../redux/userActions';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import styles from './register.module.css';
+import Footer from '../../../common/Footer/Footer';
+import { arrayRedes } from '../../comoLlegar/arrayRedes';
 const Register = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     name: '',
     email: '',
     confirmEmail: '',
     password: '',
     confirmPassword: '',
-  })
+  });
 
   const [errors, setErrors] = useState({
     name: '',
@@ -21,103 +23,154 @@ const Register = () => {
     confirmEmail: '',
     password: '',
     confirmPassword: '',
-  })
+  });
 
   const handleInputChange = (event) => {
-    event.preventDefault()
-    setUserData({ ...userData, [event.target.name]: event.target.value })
+    event.preventDefault();
+    setUserData({ ...userData, [event.target.name]: event.target.value });
     setErrors(
       ValidationRegister({
         ...userData,
         [event.target.name]: event.target.value,
       })
-    )
-  }
+    );
+  };
 
   const handleClick = () => {
     if (Object.keys(errors).length === 0) {
-      dispatch(addUser(userData))
-      alert('Registro exitoso')
-      navigate('/login')
+      dispatch(addUser(userData));
+      navigate('/login');
       setUserData({
         name: '',
         email: '',
         confirmEmail: '',
         password: '',
         confirmPassword: '',
-      })
+      });
     }
-  }
+  };
   return (
     <div>
-      <div
-        className='card'
-        style={{
-          width: '18rem',
-          position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)',
-        }}
-      >
-        <h1>Registro</h1>
+      <img
+        src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798064/fondoregistroreal_s6icep.jpg'
+        className={` ${styles.backgroundImage} img-fluid`}
+        alt='...'
+        style={{ width: '33%', marginLeft: '.5%' }}
+      />
+      <img
+        src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798064/fondoregistroreal_s6icep.jpg'
+        className={` ${styles.backgroundImage} img-fluid`}
+        alt='...'
+        style={{ width: '33%' }}
+      />
+      <img
+        src='https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798064/fondoregistroreal_s6icep.jpg'
+        className={` ${styles.backgroundImage} img-fluid`}
+        alt='...'
+        style={{ width: '33%' }}
+      />
+      {/* <div className='card-body p-4'></div> */}
+      <div className={`card ${styles.cardContainer}`}>
+        <h2 className={`text-center mb-4 ${styles.registrationTitle}`}>
+          Registro
+        </h2>
         <br />
-        <label>Nombre</label>
-        <input
-          name='name'
-          type='text'
-          value={userData.name}
-          onChange={handleInputChange}
-        />
-        {errors.name ? errors.name : null}
+
+        <div class='form-group'>
+          <label for='name' className={styles.registrationLabel}></label>
+          <input
+            class='form-control'
+            id='name'
+            placeholder='Nombre'
+            name='name'
+            type='text'
+            value={userData.name}
+            onChange={handleInputChange}
+            className={styles.registrationInput}
+          />
+          {errors.name ? (
+            <p className={styles.registrationLabel}>{errors.name}</p>
+          ) : null}
+        </div>
         <br />
         <br />
-        <label>Email</label>
-        <input
-          name='email'
-          type='text'
-          value={userData.email}
-          onChange={handleInputChange}
-        />
-        {errors.email ? errors.email : null}
-        <br />
-        <div className='mb-3'>
-          <label htmlFor='exampleFormControlInput1' className='form-label'>
-            Confirma Email
-          </label>
+        <div class='form-group'>
+          <label for='email' className={styles.registrationLabel}></label>
           <input
             type='email'
-            className='form-control'
-            id='exampleFormControlInput1'
-            placeholder='name@example.com'
+            class='form-control'
+            id='email'
+            placeholder='Correo electrónico'
+            name='email'
+            value={userData.email}
+            onChange={handleInputChange}
+            className={styles.registrationInput}
+          />
+          {errors.email ? (
+            <p className={styles.registrationLabel}>{errors.email}</p>
+          ) : null}
+          <br />
+        </div>
+        <div class='form-group'>
+          <label for='email' className={styles.registrationLabel}></label>
+          <input
+            class='form-control'
+            id='email'
+            placeholder='Confirma Correo electrónico'
+            type='email'
             name='confirmEmail'
             value={userData.confirmEmail}
             onChange={handleInputChange}
+            className={styles.registrationInput}
           />
-          {errors.confirmEmail ? errors.confirmEmail : null}
+          {errors.confirmEmail ? (
+            <p className={styles.registrationLabel}>{errors.confirmEmail}</p>
+          ) : null}
         </div>
         <br />
-        <label>Contrasena</label>
-        <input
-          name='password'
-          type='password'
-          value={userData.password}
-          onChange={handleInputChange}
-        />
-        {errors.password ? errors.password : null}
+        <div class='form-group'>
+          <label for='password' className={styles.registrationLabel}></label>
+          <input
+            class='form-control'
+            id='password'
+            placeholder='Contraseña'
+            name='password'
+            type='password'
+            value={userData.password}
+            onChange={handleInputChange}
+            className={styles.registrationInput}
+          />
+          {errors.password ? (
+            <p className={styles.registrationLabel}>{errors.password}</p>
+          ) : null}
+        </div>
         <br />
-        <label>Confirma contrasena</label>
-        <input
-          name='confirmPassword'
-          type='password'
-          value={userData.confirmPassword}
-          onChange={handleInputChange}
-        />
-        {errors.confirmPassword ? errors.confirmPassword : null}
-        <br />
-        <button onClick={handleClick}>Registrarme</button>
+        <div class='form-group'>
+          <label className={styles.registrationLabel}></label>
+          <input
+            name='confirmPassword'
+            placeholder='Confirma Contraseña'
+            type='password'
+            value={userData.confirmPassword}
+            onChange={handleInputChange}
+            className={styles.registrationInput}
+          />
+          {errors.confirmPassword ? (
+            <p className={styles.registrationLabel}>{errors.confirmPassword}</p>
+          ) : null}
+          <br />
+          <button
+            type='submit'
+            className={`btn btn-primary btn-block mt-4 ${styles.registrationButton}`}
+            onClick={handleClick}
+          >
+            Registrarme
+          </button>
+        </div>
       </div>
+      <Footer socialmedia={arrayRedes} />
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

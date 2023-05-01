@@ -1,14 +1,93 @@
-.containerContact{
-    width: 70%;
-    font-family: 'Kanit', sans-serif;
+.containerContact {
+  width: 70%;
+  font-family: 'Kanit', sans-serif;
+  z-index: 1;
 }
 
-
 .submitButton {
-    background-color: var(--quaternary-color-200);
-    border: none;
-  }
-.submitButton:hover {
-    background-color: var(--quaternary-color-400);
-  }
+  background-color: var(--quaternary-color-200);
+  border: none;
+}
 
+.submitButton:hover {
+  background-color: var(--quaternary-color-400);
+}
+
+.mensajeerror {
+  color: red;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.nombredeform {
+  height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pagina {
+  padding-top: 2rem;
+  height: 93vh;
+  width: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+  background-image: url('https://res.cloudinary.com/dfnw2l08x/image/upload/v1682798267/hoviajes-costa-rica_r4zbpm.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .footer {
+    position: absolute;
+    bottom: 0;
+    height: 10%;
+  }
+  .containerContact {
+    width: 100%;
+    font-family: 'Kanit', sans-serif;
+    z-index: 1;
+  }
+}
+.mymodal {
+}
+.mymodalheader {
+  background-color: var(--tertiary-color-0);
+  color: var(--primary-color-200);
+  border-bottom: 1px solid var(--primary-color-200);
+}
+
+.botonalert {
+  background-color: var(--primary-color-100);
+  color: var(--primary-color-400);
+  border: 1px solid var(--primary-color-200);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.mensajealert {
+  color: green;
+  display: flex;
+  justify-content: end;
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 2px;
+}

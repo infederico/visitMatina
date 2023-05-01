@@ -1,6 +1,6 @@
-import styles from './Home.module.css'
+import styles from './Home.module.css';
 
-import Carousel from '../../common/Carousel/Carousel'
+import Carousel from '../../common/Carousel/Carousel';
 
 export default function Home() {
   return (
@@ -19,8 +19,8 @@ export default function Home() {
         width='640'
         height='360'
         allow='autoplay fullscreen encrypted-media picture-in-picture'
-        allowfullscreen
-        controls="false"
+        allowFullScreen
+        controls={true}
         // frameborder='0'
         title='visit_matina_reel'
         style={{
@@ -30,9 +30,9 @@ export default function Home() {
           bottom: '0',
           zIndex: '-99999',
           filter: 'brightness(50%)',
-          pointerEvents:"none"
+          pointerEvents: 'none',
         }}
       ></iframe>
     </>
-  )
+  );
 }

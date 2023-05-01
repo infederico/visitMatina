@@ -94,7 +94,8 @@
     
 }
 .cardProductContainerContainer {
-    margin: 20px 0 0 0;
-    padding: 2.7rem 0;
+ /*    margin: 20px 0 0 0;
+    padding: 2.7rem 0; */
+    height: 100vh;
     background-image: linear-gradient(to bottom, var(--quaternary-color-200), var(--quaternary-color-400));
 }

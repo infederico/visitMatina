@@ -1,4 +1,4 @@
-.container {
+/* .container {
     background-color: var(--white-color);
     font-family: 'Kanit', sans-serif;}
 .logo{
@@ -6,12 +6,12 @@
 
 }
 /* mapa */
-.ubicacionSection{
+/* .ubicacionSection{ */
     /* border: 1px solid #000; */
 
     /* padding-top: 80px; */
     /* margin-bottom: 80px; */
-    display: flex;
+   /*  display: flex;
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -25,4 +25,301 @@
     height: 200px;
     object-fit: cover;
     object-fit: contain;
+} */ 
+
+.containerFooter{
+    width: 100%;
+    height: 150px;
+    /* border-top:1px var(--quaternary-color-400) solid; */
+    
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--quaternary-color-600);
+    font-family: 'Kanit', sans-serif;
+}
+   
+.containerIn{
+    width: 90%;
+    height: 80%;
+   /* border-right:2px var(--quaternary-color-300) dashed; 
+   border-left:2px var(--quaternary-color-300) dashed;  */
+    display:flex;
+}
+.containerLogo{
+    width: 25%;
+    height: 100%;
+    /* border-right:2px var(--quaternary-color-300) dashed; */
+    display:flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+   
+}
+.logo{
+    width: 50%;
+    height: 90%;
+    object-fit: contain;
+    /* background: url('../../../assets/images/matina_logo.png'); */
+    background: url('../../../assets/images/logo-municipalidad-matina.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: 5px;
+    /* border:1px black solid; */
+}
+.bandera{
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+    background: url('https://www.pngplay.com/wp-content/uploads/10/Costa-Rica-Flag-Transparent-Images.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border:1px black solid; */
+}
+.containerRedes{
+    width: 25%;
+    height: 100%;
+    /* border-right:2px var(--quaternary-color-300) dashed; */
+    display:flex;
+    justify-content: center;
+    
+    flex-direction: column;
+    margin-bottom: 10px;
+    color: var(--quaternary-color-100);
+
+
+}
+.tituloredes{
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    
+    letter-spacing: 4px;
+    width: 100%;
+    text-align: center;
+    
+
+}
+.containerInfo{
+    width: 25%;
+    height: 100%;
+    /* border-right:2px var(--quaternary-color-300) dashed;  */
+    display:flex;
+    justify-content: center;
+    
+}
+.containerMapa{
+    width: 25%;
+    height: 100%;
+   /*  border:1px rgb(231, 27, 27) solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+}
+.desarrollo{
+    width: 100%;
+    height: 30%;
+    /* border:1px black solid; */
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    color: var(--quaternary-color-100);
+}
+.link{
+    font-size: 12px;
+    letter-spacing: 1px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: var(--quaternary-color-100);
+}
+.link:hover{
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--tertiary-color-600);
+}
+
+.titulodesarrollo{
+    letter-spacing: 2px;
+    font-weight: bold;
+    
+    text-align: center;
+   /*  border: 1px black solid; */
+    display: flex;
+    justify-items: center;
+    font-size: 12px;
+}
+.datos{
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--quaternary-color-600) ;
+
+}
+.titulo{
+    font-size: 1rem;
+    
+    margin-bottom: 10px;
+    margin: 0;
+    letter-spacing: 4px;
+   /*  border: 1px black solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--quaternary-color-100) ;
+}
+.subtitulo{
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+}
+.telefonos{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:0px;
+    
+}
+.telefonotitulo{
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    
+}
+.numeros{
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.direccion{
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.correo{
+    font-size: 1.32rem;
+    margin: 0;
+    color: var(--quaternary-color-100) ;
+}
+.horario{
+    font-size: 1rem;
+    margin: 0;
+}
+.matina{
+    font-size: 1rem;
+    margin: 0;
+    /* font-weight: bold; */
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--quaternary-color-100) ;
+}
+
+@media (max-width: 800px) {
+    /* Estilos para pantallas con ancho menor a 600px */
+    .containerFooter{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        
+  }
+    .containerIn{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .containerLogo{
+        width: 100%;
+        height: 80%;
+        border-right: none;
+        /* border-bottom:2px var(--quaternary-color-300) dashed; */
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .containerRedes{
+        width: 100%;
+        height: 100%;
+        border-right: none;
+        /* border-bottom:2px var(--quaternary-color-300) dashed; */
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+    .containerInfo{
+        width: 100%;
+        height: 100%;
+        border-right: none;
+        /* border-bottom:2px var(--quaternary-color-300) dashed; */
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .containerMapa{
+        width: 100%;
+        height: 100%;
+        border-right: none;
+        /* border-bottom:2px var(--quaternary-color-300) dashed; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 10px;
+        text-align: center;
+        align-content: center;
+        margin-top: 10px;
+    }
+    .titulodesarrollo{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (1024px < width < 1600px) {
+    .containerInfo{
+        width: 400px;
+        height: 100%;
+        
+        /* border-right:2px var(--quaternary-color-300) dashed; */
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        /* border:1px black solid; */
+    }
+    .matina{
+        font-size: 1rem;
+        margin: 0;
+    
+        letter-spacing: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 }

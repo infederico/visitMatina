@@ -33,9 +33,9 @@ const enviarCorreo = (req, res) => {
         <title>Tienda en línea - Información de contacto</title>
       </head>
       <body style="font-family: Arial, sans-serif; background-color: #f2f2f2;">
-        <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: white; border-radius: 10px;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: white; border-radius: 30px;">
           <header style="text-align: center; margin-bottom: 30px;">
-            <img src="https://res.cloudinary.com/dfnw2l08x/image/upload/v1682286222/matina_logo_nnzq1n.png" alt="Logo de la tienda" width="100" height="100">
+            <img src="https://res.cloudinary.com/dfnw2l08x/image/upload/v1682286222/matina_logo_nnzq1n.png" alt="Logo de la tienda" width="130" height="100">
             <h1 style="font-size: 24px; margin-top: 0;">¡Tienes un nuevo contacto!</h1>
           </header>
           <section style="margin-bottom: 30px;">
@@ -72,9 +72,9 @@ const enviarCorreo = (req, res) => {
           <title>Tienda en línea - Información de contacto</title>
         </head>
         <body style="font-family: Arial, sans-serif; background-color: #f2f2f2;">
-          <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: white; border-radius: 10px;">
+          <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: white; border-radius: 30px;">
             <header style="text-align: center; margin-bottom: 30px;">
-              <img src="https://res.cloudinary.com/dfnw2l08x/image/upload/v1682286222/matina_logo_nnzq1n.png" alt="Logo de la tienda" width="100" height="100">
+              <img src="https://res.cloudinary.com/dfnw2l08x/image/upload/v1682286222/matina_logo_nnzq1n.png" alt="Logo de la tienda" width="130" height="100">
               <h1 style="font-size: 24px; margin-top: 0;">¡Gracias por contactarnos!</h1>
             </header>
             <section style="margin-bottom: 30px;">
@@ -103,12 +103,12 @@ const enviarCorreo = (req, res) => {
       console.log(error)
       res
         .status(500)
-        .json({ message: 'Ocurrió un error al enviar el correo electrónico.' })
+        .json({ message: 'Ocurrió un error al enviar tu mensaje.' })
     } else {
       console.log('Correo electrónico enviado: ' + info.response)
       res
         .status(200)
-        .json({ message: 'El correo electrónico se ha enviado correctamente.' })
+        .json({ message: 'Tu mensaje se ha enviado correctamente. 😊' })
     }
   })
 
@@ -118,12 +118,12 @@ const enviarCorreo = (req, res) => {
       console.log(error)
       res
         .status(500)
-        .json({ message: 'Ocurrió un error al enviar el correo electrónico.' })
+        .json({ message: 'Ocurrió un error al enviar tu mensaje.' })
     } else {
       console.log('Correo electrónico enviado: ' + info.response)
       res
         .status(200)
-        .json({ message: 'El correo electrónico se ha enviado correctamente.' })
+        .json({ message: 'Tu mensaje se ha enviado correctamente.😊' })
     }
   })
 }

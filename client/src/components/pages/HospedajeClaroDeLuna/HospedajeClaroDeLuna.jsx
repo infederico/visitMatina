@@ -10,6 +10,8 @@ import style from './HospedajeClaroDeLuna.module.css';
 import CardShop from '../../common/shopsDos/cardShop/CardShop';
 import Reviews from '../../common/Reviews/Reviews';
 import Footer from '../../common/Footer/Footer';
+import CardGalleryContainer from '../../common/CardGalleryContainer/CardGalleryContainer';
+import WhatsApp from '../../common/WhatsApp/WhatsApp';
 
 
 //importamos el array que simula los datos que llegan del back-componente redes sociales
@@ -35,28 +37,16 @@ export default function HospedajeClaroDeLuna() {
     };
   }, []);
 
-
-  let BD = require('./imagenes.json')
-  BD = BD.response
-
   return (
     <div className={style.page}>
       <section className={style.titleSection}>
         <CardShop description={shopData.summary} name={shopData.name} image={shopData.image} />
       </section>
-
-      {/* se mapean las imagenes de la galeria */}
-      <div className={style.gallery}>
-        {BD.map((image) => {
-          return <img src={image.img} alt='AGREGAR ALT' />
-        })}
-      </div>
+      <section>
+        <CardGalleryContainer/>
+      </section>
 
       <section>
-        <div className='container'>
-          <h4>Nuestros clientes</h4>
-          <span>conoce la opinión de nuestros clientes</span>
-        </div>
         { shopId && <Reviews shopId={shopId}/> }
       </section>
 
@@ -65,8 +55,12 @@ export default function HospedajeClaroDeLuna() {
         <ShopContact />
       </section>
       <section>
-        <Footer socialmedia={arrayRedes}/>
+        <Footer />
       </section>
+      {shopData?.whatsapp && 
+      <div>
+        <WhatsApp/>
+      </div>}
     </div>
   )
 }
