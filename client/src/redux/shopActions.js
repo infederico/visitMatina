@@ -32,7 +32,9 @@ export const getFullShops = () => async (dispatch) => {
 export const getShopId = (path) => async (dispatch) => {
   try {
     const shops = await axios('/shops');
-    const shopFiltered = shops?.data.filter((shop) => shop.path === path);
+    const shopFiltered = Array.isArray(shops?.data)
+      ? shops?.data.filter((shop) => shop.path === path)
+      : null;
     //console.log(shopFiltered);
     dispatch(getShopIdByPath(shopFiltered.at(0)['id_shop']));
   } catch (error) {
@@ -43,7 +45,9 @@ export const getShopId = (path) => async (dispatch) => {
 export const getShopData = (path) => async (dispatch) => {
   try {
     const shops = await axios('/shops');
-    const shopFiltered = shops.data.filter((shop) => shop.path === path);
+    const shopFiltered = Array.isArray(shops?.data)
+      ? shops?.data.filter((shop) => shop.path === path)
+      : null;
     dispatch(getShopDataByPath(shopFiltered.at(0)));
   } catch (error) {
     console.log(error);
