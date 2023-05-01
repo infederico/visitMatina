@@ -39,6 +39,11 @@
     justify-content: center;
 
 }
+@media (max-width: 990px) {
+    .divTextImg {
+      flex-direction: column-reverse;
+    }
+  }
 .footer{
     line-height:0px;
 }
