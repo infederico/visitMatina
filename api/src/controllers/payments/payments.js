@@ -9,12 +9,11 @@ mercadopago.configure({
 
 const newPayment = async (req, res) => {
   const items = req.body;
-  console.log(items);
 
   let preference = {
     items: items,
     back_urls: {
-      success: 'http://localhost:3000/successPay/',
+      success: 'https://visit-matina.vercel.app/successPay/',
       failure: '',
       pending: '',
     },
@@ -46,8 +45,8 @@ const createPayment = (req, res) => {
       brand_name: `Visit Matina`,
       landing_page: 'NO_PREFERENCE', // Default, para mas informacion https://developer.paypal.com/docs/api/orders/v2/#definition-order_application_context
       user_action: 'PAY_NOW', // Accion para que en paypal muestre el monto del pago
-      return_url: `http://localhost:3000/execute-payment`, // Url despues de realizar el pago
-      cancel_url: `http://localhost:3000/`, // Url despues de realizar el pago
+      return_url: `https://visit-matina.vercel.app/execute-payment`, // Url despues de realizar el pago
+      cancel_url: `https://visit-matina.vercel.app/`, // Url despues de realizar el pago
     },
   };
   request.post(
