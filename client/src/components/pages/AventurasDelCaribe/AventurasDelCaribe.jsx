@@ -71,7 +71,9 @@ export default function AventurasDelCaribe() {
       </div>
       <div className={style.container}>
         <Link to='/artesaniasMarYLuna' onClick={handleClick}>
-          <h2>Visita nuestra tienda de artesanías</h2>
+          <h2 className={style.encabezado}>
+            Visita nuestra tienda de artesanías
+          </h2>
           <img
             alt=''
             className={style.item}
