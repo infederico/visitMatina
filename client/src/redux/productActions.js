@@ -26,9 +26,9 @@ export const postProduct = (product) => {
   return async (dispatch) => {
     try {
       const posted = await axios.post(`/product/${product.shop_id}`, product);
-      dispatch(post(posted.data.success));
+      return dispatch(post(posted.data.success));
     } catch (error) {
-      console.log(error);
+      return (error.response.data.error);
     }
   };
 };
@@ -48,9 +48,9 @@ export const updateProductLeo = (input) => {
   return async (dispatch) => {
     try {
       const product = await axios.put(`/product/`, input);
-      dispatch(updateLeo(product.data.success));
+      return dispatch(updateLeo(product.data.success));
     } catch (error) {
-      window.alert(error.response.data.error);
+      return (error.response.data.error);
     }
   };
 };
@@ -70,9 +70,9 @@ export const deleteProductLeo = (id) => {
   return async (dispatch) => {
     try {
       const product = await axios.delete(`/product/${id}`);
-      dispatch(delProductLeo(product.data.success));
+      return dispatch(delProductLeo(product.data.success));
     } catch (error) {
-      window.alert(error.response.data.error);
+      return (error.response.data.error);
     }
   };
 };

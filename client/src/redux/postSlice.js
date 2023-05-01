@@ -38,24 +38,12 @@ const postSlice = createSlice({
       state.current = action.payload;
     },
     cleanUpPost: (state, action) => {
-      if(state.resUpPost.success !== undefined){
-        window.alert(state.resUpPost.success);
-      }
-      
       state.resUpPost ="";
     },
     cleanPostPost: (state, action) => {
-      if(state.resPostPost.success !== undefined){
-        window.alert(state.resPostPost.success);
-      }
-      
       state.resPostPost ="";
     },
     cleanDel: (state, action) => {
-      if(state.resDel.success !== undefined){
-        window.alert(state.resDel.success);
-      }
-      
       state.resDel ="";
     }
   },

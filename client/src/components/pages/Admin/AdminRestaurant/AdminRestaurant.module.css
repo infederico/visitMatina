@@ -6,3 +6,19 @@
     gap: 1rem;
     padding-top: 6%;
   }
+  .txtButtonG {
+    background-color: green;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+  }
+  .txtButtonR {
+    background-color: red;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+  }
+  .divButtons {
+    display: flex;
+    flex-direction: row;
+  }

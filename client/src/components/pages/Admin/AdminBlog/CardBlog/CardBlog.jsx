@@ -2,6 +2,7 @@ import styles from './CardBlog.module.css';
 import { getBase64 } from '../../../../../assets/helpers/fileTo64';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import AlertContact from '../../../Contact/AlertContact';
 
 import {
   updatePost,
@@ -15,6 +16,13 @@ const CardBlog = (props) => {
   const { resUpPost } = useSelector((state) => state.post);
   const { resDel } = useSelector((state) => state.post);
 
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handlerCloseAlert = () => {
+    setShowAlert(false);
+  };
+
   const [inputsM, setInputsM] = useState({
     id_post: null,
     title: '',
@@ -23,16 +31,13 @@ const CardBlog = (props) => {
     active: null,
     image: null,
   });
-
-  console.log(inputsM);
-  console.log(resDel);
-
+console.log(inputsM);
   useEffect(() => {
-    if (Object.keys(resUpPost).length) {
+    if (resUpPost !== "") {
       dispatch(clnUpPost());
     }
 
-    if (Object.keys(resDel).length) {
+    if (resDel !== "") {
       dispatch(clnDel());
     }
   }, [resUpPost, resDel]);
@@ -44,10 +49,12 @@ const CardBlog = (props) => {
     });
   };
 
-  const handlerSubmitModify = (event) => {
+  const handlerSubmitModify = async (event) => {
     event.preventDefault();
 
-    dispatch(updatePost(inputsM));
+    const res = await dispatch(updatePost(inputsM));
+    setShowAlert(true);
+    setAlertMessage(res.payload);
 
     setInputsM({
       id_post: '',
@@ -79,8 +86,10 @@ const CardBlog = (props) => {
     }
   };
 
-  const handlerDelete = (event) => {
-    dispatch(deletePost(event.target.value));
+  const handlerDelete = async (event) => {
+    const res = await dispatch(deletePost(event.target.value));
+    setShowAlert(true);
+    setAlertMessage(res.payload);
   };
 
   return (
@@ -201,45 +210,12 @@ const CardBlog = (props) => {
               />
             </div>
           </div>
-
           <button type='submit' className='btn btn-primary'>
             Modificar
           </button>
+          {showAlert && <AlertContact message={alertMessage} show={showAlert} onClose={handlerCloseAlert} />}
         </form>
       </div>
-      <div className='row mb-3'>
-        <label for='inputPassword3' className='col-sm-2 col-form-label'>
-          Resumen
-        </label>
-        <div className='col-sm-10'>
-          <input
-            type='text'
-            className='form-control'
-            id='inputPassword3'
-            name='summary'
-            value={inputsM.summary}
-            onChange={handlerInputsM}
-          />
-        </div>
-      </div>
-      <div className='row mb-3'>
-        <label for='inputPassword3' className='col-sm-2 col-form-label'>
-          Texto
-        </label>
-        <div className='col-sm-10'>
-          <textarea
-            className='form-control'
-            id='exampleFormControlTextarea1'
-            rows='3'
-            name='content'
-            value={inputsM.content}
-            onChange={handlerInputsM}
-          ></textarea>
-        </div>
-      </div>
-      <button type='submit' className='btn btn-primary'>
-        Modificar
-      </button>
     </section>
   );
 };

@@ -10,6 +10,7 @@ import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../red
 import { cleanDeleteProduct, cleanUpdateProduct, cleanPostProduct } from "../../../../redux/productActions"
 import CardMandira from './CardMandira';
 import validate from './validate';
+import AlertContact from '../../Contact/AlertContact';
 
 const AdminHospedajeMandira = () => {
   const products = useSelector((state) => state.product.product);
@@ -29,6 +30,14 @@ const AdminHospedajeMandira = () => {
     rating: '',
     approved: '',
   });
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  const handlerCloseAlert = () => {
+    setShowAlert(false);
+  };
+
   useEffect(() => {
     dispatch(getProductsByShopId(3));
     dispatch(getAllApprovedReviewsByShopId(3));
@@ -67,11 +76,14 @@ const AdminHospedajeMandira = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(errors);
-    if (Object.keys(errors).length < 1) {
-      dispatch(postProduct(input));
+    console.log(Object.keys(errors).length);
+    if (Object.keys(errors).length === 0) {
+      const res = await dispatch(postProduct(input));
+      setShowAlert(true);
+      setAlertMessage(res.payload);
+
       setErrors({});
       setInput({
         name: '',
@@ -85,7 +97,8 @@ const AdminHospedajeMandira = () => {
         approved: '',
       });
     } else {
-      window.alert('Completa todos los campos');
+      setShowAlert(true);
+      setAlertMessage('Completa todos los campos');
     }
   };
   console.log(reviews);
@@ -215,6 +228,7 @@ const AdminHospedajeMandira = () => {
                 <button type='submit' className='btn btn-primary'>
                   Crear
                 </button>
+                {showAlert && <AlertContact message={alertMessage} show={showAlert} onClose={handlerCloseAlert} />}
               </form>
             </div>
           </div>
