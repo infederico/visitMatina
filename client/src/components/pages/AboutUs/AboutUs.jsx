@@ -5,10 +5,11 @@ import styles from './AboutUs.module.css';
 export default function AboutUs() {
   return (
     <div className={styles.container}>
-      <section className={styles.carouselContainer}>
+      <section >
         <Carousel />
       </section>
       <section className={styles.textContainer}>
+        <hr className={styles.hr}/>
         <h2 className={styles.title}> Historia de Matina: </h2>
         <h5>Reseña Por Dr. Minor Arias Uva</h5>
         <p>
@@ -52,6 +53,7 @@ export default function AboutUs() {
           tiene varios territorios indígenas de la etnia cabécar, que
           representan también un alto potencial turístico y cultural.
         </p>
+        <hr className={styles.hr}/>
       </section>
       <section>
         <Footer />

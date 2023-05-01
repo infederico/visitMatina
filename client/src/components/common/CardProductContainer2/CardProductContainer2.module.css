@@ -1,3 +1,7 @@
+.container {
+  background-image: url("../../../assets/images/billie-holiday.png");  
+  background-color: var(--secondary-color-000);
+}
 .wrapCards{
     display: flex;
     flex-direction: row;

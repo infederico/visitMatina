@@ -9,8 +9,10 @@ const CardShop = ({ name, description, image}) => {
         <a className={style.svg} href="#textShop"><img src="https://icongr.am/fontawesome/angle-down.svg?size=80&amp;color=fff5cc" alt="flecha"/></a>
         </div>
         {name !== "Paquetes" && <div className={`${style.card} card pb-3`}>
-          <div  className="card-body" >
-            <p  id="textShop" className={`${style.descri} card-text `} >{description}</p>
+          <div id="textShop" className="card-body" >
+            <hr className={style.hr}/>
+            <p   className={`${style.descri} card-text `} >{description}</p>
+            <hr className={style.hr} />
           </div>
         </div>}
       </div>
