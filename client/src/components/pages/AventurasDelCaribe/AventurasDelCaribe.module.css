@@ -140,7 +140,7 @@ h2 {
   /* width: 10rem; */
 }
 
-h2 {
+.encabezado {
   font-size: 2rem;
   font-family: pacifico, cursive;
   text-align: center;
