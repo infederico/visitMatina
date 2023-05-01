@@ -43,8 +43,8 @@ const CardProductContainer2 = () => {
           currentProducts.map((paq) => {
             return (
               <CardProduct2
-                key={paq.id}
-                id={paq.id}
+                key={paq.id_product}
+                id={paq.id_product}
                 name={paq.name}
                 price={paq.price}
                 image={paq.image}
