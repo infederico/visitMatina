@@ -169,13 +169,21 @@ const CardArtesanias = (props) => {
                     Activar
                   </button>
                 ):null}
-
                 
-                {props.approved === true ? (
+                { props.review_id ?
+                (props.approved === true ? (
                   <p className={`${styles.txtButtonG} `}>Active</p>
                 ) : (
                   <p className={`${styles.txtButtonR} `}>Inactive</p>
-                )}
+                ))
+                :
+                (props.active === true ? (
+                  <p className={`${styles.txtButtonG} `}>Active</p>
+                ) : (
+                  <p className={`${styles.txtButtonR} `}>Inactive</p>
+                ))
+                }
+                
               </div>
             </div>
           </div>
