@@ -54,3 +54,47 @@
     background-color: var(--tertiary-color-700);
     color: var(--tertiary-color-0);
 }
+
+
+
+
+@media screen and (max-width: 1000px) {
+    .threadContainer {
+        height: fit-content; /**/
+        display: flex; 
+        flex-direction: column; /**/
+        justify-content: center; /**/
+        align-content: center;
+        margin: 24px;
+    }
+
+    .commentForm {
+        width: 100%; /**/
+        height: fit-content; /**/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .submitButton {
+        margin: 4px;
+        padding: 4px 8px;
+        font-weight: bold;
+        border-radius: 8px;
+        border: 1px solid var(--tertiary-color-700);
+        background-color: transparent;
+        color: var(--tertiary-color-700);
+        scale: 75%; /**/
+    }
+    .commentPanel {
+        width: 100%; /**/
+        height: 300px;
+        overflow: auto;
+        border-radius: 8px;
+        border: 1px solid var(--tertiary-color-500);
+        background-color: white;
+        padding: 16px;
+    }
+
+}

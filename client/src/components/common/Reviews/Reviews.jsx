@@ -173,7 +173,7 @@ const Reviews = (props) => {
                 <div className={styles.sectionTitle}>
                     {/* <span>Viajeros Felices</span> */}
                     <span className={styles.title}>VIAJEROS FELICES</span> 
-                    <br />
+                    <br className={styles.separationTitles}/>
                     <span className={styles.subtitle}>conoce la opinión de nuestros clientes</span> 
                 </div>
 
