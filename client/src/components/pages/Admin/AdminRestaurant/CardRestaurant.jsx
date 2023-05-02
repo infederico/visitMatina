@@ -62,6 +62,14 @@ const CardRestaurant = (props) => {
 
   const handleDeleteProduct = (event) => {
       dispatch(deleteProductLeo(event.target.value));
+      if (props.active === true){
+        setShowAlert(true);
+        setAlertMessage("La imagen se desactivo con exito");
+    }
+    if (props.active === false){
+        setShowAlert(true);
+        setAlertMessage("La imagen se activo con exito");
+    }
   };
 
   const handleDeleteReview = (event) => {
