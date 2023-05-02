@@ -13,6 +13,7 @@ import { logOut } from '../../../redux/userActions';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import Logout from '../../pages/Login/Logout/Logout';
 
 export default function NavBar() {
   //const dispatch = useDispatch();
@@ -32,10 +33,10 @@ export default function NavBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(true);
-  const handleLogOut = () => {
-    dispatch(logOut());
-    navigate('/login');
-  };
+  // const handleLogOut = () => {
+  //   dispatch(logOut());
+  //   navigate('/login');
+  // };
 
   const rootElement = document.getElementById('root');
   const translateElement = document.createElement('div');
@@ -251,14 +252,7 @@ export default function NavBar() {
             ) : null}
             {loggedUser.access ? (
               <li>
-                <NavLink
-                  className='nav-link'
-                  onClick={() => {
-                    handleLogOut();
-                  }}
-                >
-                  Cerrar sesión
-                </NavLink>
+                <Logout />
               </li>
             ) : (
               <li>

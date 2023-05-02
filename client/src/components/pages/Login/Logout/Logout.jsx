@@ -12,6 +12,7 @@ const LogOutUser = () => {
 
   const handleLogOut = () => {
     dispatch(logOut())
+    
   };
 
   return (
