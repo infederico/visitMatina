@@ -86,7 +86,7 @@
 .text li:hover::after {
   transform: scaleX(1);
 }
-@media (max-width: 1550px) {
+@media (max-width: 1950px) {
   .text li {
     margin: 0.4rem; /* Reducir el margen entre los elementos */
   }
