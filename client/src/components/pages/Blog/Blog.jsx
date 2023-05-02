@@ -113,6 +113,7 @@ export default function Blog() {
               {allPosts.slice(current * itemsPage, (current * itemsPage) + itemsPage).map((elem) => {
                 return (
                     <CardBlog
+                      key={elem.id_post}
                       id={elem.id_post}
                       title={elem.title}
                       summary={elem.summary}

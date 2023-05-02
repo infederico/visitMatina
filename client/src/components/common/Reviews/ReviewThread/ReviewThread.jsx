@@ -44,10 +44,12 @@ const ReviewThread = (props) => {
     useEffect( () => {
         let filteredByReviewId = reviews.filter( (review) => review.review_id === selectedReview)
         let comments = []
+        let moreRecentFirst = []
         if (filteredByReviewId.at(0).active) {
             comments = filteredByReviewId.at(0).respuestas
+            moreRecentFirst = [...comments].reverse()
         }
-        setCommentsToRender(comments)
+        setCommentsToRender(moreRecentFirst)
     }, [reviews, selectedReview, successMessageComment]);
 
     useEffect( () => {

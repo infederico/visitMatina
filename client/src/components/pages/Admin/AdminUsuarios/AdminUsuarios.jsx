@@ -40,8 +40,6 @@ const AdminUsuarios = () => {
 // eslint-disable-next-line
     }, [upDtRes]);
 
-    console.log(inputs)
-
     const handlerCheckAdmin = (event) =>{
       console.log(filterUser[0].id_user)
       if (event.target.checked) {
@@ -127,7 +125,7 @@ const AdminUsuarios = () => {
           
     {filterUser?.map(user => {
         return(  
-        <div>
+        <div key={user.id_user}>
             <table className="table">
   <thead>
     <tr>
@@ -192,9 +190,9 @@ const AdminUsuarios = () => {
   <tbody>
     {users?.map(user => {
         return(
-            <tr>
-      <input className="form-check-input" type="checkbox"  name="id_user" value={user.id_user} onChange={handlerCheck} id="flexCheckDefault" checked={check.hand}></input>
-      <th scope="row">{user.id_user}</th>
+            <tr key={user.id_user}>
+      <td><input className="form-check-input" type="checkbox"  name="id_user" value={user.id_user} onChange={handlerCheck} id="flexCheckDefault" checked={check.hand}></input></td>
+      <td scope="row">{user.id_user}</td>
       <td>{user.name}</td>
       <td>{user.email}</td>
       <td>{user.admin === true ? "Si" : "No"}</td>

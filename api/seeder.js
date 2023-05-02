@@ -1,4 +1,12 @@
-const { Shop,sequelize,Reviews,Users,Comments,Post,Product} = require('./src/db.js');
+const {
+  Shop,
+  sequelize,
+  Reviews,
+  Users,
+  Comments,
+  Post,
+  Product,
+} = require('./src/db.js');
 
 const fs = require('fs');
 const flags = require('./flags.json');

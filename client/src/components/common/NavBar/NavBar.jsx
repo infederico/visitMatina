@@ -53,7 +53,8 @@ export default function NavBar() {
       <div className='container'>
         <NavLink
           className='navbar-brand'
-          to='/' onClick={handleNavLinkClick}
+          to='/'
+          onClick={handleNavLinkClick}
           /* onClick={() => {
             if (!collapsed) {
               setCollapsed(true);
@@ -70,39 +71,80 @@ export default function NavBar() {
           aria-controls='navbarSupportedContent'
           aria-expanded={isMenuOpen ? 'true' : 'false'}
           aria-label='Toggle navigation'
-          onClick={handleMenuToggle}  
+          onClick={handleMenuToggle}
           /* onClick={() => setCollapsed(!collapsed)} */
         >
           <span className='navbar-toggler-icon'></span>
         </button>
-        <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id='navbarSupportedContent'>
+        <div
+          className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`}
+          id='navbarSupportedContent'
+        >
           <ul className={`navbar-nav ms-auto ${styles.text}`}>
-            <NavLink className='nav-link' to='/' onClick={handleNavLinkClick}>
-              Inicio
-            </NavLink>
-            <NavLink className='nav-link' to='/aboutUs' onClick={handleNavLinkClick}>
-              Nosotros
-            </NavLink>
-            <NavLink className='nav-link' to='/comollegar' onClick={handleNavLinkClick}>
-              Cómo llegar
-            </NavLink>
+            <li>
+              <div id='google_translate_element'></div>
+            </li>
+            <li>
+              <NavLink className='nav-link' to='/' onClick={handleNavLinkClick}>
+                Inicio
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className='nav-link'
+                to='/aboutUs'
+                onClick={handleNavLinkClick}
+              >
+                Nosotros
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className='nav-link'
+                to='/comollegar'
+                onClick={handleNavLinkClick}
+              >
+                Cómo llegar
+              </NavLink>
+            </li>
             <li className='nav-item dropdown'>
-              <NavLink className='nav-link dropdown-toggle' id='navbarDropdownMenuLink' role='button' data-bs-toggle='dropdown' aria-expanded='false' >
+              <NavLink
+                className='nav-link dropdown-toggle'
+                id='navbarDropdownMenuLink'
+                role='button'
+                data-bs-toggle='dropdown'
+                aria-expanded='false'
+              >
                 Dónde ir
               </NavLink>
-              <ul className='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
+              <ul
+                className='dropdown-menu'
+                aria-labelledby='navbarDropdownMenuLink'
+              >
                 <li>
-                  <NavLink className='dropdown-item' to='/fincaMandira' onClick={handleNavLinkClick}>
+                  <NavLink
+                    className='dropdown-item'
+                    to='/fincaMandira'
+                    onClick={handleNavLinkClick}
+                  >
                     Finca Mandira
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className='dropdown-item' to='/fincaLaParcela' onClick={handleNavLinkClick}>
+                  <NavLink
+                    className='dropdown-item'
+                    to='/fincaLaParcela'
+                    onClick={handleNavLinkClick}
+                  >
                     Finca La Parcela
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className='dropdown-item' to='/AventurasDelCaribe' onClick={handleNavLinkClick}>
+                  <NavLink
+                    className='dropdown-item'
+                    to='/AventurasDelCaribe'
+                    onClick={handleNavLinkClick}
+                  >
                     Aventuras del Caribe
                   </NavLink>
                 </li>
