@@ -1,5 +1,6 @@
 const express = require('express');
 const {
+  getAllShopReviews,
   getAllReviews,
   getApprovedReviews,
   getShopReviews,
@@ -11,6 +12,17 @@ const {
 } = require('../../controllers/reviews/reviews');
 
 const review = express.Router();
+
+review.get('/all/shop/:id', async (req, res) => {
+  try {
+    console.log('obteniendo review por id de shop ...');
+    const { id } = req.params;
+    const result = await getAllShopReviews(id);
+    res.status(200).json({ result: result });
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
+});
 
 //ALL
 review.get('/', async (req, res) => {
