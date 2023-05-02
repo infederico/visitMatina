@@ -95,9 +95,18 @@
     width: 2.5rem; /* Reducir el tamaño del logo */
   }
 }
-@media (max-width: 1220px) {
+@media (max-width: 1250px) {
   .text li {
-    margin: 0.2rem; /* Reducir el margen entre los elementos */
+    margin: 0.1rem; /* Reducir el margen entre los elementos */
+  }
+
+  .navlogo {
+    width: 2.5rem; /* Reducir el tamaño del logo */
+  }
+}
+@media (max-width: 1200px) {
+  .text li {
+    margin: 0.1rem; /* Reducir el margen entre los elementos */
   }
 
   .navlogo {
