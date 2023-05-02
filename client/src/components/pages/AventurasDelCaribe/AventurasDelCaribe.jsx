@@ -65,12 +65,12 @@ export default function AventurasDelCaribe() {
       </section>
 
       <div className={style.cardProductContainerContainer}>
-        < div >
+        <div>
           <CardProductContainer2 />
         </div>
       </div>
       <div className={style.container}>
-        <Link to='/artesaniasMarYLuna' onClick={handleClick}>
+        <Link to='/artesaniasMarYLuna' ref={topRef} onClick={handleClick}>
           <h2 className={style.encabezado}>
             Visita nuestra tienda de artesanías
           </h2>
