@@ -1,5 +1,39 @@
 const { Reviews, Users, Op } = require('../../db');
 
+
+const getAllShopReviews = async (id) => {
+  try {
+    let allReviews = await Reviews.findAll({
+      where: { shop_id: id },
+      include: {
+        model: Users,
+        attributes: {
+          exclude: [
+            'id_user',
+            'password',
+            'verified',
+            'active',
+            'admin',
+            'media_id',
+          ],
+        },
+      },
+    });
+
+    let allReviewsThread = [];
+
+    if (allReviews.length) {
+      for (let review of allReviews) {
+        let children = await getReviewChildren(review.review_id);
+        allReviewsThread.push({ ...review.dataValues, respuestas: children });
+      }
+    }
+
+    return allReviewsThread;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
 // Trae todos los elementos
 const getAllReviews = async () => {
   try {
@@ -124,12 +158,12 @@ const deleteReview = async (review_id) => {
   try {
     let review = await Reviews.findByPk(review_id);
     if (review) {
-      if (review.active === true) {
-        await Reviews.update({ active: false }, { where: { review_id } });
+      if (review.approved === true) {
+        await Reviews.update({ approved: false }, { where: { review_id } });
         return { success: `El review ${review.review_id} fue eliminado` };
       }
-      if (review.active === false) {
-        await Reviews.update({ active: true }, { where: { review_id } });
+      if (review.approved === false) {
+        await Reviews.update({ approved: true }, { where: { review_id } });
         return { success: `El review ${review.review_id} fue activado` };
       }
     } else {
@@ -225,6 +259,7 @@ const approveReview = async (id, value) => {
 };
 
 module.exports = {
+  getAllShopReviews,
   getAllReviews,
   getApprovedReviews,
   getShopReviews,

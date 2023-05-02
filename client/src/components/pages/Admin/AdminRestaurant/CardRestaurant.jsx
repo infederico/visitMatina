@@ -62,6 +62,14 @@ const CardRestaurant = (props) => {
 
   const handleDeleteProduct = (event) => {
       dispatch(deleteProductLeo(event.target.value));
+      if (props.active === true){
+        setShowAlert(true);
+        setAlertMessage("La imagen se desactivo con exito");
+    }
+    if (props.active === false){
+        setShowAlert(true);
+        setAlertMessage("La imagen se activo con exito");
+    }
   };
 
   const handleDeleteReview = (event) => {
@@ -150,7 +158,7 @@ const CardRestaurant = (props) => {
                   </button>
                 ):null}
 
-                {props.review_id ? props.active === true ? (
+                {props.review_id ? props.approved === true ? (
                   <button
                     className={`btn btn-primary`}
                     value={props.review_id}
@@ -168,12 +176,20 @@ const CardRestaurant = (props) => {
                   </button>
                 ):null}
 
-                
-                {props.active === true ? (
+                { props.review_id ?
+                (props.approved === true ? (
                   <p className={`${styles.txtButtonG} `}>Active</p>
                 ) : (
                   <p className={`${styles.txtButtonR} `}>Inactive</p>
-                )}
+                ))
+                :
+                (props.active === true ? (
+                  <p className={`${styles.txtButtonG} `}>Active</p>
+                ) : (
+                  <p className={`${styles.txtButtonR} `}>Inactive</p>
+                ))
+                }
+                
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@ import {
   getProductsByShopId,
   postProduct,
 } from '../../../../redux/productActions';
-import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
+import { getReviews, getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
 import { cleanDeleteProduct, cleanUpdateProduct, cleanPostProduct } from "../../../../redux/productActions"
 import CardParcela from './CardParcela';
 import validate from './validate';
@@ -40,7 +40,8 @@ const AdminParcela = () => {
 
   useEffect(() => {
     dispatch(getProductsByShopId(4));
-    dispatch(getAllApprovedReviewsByShopId(4));
+    //dispatch(getAllApprovedReviewsByShopId(4));
+    dispatch(getReviews(4))
     if (resUpdtReview !== ""){
       dispatch(clnResUpdtReview())
     }
@@ -78,7 +79,6 @@ const AdminParcela = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(errors);
     if (Object.keys(errors).length === 0) {
       const res = await dispatch(postProduct(input));
       setAlertMessage(res.payload);
@@ -100,7 +100,6 @@ const AdminParcela = () => {
       setShowAlert(true);
     }
   };
-  console.log(reviews);
 
   return (
     <section>
@@ -150,7 +149,7 @@ const AdminParcela = () => {
                   <h3>Crear Producto</h3>
                 </div>
                 <div className='row mb-3'>
-                  <label for='inputEmail3' className='col-sm-2 col-form-label'>
+                  <label htmlFor='inputEmail3' className='col-sm-2 col-form-label'>
                     Nombre
                   </label>
                   <div className='col-sm-10'>
@@ -168,7 +167,7 @@ const AdminParcela = () => {
                 </div>
                 <div className='row mb-3'>
                   <label
-                    for='inputPassword3'
+                    htmlFor='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
                     Precio
@@ -188,7 +187,7 @@ const AdminParcela = () => {
                 </div>
                 <div className='row mb-3'>
                   <label
-                    for='inputPassword3'
+                    htmlFor='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
                     Descripcion
@@ -208,7 +207,7 @@ const AdminParcela = () => {
                 </div>
                 <div className='row mb-3'>
                   <label
-                    for='inputPassword3'
+                    htmlFor='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
                     Imagen
@@ -261,7 +260,7 @@ const AdminParcela = () => {
               {reviews.map((item) => {
                 return (
                   <CardParcela
-                    key={item.description}
+                    key={item.review_id}
                     review_id={item.review_id ? item.review_id : null}
                     name={item.user.name ? item.user.name : null}
                     description={item.description ? item.description : null}
@@ -269,7 +268,7 @@ const AdminParcela = () => {
                     shop_id={item.shop_id ? item.shop_id : null}
                     rating={item.rating ? item.rating : null}
                     active={item.active ? item.active : null}
-                    approved={item.active ? item.active : null}
+                    approved={item.approved ? item.approved : null}
                   />
                 );
               })}

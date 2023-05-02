@@ -173,7 +173,7 @@ const Reviews = (props) => {
                 <div className={styles.sectionTitle}>
                     {/* <span>Viajeros Felices</span> */}
                     <span className={styles.title}>VIAJEROS FELICES</span> 
-                    <br />
+                    <br className={styles.separationTitles}/>
                     <span className={styles.subtitle}>conoce la opinión de nuestros clientes</span> 
                 </div>
 
@@ -229,7 +229,7 @@ const Reviews = (props) => {
             </div>
 
             <div className={styles.reviewsCarousel}>
-                { paginatedReviews.length !== 0 &&<div className={styles.paginationButton}><img src={prevPageIcon} alt="previous-page" onClick={pageDecrement} /></div> }
+                <div className={ sortedReviews.length > 3 ? styles.paginationButton : styles.paginationButtonHidden }><img src={prevPageIcon} alt="previous-page" onClick={pageDecrement} /></div>
                 {
                     paginatedReviews?.map((review) => {
                         if (review.active) {
@@ -245,7 +245,7 @@ const Reviews = (props) => {
                         }
                     })
                 }
-                { paginatedReviews.length !== 0 && <div className={styles.paginationButton}><img src={nexPageIcon} alt="next-page" onClick={pageIncrement} /></div> }
+               <div className={ sortedReviews.length > 3 ? styles.paginationButton : styles.paginationButtonHidden }><img src={nexPageIcon} alt="next-page" onClick={pageIncrement} /></div>
             </div>
 
             <div className={styles.threadPanel}>

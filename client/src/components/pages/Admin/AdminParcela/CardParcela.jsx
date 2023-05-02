@@ -152,7 +152,7 @@ const CardParcela = (props) => {
                   </button>
                 ):null}
 
-                {props.review_id ? props.active === true ? (
+                {props.review_id ? props.approved === true ? (
                   <button
                     className={`btn btn-primary`}
                     value={props.review_id}
@@ -169,13 +169,21 @@ const CardParcela = (props) => {
                     Activar
                   </button>
                 ):null}
-
-                
-                {props.active === true ? (
+  
+                { props.review_id ?
+                (props.approved === true ? (
                   <p className={`${styles.txtButtonG} `}>Active</p>
                 ) : (
                   <p className={`${styles.txtButtonR} `}>Inactive</p>
-                )}
+                ))
+                :
+                (props.active === true ? (
+                  <p className={`${styles.txtButtonG} `}>Active</p>
+                ) : (
+                  <p className={`${styles.txtButtonR} `}>Inactive</p>
+                ))
+                }
+                
               </div>
             </div>
           </div>
@@ -185,7 +193,7 @@ const CardParcela = (props) => {
       {props.id_product ?<form onSubmit={handleSubmit}>
         <div className='card card-body'>
           <div className='row mb-3'>
-            <label for='inputEmail3' className='col-sm-2 col-form-label'>
+            <label htmlFor='inputEmail3' className='col-sm-2 col-form-label'>
               Nombre
             </label>
             <div className='col-sm-10'>
@@ -201,7 +209,7 @@ const CardParcela = (props) => {
           </div>
           {props.price ? (
             <div className='row mb-3'>
-              <label for='inputPassword3' className='col-sm-2 col-form-label'>
+              <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
                 Precio
               </label>
               <div className='col-sm-10'>
@@ -217,7 +225,7 @@ const CardParcela = (props) => {
             </div>
           ) : null}
           {props.id_product ? <div className='row mb-3'>
-            <label for='inputPassword3' className='col-sm-2 col-form-label'>
+            <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
               Descripcion
             </label>
             <div className='col-sm-10'>
@@ -233,7 +241,7 @@ const CardParcela = (props) => {
           </div>:null}
           {props.image ? (
             <div className='row mb-3'>
-              <label for='inputPassword3' className='col-sm-2 col-form-label'>
+              <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
                 Imagen
               </label>
               <div className='col-sm-10'>

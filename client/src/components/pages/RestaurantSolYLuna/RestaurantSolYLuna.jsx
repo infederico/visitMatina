@@ -48,11 +48,6 @@ export default function RestauranteSolYLuna() {
       <section>
         <CardGalleryContainer/>
       </section>
-      <section className={style.menuSection}>
-        {/* <CardProductContainer2 />{' '} */}
-        {/* habilitar que reciba x props un array con los datos de esta pag*/}
-      </section>
-
       <section>
         { shopId && <Reviews shopId={shopId}/> }
       </section>

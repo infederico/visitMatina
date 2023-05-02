@@ -1,7 +1,43 @@
 .containerContact {
-  width: 70%;
+  width: 100%;
   font-family: 'Kanit', sans-serif;
   z-index: 1;
+
+}
+.containerContactInside {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--quaternary-color-100);
+  background-image: url("../../../assets/images/billie-holiday.png");
+  padding-bottom: 40px;
+
+}
+.containerContactInsideAll {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+}
+.containerContactInsideAll {
+}
+.inputsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.inputsContainer input {
+  width: 50%;
+  border-color: black;
+}
+.inputsContainer textarea {
+  width: 50%;
 }
 
 .submitButton {
@@ -46,11 +82,40 @@
   bottom: 0;
   width: 100%;
 }
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 1085px) {
+  .footer {
+    position: absolute;
+    bottom: -50px; /* ajustar el valor para que quede detrás del containerContact 
+    height: 20%;
+  }
+  .containerContact {
+    width: 90%; 
+    height: 1px;
+    font-family: 'Kanit', sans-serif;
+    z-index: 1;
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 708px) {
+  .footer {
+    position: inherit;
+    bottom: 0;
+    height: 10%;
+  }
+  .containerContact {
+    width: 90%;
+    height: 1px;
+    font-family: 'Kanit', sans-serif;
+    z-index: 1;
+  }
+}
+@media screen and (max-width: 508px) {
   .footer {
     position: absolute;
     bottom: 0;
     height: 10%;
+    display: none;
   }
   .containerContact {
     width: 100%;
@@ -60,7 +125,8 @@
 }
 .mymodal {
 }
-.mymodalheader {
+ */
+ .mymodalheader {
   background-color: var(--tertiary-color-0);
   color: var(--primary-color-200);
   border-bottom: 1px solid var(--primary-color-200);

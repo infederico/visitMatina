@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head id="head-element">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Web site created for Visit Matina" />
@@ -17,6 +17,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
@@ -54,7 +55,7 @@
           // Traducir el contenido del nuevo elemento agregado al DOM
           var translator = new google.translate.TranslateElement({
             pageLanguage: 'es',
-            includedLanguages: 'en,fr',
+            includedLanguages: 'en,fr,it',
           });
           translator.translatePage();
         }
@@ -63,11 +64,7 @@
   </head>
 
   <body>
-    <div
-      id="google_translate_element"
-      style="background-color: var(--tertiary-color-0)"
-    ></div>
-    <div id="content"></div>
+    <!-- <div id="content"></div> -->
     <div id="root"></div>
     <!-- Bootstrap 5 -->
     <script

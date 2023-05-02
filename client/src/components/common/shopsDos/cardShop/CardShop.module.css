@@ -41,7 +41,7 @@
     transform: translate(-50%, -50%);
     font-family: 'Marcellus', serif;
     text-shadow: .7px .7px 28px black;
-    color: var(--white-color)
+    color: var(--tertiary-color-100)
 }
 .card{
     border:none;

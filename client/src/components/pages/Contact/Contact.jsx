@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ValidationContact from '../Login/Validation/validationContact';
 import { useDispatch } from 'react-redux';
 import { PostContact } from '../../../redux/contactActions';
-import styles from './ShopContact.module.css';
+import styles from './Contact.module.css';
 import AlertContact from './AlertContact';
 import Footer from '../../common/Footer/Footer';
 import { arrayRedes } from '../comoLlegar/arrayRedes';
@@ -40,10 +40,12 @@ const Contact = () => {
     setShowAlert(false);
   };
 
-  const handleClick = async () => {
+  const handleClick = async (event) => {
+    event.preventDefault();
     if (Object.keys(errors).length === 0) {
       const respuesta = await dispatch(PostContact(userData));
       setAlertMessage(respuesta);
+      
       setShowAlert(true);
       setUserData({
         name: '',

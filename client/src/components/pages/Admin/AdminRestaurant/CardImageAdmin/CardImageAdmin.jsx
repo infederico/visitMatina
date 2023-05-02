@@ -2,6 +2,7 @@ import styles from './CardImageAdmin.module.css';
 import { getBase64 } from '../../../../../assets/helpers/fileTo64'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import AlertContact from '../../../Contact/AlertContact';
 
 import {
     updateProduct,
@@ -11,6 +12,9 @@ import {
 const CardImageAdmin = ({ productId, image, description, active, shopId }) => {
 
     const dispatch = useDispatch();
+
+    const [ showAlert, setShowAlert ] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
 
     const [inputsM, setInputsM] = useState({
         id_product: productId,
@@ -33,6 +37,8 @@ const CardImageAdmin = ({ productId, image, description, active, shopId }) => {
         event.preventDefault();
 
         dispatch(updateProduct(inputsM));
+        setShowAlert(true);
+        setAlertMessage("La imagen se modifico con exito");
 
         setInputsM({
             id_product: productId,
@@ -69,7 +75,20 @@ const CardImageAdmin = ({ productId, image, description, active, shopId }) => {
 
     const handlerDelete = (event) => {
         dispatch(deleteProduct(event.target.value))
+        if (active === true){
+            setShowAlert(true);
+            setAlertMessage("La imagen se desactivo con exito");
+        }
+        if (active === false){
+            setShowAlert(true);
+            setAlertMessage("La imagen se activo con exito");
+        }
+        
     };
+
+    const handlerCloseAlert = () => {
+        setShowAlert(false)
+      };
 
     return (
         <section>
@@ -163,6 +182,7 @@ const CardImageAdmin = ({ productId, image, description, active, shopId }) => {
                 <button type='submit' className='btn btn-primary'>
                     Modificar
                 </button>
+                {showAlert && <AlertContact message={alertMessage} show={showAlert} onClose={handlerCloseAlert} />}
                 </form>
             </div>
         </section>

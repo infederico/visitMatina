@@ -130,7 +130,7 @@ const AdminBlog = () => {
                 <h3>Crear Post</h3>
               </div>
               <div className='row mb-3'>
-                <label for='inputEmail3' className='col-sm-2 col-form-label'>
+                <label htmlFor='inputEmail3' className='col-sm-2 col-form-label'>
                   Titulo
                 </label>
                 <div className='col-sm-10'>
@@ -147,7 +147,7 @@ const AdminBlog = () => {
                 </div>
               </div>
               <div className='row mb-3'>
-                <label for='inputPassword3' className='col-sm-2 col-form-label'>
+                <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
                   Resumen
                 </label>
                 <div className='col-sm-10'>
@@ -164,7 +164,7 @@ const AdminBlog = () => {
                 </div>
               </div>
               <div className='row mb-3'>
-                <label for='inputPassword3' className='col-sm-2 col-form-label'>
+                <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
                   Texto
                 </label>
                 <div className='col-sm-10'>
@@ -181,7 +181,7 @@ const AdminBlog = () => {
                 </div>
               </div>
               <div className='row mb-3'>
-                <label for='inputPassword3' className='col-sm-2 col-form-label'>
+                <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
                   Imagen
                 </label>
                 <div className='col-sm-10'>
@@ -211,6 +211,7 @@ const AdminBlog = () => {
             {allAllPosts?.map((ele) => {
               return (
                 <CardBlog
+                  key={ele.id_post}
                   id_post={ele.id_post}
                   title={ele.title}
                   summary={ele.summary}

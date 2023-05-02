@@ -113,6 +113,7 @@ export default function Blog() {
               {allPosts.slice(current * itemsPage, (current * itemsPage) + itemsPage).map((elem) => {
                 return (
                     <CardBlog
+                      key={elem.id_post}
                       id={elem.id_post}
                       title={elem.title}
                       summary={elem.summary}
@@ -138,10 +139,10 @@ export default function Blog() {
             <button className={`${styles.buttonPage} "page-link"`} onClick={nextHandler}>Next</button>
             <button className={`${styles.buttonPage} "page-link"`} onClick={lastHandler}>Last</button>
           </div>
-          <div className={styles.divAux}></div>
+          {/* <div className={styles.divAux}></div> */}
           <section>
             <div>
-              <Footer socialmedia={arrayRedes}></Footer>
+              <Footer ></Footer>
             </div>
           </section>
 

@@ -3,8 +3,8 @@
     height: 100vh;
     width: 100%;
     background-color: var(--quaternary-color-0);
-    /* background-image: url('../../../assets/images/fondo\ reviews\ prueba-01.jpg'); */
-    background-size: cover;
+    background-image: url('../../../assets/images/billie-holiday.png');
+
     font-family: 'Kanit', sans-serif;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -16,8 +16,8 @@
     height: fit-content;
     width: 100%;
     background-color: var(--quaternary-color-0);
-    /* background-image: url('../../../assets/images/fondo\ reviews\ prueba-01.jpg'); */
-    background-size: cover;
+    background-image: url('../../../assets/images/billie-holiday.png');
+
     font-family: 'Kanit', sans-serif;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -41,14 +41,14 @@
     /* background-color: white; */
     width: 35%;
     height: 100%;
-    font-family: 'Marcellus', serif;
+    font-family: 'Kanit', sans-serif;
     color: var(--quaternary-color-600);
     margin-left: 5%;
     margin-top: -32px;
 }
 .title {
-    font-family: 'Marcellus', serif;
-    font-size: 3em;
+    font-family: 'Kanit', sans-serif;
+    font-size: 2.25em;
 }
 .subtitle {
     font-size: 1.25em;
@@ -60,7 +60,7 @@
     /* background-color: white; */
     width: 35%;
     height: 100%;
-    font-family: 'Marcellus', serif;
+    font-family:'Kanit', sans-serif;
     color: var(--quaternary-color-800);
     display: flex;
     flex-direction: column;
@@ -69,7 +69,7 @@
 }
 .ratingWord {
     font-size: 1.5em;
-    font-family:  'Marcellus', serif;
+    font-family:  'Kanit', sans-serif;
     font-weight: bold;
     color: var(--quaternary-color-700);
     margin-bottom: -4px;
@@ -132,6 +132,12 @@
     /* box-shadow: 0px 0px 10px var(--neutral-color-500); */
     scale: 1.2;
 }
+.paginationButtonHidden {
+    width: 3%;
+    height: 97%;
+    scale: 30%;
+    visibility: hidden;
+}
 
 .threadPanel {
     height: fit-content;
@@ -145,5 +151,149 @@
 }
 
 
+@media screen and (max-width: 1000px) {
+    .reviewsContainer {
+        /* height: 640px; */
+        height: fit-content; /**/
+        width: 100%;
+        background-color: var(--quaternary-color-0);
+        background-image: url('../../../assets/images/billie-holiday.png');
+    
+        font-family: 'Kanit', sans-serif;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        display: flex;
+        flex-direction: column;
+    }
+    .expandedContainer {
+        /* height: 640px; */
+        height: fit-content;
+        width: 100%;
+        background-color: var(--quaternary-color-0);
+        background-image: url('../../../assets/images/billie-holiday.png');
+    
+        font-family: 'Kanit', sans-serif;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        display: flex;
+        flex-direction: column;
+    }
 
+
+    .header {
+        /* background-color: green; */
+        width: 100%;
+        height: fit-content; /**/
+        display: flex;
+        flex-direction: column; /**/
+        justify-content: space-between;
+        align-items: center;
+    }
+    .sectionTitle {
+        /* background-color: white; */
+
+        height: 100%;
+
+        color: var(--quaternary-color-600);
+        margin-left: 0;
+        margin-top: 0; /**/
+        width: 100%; /**/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .title {
+
+        font-size: 1.5em;  /**/
+        
+    }
+    .separationTitles {
+        display: none; /**/
+    }
+    .subtitle {
+        font-size: 0.75em;  /**/
+        font-style: italic;
+        margin-left: 0; /**/
+        margin-top: 0; /**/
+       
+    }
+    .gralRating {
+        /* background-color: white; */
+        width: 100%; /**/
+        height: 100%;
+
+        color: var(--quaternary-color-800);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .ratingWord {
+        font-size: .9em; /**/
+
+        font-weight: bold;
+        color: var(--quaternary-color-700);
+        margin-bottom: 0; /**/
+    }
+    .starWrapper img {
+        scale: 60%; /**/
+    }
+    .totalReviews {
+        font-size: .70em; /**/
+        font-family: 'Vollkorn', serif;
+        font-weight: bold;  
+    }
+
+
+    .select {
+        display: flex;
+        flex-direction: column; /**/
+        justify-content: center; /**/
+        align-items: center; /**/
+        margin: 1%;
+    }
+    .selectFilter{
+        background-color: transparent;
+        outline: none;
+        border-radius: 8px;
+        border: 1.5px solid var(--tertiary-color-500);
+        color: var(--tertiary-color-900);  
+        margin-left: 8px;
+    }
+    .selectFilter:hover {
+        cursor: pointer;
+        background-color: var(--tertiary-color-500);
+    }
+    .selectFilter:focus {
+        background-color: var(--tertiary-color-500);
+    }
+    .paginationIndex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        text-align: center;
+    }
+
+
+    .reviewsCarousel {
+        /* background-color: yellow; */
+        width: 100%;
+        height: fit-content;
+        display: flex; /**/
+        flex-direction: column; /**/
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;  /**/
+    }
+
+
+    .reviewForm {
+        /* background-color: purple; */
+        width: 100%;
+        height: fit-content; /**/
+        
+    }
+}
 

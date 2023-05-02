@@ -55,15 +55,12 @@ const ShopContact = () => {
 
   return (
     <div id="contact" className={styles.containerContact}>
-      <div className='card border-0 '>
+      <div className={`card border-0 ${styles.containerContactInside}`}>
         <div
-          className='card-body '
-          style={{
-            backgroundColor: 'var(--quaternary-color-0)',
-          }}
+          className={`card-body ${styles.containerContactInsideAll}`}
         >
           <h1>Contacto</h1>
-          <div className={`mb-3`} >
+          <div className={`mb-3 ${styles.inputsContainer} `} >
             <label htmlFor='exampleFormControlInput1' className='form-label'>
               Nombre
             </label>
@@ -72,7 +69,8 @@ const ShopContact = () => {
               style={{
                 backgroundColor: 'transparent',
               }}
-              className='border-0 border-bottom'
+              className='form-control border-0 border-bottom'
+              placeholder='nombre'
               name='name'
               type='text'
               value={userData.name}
@@ -82,7 +80,7 @@ const ShopContact = () => {
             {errors.name ? errors.name : null}
             <br />
           </div>
-          <div className='mb-3'>
+          <div className={`mb-3 ${styles.inputsContainer} `}>
             <label htmlFor='exampleFormControlInput1' className='form-label'>
               Email
             </label>
@@ -100,7 +98,7 @@ const ShopContact = () => {
             />
             {errors.email ? errors.email : null}
           </div>
-          <div className=''>
+          <div className={`mb-3 ${styles.inputsContainer} `}>
             <label htmlFor='exampleFormControlInput1' className='form-label'>
               Confirma Email
             </label>
@@ -118,14 +116,15 @@ const ShopContact = () => {
             />
             {errors.confirmEmail ? errors.confirmEmail : null}
           </div>
-          <div className='mb-3'>
+          <div className={`mb-3 ${styles.inputsContainer} `}>
             <label htmlFor='exampleFormControlTextarea1' className='form-label'>
               Consulta
             </label>
             <textarea
-              className='form-control'
+              className='form-control border'
               id='exampleFormControlTextarea1'
               rows='3'
+              placeholder='Tu consulta'
               name='mensaje'
               type='text'
               value={userData.mensaje}

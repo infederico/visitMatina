@@ -6,7 +6,7 @@ import {
   getProductsByShopId,
   postProduct,
 } from '../../../../redux/productActions';
-import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
+import { getReviews, getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
 import { cleanDeleteProduct, cleanUpdateProduct, cleanPostProduct } from "../../../../redux/productActions"
 import CardMandira from './CardMandira';
 import validate from './validate';
@@ -40,7 +40,8 @@ const AdminHospedajeMandira = () => {
 
   useEffect(() => {
     dispatch(getProductsByShopId(3));
-    dispatch(getAllApprovedReviewsByShopId(3));
+    //dispatch(getAllApprovedReviewsByShopId(3));
+    dispatch(getReviews(3))
     if (resUpdtReview !== ""){
       dispatch(clnResUpdtReview())
     }
@@ -78,7 +79,6 @@ const AdminHospedajeMandira = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(Object.keys(errors).length);
     if (Object.keys(errors).length === 0) {
       const res = await dispatch(postProduct(input));
       setShowAlert(true);
@@ -101,7 +101,6 @@ const AdminHospedajeMandira = () => {
       setAlertMessage('Completa todos los campos');
     }
   };
-  console.log(reviews);
 
   return (
     <section>
@@ -151,7 +150,7 @@ const AdminHospedajeMandira = () => {
                   <h3>Crear Producto</h3>
                 </div>
                 <div className='row mb-3'>
-                  <label for='inputEmail3' className='col-sm-2 col-form-label'>
+                  <label htmlFor='inputEmail3' className='col-sm-2 col-form-label'>
                     Nombre
                   </label>
                   <div className='col-sm-10'>
@@ -169,7 +168,7 @@ const AdminHospedajeMandira = () => {
                 </div>
                 <div className='row mb-3'>
                   <label
-                    for='inputPassword3'
+                    htmlFor='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
                     Precio
@@ -189,7 +188,7 @@ const AdminHospedajeMandira = () => {
                 </div>
                 <div className='row mb-3'>
                   <label
-                    for='inputPassword3'
+                    htmlFor='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
                     Descripcion
@@ -209,7 +208,7 @@ const AdminHospedajeMandira = () => {
                 </div>
                 <div className='row mb-3'>
                   <label
-                    for='inputPassword3'
+                    htmlFor='inputPassword3'
                     className='col-sm-2 col-form-label'
                   >
                     Imagen
@@ -262,7 +261,7 @@ const AdminHospedajeMandira = () => {
               {reviews.map((item) => {
                 return (
                   <CardMandira
-                    key={item.description}
+                    key={item.review_id}
                     review_id={item.review_id ? item.review_id : null}
                     name={item.user.name ? item.user.name : null}
                     description={item.description ? item.description : null}
@@ -270,7 +269,7 @@ const AdminHospedajeMandira = () => {
                     shop_id={item.shop_id ? item.shop_id : null}
                     rating={item.rating ? item.rating : null}
                     active={item.active ? item.active : null}
-                    approved={item.active ? item.active : null}
+                    approved={item.approved ? item.approved : null}
                   />
                 );
               })}
