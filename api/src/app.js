@@ -10,17 +10,14 @@ require('./db.js');
 const server = express();
 
 server.name = 'API';
-<<<<<<< HEAD
-=======
 // server.use(cors()); //Lisandro. Puse para pruebas.sacar
->>>>>>> aada9bea62cfc7c63819535b062bc82ee44dbb29
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
 
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://visit-matina.vercel.app'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header(
     'Access-Control-Allow-Headers',

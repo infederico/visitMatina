@@ -4,11 +4,7 @@ const { swaggerDocs } = require('./src/routes/swagger.js');
 const { seeder, seederReviews, seederProducts } = require('./seeder.js');
 
 // Syncing all the models at once.
-<<<<<<< HEAD
-conn.sync({ force: false }).then(async () => {
-=======
 conn.sync({ alter: true }).then(async () => {
->>>>>>> aada9bea62cfc7c63819535b062bc82ee44dbb29
   //await saveApi();
   console.log('Db connected...');
   async function startServer() {
