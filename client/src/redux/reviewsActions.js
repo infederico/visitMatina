@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {
+  getAllReviews,
   getAllApprovedReviews,
   setBackendError,
   postNewReview,
@@ -7,6 +8,13 @@ import {
   deleteR,
   cleanUpdateReview,
 } from './reviewsSlice';
+
+export const getReviews = (shopId) => (dispatch) => {
+  axios(`/reviews/all/shop/${shopId}`)
+    .then((response) => response.data.result)
+    .then((reviews) => dispatch(getAllReviews(reviews)))
+    .catch((err) => dispatch(setBackendError(err.message)));
+};
 
 export const getAllApprovedReviewsByShopId = (shopId) => (dispatch) => {
   axios(`/reviews/shop/${shopId}`)
