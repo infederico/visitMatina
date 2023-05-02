@@ -65,12 +65,12 @@ export default function NavBar() {
         </button>
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className={`navbar-nav ms-auto ${styles.text}`}>
-            {/* <li>
+            <li>
               <div
                 className={`nav-link ${styles.text}`}
                 id='google_translate_element'
               ></div>
-            </li> */}
+            </li>
             <li>
               <NavLink
                 onClick={() => setCollapsed(true)}
