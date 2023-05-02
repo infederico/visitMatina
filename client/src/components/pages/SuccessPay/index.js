@@ -24,8 +24,8 @@ export default function SuccessPay() {
       <div className='container text-center'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          width='300'
-          height='300'
+          width='100'
+          height='100'
           fill='#2EC462'
           class='bi bi-check-circle'
           viewBox='0 0 16 16'

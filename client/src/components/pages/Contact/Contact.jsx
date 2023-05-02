@@ -40,10 +40,12 @@ const Contact = () => {
     setShowAlert(false);
   };
 
-  const handleClick = async () => {
+  const handleClick = async (event) => {
+    event.preventDefault();
     if (Object.keys(errors).length === 0) {
       const respuesta = await dispatch(PostContact(userData));
       setAlertMessage(respuesta);
+      
       setShowAlert(true);
       setUserData({
         name: '',
