@@ -23,7 +23,7 @@ const Tours = () => {
         <section className={styles.cardsContainer}>
           {tours.map(tour =>{
           return(
-              <div className="card mb-3 h-100 border-0 mt-5 p-3" style={{maxWidth: "100vw",backgroundColor:"var(--tertiary-color-0)"}}>
+              <div key={tour.name} className="card mb-3 h-100 border-0 mt-5 p-3" style={{maxWidth: "100vw",backgroundColor:"var(--tertiary-color-0)"}}>
                 <div className="row g-0 h-100">
                   <div className="col-md-4 ">
                     <img style={{height: "100%", objectFit: "cover"}} src={tour.image} className="img-fluid rounded-start" alt="..."/>
@@ -33,7 +33,7 @@ const Tours = () => {
                       <h5 className={`card-title ${styles.Title}`}>{tour.name}</h5>
                       <p className={`card-text ${styles.Body}`}>{tour.description}</p>
                       <h5 className={styles.subtitle}>Incluye:</h5>
-                      {tour.includes.map((inclu, index) =><p className={` card-text ${styles.includes}`}><small className="text-muted"><li style={{ listStyle: "disc" }}>{tour.includes[index]}</li></small></p>)}
+                      {tour.includes.map((inclu, index) =><p key={index}className={` card-text ${styles.includes}`}><small className="text-muted"><li style={{ listStyle: "disc" }}>{tour.includes[index]}</li></small></p>)}
                     </div>
                   </div>
                 </div>
