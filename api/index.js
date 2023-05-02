@@ -5,7 +5,7 @@ const { seeder, seederReviews, seederProducts } = require('./seeder.js');
 
 // Syncing all the models at once.
 
-conn.sync({ alter: true }).then(async () => {
+conn.sync({ force: true }).then(async () => {
   //await saveApi();
   console.log('Db connected...');
   async function startServer() {
