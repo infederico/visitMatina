@@ -6,7 +6,7 @@ import {
   getProductsByShopId,
   postProduct,
 } from '../../../../redux/productActions';
-import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
+import { getReviews, getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
 import { cleanDeleteProduct, cleanUpdateProduct, cleanPostProduct } from "../../../../redux/productActions"
 import validate from './validate';
 import CardAventuras from './CardAventuras';
@@ -40,7 +40,8 @@ const AdminAventuras = () => {
 
   useEffect(() => {
     dispatch(getProductsByShopId(5));
-    dispatch(getAllApprovedReviewsByShopId(5));
+    //dispatch(getAllApprovedReviewsByShopId(5));
+    dispatch(getReviews(5))
     if (resUpdtReview !== ""){
       dispatch(clnResUpdtReview())
     }
@@ -269,7 +270,7 @@ const AdminAventuras = () => {
                     shop_id={item.shop_id ? item.shop_id : null}
                     rating={item.rating ? item.rating : null}
                     active={item.active ? item.active : null}
-                    approved={item.active ? item.active : null}
+                    approved={item.approved ? item.approved : null}
                   />
                 );
               })}
