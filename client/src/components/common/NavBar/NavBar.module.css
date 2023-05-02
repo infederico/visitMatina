@@ -106,13 +106,13 @@
 }
 @media (max-width: 1200px) {
   .text li {
-    margin: 0.1rem; /* Reducir el margen entre los elementos */
+    margin: 0; /* Reducir el margen entre los elementos */
   }
 
   .navlogo {
-    width: 2.5rem; /* Reducir el tamaño del logo */
+    width: 2rem; /* Reducir el tamaño del logo */
   }
-  .google {
+  /* .google {
     display: none;
-  }
+  } */
 }
