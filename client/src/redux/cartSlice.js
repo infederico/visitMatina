@@ -56,9 +56,7 @@ export const cartSlice = createSlice({
       }
     },
     delProduct: (state, action) => {
-      console.log(action.payload);
       let find = state.products.find((p) => p.id === Number(action.payload));
-      console.log(find);
       let filteredProducts = state.products.filter(
         (p) => p.id !== Number(action.payload)
       );
