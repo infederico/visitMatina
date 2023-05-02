@@ -18,7 +18,7 @@ const LogOutUser = () => {
     <NavLink className='nav-link' onClick={handleLogOut}>
     Cerrar sesión
     </NavLink>
-  )
-}
+  );
+};
 
-export default LogOutUser
+export default LogOutUser;
