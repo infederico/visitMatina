@@ -82,7 +82,7 @@ const seederReviews = async () => {
   try {
     const data = fs.readFileSync('./src/archivosJson/reviews.json', 'utf-8');
     const usuarios = JSON.parse(data);
-    await Reviews.findOrCreate(usuarios);
+    await Reviews.bulkCreate(usuarios);
     console.log('Datos cargados exitosamente en la tabla reviews ✅'); //emoji
   } catch (error) {
     console.error(error);
@@ -93,7 +93,7 @@ const seederProducts = async () => {
   try {
     const data = fs.readFileSync('./src/archivosJson/products.json', 'utf-8');
     const usuarios = JSON.parse(data);
-    await Product.findOrCreate(usuarios);
+    await Product.bulkCreate(usuarios);
     console.log('Datos cargados exitosamente en la tabla Product ✅'); //emoji
   } catch (error) {
     console.error(error);
