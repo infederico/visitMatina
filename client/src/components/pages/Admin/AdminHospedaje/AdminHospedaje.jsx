@@ -44,7 +44,7 @@ const AdminHospedaje = ({shopId}) => {
     const [ alertMessage, setAlertMessage ] = useState('')
 
   useEffect(() => {
-    //dispatch(getProductsByShopId(shopId));
+    dispatch(getProductsByShopId(shopId));
     dispatch(getReviews(shopId))
 
     if (resPostProduct !== '') { dispatch(cleanResPost()) }
