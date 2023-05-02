@@ -67,7 +67,7 @@ export default function NavBar() {
           <ul className={`navbar-nav ms-auto ${styles.text}`}>
             <li>
               <div
-                className={`nav-link ${styles.text}`}
+                className={`nav-link ${styles.text} ${styles.google}`}
                 id='google_translate_element'
               ></div>
             </li>
