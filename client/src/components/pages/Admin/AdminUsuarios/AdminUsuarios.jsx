@@ -40,8 +40,6 @@ const AdminUsuarios = () => {
 // eslint-disable-next-line
     }, [upDtRes]);
 
-    console.log(inputs)
-
     const handlerCheckAdmin = (event) =>{
       console.log(filterUser[0].id_user)
       if (event.target.checked) {

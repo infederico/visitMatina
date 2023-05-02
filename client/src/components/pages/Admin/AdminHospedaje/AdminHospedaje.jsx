@@ -241,7 +241,7 @@ const AdminHospedaje = ({shopId}) => {
               {reviews.map((item) => {
                 return (
                   <CardRestaurant
-                    key={item.description}
+                    key={item.review_id}
                     review_id={item.review_id ? item.review_id : null}
                     name={item.user.name ? item.user.name : null}
                     description={item.description ? item.description : null}
