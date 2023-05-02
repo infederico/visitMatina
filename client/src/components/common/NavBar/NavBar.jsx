@@ -77,6 +77,7 @@ export default function NavBar() {
         </button>
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id='navbarSupportedContent'>
           <ul className={`navbar-nav ms-auto ${styles.text}`}>
+<<<<<<< HEAD
             <NavLink className='nav-link' to='/' onClick={handleNavLinkClick}>
               Inicio
             </NavLink>
@@ -86,6 +87,43 @@ export default function NavBar() {
             <NavLink className='nav-link' to='/comollegar' onClick={handleNavLinkClick}>
               Cómo llegar
             </NavLink>
+=======
+            <li>
+              <div
+                className={`nav-link ${styles.text} ${styles.google}`}
+                id='google_translate_element'
+              ></div>
+            </li>
+            <li>
+              <NavLink
+                onClick={() => setCollapsed(true)}
+                className={`nav-link ${styles.text}`}
+                to='/'
+              >
+                Inicio
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={() => setCollapsed(true)}
+                className='nav-link'
+                to='/aboutUs'
+              >
+                Nosotros
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={() => setCollapsed(true)}
+                className='nav-link'
+                to='/comollegar'
+              >
+                Cómo llegar
+              </NavLink>
+            </li>
+            {/* esta ruta aún no existe */}
+
+>>>>>>> fcb1920b88672b93f332798ccc0ae98508ba983c
             <li className='nav-item dropdown'>
               <NavLink className='nav-link dropdown-toggle' id='navbarDropdownMenuLink' role='button' data-bs-toggle='dropdown' aria-expanded='false' >
                 Dónde ir

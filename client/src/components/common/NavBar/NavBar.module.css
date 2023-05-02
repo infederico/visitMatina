@@ -86,17 +86,33 @@
 .text li:hover::after {
   transform: scaleX(1);
 }
-@media (max-width: 1300px) {
-  .navbar {
-    flex-direction: column; /* Cambiar la dirección de los elementos */
-    justify-content: flex-start; /* Alinear los elementos en la parte superior */
-  }
-
+@media (max-width: 1950px) {
   .text li {
-    margin: 0.5rem; /* Reducir el margen entre los elementos */
+    margin: 0.4rem; /* Reducir el margen entre los elementos */
   }
 
   .navlogo {
     width: 2.5rem; /* Reducir el tamaño del logo */
   }
+}
+@media (max-width: 1250px) {
+  .text li {
+    margin: 0.1rem; /* Reducir el margen entre los elementos */
+  }
+
+  .navlogo {
+    width: 2.5rem; /* Reducir el tamaño del logo */
+  }
+}
+@media (max-width: 1200px) {
+  .text li {
+    margin: 0; /* Reducir el margen entre los elementos */
+  }
+
+  .navlogo {
+    width: 2rem; /* Reducir el tamaño del logo */
+  }
+  /* .google {
+    display: none;
+  } */
 }

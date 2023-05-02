@@ -12,6 +12,9 @@ const reviewsSlice = createSlice({
     resUpdtReview: "",
   },
   reducers: {
+    getAllReviews: (state, action) => {
+      state.value = action.payload;
+    },
     getAllApprovedReviews: (state, action) => {
       state.value = action.payload;
     },
@@ -50,6 +53,7 @@ const reviewsSlice = createSlice({
 });
 
 export const {
+  getAllReviews,
   getAllApprovedReviews,
   setShowCommentPanel,
   setSelectedReview,
