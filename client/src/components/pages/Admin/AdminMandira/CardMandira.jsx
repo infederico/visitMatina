@@ -194,7 +194,7 @@ const CardMandira = (props) => {
       {props.id_product ?<form onSubmit={handleSubmit}>
         <div className='card card-body'>
           <div className='row mb-3'>
-            <label for='inputEmail3' className='col-sm-2 col-form-label'>
+            <label htmlFor='inputEmail3' className='col-sm-2 col-form-label'>
               Nombre
             </label>
             <div className='col-sm-10'>
@@ -210,7 +210,7 @@ const CardMandira = (props) => {
           </div>
           {props.price ? (
             <div className='row mb-3'>
-              <label for='inputPassword3' className='col-sm-2 col-form-label'>
+              <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
                 Precio
               </label>
               <div className='col-sm-10'>
@@ -226,7 +226,7 @@ const CardMandira = (props) => {
             </div>
           ) : null}
           {props.id_product ? <div className='row mb-3'>
-            <label for='inputPassword3' className='col-sm-2 col-form-label'>
+            <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
               Descripcion
             </label>
             <div className='col-sm-10'>
@@ -242,7 +242,7 @@ const CardMandira = (props) => {
           </div>:null}
           {props.image ? (
             <div className='row mb-3'>
-              <label for='inputPassword3' className='col-sm-2 col-form-label'>
+              <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
                 Imagen
               </label>
               <div className='col-sm-10'>

@@ -264,7 +264,7 @@ const AdminShop = () => {
                 <h3>Crear Shop</h3>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Nombre
                 </label>
                 <div className="col-sm-10">
@@ -281,7 +281,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputPassword3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">
                   Resumen
                 </label>
                 <div className="col-sm-10">
@@ -298,7 +298,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Path
                 </label>
                 <div className="col-sm-10">
@@ -315,7 +315,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Email
                 </label>
                 <div className="col-sm-10">
@@ -332,7 +332,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Twitter
                 </label>
                 <div className="col-sm-10">
@@ -349,7 +349,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Instagram
                 </label>
                 <div className="col-sm-10">
@@ -366,7 +366,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Facebook
                 </label>
                 <div className="col-sm-10">
@@ -383,7 +383,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Whatsapp
                 </label>
                 <div className="col-sm-10">
@@ -400,7 +400,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   YouTube
                 </label>
                 <div className="col-sm-10">
@@ -417,7 +417,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Localización
                 </label>
                 <div className="col-sm-10">
@@ -435,7 +435,7 @@ const AdminShop = () => {
               </div>
 
               <div className="row mb-3">
-                <label for="inputPassword3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">
                   Imagen
                 </label>
                 <div className="col-sm-10">
@@ -468,7 +468,7 @@ const AdminShop = () => {
           <div className="card card-body">
             <form onSubmit={handlerSubmitUpdate}>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Nombre
                 </label>
                 <div className="col-sm-10">
@@ -485,7 +485,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputPassword3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">
                   Resumen
                 </label>
                 <div className="col-sm-10">
@@ -502,7 +502,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Path
                 </label>
                 <div className="col-sm-10">
@@ -519,7 +519,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Email
                 </label>
                 <div className="col-sm-10">
@@ -536,7 +536,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Twitter
                 </label>
                 <div className="col-sm-10">
@@ -553,7 +553,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Instagram
                 </label>
                 <div className="col-sm-10">
@@ -570,7 +570,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Facebook
                 </label>
                 <div className="col-sm-10">
@@ -587,7 +587,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Whatsapp
                 </label>
                 <div className="col-sm-10">
@@ -604,7 +604,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   YouTube
                 </label>
                 <div className="col-sm-10">
@@ -621,7 +621,7 @@ const AdminShop = () => {
                 </div>
               </div>
               <div className="row mb-3">
-                <label for="inputEmail3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
                   Localización
                 </label>
                 <div className="col-sm-10">
@@ -639,7 +639,7 @@ const AdminShop = () => {
               </div>
 
               <div className="row mb-3">
-                <label for="inputPassword3" className="col-sm-2 col-form-label">
+                <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">
                   Imagen
                 </label>
                 <div className="col-sm-10">
@@ -682,9 +682,9 @@ const AdminShop = () => {
               </thead>
               {shops.map((shop) => {
                 return (
-                  <tbody>
+                  <tbody key={shop.id_shop}>
                     <tr>
-                      <input
+                      <td><input
                         className="form-check-input"
                         type="checkbox"
                         name="id_shop"
@@ -692,8 +692,8 @@ const AdminShop = () => {
                         onChange={handlerCheck}
                         id="flexCheckDefault"
                         checked={check.hand}
-                      ></input>
-                      <th scope="row">{shop.id_shop}</th>
+                      ></input></td>
+                      <td scope="row">{shop.id_shop}</td>
                       <td>{shop.name}</td>
                       <td>{shop.path}</td>
                       <td>
