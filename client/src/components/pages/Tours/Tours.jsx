@@ -18,7 +18,7 @@ const Tours = () => {
         <section className={styles.cardTitleContainer}>
           <hr className={styles.hr}/>
           <h4 className={styles.cardTitle}>Descubre la belleza escondida en nuestra región. Nos emociona mostrarte lo que hace que nuestro hogar sea especial. Únete a nosotros en una aventura única y descubre los tesoros ocultos que tenemos para ofrecer</h4>
-          <hr />
+          <hr  className={styles.hr}/>
         </section>
         <section className={styles.cardsContainer}>
           {tours.map(tour =>{

@@ -17,6 +17,17 @@ import { useState } from 'react';
 export default function NavBar() {
   //const dispatch = useDispatch();
   //const location = useLocation();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen); // invertimos el valor de isMenuOpen cuando se hace clic en el botón del menú
+  };
+
+  const handleNavLinkClick = () => {
+    setIsMenuOpen(false); // cerramos el menú cuando se hace clic en una opción de navegación
+  };
+
   const loggedUser = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,11 +54,12 @@ export default function NavBar() {
         <NavLink
           className='navbar-brand'
           to='/'
-          onClick={() => {
+          onClick={handleNavLinkClick}
+          /* onClick={() => {
             if (!collapsed) {
               setCollapsed(true);
             }
-          }}
+          }} */
         >
           <img src={Logo} alt='Visit_Matina_Logo' className={styles.navlogo} />
         </NavLink>
@@ -57,52 +69,46 @@ export default function NavBar() {
           data-bs-toggle='collapse'
           data-bs-target='#navbarSupportedContent'
           aria-controls='navbarSupportedContent'
-          aria-expanded={!collapsed}
+          aria-expanded={isMenuOpen ? 'true' : 'false'}
           aria-label='Toggle navigation'
-          onClick={() => setCollapsed(!collapsed)}
+          onClick={handleMenuToggle}
+          /* onClick={() => setCollapsed(!collapsed)} */
         >
           <span className='navbar-toggler-icon'></span>
         </button>
-        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+        <div
+          className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`}
+          id='navbarSupportedContent'
+        >
           <ul className={`navbar-nav ms-auto ${styles.text}`}>
             <li>
-              <div
-                className={`nav-link ${styles.text} ${styles.google}`}
-                id='google_translate_element'
-              ></div>
+              <div id='google_translate_element'></div>
             </li>
             <li>
-              <NavLink
-                onClick={() => setCollapsed(true)}
-                className={`nav-link ${styles.text}`}
-                to='/'
-              >
+              <NavLink className='nav-link' to='/' onClick={handleNavLinkClick}>
                 Inicio
               </NavLink>
             </li>
             <li>
               <NavLink
-                onClick={() => setCollapsed(true)}
                 className='nav-link'
                 to='/aboutUs'
+                onClick={handleNavLinkClick}
               >
                 Nosotros
               </NavLink>
             </li>
             <li>
               <NavLink
-                onClick={() => setCollapsed(true)}
                 className='nav-link'
                 to='/comollegar'
+                onClick={handleNavLinkClick}
               >
                 Cómo llegar
               </NavLink>
             </li>
-            {/* esta ruta aún no existe */}
-
             <li className='nav-item dropdown'>
               <NavLink
-                onClick={() => setCollapsed(true)}
                 className='nav-link dropdown-toggle'
                 id='navbarDropdownMenuLink'
                 role='button'
@@ -117,41 +123,36 @@ export default function NavBar() {
               >
                 <li>
                   <NavLink
-                    onClick={() => setCollapsed(true)}
                     className='dropdown-item'
                     to='/fincaMandira'
+                    onClick={handleNavLinkClick}
                   >
                     Finca Mandira
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
-                    onClick={() => setCollapsed(true)}
                     className='dropdown-item'
                     to='/fincaLaParcela'
+                    onClick={handleNavLinkClick}
                   >
                     Finca La Parcela
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
-                    onClick={() => setCollapsed(true)}
                     className='dropdown-item'
                     to='/AventurasDelCaribe'
+                    onClick={handleNavLinkClick}
                   >
                     Aventuras del Caribe
                   </NavLink>
                 </li>
-                {/* <li>
-                  <NavLink className='dropdown-item' to='/artesaniasMarYLuna'>
-                    Artesanías Mar y Luna
-                  </NavLink>
-                </li> */}
               </ul>
             </li>
             <li className='nav-item dropdown'>
               <NavLink
-                onClick={() => setCollapsed(true)}
+                /* onClick={handleNavLinkClick} */
                 className='nav-link dropdown-toggle'
                 id='navbarDropdownMenuLink'
                 role='button'
@@ -166,7 +167,7 @@ export default function NavBar() {
               >
                 <li>
                   <NavLink
-                    onClick={() => setCollapsed(true)}
+                    onClick={handleNavLinkClick}
                     className='dropdown-item'
                     to='/restaurantSolyLuna'
                   >
@@ -192,9 +193,9 @@ export default function NavBar() {
               >
                 <li>
                   <NavLink
-                    onClick={() => setCollapsed(true)}
+                    onClick={handleNavLinkClick}
                     className='dropdown-item'
-                    to='/hopedajeClaroDeLuna'
+                    to='/hospedajeClaroDeLuna'
                   >
                     Claro de Luna
                   </NavLink>
@@ -203,7 +204,7 @@ export default function NavBar() {
             </li>
             <li className='nav-item dropdown'>
               <NavLink
-                onClick={() => setCollapsed(true)}
+                onClick={handleNavLinkClick}
                 className='nav-link'
                 to='/Tours'
               >
@@ -212,7 +213,7 @@ export default function NavBar() {
             </li>
             <li>
               <NavLink
-                onClick={() => setCollapsed(true)}
+                onClick={handleNavLinkClick}
                 className='nav-link'
                 to='/paquetes'
               >
@@ -221,7 +222,7 @@ export default function NavBar() {
             </li>
             <li>
               <NavLink
-                onClick={() => setCollapsed(true)}
+                onClick={handleNavLinkClick}
                 className='nav-link'
                 to='/blog'
               >
@@ -230,7 +231,7 @@ export default function NavBar() {
             </li>
             <li>
               <NavLink
-                onClick={() => setCollapsed(true)}
+                onClick={handleNavLinkClick}
                 className='nav-link'
                 to='/contacto'
               >
@@ -240,7 +241,7 @@ export default function NavBar() {
             {loggedUser.admin ? (
               <li>
                 <NavLink
-                  onClick={() => setCollapsed(true)}
+                  onClick={handleNavLinkClick}
                   className='nav-link'
                   to='/admin'
                 >
@@ -263,7 +264,7 @@ export default function NavBar() {
               <li>
                 {' '}
                 <NavLink
-                  onClick={() => setCollapsed(true)}
+                  onClick={handleNavLinkClick}
                   className='nav-link'
                   to='/login'
                 >

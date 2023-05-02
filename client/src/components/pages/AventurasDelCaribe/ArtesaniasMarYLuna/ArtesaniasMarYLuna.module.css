@@ -65,17 +65,7 @@
     margin: 10px;
     
 }
-.contactSection{
-    /* border: 1px solid #000; */
-    width: 100%;
-    margin-top: 80px;
-    padding-bottom: 80px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: var(--quaternary-color-0);
-}
+
 .contact{
     width: 100%;
     margin: auto;
@@ -119,10 +109,4 @@
 
 h2{
     font-family: 'Kanit', sans-serif;
-}
-
-.cardProductContainerContainer {
-    margin: 20px 0 0 0;
-    padding: 2.7rem 0;
-    background-image: linear-gradient(to bottom, var(--secondary-color-200), var(--secondary-color-400));
 }

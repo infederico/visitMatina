@@ -6,21 +6,25 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: var(--tertiary-color-100);
-  background-image: url('../../../assets/images/asfalt-dark.png');
+  background-color: var(--tertiary-color-0);
+  background-image: url('../../../assets/images/billie-holiday.png'); 
+
+  /* background-image: url('../../../assets/images/asfalt-dark.png'); */
 }
 .mapaRes {
   display: flex;
   margin-top: 50px;
-  color: olive !important;
+  color: rgb(0, 0, 0) !important;
   margin-left: 0px;
   margin-right: 0px;
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
   padding: 50px;
-  background-color: var(--tertiary-color-0);
-  font-family: 'Marcellus', serif;
+  background-color: var(--secondary-color-100);
+  font-family: 'Kanit', sans-serif;
+  background-image: url('../../../assets/images/billie-holiday.png'); 
+
 }
 
 .cajacentro {
@@ -33,6 +37,8 @@
   /* position: relative; */
   background-color: var(--tertiary-color-0);
   margin-top: 50px;
+    background-image: url('../../../assets/images/billie-holiday.png'); 
+
 }
 
 .cajafoto {
@@ -45,8 +51,8 @@
   justify-content: center;
   text-align: justify;
   flex-wrap: wrap;
-  color: olive !important ;
-  font-family: 'Marcellus', serif;
+  color: rgb(0, 0, 0) !important ;
+  font-family: 'Kanit', sans-serif;
 }
 .titulo1 {
   font-size: 50px;
@@ -59,8 +65,8 @@
   margin-left: 60px !important;
   margin-right: 50px;
   padding: 30px;
-  color: olive !important;
-  font-family: 'Marcellus', serif;
+  color: rgb(0, 0, 0) !important;
+  font-family: 'Kanit', sans-serif;
 }
 .cajatexto {
   height: 400px;
@@ -87,7 +93,7 @@
   text-align: justify;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .pagina {
     height: 100%;
     width: 100%;
@@ -104,7 +110,7 @@
     display: flex;
     margin-bottom: 50px;
     flex-wrap: wrap;
-    background-color: var(--secondary-color-100);
+    background-color: var(--tertiary-color-0);
     margin-top: 50px;
     color: white;
   }
@@ -151,7 +157,7 @@
   }
 }
 
-@media screen and (1024px < width < 1800px) {
+@media screen and (900px < width < 1990px) {
   .pagina {
     height: 100%;
     width: 100%;
