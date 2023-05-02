@@ -1,5 +1,6 @@
 .container {
   background-color: var(--tertiary-color-0);
+  background-image: url(../../../assets/images/billie-holiday.png);
 }
 .textContainer {
   width: 70%;

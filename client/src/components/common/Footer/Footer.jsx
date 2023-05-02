@@ -2,6 +2,7 @@
 import Logo from '../../../assets/images/matina_logo.png';
 import Redes from '../../common/redesSociales/redes/Redes';
 import styles from './Footer.module.css';
+import logo from '../../../assets/images/logo-municipalidad-matina.png'
 
 const Footer = () => {
   return (
@@ -9,9 +10,10 @@ const Footer = () => {
       <section className={styles.containerIn}>
         <div className={styles.containerLogo}>
           {/* <span>con el apoyo de</span> */}
-          <div className={styles.logo}></div>
+          <div className={styles.logo}><img src={logo} alt="" />
           <p className={styles.matina}>Matina, Limón</p>
           <p className={styles.matina}>Costa Rica</p>
+          </div>
           {/* <div className={styles.bandera}></div> */}
         </div>
         <div className={styles.containerRedes}>
