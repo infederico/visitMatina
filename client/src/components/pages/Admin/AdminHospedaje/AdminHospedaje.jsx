@@ -18,7 +18,7 @@ import {
   cleanResDel,
 } from '../../../../redux/productSlice';
 
-import { getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
+import { getReviews, getAllApprovedReviewsByShopId, clnResUpdtReview } from '../../../../redux/reviewsActions';
 
 
 const AdminHospedaje = ({shopId}) => {
@@ -44,7 +44,8 @@ const AdminHospedaje = ({shopId}) => {
     const [ alertMessage, setAlertMessage ] = useState('')
 
   useEffect(() => {
-    dispatch(getProductsByShopId(shopId));
+    //dispatch(getProductsByShopId(shopId));
+    dispatch(getReviews(shopId))
 
     if (resPostProduct !== '') { dispatch(cleanResPost()) }
     if (resUpdProduct !== '') { dispatch(cleanResUpd()) }
@@ -54,7 +55,8 @@ const AdminHospedaje = ({shopId}) => {
 
   useEffect(() => {
 
-    dispatch(getAllApprovedReviewsByShopId(shopId));
+    //dispatch(getAllApprovedReviewsByShopId(shopId));
+    dispatch(getReviews(shopId))
     if (resUpdtReview !== ""){
       dispatch(clnResUpdtReview())
     }
@@ -247,7 +249,7 @@ const AdminHospedaje = ({shopId}) => {
                     shop_id={item.shop_id ? item.shop_id : null}
                     rating={item.rating ? item.rating : null}
                     active={item.active ? item.active : null}
-                    approved={item.active ? item.active : null}
+                    approved={item.approved ? item.approved : null}
                   />
                 );
               })}

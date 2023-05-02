@@ -158,7 +158,7 @@ const CardRestaurant = (props) => {
                   </button>
                 ):null}
 
-                {props.review_id ? props.active === true ? (
+                {props.review_id ? props.approved === true ? (
                   <button
                     className={`btn btn-primary`}
                     value={props.review_id}
@@ -177,7 +177,7 @@ const CardRestaurant = (props) => {
                 ):null}
 
                 
-                {props.active === true ? (
+                {props.approved === true ? (
                   <p className={`${styles.txtButtonG} `}>Active</p>
                 ) : (
                   <p className={`${styles.txtButtonR} `}>Inactive</p>

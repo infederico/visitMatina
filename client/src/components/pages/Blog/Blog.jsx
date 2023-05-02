@@ -138,10 +138,10 @@ export default function Blog() {
             <button className={`${styles.buttonPage} "page-link"`} onClick={nextHandler}>Next</button>
             <button className={`${styles.buttonPage} "page-link"`} onClick={lastHandler}>Last</button>
           </div>
-          <div className={styles.divAux}></div>
+          {/* <div className={styles.divAux}></div> */}
           <section>
             <div>
-              <Footer socialmedia={arrayRedes}></Footer>
+              <Footer ></Footer>
             </div>
           </section>
 

@@ -132,6 +132,12 @@
     /* box-shadow: 0px 0px 10px var(--neutral-color-500); */
     scale: 1.2;
 }
+.paginationButtonHidden {
+    width: 3%;
+    height: 97%;
+    scale: 30%;
+    visibility: hidden;
+}
 
 .threadPanel {
     height: fit-content;

@@ -4,7 +4,7 @@ import Carousel from '../../common/Carousel/Carousel';
 
 export default function Home() {
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.background}>
         <div className={styles.centered}>
           <div className={styles.content}>
@@ -21,6 +21,7 @@ export default function Home() {
         allow='autoplay fullscreen encrypted-media picture-in-picture'
         allowFullScreen
         controls={true}
+        className={styles.video}
         // frameborder='0'
         title='visit_matina_reel'
         style={{
@@ -33,6 +34,6 @@ export default function Home() {
           pointerEvents: 'none',
         }}
       ></iframe>
-    </>
+    </div>
   );
 }
