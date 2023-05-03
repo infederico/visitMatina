@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import ValidationLogIn from './Validation/validationLogIn';
 import useLocalStorage from '../../localStorage/useLocalStorage';
@@ -10,6 +10,8 @@ import Footer from '../../common/Footer/Footer';
 import { arrayRedes } from '../../pages/comoLlegar/arrayRedes';
 
 const LogIn = () => {
+  const location = useLocation();
+  const { from } = location.state || { from: '/' };
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -28,7 +30,8 @@ const LogIn = () => {
     let userObject = jwt_decode(response.credential);
     dispatch(authGoogle(userObject));
     document.getElementById('signInDiv').hidden = true;
-    navigate('/');
+    //navigate('/');
+    navigate(from);
   };
 
   function handleKeyDown(event) {
@@ -84,7 +87,14 @@ const LogIn = () => {
           // eliminar la información del almacenamiento local
           setRemember({ email: '', password: '' });
         }
-        navigate('/');
+        
+        setUserData({
+          email: '',
+          password: '',
+        })
+
+        //navigate('/');
+        navigate(from);
       }
     } else {
       alert('Completa todos los campos');

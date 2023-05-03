@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import {
   postReview,
@@ -17,7 +17,8 @@ import validation from './validation'
 import styles from './ReviewForm.module.css'
 
 const ReviewForm = (props) => {
-  
+
+  const { pathname } = useLocation();
   // global states
   const loggedUser = useSelector((state) => state.user.user); // aca tomo del estado global la data del user que esta loggeado
 
@@ -52,6 +53,7 @@ const ReviewForm = (props) => {
   // hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     if (successMessageReview) {
@@ -59,8 +61,9 @@ const ReviewForm = (props) => {
     }
   }, [successMessageReview])
 
-  useEffect(() => {
 
+  useEffect(() => {
+   
     setNewReview((prevState) => ({
       ...prevState,
       rating: reviewLocalStorage.rating,
@@ -152,7 +155,8 @@ const ReviewForm = (props) => {
   const handleInputChange = (event) => {
     if (!loggedUser.access) {
       window.alert('Debes estar registrado e iniciar sesión para poder postear una reseña');
-      navigate('/login');
+      //navigate('/login');
+      navigate('/login', { state: { from: pathname } });
     };
 
     let { name, value } = event.target
@@ -197,7 +201,9 @@ const ReviewForm = (props) => {
     event.preventDefault()
     if (!loggedUser.access) {
       window.alert('Debes estar registrado e iniciar sesión para poder postear una reseña');
-      navigate('/login');
+      //navigate('/login');
+     
+      navigate('/login', { state: { from: pathname } });
     };
     //set submitted state true to allow errors rendering after first submit attemp
     setSubmitted(true)
@@ -218,6 +224,7 @@ const ReviewForm = (props) => {
     if (Object.keys(err).length === 0) {
       dispatch(postReview(newReview))
       //clean local state after sending all data
+      
       setNewReview({
         user_id: loggedUser.id_user,
         rating: 0,
