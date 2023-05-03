@@ -104,9 +104,6 @@
   background-color: var(--quaternary-color-0);
 }
 
-h2 {
-  font-family: 'Kanit', sans-serif;
-}
 
 .cardProductContainerContainer {
   min-height: 100%;
@@ -114,24 +111,55 @@ h2 {
 }
 
 .container {
-  white-space: nowrap;
-  overflow-x: scroll;
+  position: relative;
+  /* overflow-x: scroll; */
 }
 
 .item {
-  display: inline-block;
-  margin-right: 10px;
-  height: 10rem;
+  /* display: inline-block; */
+  /* margin-right: 10px; */
+  /* height: 10rem; */
   /* width: 10rem; */
+  display: none;
+  width: 100%;
+  filter: brightness(50%);
+  position: relative;
+  object-fit: cover;
+  height: 200px;
+  /* display: none; */
+}
+.encabezado {
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  padding: 100px;
+  background-color: var(--secondary-color-200);
+  margin: 0;
+  background-image: url("../../../assets/images/billie-holiday.png");
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+}
+.encabezado p{
+  color: var(--primary-color-900);
+}
+.encabezado p:nth-child(2n){
+  font-size: 16px;
 }
 
-.encabezado {
-  font-size: 2rem;
-  font-family: pacifico, cursive;
-  text-align: center;
-  color: #4a4a4a;
-  text-shadow: 2px 2px 2px #bfbfbf;
+.container a {
   text-decoration: none;
-  margin-bottom: 20px;
-  box-shadow: 0 0 10px #bfbfbf;
+  /* box-shadow: 0 0 10px #bfbfbf; */
 }
+.visitaContainer {
+  padding: 100px 0px;
+}
+
+  .hr{
+    height: 2px;
+    background-color:    var(--neutral-color-700) ;
+    opacity: 1;
+    width: 130px;
+    margin: auto;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
