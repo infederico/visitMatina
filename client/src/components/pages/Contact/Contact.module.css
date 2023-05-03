@@ -20,7 +20,9 @@
     font-size: 12px;
     margin-top: 2px;
   }
-  
+  .cardBody {
+    background-image: url("../../../assets/images/billie-holiday.png");
+  }
   .nombredeform {
     height: 60px;
     display: flex;

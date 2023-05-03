@@ -70,26 +70,17 @@ export default function AventurasDelCaribe() {
         </div>
       </div>
       <div className={style.container}>
-        <Link to='/artesaniasMarYLuna' ref={topRef} onClick={handleClick}>
           <h2 className={style.encabezado}>
-            Visita nuestra tienda de artesanías
+          <hr className={style.hr}/>
+          <Link  to='/artesaniasMarYLuna' ref={topRef} onClick={handleClick}>
+            <div className={style.visitaContainer}>
+            <p>¡Visita nuestra tienda de artesanías!</p>
+            <p>Haz click aquí</p>
+            </div>
+          </Link>
+          <hr className={style.hr}/>
           </h2>
-          <img
-            alt=''
-            className={style.item}
-            src='https://res.cloudinary.com/dfnw2l08x/image/upload/c_fill,g_auto,h_250,r_0,w_970/b_rgb:000000,e_gradient_fade,y_-0.5/c_scale,co_rgb:ffffff,fl_relative,l_text:montserrat_25_style_light_align_center:Artesanias%20Mar-y-Luna,w_0.5,y_0.18/v1682283540/ArtesaniasMarYLuna_paofg8.jpg'
-          />
-          <img
-            alt=''
-            className={style.item}
-            src='https://res.cloudinary.com/dfnw2l08x/image/upload/c_fill,g_auto,h_250,r_0,w_970/b_rgb:000000,e_gradient_fade,y_-0.5/c_scale,co_rgb:ffffff,fl_relative,l_text:montserrat_25_style_light_align_center:Artesanias%20Mar-y-Luna,w_0.5,y_0.18/v1682283540/ArtesaniasMarYLuna_paofg8.jpg'
-          />
-          <img
-            alt=''
-            className={style.item}
-            src='https://res.cloudinary.com/dfnw2l08x/image/upload/c_fill,g_auto,h_250,r_0,w_970/b_rgb:000000,e_gradient_fade,y_-0.5/c_scale,co_rgb:ffffff,fl_relative,l_text:montserrat_25_style_light_align_center:Artesanias%20Mar-y-Luna,w_0.5,y_0.18/v1682283540/ArtesaniasMarYLuna_paofg8.jpg'
-          />
-        </Link>
+
       </div>
       <section>{shopId && <Reviews shopId={shopId} />}</section>
 
