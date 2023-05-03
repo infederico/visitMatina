@@ -127,7 +127,7 @@ const LogIn = () => {
                   type='email'
                   className='form-control border-0 border-bottom'
                   id='email'
-                  placeholder='ingrese su email'
+                  placeholder='ingresa tu email'
                   name='email'
                   value={userData.email}
                   onChange={handleInputChange}
@@ -138,14 +138,14 @@ const LogIn = () => {
               </div>
               <div className='form-group'>
                 <label htmlFor='password' className='form-label'>
-                  Contrasena
+                  Contraseña
                 </label>
                 <input
                   autoComplete='off'
                   type='password'
                   className='form-control border-0 border-bottom'
                   id='formGroupExampleInput2'
-                  placeholder='ingrese su contrasena'
+                  placeholder='ingresa tu contraseña'
                   name='password'
                   value={userData.password}
                   onChange={handleInputChange}
@@ -184,7 +184,7 @@ const LogIn = () => {
                   className={`btn btn-dark ${style.submitButton}`}
                   style={{ width: '22rem' }}
                 >
-                  No tienes cuenta? Registrate
+                  ¿No tienes cuenta? Regístrate
                 </button>
               </Link>
             </form>

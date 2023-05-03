@@ -18,13 +18,15 @@ const CardGalleryContainer = () => {
     return(
         <div className={styles.gallery}>
             {products && products?.map(prod => {
-                return(
-                    <CardGallery
-                    key= {prod.id_product}
-                    image= {prod.image}
-                    shop= {prod.name}
-                    />
-                )
+                if (prod.active) {
+                    return(
+                        <CardGallery
+                        key= {prod.id_product}
+                        image= {prod.image}
+                        shop= {prod.name}
+                        />
+                    )
+                }
             })}
         </div>
     )
