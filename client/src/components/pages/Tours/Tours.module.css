@@ -1,5 +1,7 @@
 .allContainer {
-    background-color:var(--tertiary-color-0)
+    background-color:var(--tertiary-color-0);
+    background-image: url(../../../assets/images/billie-holiday.png);
+
 }
 .sec{
     position: relative;
@@ -81,10 +83,12 @@
     margin: 0;
 
 }
+.cardBody {
+    background-image: url(../../../assets/images/billie-holiday.png);
+}
 .includes{
     font-family: 'Kanit', sans-serif;
     margin: 0;
-
 
 }
 
