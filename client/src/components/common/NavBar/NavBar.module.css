@@ -24,12 +24,7 @@
   background-color: var(--tertiary-color-0);
   padding: 0px;
 }
-.text {
-  font-family: 'Marcellus', serif;
-  font-size: 0.9rem;
-  font-weight: normal;
-  color: var(--tertiary-color-900);
-}
+
 .navlogo {
   width: 3.8rem;
 }
@@ -51,7 +46,7 @@
 
 .text {
   font-family: 'Marcellus', serif;
-  font-size: 0.9rem;
+  font-size: 12px;
   font-weight: normal;
   color: var(--tertiary-color-900);
 }

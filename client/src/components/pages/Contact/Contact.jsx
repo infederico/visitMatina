@@ -61,9 +61,9 @@ const Contact = () => {
       <div className={` ${styles.containerContact}  container`}>
         <div className='card border-0'>
           <div
-            className='card-body'
+            className={`card-body ${styles.cardBody}`}
             style={{
-              backgroundColor: 'var(--quaternary-color-0)',
+              backgroundColor: 'var(--quaternary-color-100)',
             }}
           >
             <h1 className='text-center mb-4'>Contacto</h1>
