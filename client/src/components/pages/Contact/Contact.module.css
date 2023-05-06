@@ -1,37 +1,39 @@
 .containerContact {
-  width: 70%;
-  font-family: 'Kanit', sans-serif;
-  z-index: 1;
-}
-
-.submitButton {
-  background-color: var(--quaternary-color-200);
-  border: none;
-}
-
-.submitButton:hover {
-  background-color: var(--quaternary-color-400);
-}
-
-.mensajeerror {
-  color: red;
-  display: flex;
-  justify-content: flex-end;
-  font-size: 12px;
-  margin-top: 2px;
-}
-
-.nombredeform {
-  height: 60px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.pagina {
-  padding-top: 2rem;
-  height: 93vh;
-  width: 100%;
-  /* display: flex;
+    width: 70%;
+    font-family: 'Kanit', sans-serif;
+    z-index: 1;
+  }
+  
+  .submitButton {
+    background-color: var(--quaternary-color-200);
+    border: none;
+  }
+  
+  .submitButton:hover {
+    background-color: var(--quaternary-color-400);
+  }
+  
+  .mensajeerror {
+    color: red;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .cardBody {
+    background-image: url("../../../assets/images/billie-holiday.png");
+  }
+  .nombredeform {
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .pagina {
+    padding-top: 2rem;
+    height: 93vh;
+    width: 100%;
+    /* display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; */

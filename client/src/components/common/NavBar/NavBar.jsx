@@ -51,7 +51,7 @@ export default function NavBar() {
     <nav
       className={`navbar navbar-expand-lg navbar-light ${styles.navBarCustom}`}
     >
-      <div className='container'>
+      <div className='container-fluid ms-5 me-5'>
         <NavLink
           className='navbar-brand'
           to='/'
@@ -82,9 +82,6 @@ export default function NavBar() {
           id='navbarSupportedContent'
         >
           <ul className={`navbar-nav ms-auto ${styles.text}`}>
-            <li>
-              <div id='google_translate_element'></div>
-            </li>
             <li>
               <NavLink className='nav-link' to='/' onClick={handleNavLinkClick}>
                 Inicio
@@ -266,6 +263,9 @@ export default function NavBar() {
                 </NavLink>
               </li>
             )}
+            <li>
+              <div id='google_translate_element'></div>
+            </li>            
           </ul>
         </div>
       </div>

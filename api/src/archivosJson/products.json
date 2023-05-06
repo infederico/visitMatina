@@ -85,14 +85,14 @@
         "shop_id": 6
     },
     {
-        "name": "Cholocate",
+        "name": "Chocolate",
         "description":"El mejor chocolate de Matina",
         "price": 14.99,
         "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682993028/DSC00614_yrnjzr.jpg",
         "shop_id": 3
     },
     {
-        "name": "Cholocate",
+        "name": "Chocolate",
         "description":"El mejor chocolate de Matina",
         "price": 14.99,
         "image": "https://res.cloudinary.com/dfnw2l08x/image/upload/v1682993029/DSC00589_hghpxv.jpg",

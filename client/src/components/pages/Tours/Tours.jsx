@@ -23,8 +23,8 @@ const Tours = () => {
         <section className={styles.cardsContainer}>
           {tours.map(tour =>{
           return(
-              <div key={tour.name} className="card mb-3 h-100 border-0 mt-5 p-3" style={{maxWidth: "100vw",backgroundColor:"var(--tertiary-color-0)"}}>
-                <div className="row g-0 h-100">
+              <div key={tour.name} className="card mb-3 h-100 border-0 mt-5 " style={{maxWidth: "100vw",backgroundColor:"var(--tertiary-color-0)"}}>
+                <div className={`row g-0 h-100 ${styles.cardBody}`}>
                   <div className="col-md-4 ">
                     <img style={{height: "100%", objectFit: "cover"}} src={tour.image} className="img-fluid rounded-start" alt="..."/>
                   </div>
