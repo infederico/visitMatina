@@ -92,6 +92,14 @@
     align-items: center; 
     margin-bottom: 8px;
 }
+.cardPair {
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
 .cardIcon img {
 }
 .cardIcon:hover {

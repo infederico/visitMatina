@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { setShowCommentPanel, cleanSuccessMessageComment, setBackendError } from '../../../../redux/reviewsSlice';
 import { postReviewComment, getAllApprovedReviewsByShopId } from '../../../../redux/reviewsActions';
@@ -13,6 +13,8 @@ import ReviewComment from './ReviewComment/ReviewComment';
 import styles from './ReviewThread.module.css';
 
 const ReviewThread = (props) => {
+
+    const { pathname } = useLocation();
 
     // global states
     const reviews = useSelector(state => state.reviews.value);
@@ -92,7 +94,8 @@ const ReviewThread = (props) => {
     const handleInputChange = (event) => {
         if (!loggedUser.access) {
             window.alert('Debes estar registrado e iniciar sesión para poder postear una reseña');
-            navigate('/login');
+            //navigate('/login');
+            navigate('/login', { state: { from: pathname } });
         };
         setIncompleteFormAlert(false);
 

@@ -14,10 +14,10 @@ const Paginado = ({productsPerPage, products, paginado, currentPage, setCurrentP
             <div className={style.container_list}>
                 {currentPage === 1
                 ?   
-                        <button className={`${style.buttonPage} ${style.left}  "page-link"`} > Left</button>
+                        <button className={`${style.buttonPage} ${style.left}  "page-link"`} > Prev</button>
                     
                 :   
-                        <button className={`${style.buttonPage} ${style.left}  "page-link"`} onClick={() => paginado(currentPage - 1)}> Left</button>
+                        <button className={`${style.buttonPage} ${style.left}  "page-link"`} onClick={() => paginado(currentPage - 1)}> Prev</button>
                     }
                 
                 {pageNumbers && pageNumbers.map(page =>( 

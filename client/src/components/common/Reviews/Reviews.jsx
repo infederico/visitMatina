@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
 import { getAllApprovedReviewsByShopId } from '../../../redux/reviewsActions';
+import { setSelectedReview, setShowCommentPanel, cleanSuccessMessageReview, cleanSuccessMessageComment, setBackendError } from '../../../redux/reviewsSlice';
 
 import Review from './Review/Review'; // componente Review (card)
 import ReviewForm from './ReviewForm/ReviewForm'; // componente formulario para postear una nueva review
@@ -14,7 +15,7 @@ import stars3 from '../../../assets/images/review-stars/3stars.png';
 import stars4 from '../../../assets/images/review-stars/4stars.png';
 import stars5 from '../../../assets/images/review-stars/5stars.png';
 import prevPageIcon from '../../../assets/images/previous-tertiary-900.png';
-import nexPageIcon from '../../../assets/images/next-tertiary-900.png';
+import nextPageIcon from '../../../assets/images/next-tertiary-900.png';
 
 import styles from './Reviews.module.css';
 
@@ -39,8 +40,16 @@ const Reviews = (props) => {
     // hooks
     const dispatch = useDispatch();
 
-    useEffect( () => { // al montarse pide todas las reviews de este miembro en particular - identifica que adminId es pasado por props
+    useEffect( () => { 
+        // al montarse pide todas las reviews de este miembro en particular - identifica que adminId es pasado por props
         dispatch(getAllApprovedReviewsByShopId(props.shopId));
+
+        // al desmontarse limpio todos los carteles referidos a los formularios de reviews y comments
+        return () => {
+            dispatch(cleanSuccessMessageReview());
+            dispatch(cleanSuccessMessageComment(false));
+            dispatch(setBackendError(''))
+        }
     // eslint-disable-next-line
     }, []);
     
@@ -139,10 +148,14 @@ const Reviews = (props) => {
     // handlers
     const handleFilterChange = (event) => {
         setFilterSelectedOption(event.target.value);
+        dispatch(setShowCommentPanel(false));
+        dispatch(setSelectedReview(undefined));
     };
     
     const handleSortChange = (event) => {
         setSortSelectedOption(event.target.value);
+        dispatch(setShowCommentPanel(false));
+        dispatch(setSelectedReview(undefined));
     };
 
     const pageIncrement = () => {
@@ -245,7 +258,7 @@ const Reviews = (props) => {
                         }
                     })
                 }
-               <div className={ sortedReviews.length > 3 ? styles.paginationButton : styles.paginationButtonHidden }><img src={nexPageIcon} alt="next-page" onClick={pageIncrement} /></div>
+               <div className={ sortedReviews.length > 3 ? styles.paginationButton : styles.paginationButtonHidden }><img src={nextPageIcon} alt="next-page" onClick={pageIncrement} /></div>
             </div>
 
             <div className={styles.threadPanel}>
